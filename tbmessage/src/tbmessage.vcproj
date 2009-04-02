@@ -67,9 +67,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="SkinMagicLib.lib DETOURS.lib"
 				LinkIncremental="2"
-				IgnoreDefaultLibraryNames="libc.lib"
+				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -264,6 +263,14 @@
 			Name="Libraries"
 			>
 			<File
+				RelativePath=".\Libraries\ExplorerOcx.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\ExplorerOcx.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Libraries\HLink.cpp"
 				>
 			</File>
@@ -326,5 +333,13 @@
 		</File>
 	</Files>
 	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="tbmessage.rc"
+		/>
+		<Global
+			Name="{8856F961-340A-11D0-A96B-00C04FD705A2}"
+			Value="CExplorerOcx"
+		/>
 	</Globals>
 </VisualStudioProject>

@@ -16,6 +16,7 @@
 #define IDC_BTN_EXPORT                  1009
 #define IDC_BTN_CLEAR                   1011
 #define IDC_EXPLORER1                   1012
+#define IDC_EXPR_MSG_HELP               1012
 #define IDC_BTN_DEL_ACCOUNT             1013
 #define IDC_BTN_ADD_ACCOUNT             1014
 #define IDC_BTN_SENDMSG                 1015
