@@ -5,6 +5,7 @@
 #pragma once
 
 
+
 // CtbmsgDlg ¶Ô»°¿ò
 class CtbmsgDlg : public CDialog
 {
@@ -28,4 +29,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+    CExplorerOcx m_ExprMsgHelp;
 };

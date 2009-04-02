@@ -24,7 +24,8 @@ CtbmsgDlg::CtbmsgDlg(CWnd* pParent /*=NULL*/)
 
 void CtbmsgDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+    CDialog::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
 }
 
 BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
@@ -46,6 +47,7 @@ BOOL CtbmsgDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+    m_ExprMsgHelp.Navigate("http://www.163.com", 0, 0, 0, 0);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
