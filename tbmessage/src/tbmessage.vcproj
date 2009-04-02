@@ -21,7 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
-			UseOfMFC="2"
+			UseOfMFC="1"
 			CharacterSet="2"
 			>
 			<Tool
@@ -48,7 +48,7 @@
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				DebugInformationFormat="4"
@@ -259,6 +259,66 @@
 				RelativePath=".\res\tbmessage.rc2"
 				>
 			</File>
+		</Filter>
+		<Filter
+			Name="Libraries"
+			>
+			<File
+				RelativePath=".\Libraries\HLink.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\HLink.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\MD5Checksum.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\MD5Checksum.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\MD5ChecksumDefines.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\MyDiskInfo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\MyDiskInfo.h"
+				>
+			</File>
+			<Filter
+				Name="Ado"
+				>
+				<File
+					RelativePath=".\Libraries\Ado\Ado.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\Ado\Ado.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\Ado\AdoCommand.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\Ado\AdoCommand.h"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\Ado\AdoRecordSet.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\Ado\AdoRecordSet.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
