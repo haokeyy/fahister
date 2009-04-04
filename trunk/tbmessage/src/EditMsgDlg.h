@@ -21,4 +21,19 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
     CDHtmlEditOcx m_MsgEdit;
+    CString GetMsgHtml();
+    CString GetMsgText();
+    void SetMsgHtml(CString szMsgHtml);
+    afx_msg void OnBnClickedOk();
+
+private:
+    CString bodyInnerHtml;
+    CString bodyInnerText;
+    CString InternalGetMsgHtml();
+    CString InternalGetMsgText();
+    void InternalSetMsgHtml(CString szMsgHtml);
+
+public:
+    DECLARE_EVENTSINK_MAP()
+    void DocumentCompleteDhtmlEditMsg();
 };
