@@ -22,7 +22,8 @@ CEditMsgDlg::~CEditMsgDlg()
 
 void CEditMsgDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+    CDialog::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_DHTML_EDIT_MSG, m_MsgEdit);
 }
 
 
