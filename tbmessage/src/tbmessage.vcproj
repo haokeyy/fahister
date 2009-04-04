@@ -271,6 +271,14 @@
 			Name="Libraries"
 			>
 			<File
+				RelativePath=".\Libraries\DHtmlEditOcx.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\DHtmlEditOcx.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Libraries\ExplorerOcx.cpp"
 				>
 			</File>
@@ -344,6 +352,10 @@
 		<Global
 			Name="RESOURCE_FILE"
 			Value="tbmessage.rc"
+		/>
+		<Global
+			Name="{2D360200-FFF5-11D1-8D03-00A0C959BC0A}"
+			Value="CDHtmlEditOcx"
 		/>
 		<Global
 			Name="{8856F961-340A-11D0-A96B-00C04FD705A2}"
