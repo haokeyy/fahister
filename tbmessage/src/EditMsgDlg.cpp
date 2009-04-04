@@ -106,6 +106,7 @@ void CEditMsgDlg::OnBnClickedOk()
     if (bodyInnerText.IsEmpty())
     {
         MessageBox("没有输入任何消息内容。");
+        return;
     }
 
     OnOK();

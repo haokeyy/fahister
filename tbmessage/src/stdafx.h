@@ -43,8 +43,8 @@
 
 
 
-
-
+#define STATUS_UNSEND "Î´·¢ËÍ"
+#define STATUS_SENDED "ÒÑ·¢ËÍ"
 
 
 #ifdef _UNICODE

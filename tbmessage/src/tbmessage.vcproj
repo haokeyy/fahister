@@ -187,7 +187,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\EditAccDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\EditMsgDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ListViewHelp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\MsgSender.cpp"
 				>
 			</File>
 			<File
@@ -225,7 +237,23 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\Constants.h"
+				>
+			</File>
+			<File
+				RelativePath=".\EditAccDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\EditMsgDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ListViewHelp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MsgSender.h"
 				>
 			</File>
 			<File
