@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "tbmessage.h"
 #include "tbmsgDlg.h"
+#include "EditMsgDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -32,6 +33,7 @@ BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	//}}AFX_MSG_MAP
+    ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CtbmsgDlg::OnBnClickedBtnAddMsg)
 END_MESSAGE_MAP()
 
 
@@ -88,3 +90,9 @@ HCURSOR CtbmsgDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+void CtbmsgDlg::OnBnClickedBtnAddMsg()
+{
+    CEditMsgDlg dlg;
+    dlg.DoModal();
+}

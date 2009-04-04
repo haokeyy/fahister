@@ -31,4 +31,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
     CExplorerOcx m_ExprMsgHelp;
+    afx_msg void OnBnClickedBtnAddMsg();
 };
