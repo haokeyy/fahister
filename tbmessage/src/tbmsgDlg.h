@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxcmn.h"
 
 
 
@@ -32,4 +33,6 @@ protected:
 public:
     CExplorerOcx m_ExprMsgHelp;
     afx_msg void OnBnClickedBtnAddMsg();
+    CListCtrl m_MessageList;
+    afx_msg void OnBnClickedBtnEditMsg();
 };

@@ -13,10 +13,6 @@
 
 
 // CtbmsgDlg 对话框
-
-
-
-
 CtbmsgDlg::CtbmsgDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CtbmsgDlg::IDD, pParent)
 {
@@ -27,6 +23,7 @@ void CtbmsgDlg::DoDataExchange(CDataExchange* pDX)
 {
     CDialog::DoDataExchange(pDX);
     DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
+    DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
 }
 
 BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
@@ -34,6 +31,7 @@ BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
 	ON_WM_QUERYDRAGICON()
 	//}}AFX_MSG_MAP
     ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CtbmsgDlg::OnBnClickedBtnAddMsg)
+    ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CtbmsgDlg::OnBnClickedBtnEditMsg)
 END_MESSAGE_MAP()
 
 
@@ -49,7 +47,14 @@ BOOL CtbmsgDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-    m_ExprMsgHelp.Navigate("http://www.163.com", 0, 0, 0, 0);
+    m_ExprMsgHelp.Navigate("about:blank", 0, 0, 0, 0);
+
+    // 设置列表框样式
+    m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);
+	// 添加列
+    m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
+    m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 420);
+    m_MessageList.InsertColumn(2, "消息", LVCFMT_LEFT, 0);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -94,5 +99,34 @@ HCURSOR CtbmsgDlg::OnQueryDragIcon()
 void CtbmsgDlg::OnBnClickedBtnAddMsg()
 {
     CEditMsgDlg dlg;
-    dlg.DoModal();
+    if (dlg.DoModal() == IDOK)
+    {
+        CString szBodyHtml = dlg.GetMsgHtml();
+        CString szBodyText = dlg.GetMsgText();
+
+        int nIndex = m_MessageList.GetItemCount();
+        CString szIndex;
+        szIndex.Format("%d", nIndex + 1);
+        m_MessageList.InsertItem(nIndex, szIndex);
+        m_MessageList.SetItemText(nIndex, 1, szBodyText);
+        m_MessageList.SetItemText(nIndex, 2, szBodyHtml);
+    }
+}
+
+void CtbmsgDlg::OnBnClickedBtnEditMsg()
+{    
+    CEditMsgDlg dlg;
+    dlg.SetMsgHtml("<p>aa</p>");
+    if (dlg.DoModal() == IDOK)
+    {
+        CString szBodyHtml = dlg.GetMsgHtml();
+        CString szBodyText = dlg.GetMsgText();
+
+        int nIndex = m_MessageList.GetItemCount();
+        CString szIndex;
+        szIndex.Format("%d", nIndex + 1);
+        m_MessageList.InsertItem(nIndex, szIndex);
+        m_MessageList.SetItemText(nIndex, 1, szBodyText);
+        m_MessageList.SetItemText(nIndex, 2, szBodyHtml);
+    }
 }
