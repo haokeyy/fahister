@@ -52,7 +52,7 @@ void CEditAccountDlg::OnBnClickedOk()
 
     if (m_szUserId.IsEmpty() || m_szPassword.IsEmpty())
     {
-        MessageBox("用户名和密码不能为空。");
+        MessageBox("用户名和密码不能为空。", "错误", MB_ICONERROR);
         return;
     }
 
