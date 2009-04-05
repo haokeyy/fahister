@@ -3,18 +3,30 @@
 class CInstantMessage
 {
 public:
+    int nItemIndex;
     CString SendUserId;
     CString SendUserPassword;
     CString ReceiverId;
     CString MessageHtml;
+    BOOL AddToFriend;
+    BOOL AutoLogin;
 };
 
 class CMessageSender
 {
 public:
-    CMessageSender();
+    CMessageSender(HWND hMainWnd);
     ~CMessageSender();
 
-    static void SendMsg(CInstantMessage msg);
-
+    HWND m_hMainWnd;
+    CInstantMessage message;
+    void SendMsg(CInstantMessage msg);
+    UINT ExecuteSendMsg();
+    UINT ExecuteLogin();
+    UINT SendOneMsg();
+    UINT AddToFriend();
+    UINT DeleteAllFriend();
+    static BOOL UserIsLogined(CString senderId);
 };
+
+UINT SendMsgWorkerThread(LPVOID pvThread);

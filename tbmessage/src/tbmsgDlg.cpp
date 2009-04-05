@@ -10,6 +10,7 @@
 #include "editaccdlg.h"
 #include "MsgSender.h"
 #include "Constants.h"
+#include ".\Libraries\WindowHelp.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -49,6 +50,8 @@ BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
     ON_BN_CLICKED(IDC_BTN_IMPORT, &CtbmsgDlg::OnBnClickedBtnImport)
     ON_BN_CLICKED(IDC_BTN_CLEAR, &CtbmsgDlg::OnBnClickedBtnClear)
     ON_WM_TIMER()
+    ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted) 
+    ON_MESSAGE(WM_FOUND_MEMBER, OnFoundMember) 
 END_MESSAGE_MAP()
 
 
@@ -78,7 +81,7 @@ BOOL CtbmsgDlg::OnInitDialog()
     m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
 
     m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
-    m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 45);
+    m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
     m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 150);
     m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 60);
 
@@ -224,6 +227,7 @@ void CtbmsgDlg::InitSpeed()
     while (Speeds[i].Value != -1)
     {
         m_CmbSpeed.AddString(Speeds[i].Name);
+        m_CmbSpeed.SetItemData(i, Speeds[i].Value);
         i++;
     }
 
@@ -233,27 +237,120 @@ void CtbmsgDlg::InitSpeed()
 
 void CtbmsgDlg::OnBnClickedBtnSendmsg()
 {
-    this->SetTimer(100, 5000, NULL);
+    CString szText;
+    this->GetDlgItemText(IDC_BTN_SENDMSG, szText);
+    if (szText == "发送")
+    {
+        if (m_MemberList.GetItemCount() == 0)
+        {
+            MessageBox("没有待发送的好友。", "错误", MB_ICONERROR);
+            return;
+        }
+
+        if (m_MessageList.GetItemCount() == 0)
+        {            
+            MessageBox("没有设置消息内容。", "错误", MB_ICONERROR);
+            return;
+        }
+
+        if (m_AccountList.GetItemCount() == 0)
+        {
+            MessageBox("没有设置用来发送消息的淘宝用户。", "错误", MB_ICONERROR);
+            return;
+        }
+
+        CListViewHelp::SetSelectedItem(m_MemberList, -1);
+
+        StartSendMsg();
+    }
+    else
+    {
+        StopSendMsg();
+    }
 }
 
 
 void CtbmsgDlg::OnTimer(UINT_PTR nIDEvent)
-{    
-    CListViewHelp::SelectedNextItem(m_MessageList);
-    CString currentMessage = CListViewHelp::GetSelectedItemValue(m_MessageList);
-    CListViewHelp::SelectedNextItem(m_AccountList);
-    CString currentUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
-    CString currentUserPwd = CListViewHelp::GetSelectedItemValue(m_AccountList);
-    CListViewHelp::SelectedNextItemByValue(m_MemberList, STATUS_UNSEND);
-    CString currentReceiver = CListViewHelp::GetSelectedItemValue(m_MemberList);
-
+{
     CInstantMessage msg;
-    msg.SendUserId = currentUserId;
-    msg.SendUserPassword = currentUserPwd;
-    msg.ReceiverId = currentReceiver;
-    msg.MessageHtml = currentMessage;
 
-    CMessageSender::SendMsg(msg);
+    CButton *chkAutoLogin = (CButton*)this->GetDlgItem(IDC_CHK_ADDTO_FRIEND);
+    CButton *chkAddToFriend = (CButton*)this->GetDlgItem(IDC_CHK_AUTO_LOGIN);
+    msg.AutoLogin = chkAutoLogin->GetCheck();
+    msg.AddToFriend = chkAddToFriend->GetCheck();
+
+    CListViewHelp::SelectedNextItem(m_AccountList);
+    msg.SendUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
+    msg.SendUserPassword = CListViewHelp::GetSelectedItemValue(m_AccountList);
+
+    if (!CMessageSender::UserIsLogined(msg.SendUserId) && !msg.AutoLogin) // 用户没有登录并且设置为不自动登录，则忽略此次发送，即用下一个用户发送
+    {
+        return;
+    }
+
+    CListViewHelp::SelectedNextItem(m_MessageList);
+    msg.MessageHtml = CListViewHelp::GetSelectedItemValue(m_MessageList);
+
+    int offset = CListViewHelp::SelectedNextItemByValue(m_MemberList, STATUS_UNSEND);
+    if (offset >= m_MemberList.GetItemCount())
+    {
+        StopSendMsg();
+        MessageBox("发送完成。", "提示", MB_ICONINFORMATION);
+        return;
+    }
+
+    msg.nItemIndex = CListViewHelp::GetSelectedItem(m_MemberList);
+    msg.ReceiverId = CListViewHelp::GetSelectedItemText(m_MemberList);
+
+    OpenSendWindow(msg.SendUserId, msg.ReceiverId);
+    CListViewHelp::ChangeListItemValue(m_MemberList, msg.nItemIndex, STATUS_SENDING);
+
+    CMessageSender *pSender = new CMessageSender(this->GetSafeHwnd());
+    pSender->SendMsg(msg);
 
     CDialog::OnTimer(nIDEvent);
+}
+
+
+void CtbmsgDlg::StartSendMsg()
+{
+    this->SetDlgItemText(IDC_BTN_SENDMSG, "停止");
+
+    int m = m_CmbSpeed.GetCurSel();
+    int smSecond = m_CmbSpeed.GetItemData(m); // 毫秒数
+    this->SetTimer(TIMER_ID, smSecond, NULL);
+    OnTimer(TIMER_ID);
+}
+
+void CtbmsgDlg::StopSendMsg()
+{
+    this->KillTimer(TIMER_ID);
+
+    this->SetDlgItemText(IDC_BTN_SENDMSG, "发送");
+}
+
+BOOL CtbmsgDlg::OpenSendWindow(CString szSenderID, CString szReceiverID)
+{    
+    CString szTaobaoSendUrl = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    
+    CString szURL;
+    szURL.Format(szTaobaoSendUrl, szSenderID.GetBuffer(), szReceiverID.GetBuffer());        
+    m_ExprMsgHelp.Navigate(szURL, NULL, NULL, NULL, NULL);
+
+    return TRUE;
+}
+
+LRESULT CtbmsgDlg::OnFoundMember(WPARAM wParam, LPARAM lParam)
+{
+    return 0;
+}
+
+LRESULT CtbmsgDlg::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
+{
+    LPTSTR szItemId = (LPTSTR)lParam;
+
+    int nItemId = atoi(szItemId);
+    CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
+
+    return 0;
 }

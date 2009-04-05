@@ -7,6 +7,7 @@ public:
     ~CListViewHelp();
     static void AddListItem(CListCtrl& listCtrl, CString itemText , CString itemValue);
     static void ChangeListItem(CListCtrl& listCtrl, int nItem, CString itemText , CString itemValue);
+    static void ChangeListItemValue(CListCtrl& listCtrl, int nItem, CString itemValue);
     static void ResetItemId(CListCtrl& listCtrl);
     static void DeleteSelectedItem(CListCtrl& listCtrl);
     static int GetSelectedItem(CListCtrl& listCtrl);

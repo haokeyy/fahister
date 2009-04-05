@@ -38,13 +38,18 @@
 #include <afxcontrolbars.h>     // 功能区和控件条的 MFC 支持
 
 #include <mshtml.h>
+#include <psapi.h>
 
 #include ".\Libraries\ExplorerOcx.h"
 
+#define PRODUCT_ID      "D08"
 
-
-#define STATUS_UNSEND "未发送"
-#define STATUS_SENDED "已发送"
+#define WM_SENDMSG_COMPLETED     (WM_USER + 101)
+#define WM_FOUND_MEMBER          (WM_USER + 102)
+#define STATUS_UNSEND   "未发送"
+#define STATUS_SENDING  "发送中..."
+#define STATUS_SENDED   "已发送"
+#define TIMER_ID        100
 
 
 #ifdef _UNICODE

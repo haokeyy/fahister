@@ -50,6 +50,11 @@ public:
     void InitCategory();
     void InitLocation();
     void InitSpeed();
+    void StartSendMsg();
+    void StopSendMsg();
+    BOOL OpenSendWindow(CString szSenderID, CString szReceiverID);
     CComboBox m_CmbSpeed;
     afx_msg void OnTimer(UINT_PTR nIDEvent);
+    afx_msg LRESULT OnFoundMember(WPARAM wParam, LPARAM lParam); 
+    afx_msg LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam); 
 };

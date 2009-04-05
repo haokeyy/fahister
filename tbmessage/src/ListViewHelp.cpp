@@ -25,6 +25,11 @@ void CListViewHelp::ChangeListItem(CListCtrl& listCtrl, int nItem, CString itemT
     listCtrl.SetItemText(nItem, 2, itemValue);
 }
 
+void CListViewHelp::ChangeListItemValue(CListCtrl& listCtrl, int nItem, CString itemValue)
+{
+    listCtrl.SetItemText(nItem, 2, itemValue);
+}
+
 void CListViewHelp::ResetItemId(CListCtrl& listCtrl)
 {
     int count = listCtrl.GetItemCount();
