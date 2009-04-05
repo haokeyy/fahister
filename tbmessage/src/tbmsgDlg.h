@@ -5,6 +5,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "afxwin.h"
+#include "MemberSearch.h"
 
 
 
@@ -54,7 +55,9 @@ public:
     void StopSendMsg();
     BOOL OpenSendWindow(CString szSenderID, CString szReceiverID);
     CComboBox m_CmbSpeed;
+    CMemberSearch *m_pMemberSearch;
     afx_msg void OnTimer(UINT_PTR nIDEvent);
     afx_msg LRESULT OnFoundMember(WPARAM wParam, LPARAM lParam); 
     afx_msg LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam); 
+    afx_msg void OnBnClickedBtnSearch();
 };

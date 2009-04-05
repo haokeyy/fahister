@@ -201,6 +201,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MemberSearch.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MsgSender.cpp"
 				>
 			</File>
@@ -252,6 +256,10 @@
 			</File>
 			<File
 				RelativePath=".\ListViewHelp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MemberSearch.h"
 				>
 			</File>
 			<File

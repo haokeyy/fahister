@@ -52,6 +52,7 @@ BEGIN_MESSAGE_MAP(CtbmsgDlg, CDialog)
     ON_WM_TIMER()
     ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted) 
     ON_MESSAGE(WM_FOUND_MEMBER, OnFoundMember) 
+    ON_BN_CLICKED(IDC_BTN_SEARCH, &CtbmsgDlg::OnBnClickedBtnSearch)
 END_MESSAGE_MAP()
 
 
@@ -60,6 +61,8 @@ END_MESSAGE_MAP()
 BOOL CtbmsgDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
+
+    m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd());
 
 	// 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
 	//  执行此操作
@@ -89,6 +92,7 @@ BOOL CtbmsgDlg::OnInitDialog()
     InitCategory();
     InitLocation();
     InitSpeed();
+    this->SetDlgItemInt(IDC_EDIT_LIMIT, 100);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -340,17 +344,53 @@ BOOL CtbmsgDlg::OpenSendWindow(CString szSenderID, CString szReceiverID)
     return TRUE;
 }
 
-LRESULT CtbmsgDlg::OnFoundMember(WPARAM wParam, LPARAM lParam)
-{
-    return 0;
-}
-
 LRESULT CtbmsgDlg::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 {
     LPTSTR szItemId = (LPTSTR)lParam;
 
     int nItemId = atoi(szItemId);
     CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
+
+    return 0;
+}
+
+void CtbmsgDlg::OnBnClickedBtnSearch()
+{
+    CString szSearchCaption;
+    this->GetDlgItem(IDC_BTN_SEARCH)->GetWindowText(szSearchCaption);
+    if (szSearchCaption == "查找")
+    {
+        CSearchCondition condition;
+        condition.nType = m_CmbTarget.GetCurSel();
+        int i = m_CmbCategory.GetCurSel();
+        condition.nCategoryId = m_CmbCategory.GetItemData(i);
+        m_CmbLocation.GetWindowText(condition.szLocation);
+        this->GetDlgItemText(IDC_EDIT_KEYWORD, condition.szKeyword);
+        condition.nLimit = this->GetDlgItemInt(IDC_EDIT_LIMIT);
+
+        this->GetDlgItem(IDC_BTN_SEARCH)->SetWindowText("停止");
+        m_pMemberSearch->SearchMember(condition);
+    }
+    else
+    {
+        m_pMemberSearch->Stop();
+    }
+}
+
+
+LRESULT CtbmsgDlg::OnFoundMember(WPARAM wParam, LPARAM lParam)
+{
+    BOOL bFinish = (BOOL)wParam;
+    if (wParam)
+    {
+        LPTSTR szUserId = (LPTSTR)lParam;        
+        CListViewHelp::AddListItem(m_MemberList, szUserId, STATUS_UNSEND);
+        m_pMemberSearch->AddFoundCount();
+    }
+    else
+    {
+        this->GetDlgItem(IDC_BTN_SEARCH)->SetWindowText("查找");
+    }
 
     return 0;
 }
