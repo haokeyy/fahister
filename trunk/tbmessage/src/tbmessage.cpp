@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "tbmessage.h"
 #include "tbmsgDlg.h"
+#include "MainDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -58,7 +59,8 @@ BOOL CtbmsgApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 
-	CtbmsgDlg dlg;
+	//CtbmsgDlg dlg;
+    CMainDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
