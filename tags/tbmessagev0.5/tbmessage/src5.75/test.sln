@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "BatchMessage.vcproj", "{FA556509-0EB3-4341-9AE2-9FB91625A740}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tbmessage", "..\..\tbmessage\tbmessage.vcproj", "{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Debug|Win32.Build.0 = Debug|Win32
+		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Release|Win32.ActiveCfg = Release|Win32
+		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Release|Win32.Build.0 = Release|Win32
+		{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}.Debug|Win32.Build.0 = Debug|Win32
+		{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}.Release|Win32.ActiveCfg = Release|Win32
+		{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
