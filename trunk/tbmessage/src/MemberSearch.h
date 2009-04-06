@@ -13,7 +13,7 @@ public:
 class CMemberSearch
 {
 public:
-    CMemberSearch(HWND hMainWnd);
+    CMemberSearch(HWND hMainWnd, CString taobaoAddr);
     ~CMemberSearch();
 public:    
     HWND m_hMainWnd;

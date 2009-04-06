@@ -62,7 +62,10 @@ BOOL CtbmsgDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-    m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd());
+    szTaobaoSendUrl = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    szTaobaoSearchUrl = "http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+
+    m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd(), szTaobaoSearchUrl);
 
 	// 设置此对话框的图标。当应用程序主窗口不是对话框时，框架将自动
 	//  执行此操作
@@ -334,9 +337,7 @@ void CtbmsgDlg::StopSendMsg()
 }
 
 BOOL CtbmsgDlg::OpenSendWindow(CString szSenderID, CString szReceiverID)
-{    
-    CString szTaobaoSendUrl = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
-    
+{  
     CString szURL;
     szURL.Format(szTaobaoSendUrl, szSenderID.GetBuffer(), szReceiverID.GetBuffer());        
     m_ExprMsgHelp.Navigate(szURL, NULL, NULL, NULL, NULL);
@@ -385,6 +386,9 @@ LRESULT CtbmsgDlg::OnFoundMember(WPARAM wParam, LPARAM lParam)
     {
         LPTSTR szUserId = (LPTSTR)lParam;        
         CListViewHelp::AddListItem(m_MemberList, szUserId, STATUS_UNSEND);
+        CString szGroupCaption;
+        szGroupCaption.Format("好友列表(%d)", m_MemberList.GetItemCount());
+        this->SetDlgItemText(IDC_STATIC_MEMBER, szGroupCaption);
         m_pMemberSearch->AddFoundCount();
     }
     else
