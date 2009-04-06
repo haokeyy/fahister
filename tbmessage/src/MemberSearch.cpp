@@ -2,10 +2,10 @@
 #include "MemberSearch.h"
 #include ".\Libraries\WindowHelp.h"
 
-CMemberSearch::CMemberSearch(HWND hMainWnd)
+CMemberSearch::CMemberSearch(HWND hMainWnd, CString taobaoAddr)
 {
     m_hMainWnd = hMainWnd;
-    szTaobaoAddress = "http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+    szTaobaoAddress = taobaoAddr;
 }
 
 CMemberSearch::~CMemberSearch()
@@ -61,7 +61,7 @@ UINT CMemberSearch::GetTaobaoSellerMember()
     szCategory.Format("shop-%d.htm?emptyparam=1", condition.nCategoryId);
     szShopListURL += szCategory;
     // 地区
-    if (!condition.szLocation.IsEmpty())
+    if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
     {        
         CString szLocation = "&loc=" + URLEncode(condition.szLocation);
         szShopListURL += szLocation;
@@ -151,7 +151,7 @@ UINT CMemberSearch::GetTaobaoBuyerMember()
     szCategory.Format("shop-%d.htm?emptyparam=1", condition.nCategoryId);
     szShopListURL += szCategory;
     // 地区
-    if (!condition.szLocation.IsEmpty())
+    if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
     {        
         CString szLocation = "&loc=" + URLEncode(condition.szLocation);
         szShopListURL += szLocation;
@@ -301,7 +301,7 @@ BOOL CMemberSearch::ParseShopForBuyer(CString szHtml)
 	CString szLastPageFlag = "#RateType\">下一页";
 	int p = szHtml.Find(szLastPageFlag);
 
-    return (nFoundCount > tempCount || p > 0); // 目前数目大于查找前的数目，返回TRUE
+    return (nFoundCount > tempCount && p > 0); // 目前数目大于查找前的数目，返回TRUE
 }
 
 CString CMemberSearch::ExtractShopBuyer(CString szShopHtml)

@@ -113,7 +113,7 @@ BEGIN
     RTEXT           "关键字：",IDC_STATIC102,253,18,33,12
     LTEXT           "所在地：",IDC_STATIC,180,18,28,8
     LTEXT           "类别：",IDC_STATIC101,63,18,21,8
-    GROUPBOX        "好友列表",IDC_STATIC_MEMBER,3,45,175,239
+    GROUPBOX        "好友列表(0)",IDC_STATIC_MEMBER,3,45,175,239
     GROUPBOX        "消息内容(添加多条消息，轮流发送)",IDC_STATIC,184,45,276,125
     GROUPBOX        "发送帐号",IDC_STATIC,184,173,101,111
     GROUPBOX        "发送选项",IDC_STATIC,291,173,86,111
