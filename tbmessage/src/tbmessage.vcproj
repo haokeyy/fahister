@@ -201,6 +201,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MainDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MemberSearch.cpp"
 				>
 			</File>
@@ -259,6 +263,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MainDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MemberSearch.h"
 				>
 			</File>
@@ -292,6 +300,18 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
+			<File
+				RelativePath=".\res\seller1.BMP"
+				>
+			</File>
+			<File
+				RelativePath=".\res\seller2.BMP"
+				>
+			</File>
+			<File
+				RelativePath=".\res\seller3.BMP"
+				>
+			</File>
 			<File
 				RelativePath=".\res\tbmessage.ico"
 				>
