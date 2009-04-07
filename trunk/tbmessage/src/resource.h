@@ -24,6 +24,7 @@
 #define IDC_EDIT_LIMIT                  1007
 #define IDC_BTN_IMPORT                  1008
 #define IDC_EDIT_LIMIT2                 1008
+#define IDC_EDIT_START_PAGE             1008
 #define IDC_BTN_EXPORT                  1009
 #define IDC_BTN_IMPORT2                 1009
 #define IDC_BTN_EXPORT2                 1010
@@ -42,6 +43,7 @@
 #define IDC_CHK_SHUTDOWN                1022
 #define IDC_FUNC_TAB                    1023
 #define IDC_STATIC_LINK                 1025
+#define IDC_STATIC_STATUS               1025
 #define IDC_BTN_CLEAR2                  1027
 #define IDC_CMB_LOCATION                1034
 #define IDC_STATIC_MEMBER               1038
@@ -105,7 +107,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1025
+#define _APS_NEXT_CONTROL_VALUE         1026
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

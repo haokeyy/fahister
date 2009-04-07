@@ -1,8 +1,5 @@
-
-// tbmsgDlg.h : м╥нд╪Ч
-//
-
 #pragma once
+
 #include "afxcmn.h"
 #include "afxwin.h"
 #include "MemberSearch.h"

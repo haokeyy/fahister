@@ -1,4 +1,6 @@
 #pragma once
+#include "afxwin.h"
+#include "MemberSearch.h"
 
 
 // CSearchPage dialog
@@ -17,5 +19,21 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
+	virtual BOOL OnInitDialog();
 	DECLARE_MESSAGE_MAP()
+public:
+    CComboBox m_CmbTarget;
+    CComboBox m_CmbCategory;
+    CComboBox m_CmbLocation;
+    
+    CMemberSearch *m_pMemberSearch;
+    CString szTaobaoSearchUrl;
+    
+    void InitCategory();
+    void InitLocation();
+    int m_nFoundCount;
+    
+    afx_msg LRESULT OnFoundMember(WPARAM wParam, LPARAM lParam); 
+
+    afx_msg void OnBnClickedBtnSearch();
 };
