@@ -9,7 +9,7 @@
 #include "ListViewHelp.h"
 #include "editaccdlg.h"
 #include "MsgSender.h"
-#include "Constants.h"
+//#include "Constants.h"
 #include ".\Libraries\WindowHelp.h"
 
 #ifdef _DEBUG
@@ -200,45 +200,45 @@ void CtbmsgDlg::OnBnClickedBtnClear()
 
 void CtbmsgDlg::InitCategory()
 {
-    m_CmbCategory.ResetContent();
-    int i=0;
-    while (ShopCategorys[i].Value != -1)
-    {
-        m_CmbCategory.AddString(ShopCategorys[i].Name);
-        m_CmbCategory.SetItemData(i, ShopCategorys[i].Value);
-        i++;
-    }
+    //m_CmbCategory.ResetContent();
+    //int i=0;
+    //while (ShopCategorys[i].Value != -1)
+    //{
+    //    m_CmbCategory.AddString(ShopCategorys[i].Name);
+    //    m_CmbCategory.SetItemData(i, ShopCategorys[i].Value);
+    //    i++;
+    //}
 
-    m_CmbCategory.SetCurSel(0);
+    //m_CmbCategory.SetCurSel(0);
 }
 
 void CtbmsgDlg::InitLocation()
 {
-    m_CmbLocation.ResetContent();
+    //m_CmbLocation.ResetContent();
    
-    int i=0;
-    while (Citys[i].Value != -1)
-    {
-        m_CmbLocation.AddString(Citys[i].Name);
-        i++;
-    }
+    //int i=0;
+    //while (Citys[i].Value != -1)
+    //{
+    //    m_CmbLocation.AddString(Citys[i].Name);
+    //    i++;
+    //}
 
-    m_CmbLocation.SetCurSel(0);
+    //m_CmbLocation.SetCurSel(0);
 }
 
 void CtbmsgDlg::InitSpeed()
 {
-    m_CmbSpeed.ResetContent();
+    //m_CmbSpeed.ResetContent();
    
-    int i=0;
-    while (Speeds[i].Value != -1)
-    {
-        m_CmbSpeed.AddString(Speeds[i].Name);
-        m_CmbSpeed.SetItemData(i, Speeds[i].Value);
-        i++;
-    }
+    //int i=0;
+    //while (Speeds[i].Value != -1)
+    //{
+    //    m_CmbSpeed.AddString(Speeds[i].Name);
+    //    m_CmbSpeed.SetItemData(i, Speeds[i].Value);
+    //    i++;
+    //}
 
-    m_CmbSpeed.SetCurSel(3);
+    //m_CmbSpeed.SetCurSel(3);
 }
 
 
