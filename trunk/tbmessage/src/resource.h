@@ -2,11 +2,15 @@
 // Microsoft Visual C++ generated include file.
 // Used by tbmessage.rc
 //
+#define IDD_SEARCH_VIEW                 101
 #define IDD_TBMESSAGE_DIALOG            102
 #define IDR_MAINFRAME                   128
 #define IDD_EDIT_MSG_DLG                130
 #define IDD_EDIT_ACC_DLG                132
 #define IDD_TBMSG_DLG                   133
+#define IDD_MEMBER_VIEW                 136
+#define IDD_FORMVIEW                    137
+#define IDD_SEND_VIEW                   137
 #define IDB_BITMAP4                     147
 #define IDB_BITMAP5                     148
 #define IDB_BITMAP6                     149
@@ -99,9 +103,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        135
+#define _APS_NEXT_RESOURCE_VALUE        139
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1024
+#define _APS_NEXT_CONTROL_VALUE         1025
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

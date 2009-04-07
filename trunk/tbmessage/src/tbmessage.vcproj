@@ -205,11 +205,23 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MemberPage.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MemberSearch.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\MsgSender.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SearchPage.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\SendPage.cpp"
 				>
 			</File>
 			<File
@@ -267,6 +279,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MemberPage.h"
+				>
+			</File>
+			<File
 				RelativePath=".\MemberSearch.h"
 				>
 			</File>
@@ -276,6 +292,14 @@
 			</File>
 			<File
 				RelativePath=".\Resource.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SearchPage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\SendPage.h"
 				>
 			</File>
 			<File
@@ -370,6 +394,14 @@
 			</File>
 			<File
 				RelativePath=".\Libraries\MyDiskInfo.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\TabSheet.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\TabSheet.h"
 				>
 			</File>
 			<File
