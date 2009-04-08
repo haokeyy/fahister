@@ -5,7 +5,7 @@
 #include "tbmessage.h"
 #include "SendPage.h"
 #include "EditAccDlg.h"
-#include "ListViewHelp.h"
+#include ".\Libraries\ListViewHelp.h"
 #include "MsgSender.h"
 
 // CSendPage dialog

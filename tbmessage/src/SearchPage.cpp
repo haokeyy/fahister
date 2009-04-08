@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "tbmessage.h"
 #include "SearchPage.h"
-#include "ListViewHelp.h"
+#include ".\Libraries\ListViewHelp.h"
 #include "Constants.h"
 
 // CSearchPage dialog
