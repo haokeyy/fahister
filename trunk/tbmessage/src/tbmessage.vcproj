@@ -197,10 +197,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ListViewHelp.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\MainDlg.cpp"
 				>
 			</File>
@@ -248,10 +244,6 @@
 				RelativePath=".\tbmessage.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\tbmsgDlg.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -268,10 +260,6 @@
 			</File>
 			<File
 				RelativePath=".\EditMsgDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ListViewHelp.h"
 				>
 			</File>
 			<File
@@ -312,10 +300,6 @@
 			</File>
 			<File
 				RelativePath=".\tbmessage.h"
-				>
-			</File>
-			<File
-				RelativePath=".\tbmsgDlg.h"
 				>
 			</File>
 		</Filter>
@@ -374,6 +358,14 @@
 			</File>
 			<File
 				RelativePath=".\Libraries\HLink.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\ListViewHelp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\ListViewHelp.h"
 				>
 			</File>
 			<File

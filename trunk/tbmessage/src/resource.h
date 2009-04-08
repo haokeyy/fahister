@@ -3,7 +3,6 @@
 // Used by tbmessage.rc
 //
 #define IDD_SEARCH_VIEW                 101
-#define IDD_TBMESSAGE_DIALOG            102
 #define IDR_MAINFRAME                   128
 #define IDD_EDIT_MSG_DLG                130
 #define IDD_EDIT_ACC_DLG                132
@@ -22,10 +21,8 @@
 #define IDC_CMB_TARGET                  1005
 #define IDC_ACCOUNT_LIST                1006
 #define IDC_EDIT_LIMIT                  1007
-#define IDC_BTN_IMPORT                  1008
 #define IDC_EDIT_LIMIT2                 1008
 #define IDC_EDIT_START_PAGE             1008
-#define IDC_BTN_EXPORT                  1009
 #define IDC_BTN_IMPORT2                 1009
 #define IDC_BTN_EXPORT2                 1010
 #define IDC_BTN_CLEAR                   1011
@@ -38,8 +35,6 @@
 #define IDC_BTN_SENDMSG                 1015
 #define IDC_ACC_PASSWORD                1015
 #define IDC_CMB_SPEED                   1016
-#define IDC_BTN_REG                     1018
-#define IDC_BTN_HELP                    1021
 #define IDC_CHK_SHUTDOWN                1022
 #define IDC_FUNC_TAB                    1023
 #define IDC_STATIC_LINK                 1025

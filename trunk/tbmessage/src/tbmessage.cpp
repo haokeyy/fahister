@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "tbmessage.h"
-#include "tbmsgDlg.h"
 #include "MainDlg.h"
 
 #ifdef _DEBUG

@@ -5,7 +5,7 @@
 #include "tbmessage.h"
 #include "MemberPage.h"
 #include "EditMsgDlg.h"
-#include "ListViewHelp.h"
+#include ".\Libraries\ListViewHelp.h"
 
 
 // CMemberPage dialog
