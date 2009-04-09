@@ -241,6 +241,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\StoredMember.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\tbmessage.cpp"
 				>
 			</File>
@@ -292,6 +296,10 @@
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\StoredMember.h"
 				>
 			</File>
 			<File

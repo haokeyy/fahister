@@ -6,6 +6,7 @@
 #include "SearchPage.h"
 #include ".\Libraries\ListViewHelp.h"
 #include "Constants.h"
+#include "StoredMember.h"
 
 // CSearchPage dialog
 
@@ -117,7 +118,8 @@ LRESULT CSearchPage::OnFoundMember(WPARAM wParam, LPARAM lParam)
     if (wParam)
     {
         LPTSTR szUserId = (LPTSTR)lParam;        
-        // CListViewHelp::AddListItem(m_MemberList, szUserId, STATUS_UNSEND);
+        //CListViewHelp::AddListItem(m_MemberList, szUserId, STATUS_UNSEND);
+        CStoredMember::AddMember(szUserId);
         BOOL bAdded = TRUE;
         if (bAdded)
         {

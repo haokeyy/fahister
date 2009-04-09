@@ -6,6 +6,7 @@
 #include "MemberPage.h"
 #include "EditMsgDlg.h"
 #include ".\Libraries\ListViewHelp.h"
+#include "StoredMember.h"
 
 
 // CMemberPage dialog
@@ -53,6 +54,8 @@ BEGIN_MESSAGE_MAP(CMemberPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_DEL_MSG, &CMemberPage::OnBnClickedBtnDelMsg)
     ON_BN_CLICKED(IDC_BTN_IMPORT2, &CMemberPage::OnBnClickedBtnImport2)
     ON_BN_CLICKED(IDC_BTN_CLEAR, &CMemberPage::OnBnClickedBtnClear)
+    ON_BN_CLICKED(IDC_BTN_EXPORT2, &CMemberPage::OnBnClickedBtnExport2)
+    ON_BN_CLICKED(IDC_BTN_CLEAR2, &CMemberPage::OnBnClickedBtnClear2)
 END_MESSAGE_MAP()
 
 
@@ -104,5 +107,15 @@ void CMemberPage::OnBnClickedBtnImport2()
 
 void CMemberPage::OnBnClickedBtnClear()
 {
-    m_MemberList.DeleteAllItems();
+    CStoredMember::DeleteAllMembers();
+}
+
+void CMemberPage::OnBnClickedBtnExport2()
+{
+    
+}
+
+void CMemberPage::OnBnClickedBtnClear2()
+{
+    CStoredMember::DeleteSendedMembers();
 }

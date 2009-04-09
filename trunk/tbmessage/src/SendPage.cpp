@@ -7,6 +7,7 @@
 #include "EditAccDlg.h"
 #include ".\Libraries\ListViewHelp.h"
 #include "MsgSender.h"
+#include "StoredMember.h"
 
 // CSendPage dialog
 
@@ -94,11 +95,11 @@ void CSendPage::OnBnClickedBtnSendmsg()
     this->GetDlgItemText(IDC_BTN_SENDMSG, szText);
     if (szText == "开始发送")
     {
-        //if (m_MemberList.GetItemCount() == 0)
-        //{
-        //    MessageBox("没有待发送的好友。", "错误", MB_ICONERROR);
-        //    return;
-        //}
+        if (CStoredMember::GetUnSendCount() == 0)
+        {
+            MessageBox("没有待发送的买家/卖家。", "错误", MB_ICONERROR);
+            return;
+        }
 
         //if (m_MessageList.GetItemCount() == 0)
         //{            
@@ -166,8 +167,7 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 
 int CSendPage::GetNextMember(CString& szNextReceiver)
 {
-    szNextReceiver = "zhi3385";
-    return 1;
+    return CStoredMember::GetNextUnSenderMember(szNextReceiver);
 }
 
 int CSendPage::GetNextMessage(CString& szNextMessage)

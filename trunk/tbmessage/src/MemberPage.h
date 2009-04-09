@@ -29,4 +29,6 @@ public:
     CListCtrl m_MessageList;
     afx_msg void OnBnClickedBtnImport2();
     afx_msg void OnBnClickedBtnClear();
+    afx_msg void OnBnClickedBtnExport2();
+    afx_msg void OnBnClickedBtnClear2();
 };
