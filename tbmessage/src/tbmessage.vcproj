@@ -241,7 +241,15 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\StoredAccount.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\StoredMember.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\StoredMessage.cpp"
 				>
 			</File>
 			<File
@@ -299,7 +307,15 @@
 				>
 			</File>
 			<File
+				RelativePath=".\StoredAccount.h"
+				>
+			</File>
+			<File
 				RelativePath=".\StoredMember.h"
+				>
+			</File>
+			<File
+				RelativePath=".\StoredMessage.h"
 				>
 			</File>
 			<File
