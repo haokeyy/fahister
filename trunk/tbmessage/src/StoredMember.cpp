@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "StoredMember.h"
+#include ".\Libraries\WindowHelp.h"
 #include ".\Libraries\Ado\Ado.h"
 #include ".\Libraries\Ado\AdoCommand.h"
 #include ".\Libraries\Ado\AdoRecordSet.h"
@@ -91,8 +92,15 @@ void CStoredMember::SetMemberStatus(long id, int status)
 }
 
 CString CStoredMember::GetFilePath()
-{
-    return "D:\\Projects\\Fahister\\trunk\\tbmessage\\src\\Debug\\tb.mdb";
+{    
+    CString szFileName;
+    DWORD nProcID = ::GetCurrentProcessId();
+    GetProcessNameByProcessID(nProcID, szFileName);
+
+    int index = szFileName.ReverseFind('\\');
+    CString mdbFilePath = szFileName.Left(index) + "\\tb.mdb";
+
+    return mdbFilePath;
 }
 
 void CStoredMember::DeleteAllMembers()
