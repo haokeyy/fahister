@@ -1,10 +1,11 @@
 #include "StdAfx.h"
 #include "StoredAccount.h"
 
-CStoredAccount::CStoredAccount()
+void CStoredAccount::AddAccount(CString strUserName, CString strPassword)
 {
 }
 
-CStoredAccount::~CStoredAccount()
+BOOL CStoredAccount::GetAccounts(CMapStringToString accounts)
 {
+    return TRUE;
 }

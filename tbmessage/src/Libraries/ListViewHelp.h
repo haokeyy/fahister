@@ -14,6 +14,8 @@ public:
     static void SetSelectedItem(CListCtrl& listCtrl, int pos);
     static CString GetSelectedItemText(CListCtrl& listCtrl);
     static CString GetSelectedItemValue(CListCtrl& listCtrl);
+    static CString GetItemText(CListCtrl& listCtrl, int pos);
+    static CString GetItemValue(CListCtrl& listCtrl, int pos);
     static void SelectedNextItem(CListCtrl& listCtrl);
     static int SelectedNextItemByValue(CListCtrl& listCtrl, CString szValue);
     static void ImportItems(CListCtrl& listCtrl, CString fileName);

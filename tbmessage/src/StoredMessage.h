@@ -3,6 +3,6 @@
 class CStoredMessage
 {
 public:
-    CStoredMessage(void);
-    ~CStoredMessage(void);
+    static void AddMessage(CString strMessage);
+    static CString GetNextMessage();
 };
