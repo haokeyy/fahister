@@ -1,10 +1,11 @@
 #include "StdAfx.h"
 #include "StoredMessage.h"
 
-CStoredMessage::CStoredMessage(void)
+void CStoredMessage::AddMessage(CString strMessage)
 {
 }
 
-CStoredMessage::~CStoredMessage(void)
+CString CStoredMessage::GetNextMessage()
 {
+    return "";
 }

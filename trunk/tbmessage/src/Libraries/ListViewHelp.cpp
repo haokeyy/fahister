@@ -61,6 +61,17 @@ void CListViewHelp::SetSelectedItem(CListCtrl& listCtrl, int pos)
     listCtrl.SetItemState(pos, LVNI_SELECTED, LVNI_SELECTED);
 }
 
+
+CString CListViewHelp::GetItemText(CListCtrl& listCtrl, int pos)
+{
+    return listCtrl.GetItemText(pos, 1);
+}
+
+CString CListViewHelp::GetItemValue(CListCtrl& listCtrl, int pos)
+{
+    return listCtrl.GetItemText(pos, 2);
+}
+
 CString CListViewHelp::GetSelectedItemText(CListCtrl& listCtrl)
 {
     POSITION firstPosition = listCtrl.GetFirstSelectedItemPosition();

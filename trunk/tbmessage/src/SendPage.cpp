@@ -8,6 +8,7 @@
 #include ".\Libraries\ListViewHelp.h"
 #include "MsgSender.h"
 #include "StoredMember.h"
+#include "StoredAccount.h"
 
 // CSendPage dialog
 
@@ -46,6 +47,8 @@ BOOL CSendPage::OnInitDialog()
 
     InitSpeed();
 
+    LoadProfile();
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -55,6 +58,7 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_DEL_ACCOUNT, &CSendPage::OnBnClickedBtnDelAccount)
     ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted) 
     ON_WM_TIMER()
+    ON_WM_CLOSE()
 END_MESSAGE_MAP()
 
 
@@ -213,4 +217,28 @@ void CSendPage::OnTimer(UINT_PTR nIDEvent)
     pSender->SendMsg(msg);
 
     CDialog::OnTimer(nIDEvent);
+}
+
+void CSendPage::SaveProfile()
+{
+    int count = m_AccountList.GetItemCount();
+
+    for (int i = 0; i < count; i++)
+    {
+        CString sendUserId = CListViewHelp::GetItemText(m_AccountList, i);
+        CString sendPassword = CListViewHelp::GetItemValue(m_AccountList, i);
+
+        CStoredAccount::AddAccount(sendUserId, sendPassword);
+    }
+}
+
+void CSendPage::LoadProfile()
+{
+}
+
+void CSendPage::OnClose()
+{
+    SaveProfile();
+
+    CDialog::OnClose();
 }
