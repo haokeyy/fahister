@@ -1,7 +1,7 @@
 #pragma once
 #include "afxcmn.h"
 #include "afxwin.h"
-#include "d:\projects\fahister\trunk\tbmessage\src\libraries\explorerocx.h"
+#include "libraries\explorerocx.h"
 
 
 // CSendPage dialog
