@@ -71,10 +71,6 @@ public class FunctionItem {
 		this.active = active;
 	}
 
-	public static String getViewPage() {
-		return ViewPage;
-	}
-
 	public Boolean IsViewPage() {
 		return this.functionName == ViewPage;
 	}
