@@ -21,14 +21,10 @@ public class AppServices {
 
 	private IUsers userService;
 	private IRoles roleService;
-
 	private IPermissions permissions;
-
 	private IResourceManager resourceManager;
-
 	private ILogging logging;
-
-	private static GlobalConfig globalConfig;
+	private GlobalConfig globalConfig;
 
 	public IUsers getUserService() {
 		return userService;
@@ -70,12 +66,12 @@ public class AppServices {
 		this.logging = logging;
 	}
 
-	public static GlobalConfig getGlobalConfig() {
+	public GlobalConfig getGlobalConfig() {
 		return globalConfig;
 	}
 
-	public static void setGlobalConfig(GlobalConfig globalConfig) {
-		AppServices.globalConfig = globalConfig;
+	public void setGlobalConfig(GlobalConfig globalConfig) {
+		this.globalConfig = globalConfig;
 	}
 
 }
