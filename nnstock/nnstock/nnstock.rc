@@ -77,15 +77,15 @@ IDR_MAINFRAME           ICON                    "res\\nnstock.ico"
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+IDD_ABOUTBOX DIALOGEX 0, 0, 209, 100
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "关于 nnstock"
+CAPTION "关于"
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
-    LTEXT           "nnstock，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 2009",IDC_STATIC,42,26,114,8
-    DEFPUSHBUTTON   "确定",IDOK,113,41,50,14,WS_GROUP
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,20,20
+    LTEXT           "牛牛股票自动交易助手，1.0 版",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2009",IDC_STATIC,42,33,114,8
+    DEFPUSHBUTTON   "确定",IDOK,152,79,50,14,WS_GROUP
 END
 
 IDD_NNSTOCK_DIALOG DIALOGEX 0, 0, 320, 200
@@ -95,7 +95,9 @@ CAPTION "nn"
 MENU IDR_MENU1
 FONT 9, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
-    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,306,127
+    CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,21,52,262,99
+    GROUPBOX        "Static",IDC_STATIC,12,31,277,153
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME | SS_SUNKEN,0,0,319,1
 END
 
 
@@ -149,16 +151,13 @@ BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 163
+        RIGHTMARGIN, 202
         TOPMARGIN, 7
-        BOTTOMMARGIN, 55
+        BOTTOMMARGIN, 93
     END
 
     IDD_NNSTOCK_DIALOG, DIALOG
     BEGIN
-        LEFTMARGIN, 7
-        RIGHTMARGIN, 313
-        TOPMARGIN, 7
         BOTTOMMARGIN, 193
     END
 END
@@ -188,10 +187,10 @@ BEGIN
     END
     POPUP "帮助(&H)"
     BEGIN
-        MENUITEM "帮助(F1)",                      ID_32779
+        MENUITEM "帮助(F1)",                      ID_32779, HELP
         MENUITEM "讨论",                          ID_32780
         MENUITEM SEPARATOR
-        MENUITEM "关于(&A)...",                   ID_32771
+        MENUITEM "关于(&A)...",                   IDM_ABOUTBOX
     END
 END
 
@@ -203,7 +202,12 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUTBOX            "关于 nnstock(&A)..."
+    IDS_ABOUTBOX            "关于(&A)..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDM_ABOUTBOX            "关于"
 END
 
 #endif    // Chinese (P.R.C.) resources
