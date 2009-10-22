@@ -17,75 +17,6 @@ struct CWindowAttribute
     HWND hwnd;
 };
 
-HWND CWndHelper::FindWndInChildren(HWND hWnd, char* strKey, int nKeyType)
-{
-    while (hWnd)
-    {
-        char strTemp[1024];
-        if (nKeyType == 1)
-        {
-            ::GetWindowText(hWnd, strTemp, 1023);
-        }
-        else
-        {
-            ::GetClassName(hWnd, strTemp, 1023);
-        }
-
-        if (strcmp(strTemp, strKey) == 0)
-        {
-            return hWnd;
-        }
-
-        HWND hChild = ::GetWindow(hWnd, GW_CHILD);
-
-        if(hChild)
-        {
-            HWND hChild2 = FindWndInChildren(hChild, strKey, nKeyType);
-            if (hChild2 != NULL)
-            {
-                return hChild2;
-            }
-        }
-
-        hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
-    }
-
-    return NULL;
-}
-
-
-HWND CWndHelper::FindChildWnd(HWND hWnd, char* strText, char* strClass)
-{
-    while (hWnd)
-    {
-        char strTemp[1024];
-        ::GetWindowText(hWnd, strTemp, 1023);
-        if (strstr(strTemp, strText))
-        {
-            ::GetClassName(hWnd, strTemp, 1023);
-            if (strstr(strTemp, strClass))
-            {
-                return hWnd;
-            }
-        }
-
-        HWND hChild = ::GetWindow(hWnd, GW_CHILD);
-
-        if(hChild)
-        {
-            HWND hChild2 = FindChildWnd(hChild, strText, strClass);
-            if (hChild2 != NULL)
-            {
-                return hChild2;
-            }
-        }
-
-        hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
-    }
-
-    return NULL;
-}
-
 BOOL CALLBACK WindowsEnumProcBlur(HWND hwnd, LPARAM lParam)
 {
     CWindowAttribute *p = (CWindowAttribute*)lParam;
@@ -104,18 +35,6 @@ BOOL CALLBACK WindowsEnumProcBlur(HWND hwnd, LPARAM lParam)
     return TRUE;
 }
 
-HWND CWndHelper::FindTopWindow(char* strTitle, char* strClassName)
-{
-    CWindowAttribute w;
-    w.className = strClassName;
-    w.title = strTitle;
-    w.hwnd = NULL;
-  
-    ::EnumWindows(WindowsEnumProcBlur, (LPARAM)&w);
-
-    return w.hwnd;
-}
-
 
 BOOL CALLBACK WindowsEnumProcExactly(HWND hwnd, LPARAM lParam)
 {
@@ -132,6 +51,19 @@ BOOL CALLBACK WindowsEnumProcExactly(HWND hwnd, LPARAM lParam)
     return TRUE;
 }
 
+
+HWND CWndHelper::FindTopWindowBlur(char* strTitle, char* strClassName)
+{
+    CWindowAttribute w;
+    w.className = strClassName;
+    w.title = strTitle;
+    w.hwnd = NULL;
+  
+    ::EnumWindows(WindowsEnumProcBlur, (LPARAM)&w);
+
+    return w.hwnd;
+}
+
 HWND CWndHelper::FindTopWindowExactly(char* strTitle, char* strClassName)
 {
     CWindowAttribute w;
@@ -142,4 +74,69 @@ HWND CWndHelper::FindTopWindowExactly(char* strTitle, char* strClassName)
     ::EnumWindows(WindowsEnumProcExactly, (LPARAM)&w);
 
     return w.hwnd;
+}
+
+
+HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass)
+{
+    while (hWnd)
+    {
+        char strTemp[1024];
+        ::GetClassName(hWnd, strTemp, 1023);
+        if (strcmp(strTemp, strClass) == 0)
+        {
+            ::GetWindowText(hWnd, strTemp, 1023);
+            if (strcmp(strTemp, strText) == 0)
+            {
+                return hWnd;
+            }
+        }
+
+        HWND hChild = ::GetWindow(hWnd, GW_CHILD);
+
+        if(hChild)
+        {
+            HWND hChild2 = FindChildWindowExactly(hChild, strText, strClass);
+            if (hChild2 != NULL)
+            {
+                return hChild2;
+            }
+        }
+
+        hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
+    }
+
+    return NULL;
+}
+
+HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
+{
+    while (hWnd)
+    {
+        char strTemp1[1024];
+        char strTemp2[1024];
+
+        ::GetWindowText(hWnd, strTemp1, 1023);        
+        ::GetClassName(hWnd, strTemp2, 1023);
+
+        if (strstr(strTemp1, strText) && strstr(strTemp2, strClass))
+        {
+            return hWnd;
+        }
+
+        HWND hChild = ::GetWindow(hWnd, GW_CHILD);
+
+        if(hChild)
+        {
+            HWND hChild2 = FindChildWindowBlur(hChild, strText, strClass);
+            if (hChild2 != NULL)
+            {
+                return hChild2;
+            }
+        }
+
+        hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
+    }
+
+    return NULL;
 }
