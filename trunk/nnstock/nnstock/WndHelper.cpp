@@ -140,3 +140,25 @@ HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
 
     return NULL;
 }
+
+HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, long x, long y)
+{
+    if (hWnd)
+    {
+        POINT pt;
+        pt.x = x;
+        pt.y = y;
+        HWND hChild = ChildWindowFromPointEx(hWnd, pt, CWP_ALL);
+
+        if (hChild == hWnd) // find not
+        {
+            return NULL;
+        }
+        else
+        {
+            return hChild;
+        }
+    }
+
+    return NULL;
+}
