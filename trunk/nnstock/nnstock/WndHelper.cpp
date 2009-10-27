@@ -1,14 +1,6 @@
 #include "StdAfx.h"
 #include "WndHelper.h"
 
-CWndHelper::CWndHelper(void)
-{
-}
-
-CWndHelper::~CWndHelper(void)
-{
-}
-
 
 struct CWindowAttribute
 {
