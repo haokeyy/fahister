@@ -5,6 +5,8 @@
 // 发送按键消息
 void CMsgHelper::SM_PressKey(HWND hWnd, UINT vKey)
 {
+    INPUT in;
+    
 }
 
 // 发送单击鼠标消息，根据按钮标题和类名
