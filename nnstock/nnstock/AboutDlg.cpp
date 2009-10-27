@@ -33,16 +33,13 @@ END_MESSAGE_MAP()
 
 
 // CAboutDlg message handlers
-
 void CAboutDlg::OnBnClickedOk()
 {
-    //OnOK();
-
-    HWND hMainWnd = CWndHelper::FindTopWindowBlur("nnstock", "wndclass_desked_gsk");
+    HWND hMainWnd = CWndHelper::FindTopWindowBlur("网上股票交易系统5.0", "Afx:400000:b:10011:6:120445");
 
     if (hMainWnd != NULL)
     {
+        HWND hwnd1 = CWndHelper::FindChildWindowExactly(hMainWnd, "", "");
 
     }
-
 }

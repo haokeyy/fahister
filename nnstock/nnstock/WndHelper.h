@@ -3,10 +3,6 @@
 class CWndHelper
 {
 public:
-    CWndHelper(void);
-    ~CWndHelper(void);
-
-public:
     
     // find top window: title like '%strTitle%' and className like '%strClassName%'
     static HWND FindTopWindowBlur(char* strTitle, char* strClassName);
