@@ -202,6 +202,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\PriceMonitorDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\RegDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -249,6 +257,14 @@
 			</File>
 			<File
 				RelativePath=".\nnstock.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PriceMonitorDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\RegDlg.h"
 				>
 			</File>
 			<File

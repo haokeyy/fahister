@@ -6,6 +6,8 @@
 #include "nnstock.h"
 #include "NnDlg.h"
 #include "AboutDlg.h"
+#include "RegDlg.h"
+#include "PriceMonitorDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -20,7 +22,8 @@ CNnDlg::CNnDlg(CWnd* pParent /*=NULL*/)
 
 void CNnDlg::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+    CDialog::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_LIST_MONITOR, m_ListMonitor);
 }
 
 BEGIN_MESSAGE_MAP(CNnDlg, CDialog)
@@ -28,6 +31,9 @@ BEGIN_MESSAGE_MAP(CNnDlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	//}}AFX_MSG_MAP
+    ON_COMMAND(IDM_ABOUTBOX, &CNnDlg::OnAboutbox)
+    ON_COMMAND(ID_HELP_REG, &CNnDlg::OnHelpReg)
+    ON_BN_CLICKED(IDC_BTN_ADD_PRICE_MONITOR, &CNnDlg::OnBnClickedBtnAddPriceMonitor)
 END_MESSAGE_MAP()
 
 
@@ -62,7 +68,12 @@ BOOL CNnDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	// TODO: 在此添加额外的初始化代码
+	// 初始化列表控件
+    m_ListMonitor.InsertColumn(0, "序号", 0, 40);
+    m_ListMonitor.InsertColumn(1, "证券代码", 0, 80);
+    m_ListMonitor.InsertColumn(2, "证券名称", 0, 80);
+    m_ListMonitor.InsertColumn(3, "设定价格", 0, 80);
+    m_ListMonitor.InsertColumn(4, "操作", 0, 180);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -116,3 +127,24 @@ HCURSOR CNnDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+void CNnDlg::OnAboutbox()
+{
+    CAboutDlg dlgAbout;
+    dlgAbout.DoModal();
+}
+
+void CNnDlg::OnHelpReg()
+{
+    CRegDlg dlg;
+    dlg.DoModal();
+}
+
+void CNnDlg::OnBnClickedBtnAddPriceMonitor()
+{
+    CPriceMonitorDlg dlg;
+    if (dlg.DoModal() == IDOK)
+    {
+
+    }
+}

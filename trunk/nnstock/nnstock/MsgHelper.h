@@ -8,7 +8,7 @@ public:
     static void SM_PressKey(HWND hWnd, UINT vSysKey, UINT vKey);
 
     // 发送按键消息(功能键)
-    static void CMsgHelper::SM_PressKey(HWND hWnd, UINT vFuncKey);
+    static void SM_PressKey(HWND hWnd, UINT vFuncKey);
 
     // 发送单击鼠标消息，根据按钮标题和类名
     static void SM_Click(HWND hWnd, char* strBtnText, char* strBtnClass);

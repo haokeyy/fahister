@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxcmn.h"
 
 
 // CNnDlg ¶Ô»°¿ò
@@ -29,4 +30,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+    afx_msg void OnAboutbox();
+    afx_msg void OnHelpReg();
+    afx_msg void OnBnClickedBtnAddPriceMonitor();
+    CListCtrl m_ListMonitor;
 };
