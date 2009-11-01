@@ -35,11 +35,5 @@ END_MESSAGE_MAP()
 // CAboutDlg message handlers
 void CAboutDlg::OnBnClickedOk()
 {
-    HWND hMainWnd = CWndHelper::FindTopWindowBlur("网上股票交易系统5.0", "Afx:400000:b:10011:6:120445");
-
-    if (hMainWnd != NULL)
-    {
-        HWND hwnd1 = CWndHelper::FindChildWindowExactly(hMainWnd, "", "");
-
-    }
+    CDialog::OnOK();
 }

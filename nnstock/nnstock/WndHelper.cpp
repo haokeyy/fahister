@@ -140,7 +140,7 @@ HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, long x, long y)
         POINT pt;
         pt.x = x;
         pt.y = y;
-        HWND hChild = ChildWindowFromPointEx(hWnd, pt, CWP_ALL);
+        HWND hChild = ChildWindowFromPointEx(hWnd, pt, CWP_SKIPINVISIBLE);
 
         if (hChild == hWnd) // find not
         {
