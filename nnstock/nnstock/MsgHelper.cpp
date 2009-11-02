@@ -49,9 +49,34 @@ void CMsgHelper::SM_Click(HWND hWnd, char* strBtnText, char* strBtnClass)
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0);
 }
 
+void SendClick(int x, int y)
+{    
+    int cx = GetSystemMetrics(SM_CXSCREEN);
+	int cy = GetSystemMetrics(SM_CYSCREEN);
+
+    INPUT input[3];	
+    memset(input, 0, 3*sizeof(INPUT));
+
+    input[0].type = input[1].type = input[2].type = INPUT_MOUSE;
+    input[0].mi.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+    input[1].mi.dwFlags = MOUSEEVENTF_LEFTDOWN;
+    input[2].mi.dwFlags = MOUSEEVENTF_LEFTUP;
+    input[0].mi.dx = input[1].mi.dx = input[2].mi.dx = (long)(x * 65535/cx); 
+    input[0].mi.dy = input[1].mi.dy = input[2].mi.dy = (long)(y * 65535/cy);
+    input[0].mi.dwExtraInfo = input[0].mi.dwExtraInfo = input[0].mi.dwExtraInfo = 0;//GetMessageExtraInfo();
+
+    SendInput(3, input, sizeof(INPUT));
+}
+
 // 发送单击鼠标消息，根据按钮坐标位置
 void CMsgHelper::SM_Click(HWND hWnd, int x, int y)
 {
+    RECT rc;
+    ::GetWindowRect(hWnd, &rc);
+    int xx = rc.left + x;
+    int yy = rc.top + y;
+
+    SendClick(xx, yy);
 }
 
 void SendString(LPCTSTR str)
@@ -76,12 +101,12 @@ void CMsgHelper::SM_Text(HWND hWnd, char* text)
     SendString(text);
 }
     
-// 发送设置文本内容消息，文本填入指定位置的控件
-void CMsgHelper::SM_Text(HWND hWnd, int x, int y, char* text)
-{
-    HWND hChildWnd = CWndHelper::FindChildWindowByPoint(hWnd, x, y);
-    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
-}
+//// 发送设置文本内容消息，文本填入指定位置的控件
+//void CMsgHelper::SM_Text(HWND hWnd, int x, int y, char* text)
+//{
+//    HWND hChildWnd = CWndHelper::FindChildWindowByPoint(hWnd, x, y);
+//    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
+//}
     
 // 发送设置文本内容消息，文本填入对应类名的窗口
 void CMsgHelper::SM_Text(HWND hWnd, char* strClass, char* text)

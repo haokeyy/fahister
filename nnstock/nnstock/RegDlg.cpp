@@ -37,7 +37,7 @@ END_MESSAGE_MAP()
 
 void CRegDlg::OnBnClickedBtnReg()
 {
-    HWND hMainWnd = CWndHelper::FindTopWindowBlur("网上股票交易系统5.0", "Afx:400000:b:10011");
+    HWND hMainWnd = CWndHelper::FindTopWindowBlur("- Microsoft Outlook", "rctrl_renwnd32");
     CMsgHelper::SM_PressKey(hMainWnd, VK_F1);
     //CMsgHelper::SM_Text(hMainWnd, "159901");    
     //CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN);
@@ -46,7 +46,8 @@ void CRegDlg::OnBnClickedBtnReg()
     //CMsgHelper::SM_Text(hMainWnd, "1200");  
     //CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN); 
 
-    CMsgHelper::SM_Text(hMainWnd, 260, 120, "159901"); 
+    CMsgHelper::SM_Click(hMainWnd, 80, 336); 
+    Sleep(500);
     CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN);
 
 }
