@@ -26,6 +26,7 @@
 #define IDC_RADIO2                      1010
 #define IDC_RADIO3                      1011
 #define IDC_RADIO4                      1012
+#define ID_CANCEL                       1013
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_32773                        32773
@@ -45,7 +46,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        132
 #define _APS_NEXT_COMMAND_VALUE         32783
-#define _APS_NEXT_CONTROL_VALUE         1013
+#define _APS_NEXT_CONTROL_VALUE         1014
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
