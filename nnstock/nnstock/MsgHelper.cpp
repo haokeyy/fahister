@@ -68,6 +68,16 @@ void SendClick(int x, int y)
     SendInput(3, input, sizeof(INPUT));
 }
 
+// 点击大按钮(能获取到的最小窗口)上的某个位置，根据标题和类名获取大按钮，x,y为相对大按钮的坐标
+void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass, int x, int y)
+{
+    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
+        
+    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(x, y));
+    ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
+}
+
+
 // 发送单击鼠标消息，根据按钮坐标位置
 void CMsgHelper::SM_Click(HWND hWnd, int x, int y)
 {
