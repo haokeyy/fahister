@@ -37,17 +37,16 @@ END_MESSAGE_MAP()
 
 void CRegDlg::OnBnClickedBtnReg()
 {
-    HWND hMainWnd = CWndHelper::FindTopWindowBlur("- Microsoft Outlook", "rctrl_renwnd32");
-    CMsgHelper::SM_PressKey(hMainWnd, VK_F1);
-    //CMsgHelper::SM_Text(hMainWnd, "159901");    
-    //CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN);
-    //CMsgHelper::SM_Text(hMainWnd, "3.801");   
-    //CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN);
-    //CMsgHelper::SM_Text(hMainWnd, "1200");  
-    //CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN); 
+    HWND hMainWnd = CWndHelper::FindTopWindowBlur("", "WordPadClass");
+    HWND hChildWnd = CWndHelper::FindChildWindowExactly(hMainWnd, "±ê×¼ÐÍ", "ToolbarWindow32");
+    
+    //SendMessage(WM_CLICK, 0, 0);
 
-    CMsgHelper::SM_Click(hMainWnd, 80, 336); 
-    Sleep(500);
-    CMsgHelper::SM_PressKey(hMainWnd, VK_RETURN);
+    //::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, 0x0009006A);
+    //::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0x0009006A);
+
+    
+    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(110,16));
+    ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(110,16));
 
 }
