@@ -37,16 +37,5 @@ END_MESSAGE_MAP()
 
 void CRegDlg::OnBnClickedBtnReg()
 {
-    HWND hMainWnd = CWndHelper::FindTopWindowBlur("", "WordPadClass");
-    HWND hChildWnd = CWndHelper::FindChildWindowExactly(hMainWnd, "±ê×¼ÐÍ", "ToolbarWindow32");
-    
-    //SendMessage(WM_CLICK, 0, 0);
-
-    //::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, 0x0009006A);
-    //::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0x0009006A);
-
-    
-    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(110,16));
-    ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(110,16));
 
 }

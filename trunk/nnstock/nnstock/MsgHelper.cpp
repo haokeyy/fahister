@@ -4,7 +4,7 @@
 
 
 // 发送按键消息(组合键)
-void CMsgHelper::SM_PressKey(HWND hWnd, UINT vSysKey, UINT vKey)
+void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vSysKey, UINT vKey)
 {
     INPUT input[4];	
     memset(input, 0, 4*sizeof(INPUT));
@@ -17,14 +17,14 @@ void CMsgHelper::SM_PressKey(HWND hWnd, UINT vSysKey, UINT vKey)
     // 释放按键，这非常重要
     input[2].ki.dwFlags = input[3].ki.dwFlags = KEYEVENTF_KEYUP;
 
-    ::SetForegroundWindow(hWnd);
+    ::SetForegroundWindow(hMainWnd);
 
     SendInput(4, input, sizeof(INPUT));
 }
 
 
 // 发送按键消息(功能键)
-void CMsgHelper::SM_PressKey(HWND hWnd, UINT vKey)
+void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vKey)
 {
     INPUT input[2];	
     memset(input, 0, 2*sizeof(INPUT));
@@ -36,17 +36,26 @@ void CMsgHelper::SM_PressKey(HWND hWnd, UINT vKey)
     // 释放按键，这非常重要
     input[1].ki.dwFlags = KEYEVENTF_KEYUP;
 
-    ::SetForegroundWindow(hWnd);
+    ::SetForegroundWindow(hMainWnd);
 
     SendInput(2, input, sizeof(INPUT));
 }
 
 // 发送单击鼠标消息，根据按钮标题和类名
-void CMsgHelper::SM_Click(HWND hWnd, char* strBtnText, char* strBtnClass)
+void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass)
 {
-    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hWnd, strBtnText, strBtnClass);
+    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
     ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, 0);
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0);
+}
+
+// 点击大按钮(能获取到的最小窗口)上的某个位置，根据标题和类名获取大按钮，x,y为相对大按钮的坐标
+void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass, int x, int y)
+{
+    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
+        
+    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(x, y));
+    ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
 }
 
 void SendClick(int x, int y)
@@ -68,21 +77,11 @@ void SendClick(int x, int y)
     SendInput(3, input, sizeof(INPUT));
 }
 
-// 点击大按钮(能获取到的最小窗口)上的某个位置，根据标题和类名获取大按钮，x,y为相对大按钮的坐标
-void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass, int x, int y)
-{
-    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
-        
-    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(x, y));
-    ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
-}
-
-
 // 发送单击鼠标消息，根据按钮坐标位置
-void CMsgHelper::SM_Click(HWND hWnd, int x, int y)
+void CMsgHelper::SM_Click(HWND hMainWnd, int x, int y)
 {
     RECT rc;
-    ::GetWindowRect(hWnd, &rc);
+    ::GetWindowRect(hMainWnd, &rc);
     int xx = rc.left + x;
     int yy = rc.top + y;
 
@@ -105,9 +104,9 @@ void SendString(LPCTSTR str)
 }
 
 // 发送设置文本内容消息，文本填入当前获得焦点的控件
-void CMsgHelper::SM_Text(HWND hWnd, char* text)
+void CMsgHelper::SM_Text(HWND hMainWnd, char* text)
 {
-    ::SetForegroundWindow(hWnd);
+    ::SetForegroundWindow(hMainWnd);
     SendString(text);
 }
     
@@ -119,8 +118,8 @@ void CMsgHelper::SM_Text(HWND hWnd, char* text)
 //}
     
 // 发送设置文本内容消息，文本填入对应类名的窗口
-void CMsgHelper::SM_Text(HWND hWnd, char* strClass, char* text)
+void CMsgHelper::SM_Text(HWND hMainWnd, char* strClass, char* text)
 {    
-    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hWnd, "", strClass);
+    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, "", strClass);
     ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
 }
