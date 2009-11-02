@@ -20,7 +20,7 @@ public:
     static void SM_Text(HWND hWnd, char* text);
     
     // 发送设置文本内容消息，文本填入指定位置的控件
-    static void SM_Text(HWND hWnd, int x, int y, char* text);
+    //static void SM_Text(HWND hWnd, int x, int y, char* text);
     
     // 发送设置文本内容消息，文本填入对应类名的窗口
     static void SM_Text(HWND hWnd, char* strClass, char* text);
