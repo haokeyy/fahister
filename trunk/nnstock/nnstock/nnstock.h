@@ -15,7 +15,7 @@
 // 有关此类的实现，请参阅 nnstock.cpp
 //
 
-class CNnApp : public CWinAppEx
+class CNnApp : public CWinApp
 {
 public:
 	CNnApp();
