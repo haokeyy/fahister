@@ -135,11 +135,6 @@ HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
 
 HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass, long x, long y)
 {
-    if (hWnd == NULL)
-    {
-        return NULL;
-    }
-
     // 将相对坐标转换成绝对坐标
     CRect rc;
     ::GetWindowRect(hWnd, &rc);
@@ -185,4 +180,6 @@ HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass
 
         hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
     }
+
+	return NULL;
 }

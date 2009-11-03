@@ -3,6 +3,7 @@
 class CUtility
 {
 public:
-    CUtility(void);
-    ~CUtility(void);
+	static int SplitString(char* s, char* separator, char *substr[]);
+	
+	static int GetSafeInt(char* s, int defaultValue);
 };

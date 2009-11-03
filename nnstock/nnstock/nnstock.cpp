@@ -13,7 +13,7 @@
 
 // CNnApp
 
-BEGIN_MESSAGE_MAP(CNnApp, CWinAppEx)
+BEGIN_MESSAGE_MAP(CNnApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
@@ -46,7 +46,7 @@ BOOL CNnApp::InitInstance()
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
-	CWinAppEx::InitInstance();
+	CWinApp::InitInstance();
 
 	AfxEnableControlContainer();
 

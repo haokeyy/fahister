@@ -190,6 +190,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\BatchMsg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\MsgHelper.cpp"
 				>
 			</File>
@@ -245,6 +249,10 @@
 			>
 			<File
 				RelativePath=".\AboutDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\BatchMsg.h"
 				>
 			</File>
 			<File
