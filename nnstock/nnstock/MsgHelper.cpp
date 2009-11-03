@@ -87,6 +87,20 @@ void CMsgHelper::SM_Click(HWND hMainWnd, int x, int y)
 
     SendClick(xx, yy);
 }
+    
+// 发送设置文本内容消息，文本填入指定位置的控件
+void CMsgHelper::SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, char* text)
+{
+    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strEditText, strEditClass);
+    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
+}
+    
+// 发送设置文本内容消息，文本填入对应类名的窗口
+void CMsgHelper::SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, int x, int y, char* text)
+{    
+    HWND hChildWnd = CWndHelper::FindChildWindowByPoint(hMainWnd, strEditText, strEditClass, x, y);
+    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
+}
 
 void SendString(LPCTSTR str)
 {
@@ -108,18 +122,4 @@ void CMsgHelper::SM_Text(HWND hMainWnd, char* text)
 {
     ::SetForegroundWindow(hMainWnd);
     SendString(text);
-}
-    
-//// 发送设置文本内容消息，文本填入指定位置的控件
-//void CMsgHelper::SM_Text(HWND hWnd, int x, int y, char* text)
-//{
-//    HWND hChildWnd = CWndHelper::FindChildWindowByPoint(hWnd, x, y);
-//    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
-//}
-    
-// 发送设置文本内容消息，文本填入对应类名的窗口
-void CMsgHelper::SM_Text(HWND hMainWnd, char* strClass, char* text)
-{    
-    HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, "", strClass);
-    ::SendMessage(hChildWnd, WM_SETTEXT, 0, (LPARAM)text);
 }

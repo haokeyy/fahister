@@ -133,24 +133,56 @@ HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
     return NULL;
 }
 
-HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, long x, long y)
+HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass, long x, long y)
 {
-    if (hWnd)
+    if (hWnd == NULL)
     {
-        POINT pt;
-        pt.x = x;
-        pt.y = y;
-        HWND hChild = ChildWindowFromPointEx(hWnd, pt, CWP_SKIPINVISIBLE);
-
-        if (hChild == hWnd) // find not
-        {
-            return NULL;
-        }
-        else
-        {
-            return hChild;
-        }
+        return NULL;
     }
 
-    return NULL;
+    // 将相对坐标转换成绝对坐标
+    CRect rc;
+    ::GetWindowRect(hWnd, &rc);
+    POINT pt;
+    pt.x = rc.left + x;
+    pt.y = rc.top + y;
+
+
+    while (hWnd)
+    {
+        char strTemp1[1024];
+        char strTemp2[1024];
+
+        ::GetWindowText(hWnd, strTemp1, 1023);        
+        ::GetClassName(hWnd, strTemp2, 1023);
+
+        if (strstr(strTemp1, strText) && strstr(strTemp2, strClass))
+        {
+            CRect rc1;
+            ::GetWindowRect(hWnd, &rc1);
+            if (rc1.PtInRect(pt))
+            {            
+                return hWnd;
+            }
+        }
+
+        HWND hChild = ::GetWindow(hWnd, GW_CHILD);
+
+        if(hChild)
+        {
+            // 将绝对坐标转换成为相对hChild的坐标
+            RECT rc2;
+            ::GetWindowRect(hChild, &rc2);
+            int xx = pt.x - rc2.left;
+            int yy = pt.y - rc2.top;
+
+            HWND hChild2 = FindChildWindowByPoint(hChild, strText, strClass, xx, yy);
+            if (hChild2 != NULL)
+            {
+                return hChild2;
+            }
+        }
+
+        hWnd = ::GetWindow(hWnd, GW_HWNDNEXT);
+    }
 }
