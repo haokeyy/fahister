@@ -14,5 +14,5 @@ public:
 
     static HWND FindChildWindowBlur(HWND hWnd, char* strText, char* strClass);
 
-    static HWND FindChildWindowByPoint(HWND hWnd, long x, long y);
+    static HWND FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass, long x, long y);
 };

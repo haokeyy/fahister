@@ -19,12 +19,13 @@ public:
     // 点击鼠标，x, y 为相对窗口(hWnd)的坐标，使用此方法会移动鼠标指针
     static void SM_Click(HWND hMainWnd, int x, int y);
 
-    // 设置文本，文本填入当前获得焦点的控件
-    static void SM_Text(HWND hMainWnd, char* text);
+    // 设置文本内容，文本填入对应内容和类名的窗口
+    static void SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, char* text);
+
+    // 设置文本内容，文本填入对应内容和类名，并且位置在(x,y)的窗口
+    static void SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, int x, int y, char* text);
+
+    // 设置文本内容，文本填入当前获得焦点的控件
+    static void SM_Text(HWND hMainWnd, char* text); 
     
-    // 发送设置文本内容消息，文本填入指定位置的控件
-    //static void SM_Text(HWND hWnd, int x, int y, char* text);
-    
-    // 发送设置文本内容消息，文本填入对应类名的窗口
-    static void SM_Text(HWND hMainWnd, char* strClass, char* text);
 };

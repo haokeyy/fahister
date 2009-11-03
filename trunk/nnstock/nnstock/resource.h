@@ -17,6 +17,7 @@
 #define IDC_BUTTON1                     1002
 #define IDC_BTN_REG                     1002
 #define IDC_BTN_ADD_PRICE_MONITOR       1002
+#define IDC_BTN_DISCARD                 1002
 #define IDC_BTN_REFRESH                 1003
 #define IDC_EDIT1                       1005
 #define IDC_EDIT2                       1006
