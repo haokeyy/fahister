@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Utility.h"
+
 class CBatchMsg
 {
 public:
@@ -7,7 +9,7 @@ public:
 	~CBatchMsg();
 
 public:
-	static void ProcessBatchCommand(HWND hMainWnd, CStringList commands, CMapStringToString parameters);
+	static void ProcessBatchCommand(HWND hMainWnd, CString commands, NameValuePair parameters[]);
 
 	static void ProcessCommand(HWND hMainWnd, CString commandLine);
 };

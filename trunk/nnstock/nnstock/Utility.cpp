@@ -35,7 +35,7 @@ int CUtility::SplitString(char* s, char* separator, char *substr[])
 		if (strncmp(p, separator, seplen) == 0)
 		{
 			*p = 0;
-			if (strlen(q) > 0)
+			if (strncmp(q, separator, seplen) != 0)
 			{
 				substr[cnt++] = q;
 			}

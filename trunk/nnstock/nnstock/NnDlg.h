@@ -35,4 +35,5 @@ public:
     afx_msg void OnHelpReg();
     afx_msg void OnBnClickedBtnAddPriceMonitor();
     CListCtrl m_ListMonitor;
+	afx_msg void OnBnClickedBtnTest();
 };

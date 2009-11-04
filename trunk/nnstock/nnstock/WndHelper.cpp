@@ -69,7 +69,7 @@ HWND CWndHelper::FindTopWindowExactly(char* strTitle, char* strClassName)
 }
 
 
-HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass)
+HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass, BOOL bVisable)
 {
     while (hWnd)
     {
@@ -80,7 +80,10 @@ HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass
             ::GetWindowText(hWnd, strTemp, 1023);
             if (strcmp(strTemp, strText) == 0)
             {
-                return hWnd;
+				if (!bVisable || ::IsWindowVisible(hWnd))
+				{
+					return hWnd;
+				}
             }
         }
 
@@ -88,7 +91,7 @@ HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass
 
         if(hChild)
         {
-            HWND hChild2 = FindChildWindowExactly(hChild, strText, strClass);
+            HWND hChild2 = FindChildWindowExactly(hChild, strText, strClass, bVisable);
             if (hChild2 != NULL)
             {
                 return hChild2;
@@ -101,7 +104,7 @@ HWND CWndHelper::FindChildWindowExactly(HWND hWnd, char* strText, char* strClass
     return NULL;
 }
 
-HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
+HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass, BOOL bVisable)
 {
     while (hWnd)
     {
@@ -113,14 +116,17 @@ HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
 
         if (strstr(strTemp1, strText) && strstr(strTemp2, strClass))
         {
-            return hWnd;
+			if (!bVisable || ::IsWindowVisible(hWnd))
+			{
+				return hWnd;
+			}
         }
 
         HWND hChild = ::GetWindow(hWnd, GW_CHILD);
 
         if(hChild)
         {
-            HWND hChild2 = FindChildWindowBlur(hChild, strText, strClass);
+            HWND hChild2 = FindChildWindowBlur(hChild, strText, strClass, bVisable);
             if (hChild2 != NULL)
             {
                 return hChild2;
@@ -133,7 +139,7 @@ HWND CWndHelper::FindChildWindowBlur(HWND hWnd, char* strText, char* strClass)
     return NULL;
 }
 
-HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass, long x, long y)
+HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass, long x, long y, BOOL bVisable)
 {
     // 将相对坐标转换成绝对坐标
     CRect rc;
@@ -156,8 +162,11 @@ HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass
             CRect rc1;
             ::GetWindowRect(hWnd, &rc1);
             if (rc1.PtInRect(pt))
-            {            
-                return hWnd;
+            {
+				if (!bVisable || ::IsWindowVisible(hWnd))
+				{
+					return hWnd;
+				}
             }
         }
 
@@ -171,7 +180,7 @@ HWND CWndHelper::FindChildWindowByPoint(HWND hWnd, char* strText, char* strClass
             int xx = pt.x - rc2.left;
             int yy = pt.y - rc2.top;
 
-            HWND hChild2 = FindChildWindowByPoint(hChild, strText, strClass, xx, yy);
+            HWND hChild2 = FindChildWindowByPoint(hChild, strText, strClass, xx, yy, bVisable);
             if (hChild2 != NULL)
             {
                 return hChild2;
