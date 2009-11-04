@@ -12,6 +12,7 @@
 #define IDD_REG_DLG                     130
 #define IDD_DIALOG2                     131
 #define IDD_PRICE_MONITOR_DLG           131
+#define IDD_TEST_DLG                    132
 #define IDC_LIST1                       1000
 #define IDC_LIST_MONITOR                1000
 #define IDC_BUTTON1                     1002
@@ -28,6 +29,8 @@
 #define IDC_RADIO3                      1011
 #define IDC_RADIO4                      1012
 #define ID_CANCEL                       1013
+#define IDC_BUTTON2                     1014
+#define IDC_BTN_TEST                    1014
 #define ID_32771                        32771
 #define ID_32772                        32772
 #define ID_32773                        32773
@@ -45,9 +48,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        132
+#define _APS_NEXT_RESOURCE_VALUE        133
 #define _APS_NEXT_COMMAND_VALUE         32783
-#define _APS_NEXT_CONTROL_VALUE         1014
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -20,10 +20,10 @@ public:
     static void SM_Click(HWND hMainWnd, int x, int y);
 
     // 设置文本内容，文本填入对应内容和类名的窗口
-    static void SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, char* text);
+    static void SM_Text(HWND hMainWnd, char* strEditClass, char* text);
 
     // 设置文本内容，文本填入对应内容和类名，并且位置在(x,y)的窗口
-    static void SM_Text(HWND hMainWnd, char* strEditText, char* strEditClass, int x, int y, char* text);
+    static void SM_Text(HWND hMainWnd, char* strEditClass, int x, int y, char* text);
 
     // 设置文本内容，文本填入当前获得焦点的控件
     static void SM_Text(HWND hMainWnd, char* text); 

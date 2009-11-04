@@ -8,6 +8,7 @@
 #include "AboutDlg.h"
 #include "RegDlg.h"
 #include "PriceMonitorDlg.h"
+#include "TestDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -34,6 +35,7 @@ BEGIN_MESSAGE_MAP(CNnDlg, CDialog)
     ON_COMMAND(IDM_ABOUTBOX, &CNnDlg::OnAboutbox)
     ON_COMMAND(ID_HELP_REG, &CNnDlg::OnHelpReg)
     ON_BN_CLICKED(IDC_BTN_ADD_PRICE_MONITOR, &CNnDlg::OnBnClickedBtnAddPriceMonitor)
+	ON_BN_CLICKED(IDC_BTN_TEST, &CNnDlg::OnBnClickedBtnTest)
 END_MESSAGE_MAP()
 
 
@@ -147,4 +149,10 @@ void CNnDlg::OnBnClickedBtnAddPriceMonitor()
     {
 
     }
+}
+
+void CNnDlg::OnBnClickedBtnTest()
+{
+	CTestDlg dlg;
+	dlg.DoModal();
 }

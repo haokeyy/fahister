@@ -1,5 +1,18 @@
 #pragma once
 
+struct NameValuePair
+{
+public:
+    CString Name;
+    CString Value;
+public:
+    NameValuePair(CString strName, CString strValue)
+    {
+        Value   = strValue;
+        Name    = strName;
+    }
+};
+
 class CUtility
 {
 public:
