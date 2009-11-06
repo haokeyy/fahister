@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include "nnstock.h"
 #include "NnDlg.h"
+#include "TestDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -50,7 +51,7 @@ BOOL CNnApp::InitInstance()
 
 	AfxEnableControlContainer();
 
-	CNnDlg dlg;
+	CTestDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
