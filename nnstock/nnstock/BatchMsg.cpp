@@ -37,7 +37,11 @@ UINT TranslateKey(char* key)
 {
 	CString szKey(key);
 
-	if (szKey.CompareNoCase("F1")==0)
+	if (szKey.CompareNoCase("ESC")==0)
+	{
+		return VK_ESCAPE;
+	}
+	else if (szKey.CompareNoCase("F1")==0)
 	{
 		return VK_F1;
 	}
