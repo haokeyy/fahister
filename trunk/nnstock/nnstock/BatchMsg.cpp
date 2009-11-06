@@ -131,6 +131,12 @@ void CBatchMsg::ProcessCommand(HWND hMainWnd, CString commandLine)
 		{
 			CMsgHelper::SM_Click(hMainWnd, args[0], args[1]);
 		}
+		else if (argCnt == 3)
+		{
+			int x = CUtility::GetSafeInt(args[1], 0);
+			int y = CUtility::GetSafeInt(args[2], 0);
+			CMsgHelper::SM_Click(hMainWnd, x, y);
+		}
 		else if (argCnt == 4)
 		{
 			int x = CUtility::GetSafeInt(args[2], 0);
