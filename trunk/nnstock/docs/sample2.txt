@@ -1,0 +1,19 @@
+国信金太阳网上交易专业版V
+
+click xy,210,40
+sleep 500
+input 159901
+key tab
+key tab
+input 4.037
+sleep 500
+key tab
+input 100
+sleep 500
+key enter
+sleep 500
+click 卖出确认,Button
+click 卖出确认,Button
+sleep 3000
+click 确认,Button
+click 确认,Button

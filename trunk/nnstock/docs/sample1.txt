@@ -1,0 +1,16 @@
+网上股票交易系统5.0
+
+key F1
+click 重填,Button
+input 000063
+key enter
+input 40.00
+key enter
+input 200
+key enter
+sleep 200
+click 是(&Y),Button
+click 是(&Y),Button
+sleep 200
+click 确定,Button
+click 确定,Button

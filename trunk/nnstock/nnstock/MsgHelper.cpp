@@ -47,6 +47,7 @@ void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vKey)
 void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass)
 {
     HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
+	
     ::SendMessage(hChildWnd, WM_LBUTTONDOWN, MK_LBUTTON, 0);
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0);
 }
@@ -55,7 +56,7 @@ void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass)
 void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass, int x, int y)
 {
     HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
-        
+
     ::SendMessage(hChildWnd, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(x, y));
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
 }
@@ -82,6 +83,8 @@ void SendClick(int x, int y)
 // 发送单击鼠标消息，根据按钮坐标位置
 void CMsgHelper::SM_Click(HWND hMainWnd, int x, int y)
 {
+    ::SetForegroundWindow(hMainWnd);
+
     RECT rc;
     ::GetWindowRect(hMainWnd, &rc);
     int xx = rc.left + x;
