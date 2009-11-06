@@ -47,7 +47,7 @@ void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vKey)
 void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass)
 {
     HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
-    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, 0);
+    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, MK_LBUTTON, 0);
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, 0);
 }
 
@@ -56,7 +56,7 @@ void CMsgHelper::SM_Click(HWND hMainWnd, char* strBtnText, char* strBtnClass, in
 {
     HWND hChildWnd = CWndHelper::FindChildWindowBlur(hMainWnd, strBtnText, strBtnClass);
         
-    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, 0, MAKELPARAM(x, y));
+    ::SendMessage(hChildWnd, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(x, y));
     ::SendMessage(hChildWnd, WM_LBUTTONUP, 0, MAKELPARAM(x, y));
 }
 
