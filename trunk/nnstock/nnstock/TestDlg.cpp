@@ -32,6 +32,7 @@ void CTestDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CTestDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON1, &CTestDlg::OnBnClickedButton1)
+    ON_BN_CLICKED(IDC_BUTTON2, &CTestDlg::OnBnClickedButton2)
 END_MESSAGE_MAP()
 
 
@@ -56,4 +57,17 @@ void CTestDlg::OnBnClickedButton1()
 	};
 
 	CBatchMsg::ProcessBatchCommand(hMainWnd, lpstrCmds, NULL);
+}
+
+void CTestDlg::OnBnClickedButton2()
+{
+    CString szMainWnd;
+	this->GetDlgItemText(IDC_EDIT2, szMainWnd);
+	HWND hMainWnd = CWndHelper::FindTopWindowBlur(szMainWnd.GetBuffer(), "");
+
+    HWND hChild = CWndHelper::FindChildWindowBlur(hMainWnd, "È·¶¨", "Button");
+    
+    CString msg;
+    msg.Format("handle:%X", hChild);
+    MessageBox(msg);
 }
