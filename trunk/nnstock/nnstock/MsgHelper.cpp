@@ -18,6 +18,7 @@ void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vSysKey, UINT vKey)
     input[2].ki.dwFlags = input[3].ki.dwFlags = KEYEVENTF_KEYUP;
 
     ::SetForegroundWindow(hMainWnd);
+	::SetFocus(hMainWnd);
 
     SendInput(4, input, sizeof(INPUT));
 }
@@ -37,6 +38,7 @@ void CMsgHelper::SM_PressKey(HWND hMainWnd, UINT vKey)
     input[1].ki.dwFlags = KEYEVENTF_KEYUP;
 
     ::SetForegroundWindow(hMainWnd);
+	::SetFocus(hMainWnd);
 
     SendInput(2, input, sizeof(INPUT));
 }
