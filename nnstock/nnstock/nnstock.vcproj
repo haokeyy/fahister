@@ -234,6 +234,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\stockPrice.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\TestDlg.cpp"
 				>
 			</File>
@@ -285,6 +289,10 @@
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\stockPrice.h"
 				>
 			</File>
 			<File
