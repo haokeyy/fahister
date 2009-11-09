@@ -8,6 +8,7 @@
 #include "MsgHelper.h"
 #include "BatchMsg.h"
 #include "Utility.h"
+#include "stockPrice.h"
 
 
 // CTestDlg dialog
@@ -61,13 +62,9 @@ void CTestDlg::OnBnClickedButton1()
 
 void CTestDlg::OnBnClickedButton2()
 {
-    CString szMainWnd;
-	this->GetDlgItemText(IDC_EDIT2, szMainWnd);
-	HWND hMainWnd = CWndHelper::FindTopWindowBlur(szMainWnd.GetBuffer(), "");
+    double cur_price = CStockPrice::GetCurrentPrice("600000");
 
-    HWND hChild = CWndHelper::FindChildWindowBlur(hMainWnd, "È·¶¨", "Button");
-    
-    CString msg;
-    msg.Format("handle:%X", hChild);
-    MessageBox(msg);
+    CString str;
+    str.Format("600000:%f", cur_price);
+    MessageBox(str);
 }
