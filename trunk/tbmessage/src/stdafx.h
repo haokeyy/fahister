@@ -42,7 +42,7 @@
 
 #include ".\Libraries\ExplorerOcx.h"
 
-#define PRODUCT_ID      "D08"
+#define PRODUCT_ID      "D09"
 
 #define WM_SENDMSG_COMPLETED     (WM_USER + 101)
 #define WM_FOUND_MEMBER          (WM_USER + 102)

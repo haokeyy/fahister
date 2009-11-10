@@ -29,6 +29,7 @@ void CMainDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMainDlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+    ON_NOTIFY(TCN_SELCHANGE, IDC_FUNC_TAB, &CMainDlg::OnTcnSelchangeFuncTab)
 END_MESSAGE_MAP()
 
 void CMainDlg::OnPaint()
@@ -75,4 +76,13 @@ BOOL CMainDlg::OnInitDialog()
     m_FuncTab.Show();
 
     return TRUE;
+}
+
+void CMainDlg::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResult)
+{
+    if (m_FuncTab.GetCurSel() == 1)
+    {
+        m_MemberPage.LoadMembers();
+    }
+    *pResult = 0;
 }

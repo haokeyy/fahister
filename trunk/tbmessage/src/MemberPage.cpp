@@ -45,7 +45,20 @@ BOOL CMemberPage::OnInitDialog()
     m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
     m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
 
+    //m_MemberList.DeleteAllItems();
+    //LoadMembers();
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
+}
+
+void CMemberPage::LoadMembers()
+{
+    long cnt = CStoredMember::GetCount();
+    long ucnt = CStoredMember::GetUnSendCount();
+    CString strCaption;
+    strCaption.Format("买家/卖家列表(已发送:%d,共:%d)", cnt - ucnt, cnt);
+    this->SetDlgItemText(IDC_STATIC_MEMBER, strCaption);
+    
 }
 
 BEGIN_MESSAGE_MAP(CMemberPage, CDialog)
@@ -112,7 +125,11 @@ void CMemberPage::OnBnClickedBtnClear()
 
 void CMemberPage::OnBnClickedBtnExport2()
 {
-    
+    CFileDialog fileOpen(FALSE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
+    if (fileOpen.DoModal() == IDOK)
+    {
+        //CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
+    }    
 }
 
 void CMemberPage::OnBnClickedBtnClear2()
