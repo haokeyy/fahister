@@ -20,6 +20,8 @@ protected:
 
 	virtual BOOL OnInitDialog();
 
+    
+
 	DECLARE_MESSAGE_MAP()
 public:
     afx_msg void OnBnClickedBtnAddMsg();
@@ -31,4 +33,6 @@ public:
     afx_msg void OnBnClickedBtnClear();
     afx_msg void OnBnClickedBtnExport2();
     afx_msg void OnBnClickedBtnClear2();
+
+    void LoadMembers();
 };

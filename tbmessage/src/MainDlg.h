@@ -35,4 +35,5 @@ public:
 	CSearchPage m_SearchPage;
 	CMemberPage m_MemberPage;
 	CSendPage m_SendPage;
+    afx_msg void OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResult);
 };
