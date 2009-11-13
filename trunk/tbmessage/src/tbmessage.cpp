@@ -13,7 +13,7 @@
 
 // CtbmsgApp
 
-BEGIN_MESSAGE_MAP(CtbmsgApp, CWinAppEx)
+BEGIN_MESSAGE_MAP(CtbmsgApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
@@ -46,7 +46,7 @@ BOOL CtbmsgApp::InitInstance()
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
-	CWinAppEx::InitInstance();
+	CWinApp::InitInstance();
 
 	AfxEnableControlContainer();
 

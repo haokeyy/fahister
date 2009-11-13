@@ -41,6 +41,7 @@
 #define IDC_STATIC_STATUS               1025
 #define IDC_SEND_STATUS                 1026
 #define IDC_BTN_CLEAR2                  1027
+#define IDC_EXPR_WELCOME                1027
 #define IDC_CMB_LOCATION                1034
 #define IDC_STATIC_MEMBER               1038
 #define IDC_CHK_ADDTO_FRIEND            1045
@@ -101,9 +102,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        139
+#define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1027
+#define _APS_NEXT_CONTROL_VALUE         1028
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

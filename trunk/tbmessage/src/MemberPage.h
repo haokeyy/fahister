@@ -1,5 +1,6 @@
 #pragma once
 #include "afxcmn.h"
+#include "d:\projects\fahister\svn\trunk\tbmessage\src\libraries\explorerocx.h"
 
 
 // CMemberPage dialog
@@ -35,4 +36,5 @@ public:
     afx_msg void OnBnClickedBtnClear2();
 
     void LoadMembers();
+	CExplorerOcx m_ExpWelcome;
 };
