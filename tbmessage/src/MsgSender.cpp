@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "MsgSender.h"
 #include ".\Libraries\WindowHelp.h"
+#include "Oleacc.h"
+
 
 CMessageSender::CMessageSender(HWND hMainWnd)
 {

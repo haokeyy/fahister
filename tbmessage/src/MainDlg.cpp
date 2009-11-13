@@ -70,8 +70,8 @@ BOOL CMainDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
+    m_FuncTab.AddPage("欢迎", &m_MemberPage, IDD_MEMBER_VIEW);
     m_FuncTab.AddPage("查找买家/卖家", &m_SearchPage, IDD_SEARCH_VIEW);
-    m_FuncTab.AddPage("数据管理", &m_MemberPage, IDD_MEMBER_VIEW);
     m_FuncTab.AddPage("群发消息", &m_SendPage, IDD_SEND_VIEW);
     m_FuncTab.Show();
 
@@ -80,9 +80,9 @@ BOOL CMainDlg::OnInitDialog()
 
 void CMainDlg::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResult)
 {
-    if (m_FuncTab.GetCurSel() == 1)
-    {
-        m_MemberPage.LoadMembers();
-    }
+    //if (m_FuncTab.GetCurSel() == 1)
+    //{
+    //    m_MemberPage.LoadMembers();
+    //}
     *pResult = 0;
 }

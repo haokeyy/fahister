@@ -25,25 +25,28 @@ CMemberPage::~CMemberPage()
 
 void CMemberPage::DoDataExchange(CDataExchange* pDX)
 {
-    CDialog::DoDataExchange(pDX);
-    DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
-    DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
+	CDialog::DoDataExchange(pDX);
+	//DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
+	//DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
+	DDX_Control(pDX, IDC_EXPR_WELCOME, m_ExpWelcome);
 }
 
 BOOL CMemberPage::OnInitDialog()
 {
 	CDialog::OnInitDialog();
-    
-    // 设置列表框样式 && 添加列
-    m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
-    m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
-    m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 150);
-    m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 60);
 
-    m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
-    m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
-    m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
-    m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
+	m_ExpWelcome.Navigate("http://www.21cn2.com", 0, 0, 0, 0);
+
+    // 设置列表框样式 && 添加列
+    //m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
+    //m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
+    //m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 150);
+    //m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 60);
+
+    //m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
+    //m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
+    //m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
+    //m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
 
     //m_MemberList.DeleteAllItems();
     //LoadMembers();
@@ -62,13 +65,13 @@ void CMemberPage::LoadMembers()
 }
 
 BEGIN_MESSAGE_MAP(CMemberPage, CDialog)
-    ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CMemberPage::OnBnClickedBtnAddMsg)
-    ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CMemberPage::OnBnClickedBtnEditMsg)
-    ON_BN_CLICKED(IDC_BTN_DEL_MSG, &CMemberPage::OnBnClickedBtnDelMsg)
-    ON_BN_CLICKED(IDC_BTN_IMPORT2, &CMemberPage::OnBnClickedBtnImport2)
-    ON_BN_CLICKED(IDC_BTN_CLEAR, &CMemberPage::OnBnClickedBtnClear)
-    ON_BN_CLICKED(IDC_BTN_EXPORT2, &CMemberPage::OnBnClickedBtnExport2)
-    ON_BN_CLICKED(IDC_BTN_CLEAR2, &CMemberPage::OnBnClickedBtnClear2)
+    //ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CMemberPage::OnBnClickedBtnAddMsg)
+    //ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CMemberPage::OnBnClickedBtnEditMsg)
+    //ON_BN_CLICKED(IDC_BTN_DEL_MSG, &CMemberPage::OnBnClickedBtnDelMsg)
+    //ON_BN_CLICKED(IDC_BTN_IMPORT2, &CMemberPage::OnBnClickedBtnImport2)
+    //ON_BN_CLICKED(IDC_BTN_CLEAR, &CMemberPage::OnBnClickedBtnClear)
+    //ON_BN_CLICKED(IDC_BTN_EXPORT2, &CMemberPage::OnBnClickedBtnExport2)
+    //ON_BN_CLICKED(IDC_BTN_CLEAR2, &CMemberPage::OnBnClickedBtnClear2)
 END_MESSAGE_MAP()
 
 
