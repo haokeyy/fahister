@@ -13,7 +13,7 @@
 
 // CtbmsgApp
 
-BEGIN_MESSAGE_MAP(CtbmsgApp, CWinAppEx)
+BEGIN_MESSAGE_MAP(CtbmsgApp, CWinApp)
 	ON_COMMAND(ID_HELP, &CWinApp::OnHelp)
 END_MESSAGE_MAP()
 
@@ -46,12 +46,10 @@ BOOL CtbmsgApp::InitInstance()
 	InitCtrls.dwICC = ICC_WIN95_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
-	CWinAppEx::InitInstance();
+	CWinApp::InitInstance();
 
 	AfxEnableControlContainer();
 
-    
-    CoInitialize( NULL );
 	// 标准初始化
 	// 如果未使用这些功能并希望减小
 	// 最终可执行文件的大小，则应移除下列
@@ -75,7 +73,6 @@ BOOL CtbmsgApp::InitInstance()
 		//  “取消”来关闭对话框的代码
 	}
 
-    CoUninitialize();
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。
 	return FALSE;
