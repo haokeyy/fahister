@@ -1,6 +1,6 @@
 #pragma once
 #include "afxcmn.h"
-#include "d:\projects\fahister\svn\trunk\tbmessage\src\libraries\explorerocx.h"
+#include ".\libraries\explorerocx.h"
 
 
 // CMemberPage dialog

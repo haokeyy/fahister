@@ -15,7 +15,7 @@
 // 有关此类的实现，请参阅 tbmessage.cpp
 //
 
-class CtbmsgApp : public CWinAppEx
+class CtbmsgApp : public CWinApp
 {
 public:
 	CtbmsgApp();
