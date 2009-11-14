@@ -179,7 +179,7 @@ int CSendPage::GetNextMember(CString& szNextReceiver)
 
 int CSendPage::GetNextMessage(CString& szNextMessage)
 {
-    szNextMessage = "hiHi";
+    szNextMessage = " HiHi";
     return 1;
 }
 
