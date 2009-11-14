@@ -37,7 +37,7 @@ UINT CMessageSender::ExecuteSendMsg()
     }
 
     // 用户是否已经登录
-    CString strWndTitle("-阿里旺旺 2008");
+    CString strWndTitle("-阿里旺旺 2009");
     strWndTitle = message.SendUserId + strWndTitle;
     HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "");
     if (hMainHwnd == NULL && message.AutoLogin) // 没有登录
@@ -93,27 +93,30 @@ UINT CMessageSender::SendOneMsg()
     {
         // 消息内容窗口
         HWND hSplitterBar = ::FindWindowEx(hWndMsg, NULL, "SplitterBar", "");
-        HWND hHtmlEditor = FindChildWnd(hSplitterBar, "", "HtmlEditor");
-        HWND hMsgEdit = FindChildWnd(hHtmlEditor, "", "Internet Explorer_Server");
+        //HWND hHtmlEditor = FindChildWnd(hSplitterBar, "", "HtmlEditor");
+        HWND hMsgEdit = FindChildWnd(hSplitterBar, "", "RichEditComponent");
 
         // 根据窗口句柄得到IHTMLDocument2接口
-        IHTMLDocument2 *pDoc; 
-        DWORD lRes; 
+        //IHTMLDocument2 *pDoc; 
+        //DWORD lRes; 
 
-        UINT MSG = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
-        SendMessageTimeout(hMsgEdit, MSG, 0, 0, SMTO_ABORTIFHUNG, 1000, &lRes); 
-        ObjectFromLresult(lRes, IID_IHTMLDocument2, 0, (void**)&pDoc); 
+        //UINT MSG = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
+        //SendMessageTimeout(hMsgEdit, MSG, 0, 0, SMTO_ABORTIFHUNG, 1000, &lRes); 
+        //ObjectFromLresult(lRes, IID_IHTMLDocument2, 0, (void**)&pDoc); 
 
-        if (pDoc != NULL)
-        {
-            // 设置消息内容
-            IHTMLElement *pBody;
-            pDoc->get_body(&pBody);
-            CString szMessage(message.MessageHtml);
-            BSTR bstrMessage = szMessage.AllocSysString();
-            pBody->put_innerHTML(bstrMessage);
-            ::SysFreeString(bstrMessage);
-        }
+        //if (pDoc != NULL)
+        //{
+        //    // 设置消息内容
+        //    IHTMLElement *pBody;
+        //    pDoc->get_body(&pBody);
+        //    CString szMessage(message.MessageHtml);
+        //    BSTR bstrMessage = szMessage.AllocSysString();
+        //    pBody->put_innerHTML(bstrMessage);
+        //    ::SysFreeString(bstrMessage);
+        //}
+		
+		CString szMessage(message.MessageHtml);
+		::SendMessage(hMsgEdit, WM_SETTEXT , 0, (LPARAM)szMessage.GetBuffer());
 
         // 添加任意字符，否则“发送”按钮是灰色不可点击
         ::PostMessage(hMsgEdit, WM_KEYDOWN , '.', 0);
@@ -127,24 +130,28 @@ UINT CMessageSender::SendOneMsg()
         ::PostMessage(hbtnSend, WM_LBUTTONUP , 0, 0); 
 
         // 检查校验码
-        Sleep(500);
+        Sleep(1000);
         // 校验码窗口
         HWND hValidCodeWnd = FindTopWindow("阿里旺旺 - 安全验证", "#32770");
         if (hValidCodeWnd)
         {
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
-                        
+
             IHTMLDocument2 *pChkDoc; 
             DWORD lChkRes; 
 
             UINT MSGCHK = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
-            SendMessageTimeout(hValidCodeExp, MSG, 0, 0, SMTO_ABORTIFHUNG, 1000, &lChkRes); 
+            SendMessageTimeout(hValidCodeExp, MSGCHK, 0, 0, SMTO_ABORTIFHUNG, 1000, &lChkRes); 
             ObjectFromLresult(lChkRes, IID_IHTMLDocument2, 0, (void**)&pChkDoc); 
 
             if (pChkDoc)
             {
                 IHTMLElement* pChkBody;
-                HRESULT re = GetDocumentBody(pChkDoc, &pChkBody);
+				HRESULT re = pChkDoc->get_body(&pChkBody);
+                //GetDocumentBody(pChkDoc, &pChkBody);
+
+                BSTR bstrUrl;
+				pChkDoc->get_URL(&bstrUrl);
 
                 BSTR bstrHtml;
                 pChkBody->get_innerHTML(&bstrHtml);
@@ -192,9 +199,9 @@ UINT CMessageSender::DeleteAllFriend()
 BOOL CMessageSender::UserIsLogined(CString senderId)
 {
     // 用户是否已经登录
-    CString strWndTitle("-阿里旺旺 2008");
+    CString strWndTitle("-阿里旺旺 2009");
     strWndTitle = senderId + strWndTitle;
-    HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "");
+    HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "StandardFrame");
 
     return hMainHwnd != NULL;
 }
