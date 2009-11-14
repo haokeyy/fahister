@@ -369,6 +369,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Libraries\DHtmlHelper.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Libraries\DHtmlHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Libraries\ExplorerOcx.cpp"
 				>
 			</File>
