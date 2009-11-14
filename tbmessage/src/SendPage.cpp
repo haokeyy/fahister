@@ -135,7 +135,7 @@ void CSendPage::StartSendMsg()
 
     int m = m_CmbSpeed.GetCurSel();
     int smSecond = m_CmbSpeed.GetItemData(m); // ºÁÃëÊý
-    this->SetTimer(TIMER_ID, smSecond, NULL);
+    //this->SetTimer(TIMER_ID, smSecond, NULL);
     OnTimer(TIMER_ID);
 }
 
@@ -171,12 +171,15 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 
 int CSendPage::GetNextMember(CString& szNextReceiver)
 {
-    return CStoredMember::GetNextUnSenderMember(szNextReceiver);
+    long i = CStoredMember::GetNextUnSenderMember(szNextReceiver);
+	CStoredMember::SetMemberStatus(i, 1);
+	return i;
+
 }
 
 int CSendPage::GetNextMessage(CString& szNextMessage)
 {
-    szNextMessage = "Hi";
+    szNextMessage = "hiHi";
     return 1;
 }
 

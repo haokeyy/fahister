@@ -58,6 +58,8 @@ BOOL CtbmsgApp::InitInstance()
 	// TODO: 应适当修改该字符串，
 	// 例如修改为公司或组织名
 
+	
+	CoInitialize( NULL );
 	//CtbmsgDlg dlg;
     CMainDlg dlg;
 	m_pMainWnd = &dlg;
@@ -73,6 +75,7 @@ BOOL CtbmsgApp::InitInstance()
 		//  “取消”来关闭对话框的代码
 	}
 
+	CoUninitialize();
 	// 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
 	//  而不是启动应用程序的消息泵。
 	return FALSE;
