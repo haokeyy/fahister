@@ -67,6 +67,51 @@ UINT CMessageSender::ExecuteSendMsg()
     return 0;
 }
 
+
+typedef int (WINAPI *fn_loadcode)(void* code, long length, char* address, char* password);
+
+typedef char* (WINAPI *fn_Recognition)(int itemNo, int picIn, int length, char* address1, char* address2, int* lppicout, int* lplength, int* cLength);
+fn_loadcode _loadcode = NULL;
+fn_Recognition _Recognition = NULL;
+static BOOL hasInit = FALSE;
+
+CString Recognize(CString szUrl)
+{
+	if (hasInit == FALSE || _loadcode == NULL || _Recognition == NULL)
+	{
+		CString szFileName;
+		DWORD nProcID = ::GetCurrentProcessId();
+		GetProcessNameByProcessID(nProcID, szFileName);
+
+		int index = szFileName.ReverseFind('\\');
+		CString chkFilePath = szFileName.Left(index) + "\\4383.fc";
+
+		HINSTANCE hInstance = ::LoadLibrary("ycode.dll");
+		
+		_loadcode = (fn_loadcode)::GetProcAddress(hInstance, "loadcode");
+		_Recognition = (fn_Recognition)::GetProcAddress(hInstance, "Recognition");   
+
+		char *path = chkFilePath.GetBuffer();
+		
+		CFile file(path, CFile::modeRead|CFile::typeBinary);
+		int len = file.GetLength();
+		BYTE *buf = (BYTE*)malloc(len);
+		file.Read(buf, len);
+
+		_loadcode(buf, len, "", "cv2222");
+
+		hasInit = TRUE;
+	}
+	
+	int n1 = 0, n2 = 0, n3 = 0;
+	char* address = szUrl.GetBuffer();
+	char* code =  _Recognition(1, 0, 0, address, "", &n1, &n2, &n3);
+
+	CString szResult(code);
+	
+	return szResult;
+}
+
 CString Recognition(CString szUrl)
 {
     CString strLine;
@@ -137,41 +182,38 @@ UINT CMessageSender::SendOneMsg()
         {
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
 
-            IHTMLDocument2 *pChkDoc; 
-            DWORD lChkRes; 
+			IHTMLDocument2 *pDoc; 
+			DWORD lRes; 
 
-            UINT MSGCHK = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
-            SendMessageTimeout(hValidCodeExp, MSGCHK, 0, 0, SMTO_ABORTIFHUNG, 1000, &lChkRes); 
-            ObjectFromLresult(lChkRes, IID_IHTMLDocument2, 0, (void**)&pChkDoc); 
+			UINT MSG = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
+			SendMessageTimeout(hValidCodeExp, MSG, 0, 0, SMTO_ABORTIFHUNG, 1000, &lRes); 
+			ObjectFromLresult(lRes, IID_IHTMLDocument2, 0, (void**)&pDoc); 
 
-            if (pChkDoc)
+            if (pDoc)
             {
                 IHTMLElement* pChkBody;
-				HRESULT re = pChkDoc->get_body(&pChkBody);
+				HRESULT re = pDoc->get_body(&pChkBody);
                 //GetDocumentBody(pChkDoc, &pChkBody);
 
-                BSTR bstrUrl;
-				pChkDoc->get_URL(&bstrUrl);
+				if (pChkBody)
+				{
+					BSTR bstrHtml;
+					pChkBody->get_innerHTML(&bstrHtml);
+					CString szHtml(bstrHtml);
+					CString szUrl = szHtml.Mid(29, 89);
 
-                BSTR bstrHtml;
-                pChkBody->get_innerHTML(&bstrHtml);
-                CString szHtml(bstrHtml);
-                CString szUrl = szHtml.Mid(29, 89);
+					// 识别
+					CString checkCode = Recognize(szUrl);
+	            
+					HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
+					::SendMessage(hValidCodeEdit, WM_SETTEXT, 0, (LPARAM)checkCode.GetBuffer());
 
-                // 识别
-                CString checkCode = Recognition(szUrl);
-            
-                HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
-                ::SendMessage(hValidCodeEdit, WM_SETTEXT, 0, (LPARAM)checkCode.GetBuffer());
-
-                HWND hValidCodeOK = FindChildWnd(hValidCodeWnd, "确定", "StandardButton");
-                ::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
-                ::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
+					HWND hValidCodeOK = FindChildWnd(hValidCodeWnd, "确定", "StandardButton");
+					::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
+					::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
+				}
             }
         }
-
-
-
 
         // 关闭窗口
         Sleep(400);
