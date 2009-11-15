@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="tbmessage"
-	ProjectGUID="{1ACF7B87-6595-41CE-8FB0-DD71E48511FA}"
-	RootNamespace="tbmessage"
+	Name="testdll"
+	ProjectGUID="{1586DAAF-9BA5-4467-8243-45D81BD79986}"
+	RootNamespace="testdll"
 	Keyword="MFCProj"
 	TargetFrameworkVersion="131072"
 	>
@@ -51,7 +51,6 @@
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="4"
 			/>
 			<Tool
@@ -68,9 +67,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="psapi.lib"
+				AdditionalDependencies="ycode.lib"
 				LinkIncremental="2"
-				IgnoreDefaultLibraryNames=""
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				TargetMachine="1"
@@ -150,7 +148,6 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="psapi.lib"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -190,38 +187,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\EditAccDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\EditMsgDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MainDlg.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MemberPage.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MemberSearch.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\MsgSender.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SearchPage.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\SendPage.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -242,19 +207,11 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\StoredAccount.cpp"
+				RelativePath=".\testdll.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\StoredMember.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\StoredMessage.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\tbmessage.cpp"
+				RelativePath=".\testdllDlg.cpp"
 				>
 			</File>
 		</Filter>
@@ -264,43 +221,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Constants.h"
-				>
-			</File>
-			<File
-				RelativePath=".\EditAccDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\EditMsgDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MainDlg.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MemberPage.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MemberSearch.h"
-				>
-			</File>
-			<File
-				RelativePath=".\MsgSender.h"
-				>
-			</File>
-			<File
 				RelativePath=".\Resource.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SearchPage.h"
-				>
-			</File>
-			<File
-				RelativePath=".\SendPage.h"
 				>
 			</File>
 			<File
@@ -308,23 +229,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\StoredAccount.h"
-				>
-			</File>
-			<File
-				RelativePath=".\StoredMember.h"
-				>
-			</File>
-			<File
-				RelativePath=".\StoredMessage.h"
-				>
-			</File>
-			<File
 				RelativePath=".\targetver.h"
 				>
 			</File>
 			<File
-				RelativePath=".\tbmessage.h"
+				RelativePath=".\testdll.h"
+				>
+			</File>
+			<File
+				RelativePath=".\testdllDlg.h"
 				>
 			</File>
 		</Filter>
@@ -334,137 +247,17 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\res\seller1.BMP"
+				RelativePath=".\res\testdll.ico"
 				>
 			</File>
 			<File
-				RelativePath=".\res\seller2.BMP"
+				RelativePath=".\testdll.rc"
 				>
 			</File>
 			<File
-				RelativePath=".\res\seller3.BMP"
+				RelativePath=".\res\testdll.rc2"
 				>
 			</File>
-			<File
-				RelativePath=".\res\tbmessage.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\tbmessage.rc"
-				>
-			</File>
-			<File
-				RelativePath=".\res\tbmessage.rc2"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="Libraries"
-			>
-			<File
-				RelativePath=".\Libraries\DHtmlEditOcx.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\DHtmlEditOcx.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\DHtmlHelper.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\DHtmlHelper.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\ExplorerOcx.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\ExplorerOcx.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\HLink.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\HLink.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\ListViewHelp.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\ListViewHelp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\MD5Checksum.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\MD5Checksum.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\MD5ChecksumDefines.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\MyDiskInfo.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\MyDiskInfo.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\TabSheet.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\TabSheet.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\WindowHelp.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\Libraries\WindowHelp.h"
-				>
-			</File>
-			<Filter
-				Name="Ado"
-				>
-				<File
-					RelativePath=".\Libraries\Ado\Ado.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Libraries\Ado\Ado.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Libraries\Ado\AdoCommand.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Libraries\Ado\AdoCommand.h"
-					>
-				</File>
-				<File
-					RelativePath=".\Libraries\Ado\AdoRecordSet.cpp"
-					>
-				</File>
-				<File
-					RelativePath=".\Libraries\Ado\AdoRecordSet.h"
-					>
-				</File>
-			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
@@ -474,15 +267,7 @@
 	<Globals>
 		<Global
 			Name="RESOURCE_FILE"
-			Value="tbmessage.rc"
-		/>
-		<Global
-			Name="{2D360200-FFF5-11D1-8D03-00A0C959BC0A}"
-			Value="CDHtmlEditOcx"
-		/>
-		<Global
-			Name="{8856F961-340A-11D0-A96B-00C04FD705A2}"
-			Value="CExplorerOcx"
+			Value="testdll.rc"
 		/>
 	</Globals>
 </VisualStudioProject>
