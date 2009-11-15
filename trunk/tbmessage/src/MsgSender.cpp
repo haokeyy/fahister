@@ -112,22 +112,6 @@ CString Recognize(CString szUrl)
 	return szResult;
 }
 
-CString Recognition(CString szUrl)
-{
-    CString strLine;
-    
-    CString szFileName;
-    DWORD nProcID = ::GetCurrentProcessId();
-    GetProcessNameByProcessID(nProcID, szFileName);
-
-    int index = szFileName.ReverseFind('\\');
-    CString chkFilePath = szFileName.Left(index) + "\\checkcode.txt";
-
-    CStdioFile file(chkFilePath, CFile::modeRead);
-    file.ReadString(strLine);
-    return strLine;
-}
-
 UINT CMessageSender::SendOneMsg()
 {    
     // 发送消息窗口，正常情况应该出现该窗口
