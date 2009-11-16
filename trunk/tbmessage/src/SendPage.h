@@ -42,4 +42,13 @@ public:
     void SaveProfile();
     void LoadProfile();
     afx_msg void OnClose();
+	CListCtrl m_MessageList;
+	CListCtrl m_MemberList;
+	afx_msg void OnBnClickedBtnAddMsg();
+	afx_msg void OnBnClickedBtnEditMsg();
+	afx_msg void OnBnClickedBtnDelMsg();
+	afx_msg void OnBnClickedBtnImport2();
+	afx_msg void OnBnClickedBtnExport2();
+	afx_msg void OnBnClickedBtnClear();
+	afx_msg void OnBnClickedBtnClear2();
 };

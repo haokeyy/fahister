@@ -9,6 +9,7 @@
 #include "MsgSender.h"
 #include "StoredMember.h"
 #include "StoredAccount.h"
+#include "EditMsgDlg.h"
 
 // CSendPage dialog
 
@@ -26,10 +27,12 @@ CSendPage::~CSendPage()
 
 void CSendPage::DoDataExchange(CDataExchange* pDX)
 {
-    CDialog::DoDataExchange(pDX);
-    DDX_Control(pDX, IDC_ACCOUNT_LIST, m_AccountList);
-    DDX_Control(pDX, IDC_CMB_SPEED, m_CmbSpeed);
-    DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
+	CDialog::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_ACCOUNT_LIST, m_AccountList);
+	DDX_Control(pDX, IDC_CMB_SPEED, m_CmbSpeed);
+	DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
+	DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
+	DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
 }
 
 BOOL CSendPage::OnInitDialog()
@@ -45,6 +48,20 @@ BOOL CSendPage::OnInitDialog()
     m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 120);
     m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
 
+	// 设置列表框样式 && 添加列
+    m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
+    m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
+    m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 90);
+    m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 45);
+
+    m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
+    m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
+    m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
+    m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
+
+    //m_MemberList.DeleteAllItems();
+    //LoadMembers();
+
     InitSpeed();
 
     LoadProfile();
@@ -59,6 +76,13 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
     ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted) 
     ON_WM_TIMER()
     ON_WM_CLOSE()
+	ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CSendPage::OnBnClickedBtnAddMsg)
+	ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CSendPage::OnBnClickedBtnEditMsg)
+	ON_BN_CLICKED(IDC_BTN_DEL_MSG, &CSendPage::OnBnClickedBtnDelMsg)
+	ON_BN_CLICKED(IDC_BTN_IMPORT2, &CSendPage::OnBnClickedBtnImport2)
+	ON_BN_CLICKED(IDC_BTN_EXPORT2, &CSendPage::OnBnClickedBtnExport2)
+	ON_BN_CLICKED(IDC_BTN_CLEAR, &CSendPage::OnBnClickedBtnClear)
+	ON_BN_CLICKED(IDC_BTN_CLEAR2, &CSendPage::OnBnClickedBtnClear2)
 END_MESSAGE_MAP()
 
 
@@ -160,7 +184,7 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
     LPTSTR szItemId = (LPTSTR)lParam;
 
     int nItemId = atoi(szItemId);
-    //CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
+    CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
 
     CString szMessage;
     szMessage.Format("发送完成:%d", nItemId);
@@ -244,4 +268,67 @@ void CSendPage::OnClose()
     SaveProfile();
 
     CDialog::OnClose();
+}
+
+void CSendPage::OnBnClickedBtnAddMsg()
+{
+	CEditMsgDlg dlg;
+    if (dlg.DoModal() == IDOK)
+    {
+        CString szBodyHtml = dlg.GetMsgHtml();
+        CString szBodyText = dlg.GetMsgText();
+
+        CListViewHelp::AddListItem(m_MessageList, szBodyText, szBodyHtml);
+    }
+}
+
+void CSendPage::OnBnClickedBtnEditMsg()
+{
+	CEditMsgDlg dlg;
+    int nItem = CListViewHelp::GetSelectedItem(m_MessageList);
+    CString szItemValue = CListViewHelp::GetSelectedItemValue(m_MessageList);
+    if (nItem >= 0 && !szItemValue.IsEmpty())
+    {
+        dlg.SetMsgHtml(szItemValue);
+        if (dlg.DoModal() == IDOK)
+        {
+            CString szBodyHtml = dlg.GetMsgHtml();
+            CString szBodyText = dlg.GetMsgText();
+
+            CListViewHelp::ChangeListItem(m_MessageList, nItem, szBodyText, szBodyHtml);
+        }
+    }
+}
+
+void CSendPage::OnBnClickedBtnDelMsg()
+{
+    CListViewHelp::DeleteSelectedItem(m_MessageList);
+}
+
+void CSendPage::OnBnClickedBtnImport2()
+{
+    CFileDialog fileOpen(TRUE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
+    if (fileOpen.DoModal() == IDOK)
+    {
+        CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
+    }
+}
+
+void CSendPage::OnBnClickedBtnExport2()
+{
+    CFileDialog fileOpen(FALSE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
+    if (fileOpen.DoModal() == IDOK)
+    {
+        CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
+    }    
+}
+
+void CSendPage::OnBnClickedBtnClear()
+{
+    CStoredMember::DeleteAllMembers();
+}
+
+void CSendPage::OnBnClickedBtnClear2()
+{
+    CStoredMember::DeleteSendedMembers();
 }
