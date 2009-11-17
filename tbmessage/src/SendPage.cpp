@@ -12,6 +12,7 @@
 #include "EditMsgDlg.h"
 
 // CSendPage dialog
+#define PAGE_SIZE 500
 
 IMPLEMENT_DYNAMIC(CSendPage, CDialog)
 
@@ -45,22 +46,21 @@ BOOL CSendPage::OnInitDialog()
     
     m_AccountList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_AccountList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
-    m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 120);
+    m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 90);
     m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
 
 	// 设置列表框样式 && 添加列
     m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
-    m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 90);
-    m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 45);
+    m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 105);
+    m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 55);
 
     m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
-    m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
+    m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 280);
     m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
 
-    m_MemberList.DeleteAllItems();
-    LoadMembers(0, 100);
+    OnBnClickedBtnFirstPage();
 
     InitSpeed();
 
@@ -83,6 +83,10 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
 	ON_BN_CLICKED(IDC_BTN_EXPORT2, &CSendPage::OnBnClickedBtnExport2)
 	ON_BN_CLICKED(IDC_BTN_CLEAR, &CSendPage::OnBnClickedBtnClear)
 	ON_BN_CLICKED(IDC_BTN_CLEAR2, &CSendPage::OnBnClickedBtnClear2)
+	ON_BN_CLICKED(IDC_BTN_FIRST_PAGE, &CSendPage::OnBnClickedBtnFirstPage)
+	ON_BN_CLICKED(IDC_BTN_PREV_PAGE, &CSendPage::OnBnClickedBtnPrevPage)
+	ON_BN_CLICKED(IDC_BTN_NEXT_PAGE, &CSendPage::OnBnClickedBtnNextPage)
+	ON_BN_CLICKED(IDC_BTN_LAST_PAGE, &CSendPage::OnBnClickedBtnLastPage)
 END_MESSAGE_MAP()
 
 void CSendPage::LoadMembers(long startId, long stepCount)
@@ -92,15 +96,17 @@ void CSendPage::LoadMembers(long startId, long stepCount)
     CString caption;
     caption.Format("买家/卖家(共:%d,已发送:%d)", count, count - unsended);
     this->SetDlgItemText(IDC_STATIC_MEMBER, caption);
+	
+    m_MemberList.DeleteAllItems();
 
-    CStringList *lpMemberList = new CStringList(stepCount);
-    CStoredMember::GetNextMember(startId, stepCount, lpMemberList);
+    CList<TaobaoMember> *lpMemberList = new CList<TaobaoMember>(stepCount);    
+	lastMemberId = CStoredMember::GetNextMember(startId, stepCount, lpMemberList);
     POSITION pos = lpMemberList->GetHeadPosition();
     while (pos)
     {
-        CString szMemberName = lpMemberList->GetNext(pos);
+        TaobaoMember item = lpMemberList->GetNext(pos);
 
-        CListViewHelp::AddListItem(m_MemberList, szMemberName, STATUS_UNSEND);
+		CListViewHelp::AddListItem(m_MemberList, item.MemberName, item.Status ? STATUS_SENDED : STATUS_UNSEND);
     }
 }
 
@@ -320,14 +326,37 @@ void CSendPage::OnBnClickedBtnEditMsg()
 void CSendPage::OnBnClickedBtnDelMsg()
 {
     CListViewHelp::DeleteSelectedItem(m_MessageList);
+
 }
 
 void CSendPage::OnBnClickedBtnImport2()
 {
     CFileDialog fileOpen(TRUE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
     if (fileOpen.DoModal() == IDOK)
-    {
-        CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
+    {     
+		CString strLine;
+
+		CStdioFile file;
+		CFileException ex;
+
+		if (file.Open(fileOpen.GetPathName(), CFile::modeRead, &ex))
+		{
+			while (file.ReadString(strLine))
+			{
+				CString szUserName(strLine), szStatus("0");
+				int i = strLine.Find(" ", 0);
+				if (i > 0)
+				{
+					szUserName = strLine.Left(i);
+					szStatus = strLine.Right(1);
+				}
+	            
+				CStoredMember::AddMember(szUserName);
+			}
+			file.Close();
+		}
+
+		OnBnClickedBtnFirstPage();
     }
 }
 
@@ -335,17 +364,109 @@ void CSendPage::OnBnClickedBtnExport2()
 {
     CFileDialog fileOpen(FALSE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
     if (fileOpen.DoModal() == IDOK)
-    {
-        CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
-    }    
+    {     
+		CString strLine;
+
+		CStdioFile file;
+		CFileException ex;
+
+		if (file.Open(fileOpen.GetPathName(), CFile::modeCreate|CFile::modeWrite, &ex))
+		{
+			long count = CStoredMember::GetCount();
+			CList<TaobaoMember> *lpMemberList = new CList<TaobaoMember>();
+			CStoredMember::GetNextMember(0, count, lpMemberList);
+			POSITION pos = lpMemberList->GetHeadPosition();
+			while (pos)
+			{
+				TaobaoMember item = lpMemberList->GetNext(pos);
+
+				strLine.Format("%s %d\r\n", item.MemberName, item.Status);
+				file.WriteString(strLine);
+			}
+			
+			file.Close();
+		}
+    }
 }
 
 void CSendPage::OnBnClickedBtnClear()
 {
-    CStoredMember::DeleteAllMembers();
+	if (MessageBox("确实要删除所有买家/卖家吗？", "提示", MB_YESNO) == IDYES)
+	{
+		CStoredMember::DeleteAllMembers();
+		OnBnClickedBtnFirstPage();
+	}
 }
 
 void CSendPage::OnBnClickedBtnClear2()
 {
-    CStoredMember::DeleteSendedMembers();
+	if (MessageBox("确实要删除已发送买家/卖家吗？", "提示", MB_YESNO) == IDYES)
+	{
+		CStoredMember::DeleteSendedMembers();
+		OnBnClickedBtnFirstPage();
+	}
+}
+
+void CSendPage::SetPagging(long start, long pageSize)
+{
+	this->GetDlgItem(IDC_BTN_FIRST_PAGE)->EnableWindow(TRUE);
+	this->GetDlgItem(IDC_BTN_PREV_PAGE)->EnableWindow(TRUE);
+	this->GetDlgItem(IDC_BTN_NEXT_PAGE)->EnableWindow(TRUE);
+	this->GetDlgItem(IDC_BTN_LAST_PAGE)->EnableWindow(TRUE);
+
+	long count = CStoredMember::GetCount();
+	if (start == 0)
+	{
+		this->GetDlgItem(IDC_BTN_FIRST_PAGE)->EnableWindow(FALSE);
+		this->GetDlgItem(IDC_BTN_PREV_PAGE)->EnableWindow(FALSE);
+	}
+	if (start + pageSize >= count)
+	{
+		this->GetDlgItem(IDC_BTN_NEXT_PAGE)->EnableWindow(FALSE);
+		this->GetDlgItem(IDC_BTN_LAST_PAGE)->EnableWindow(FALSE);
+	}
+}
+
+void CSendPage::OnBnClickedBtnFirstPage()
+{
+    LoadMembers(0, PAGE_SIZE);
+	SetPagging(0, PAGE_SIZE);
+}
+
+void CSendPage::OnBnClickedBtnPrevPage()
+{
+	int prevPageIndex = lastMemberId - PAGE_SIZE*2;
+	if (prevPageIndex < 0)
+	{
+		OnBnClickedBtnFirstPage();
+	}
+	else
+	{
+		LoadMembers(prevPageIndex, PAGE_SIZE);
+		SetPagging(prevPageIndex, PAGE_SIZE);
+	}
+}
+
+void CSendPage::OnBnClickedBtnNextPage()
+{
+    long count = CStoredMember::GetCount();
+	int nextPageIndex = lastMemberId;
+	if (nextPageIndex < count)
+	{
+		LoadMembers(lastMemberId, PAGE_SIZE);
+		SetPagging(lastMemberId, PAGE_SIZE);
+	}
+	else
+	{
+		OnBnClickedBtnLastPage();
+	}
+}
+
+void CSendPage::OnBnClickedBtnLastPage()
+{	
+    long count = CStoredMember::GetCount();
+	int pageCount = (int)(count / PAGE_SIZE) + ((count % PAGE_SIZE) > 0 ? 1 : 0) - 1;
+	LoadMembers(pageCount * PAGE_SIZE, PAGE_SIZE);
+	
+	SetPagging(pageCount * PAGE_SIZE, PAGE_SIZE);
 }
