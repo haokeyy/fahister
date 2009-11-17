@@ -31,6 +31,9 @@ public:
     CListCtrl m_AccountList;
     CComboBox m_CmbSpeed;
     void InitSpeed();
+    void LoadMembers(long startId, long stepCount);
+    void SaveProfile();
+    void LoadProfile();
     void StartSendMsg();
     void StopSendMsg();
     int GetNextMessage(CString& szNextMessage);
@@ -39,8 +42,6 @@ public:
     LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam);
     CExplorerOcx m_ExprMsgHelp;
     afx_msg void OnTimer(UINT_PTR nIDEvent);
-    void SaveProfile();
-    void LoadProfile();
     afx_msg void OnClose();
 	CListCtrl m_MessageList;
 	CListCtrl m_MemberList;
