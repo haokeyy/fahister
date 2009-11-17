@@ -59,8 +59,8 @@ BOOL CSendPage::OnInitDialog()
     m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
     m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
 
-    //m_MemberList.DeleteAllItems();
-    //LoadMembers();
+    m_MemberList.DeleteAllItems();
+    LoadMembers(0, 100);
 
     InitSpeed();
 
@@ -85,6 +85,24 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
 	ON_BN_CLICKED(IDC_BTN_CLEAR2, &CSendPage::OnBnClickedBtnClear2)
 END_MESSAGE_MAP()
 
+void CSendPage::LoadMembers(long startId, long stepCount)
+{
+    long count = CStoredMember::GetCount();
+    long unsended = CStoredMember::GetUnSendCount();
+    CString caption;
+    caption.Format("买家/卖家(共:%d,已发送:%d)", count, count - unsended);
+    this->SetDlgItemText(IDC_STATIC_MEMBER, caption);
+
+    CStringList *lpMemberList = new CStringList(stepCount);
+    CStoredMember::GetNextMember(startId, stepCount, lpMemberList);
+    POSITION pos = lpMemberList->GetHeadPosition();
+    while (pos)
+    {
+        CString szMemberName = lpMemberList->GetNext(pos);
+
+        CListViewHelp::AddListItem(m_MemberList, szMemberName, STATUS_UNSEND);
+    }
+}
 
 void CSendPage::InitSpeed()
 {
@@ -195,10 +213,9 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 
 int CSendPage::GetNextMember(CString& szNextReceiver)
 {
-    long i = CStoredMember::GetNextUnSenderMember(szNextReceiver);
+    long i = CStoredMember::GetNextUnSendedMember(szNextReceiver);
 	CStoredMember::SetMemberStatus(i, 1);
 	return i;
-
 }
 
 int CSendPage::GetNextMessage(CString& szNextMessage)

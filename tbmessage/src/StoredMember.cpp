@@ -58,7 +58,7 @@ void CStoredMember::AddMember(CString strMemberName)
     conn.Close();
 }
 
-long CStoredMember::GetNextUnSenderMember(CString& szMemberName)
+long CStoredMember::GetNextUnSendedMember(CString& szMemberName)
 {
     long id = -1;
 
@@ -78,6 +78,36 @@ long CStoredMember::GetNextUnSenderMember(CString& szMemberName)
         conn.Close();
     }
     return id;
+}
+
+// 返回最后一个的id
+long CStoredMember::GetNextMember(long start, int count, CStringList* lpMemberlist)
+{
+    long lastId = 0;
+
+    CAdoConnection conn;
+    if (conn.ConnectAccess(GetFilePath()))
+    {
+        CString szCmdText;
+        szCmdText.Format("select top %d id, name from members where id > %d", count, start);
+
+        CAdoRecordSet rs(&conn);
+        if (rs.Open(szCmdText) && rs.MoveFirst())
+        {
+            do
+            {
+                CString szMemberName;
+                rs.GetCollect(0L, lastId);
+                rs.GetCollect(1L, szMemberName);
+
+                lpMemberlist->AddTail(szMemberName);
+            }
+            while (rs.MoveNext());
+        }
+
+        conn.Close();
+    }
+    return lastId;
 }
 
 void CStoredMember::SetMemberStatus(long id, int status)
