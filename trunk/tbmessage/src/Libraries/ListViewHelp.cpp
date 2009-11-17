@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "ListViewHelp.h"
+#include "../StoredMember.h"
 
 CListViewHelp::CListViewHelp()
 {
@@ -112,30 +113,4 @@ int CListViewHelp::SelectedNextItemByValue(CListCtrl& listCtrl, CString szValue)
     while (itemValue != szValue && offset++ < count);
  
     return offset;
-}
-
-
-void CListViewHelp::ImportItems(CListCtrl& listCtrl, CString fileName)
-{     
-    CString strLine;
-
-    CStdioFile file;
-    CFileException ex;
-
-    if (file.Open(fileName, CFile::modeRead, &ex))
-    {
-        while (file.ReadString(strLine))
-        {
-            CString szUserName(strLine), szStatus("0");
-            int i = strLine.Find(" ", 0);
-            if (i > 0)
-            {
-                szUserName = strLine.Left(i);
-                szStatus = strLine.Right(1);
-            }
-            
-            AddListItem(listCtrl, szUserName, szStatus == "1" ? STATUS_SENDED : STATUS_UNSEND);
-        }
-        file.Close();
-    }
 }

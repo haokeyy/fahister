@@ -81,33 +81,51 @@ long CStoredMember::GetNextUnSendedMember(CString& szMemberName)
 }
 
 // 返回最后一个的id
-long CStoredMember::GetNextMember(long start, int count, CStringList* lpMemberlist)
+long CStoredMember::GetNextMember(long start, int count, CList<TaobaoMember>* lpMemberlist)
 {
     long lastId = 0;
+	long status = 0;
+	long startId = 0;
 
     CAdoConnection conn;
     if (conn.ConnectAccess(GetFilePath()))
     {
         CString szCmdText;
-        szCmdText.Format("select top %d id, name from members where id > %d", count, start);
+		if (start > 0)
+		{
+			szCmdText.Format("select max(id) from (SELECT top %d id FROM members order by id) t", start);
+			CAdoRecordSet rs1(&conn);
+			if (rs1.Open(szCmdText) && rs1.MoveFirst())
+			{
+				rs1.GetCollect(0L, startId);
+			}
+		}
 
+		szCmdText.Format("select top %d id, name, status from members where id > %d order by id", count, startId);
+		
         CAdoRecordSet rs(&conn);
         if (rs.Open(szCmdText) && rs.MoveFirst())
         {
             do
             {
+				TaobaoMember item;
                 CString szMemberName;
                 rs.GetCollect(0L, lastId);
                 rs.GetCollect(1L, szMemberName);
+                rs.GetCollect(2L, status);
 
-                lpMemberlist->AddTail(szMemberName);
+				item.Id = lastId;
+				item.MemberName = szMemberName;
+				item.Status = status;
+
+                lpMemberlist->AddTail(item);
             }
-            while (rs.MoveNext());
+			while (rs.MoveNext() && !rs.IsEOF());
         }
 
         conn.Close();
     }
-    return lastId;
+    return start + count;
 }
 
 void CStoredMember::SetMemberStatus(long id, int status)
@@ -139,7 +157,9 @@ void CStoredMember::DeleteAllMembers()
     conn.ConnectAccess(GetFilePath());
 
     CString szCmdText;
-    szCmdText.Format("delete from members");
+    szCmdText.Format("drop table members");
+	conn.Execute(szCmdText);
+    szCmdText.Format("create table members(id autoincrement, name varchar(50), status int, flag bit)");
     conn.Execute(szCmdText);
     conn.Close();
 }

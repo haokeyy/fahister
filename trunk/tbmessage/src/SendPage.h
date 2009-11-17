@@ -21,6 +21,7 @@ protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 	virtual BOOL OnInitDialog();
+	long lastMemberId;
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -32,6 +33,7 @@ public:
     CComboBox m_CmbSpeed;
     void InitSpeed();
     void LoadMembers(long startId, long stepCount);
+	void SetPagging(long start, long pageSize);
     void SaveProfile();
     void LoadProfile();
     void StartSendMsg();
@@ -52,4 +54,8 @@ public:
 	afx_msg void OnBnClickedBtnExport2();
 	afx_msg void OnBnClickedBtnClear();
 	afx_msg void OnBnClickedBtnClear2();
+	afx_msg void OnBnClickedBtnFirstPage();
+	afx_msg void OnBnClickedBtnPrevPage();
+	afx_msg void OnBnClickedBtnNextPage();
+	afx_msg void OnBnClickedBtnLastPage();
 };

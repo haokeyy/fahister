@@ -117,7 +117,6 @@ void CMemberPage::OnBnClickedBtnImport2()
     CFileDialog fileOpen(TRUE,  ".txt", 0, OFN_HIDEREADONLY|OFN_OVERWRITEPROMPT, "*.txt|*.txt|*.*|*.*||");
     if (fileOpen.DoModal() == IDOK)
     {
-        CListViewHelp::ImportItems(m_MemberList, fileOpen.GetPathName());
     }
 }
 
