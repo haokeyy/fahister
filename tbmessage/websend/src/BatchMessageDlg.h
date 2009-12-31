@@ -40,7 +40,9 @@ protected:
 public:
     CListCtrl m_MemberList;
     CComboBox m_CmbTarget;
-    CString m_Message;
+    CString m_Message;    
+    CString szSenderID;
+    CString szPassword;
     CButton m_BtnSendMsg;
     CString szTaobaoSendUrl;
     BOOL m_bHideWnd;

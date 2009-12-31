@@ -11,6 +11,7 @@
 #include "RegDlg.h"
 #include "IMMessage.h"
 #include "Constants.h"
+#include "WebSendDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -703,6 +704,8 @@ void CBatchMessageDlg::OnTimer(UINT nIDEvent)
         MessageBox("您没有注册，发送数量已达到限制。请点击注册按钮注册成为正版用户。", "警告");
         return;
     }  
+
+
     CString szTopMember;
     int i = GetUnSendedMember(szTopMember);
     if (i < 0)
@@ -723,55 +726,16 @@ void CBatchMessageDlg::OnTimer(UINT nIDEvent)
         return;
     }
 
-    CString szSenderID, szPassword;
-    int j = GetSenderUser(szSenderID, szPassword);
-    if (j < 0)
-    {
-        this->KillTimer(TIMER_ID);
-        OnFinishSend();
-        m_UserList.EnsureVisible(0, TRUE);
-
-        MessageBox("所有帐号都已达到发送限制，请更换帐号登录。\n\n(发送数量为\"-1\"的帐号表示登录失败)!", "提示");
-        return;
-    }
-
+    // 信息内容
     CString tempMessage = m_Message;
     tempMessage += szVersionAD;
     tempMessage.Replace("[好友名]", szTopMember);
-    
-    CString szWndTitle;
+
+    CString szWndTitle, szSendWndTitle;
     this->GetWindowText(szWndTitle);
-
-    CString szFileName;
-    DWORD nProcID = ::GetCurrentProcessId();
-
-    GetProcessNameByProcessID(nProcID, szFileName);
-
-    int index = szFileName.ReverseFind('\\');
-    CString szPath = szFileName.Left(index);
-    szPath += "\\sender.exe";
-
-    CFileFind finder;
-    if (finder.FindFile(szPath) == FALSE)
-    {
-        this->KillTimer(TIMER_ID);
-        OnFinishSend();
-        MessageBox("没有找到文件" + szPath, "错误");
-
-        return;
-    }
-
-    UpdateData(TRUE);
-    // 开始发送
-    UINT SHOW_FLAG = SW_HIDE;
-    if (m_bChkShowSendWindow)
-    {
-        SHOW_FLAG = SW_SHOW;
-    }
-    ::WinExec(szPath, SHOW_FLAG);
-    Sleep(500);
+    szSendWndTitle = szTaobaoSendUrl + szSenderID;
     
-    HWND hWnd = ::FindTopWindowExactly(szTaobaoSendUrl.GetBuffer(0), "#32770");
+    HWND hWnd = ::FindTopWindowExactly(szSendWndTitle.GetBuffer(0), "#32770");
     if (hWnd)
     {
         HWND hSendFrom = ::FindWindowEx(hWnd, NULL, "Edit", "");
@@ -793,6 +757,49 @@ void CBatchMessageDlg::OnTimer(UINT nIDEvent)
         SetMemberStatus(szTopMember, 1);
         m_MemberList.SetHotItem(i);
         m_MemberList.EnsureVisible(i, TRUE);
+    }
+    else
+    {
+        // 发送账号
+        int j = GetSenderUser(szSenderID, szPassword);
+        if (j < 0)
+        {
+            this->KillTimer(TIMER_ID);
+            OnFinishSend();
+            m_UserList.EnsureVisible(0, TRUE);
+
+            MessageBox("所有帐号都已达到发送限制，请更换帐号登录。\n\n(发送数量为\"-1\"的帐号表示登录失败)!", "提示");
+            return;
+        }
+        
+        CString szFileName;
+        DWORD nProcID = ::GetCurrentProcessId();
+
+        GetProcessNameByProcessID(nProcID, szFileName);
+
+        int index = szFileName.ReverseFind('\\');
+        CString szPath = szFileName.Left(index);
+        szPath += "\\sender.exe";
+
+        CFileFind finder;
+        if (finder.FindFile(szPath) == FALSE)
+        {
+            this->KillTimer(TIMER_ID);
+            OnFinishSend();
+            MessageBox("没有找到文件" + szPath, "错误");
+
+            return;
+        }
+
+        UpdateData(TRUE);
+        // 开始发送
+        UINT SHOW_FLAG = SW_HIDE;
+        if (m_bChkShowSendWindow)
+        {
+            SHOW_FLAG = SW_SHOW;
+        }
+        ::WinExec(szPath, SHOW_FLAG);
+        Sleep(500);
     }
 
     CDialog::OnTimer(nIDEvent);
