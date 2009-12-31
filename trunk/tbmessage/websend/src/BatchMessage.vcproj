@@ -264,6 +264,10 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath=".\WebSendDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\WindowHelp.cpp"
 				>
 			</File>
@@ -339,6 +343,10 @@
 			</File>
 			<File
 				RelativePath=".\stdafx.h"
+				>
+			</File>
+			<File
+				RelativePath=".\WebSendDlg.h"
 				>
 			</File>
 			<File
