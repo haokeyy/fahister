@@ -8,6 +8,7 @@
 
 #pragma comment(lib, "Iphlpapi.lib")
 #pragma comment(lib, "WS2_32.lib")
+#pragma comment(lib, "psapi.lib")
 
 
 

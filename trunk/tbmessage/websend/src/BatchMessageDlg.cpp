@@ -11,7 +11,6 @@
 #include "RegDlg.h"
 #include "IMMessage.h"
 #include "Constants.h"
-#include "WebSendDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
