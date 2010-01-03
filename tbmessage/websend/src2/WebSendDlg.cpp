@@ -6,6 +6,7 @@
 #include "WebSendDlg.h"
 #include ".\websenddlg.h"
 #include "DHtmlHelper.h"
+#include "WindowHelp.h"
 
 #define WEBSEND_TIMER_ID 1025
 #define WEBSEND_TIMEOUT_TIMER_ID 1026
@@ -161,11 +162,11 @@ BOOL CWebSendDlg::OnInitDialog()
 	CDialog::OnInitDialog();
 
     
-    this->SetDlgItemText(IDC_SENDFROM, "zhi3385");
+    this->SetDlgItemText(IDC_SENDFROM, "21qunfa2008");
     this->SetDlgItemText(IDC_PASSWORD, "zhi3385");
-    this->SetDlgItemText(IDC_SENDTO, "citypop2009");
+    this->SetDlgItemText(IDC_SENDTO, "zhi3385");
     this->SetDlgItemText(IDC_MESSAGE, "hi");
-    this->SetDlgItemText(IDC_MAINWNDTITLE, "zhi3385");
+    this->SetDlgItemText(IDC_MAINWNDTITLE, "21qunfa2008");
 
     OnSendWebMessage(0, (LPARAM)1);
 
@@ -208,6 +209,7 @@ BOOL CWebSendDlg::SendStep1()
         ptbUser->put_innerText(bstrSendTo);
         ::SysFreeString(bstrSendTo);
         ptbUser->Release();
+        nCurrentStep = 2;
     }
     pColl->Release();
     pDisp->Release();
@@ -235,6 +237,7 @@ BOOL CWebSendDlg::SendStep2()
     {
         psimpleSayToBtn->click();
         psimpleSayToBtn->Release();
+        nCurrentStep = 3;
     }
     
     pColl->Release();
@@ -245,19 +248,43 @@ BOOL CWebSendDlg::SendStep2()
     return TRUE;
 }
 
+CString lastCheckCodeUrl;
+
 void SaveCheckCodeUrl(CString szCheckCodeUrl)
 {
-    CStdioFile file("c:\\checkcodeurl.txt", CFile::modeCreate|CFile::modeReadWrite);
-    file.WriteString(szCheckCodeUrl);
+    if (lastCheckCodeUrl != szCheckCodeUrl)
+    {
+        lastCheckCodeUrl = szCheckCodeUrl;
+
+        szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
+        
+        if (!szCheckCodeUrl.IsEmpty())
+        {
+            CStdioFile file;
+            if(file.Open(szCheckCodeUrl, CFile::modeCreate|CFile::modeReadWrite))
+            {
+                file.Close();
+            }
+        }
+    }
 }
 
 CString GetCheckCode(CString szCheckCodeUrl)
 {
-    CString szCheckCode;
-    CStdioFile file("c:\\checkcode.txt", CFile::modeReadWrite);
-    file.ReadString(szCheckCode);
+    CString chkCode;
+    szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
 
-    return szCheckCode;
+    if (!szCheckCodeUrl.IsEmpty())
+    {
+        CStdioFile file;
+        if (file.Open(szCheckCodeUrl, CFile::modeRead))
+        {
+            file.ReadString(chkCode);
+            file.Close();
+        }
+    }
+
+    return chkCode;
 }
 
 // 第三步，输入验证码
@@ -282,17 +309,17 @@ BOOL CWebSendDlg::SendStep3()
     {
         SaveCheckCodeUrl(szCheckCodeUrl);
         szCheckCode = GetCheckCode(szCheckCodeUrl);
-        if (szCheckCode.IsEmpty())
-        {
-            nCurrentStep--;
-        }
-        else // 输入验证码
+        if (!szCheckCode.IsEmpty())
         {
             CString szChkCodeInput = "checkcodecntaobao" + szUnicodeID;
             SetControlValue(pDoc, szChkCodeInput, szCheckCode);
             GetElementByName(pDoc, "codeSubmitBtn", &pSubmit);
             pSubmit->click();
         }
+    }
+    else
+    {
+        nCurrentStep = 4;
     }
 
     this->SetTimer(WEBSEND_TIMER_ID, 1000, NULL);
@@ -395,7 +422,7 @@ LRESULT CWebSendDlg::OnSendWebMessage(WPARAM wParam1, LPARAM lParam1)
     else
     {
         nCurrentStep = 1;
-        this->SetTimer(WEBSEND_TIMER_ID, 1000, NULL);
+        this->SetTimer(WEBSEND_TIMER_ID, 2000, NULL);
 
         m_SendStatus = "正在发送：";
         m_SendStatus += m_szSendTo;
@@ -414,8 +441,9 @@ void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
     CString url = m_IESendMsg.get_LocationURL();
 
     // 登录
-    if (url.Find("http://member1.taobao.com/member/login.jhtml?redirect_url=") >= 0)
+    if (url.Find("http://member1.taobao.com/member/login.jhtml?redirect_url=") >= 0) // 安全登录
     {
+        // 切换到标准登录
         IDispatch *pDisp = m_IESendMsg.get_Document();        
         IHTMLDocument2 *pDoc = (IHTMLDocument2 *)pDisp;
 
@@ -426,7 +454,7 @@ void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
             pChangeMode->click();
 
     }
-	else if (url.Find("http://login.taobao.com/member/login.jhtml?login_type=3") >= 0)
+	else if (url.Find("http://login.taobao.com/member/login.jhtml?login_type=3") >= 0) // 标准登录
     {
         BSTR bstrSendFrom = m_szSendFrom.AllocSysString();
         BSTR bstrPassword = m_szPassword.AllocSysString();
@@ -470,38 +498,37 @@ void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
         //    NotifyMainWindow(-1);
         //}
     }
-    else if (url.Find("http://webwwtb.im.alisoft.com/wangwang/webww.htm?") >= 0)
+    else if (url.Find("http://webwwtb.im.alisoft.com/wangwang/webww.htm?") >= 0) // 发送界面
     {   
-        HRESULT hr = 1;    
-        IDispatch *pDisp = m_IESendMsg.get_Document();
-        if (pDisp)
-        {
-            IHTMLDocument2 *pDoc = (IHTMLDocument2 *)pDisp;
-            IHTMLWindow2 *pWindow, *pTopWindow;
-            VARIANT pvarRet;
-            pDoc->get_parentWindow(&pWindow);
-            pWindow->get_top(&pTopWindow);
-            CString szScript1 = "function confirm(str){return true;}";
-            CString szScript2 = "function alert(str){return;}";
-            CString szScript3 = "function beforeUnload(){}";
-            CString szLanguage = "javascript";
-            BSTR bstrScript1 = szScript1.AllocSysString();
-            BSTR bstrScript2 = szScript2.AllocSysString();
-            BSTR bstrScript3 = szScript3.AllocSysString();
-            BSTR bstrLanguage = szLanguage.AllocSysString();
-            hr = pTopWindow->execScript(bstrScript1, bstrLanguage, &pvarRet);
-            hr = pTopWindow->execScript(bstrScript2, bstrLanguage, &pvarRet);
-            hr = pTopWindow->execScript(bstrScript3, bstrLanguage, &pvarRet);
+        //HRESULT hr = 1;    
+        //IDispatch *pDisp = m_IESendMsg.get_Document();
+        //if (pDisp)
+        //{
+        //    IHTMLDocument2 *pDoc = (IHTMLDocument2 *)pDisp;
+        //    IHTMLWindow2 *pWindow, *pTopWindow;
+        //    VARIANT pvarRet;
+        //    pDoc->get_parentWindow(&pWindow);
+        //    pWindow->get_top(&pTopWindow);
+        //    CString szScript1 = "function confirm(str){return true;}";
+        //    CString szScript2 = "function alert(str){return;}";
+        //    CString szScript3 = "function beforeUnload(){}";
+        //    CString szLanguage = "javascript";
+        //    BSTR bstrScript1 = szScript1.AllocSysString();
+        //    BSTR bstrScript2 = szScript2.AllocSysString();
+        //    BSTR bstrScript3 = szScript3.AllocSysString();
+        //    BSTR bstrLanguage = szLanguage.AllocSysString();
+        //    hr = pTopWindow->execScript(bstrScript1, bstrLanguage, &pvarRet);
+        //    hr = pTopWindow->execScript(bstrScript2, bstrLanguage, &pvarRet);
+        //    hr = pTopWindow->execScript(bstrScript3, bstrLanguage, &pvarRet);
 
-            ::SysFreeString(bstrScript1);
-            ::SysFreeString(bstrScript2);
-            ::SysFreeString(bstrScript3);
-            pTopWindow->Release();
-            pWindow->Release();
-            pDisp->Release();
-           
-        }
-         
+        //    ::SysFreeString(bstrScript1);
+        //    ::SysFreeString(bstrScript2);
+        //    ::SysFreeString(bstrScript3);
+        //    pTopWindow->Release();
+        //    pWindow->Release();
+        //    pDisp->Release();
+        //   
+        //}
         
         nCurrentStep = 1;
         this->SetTimer(WEBSEND_TIMER_ID, 2000, NULL);
@@ -519,8 +546,8 @@ void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
 
 void CWebSendDlg::OnTimer(UINT nIDEvent)
 {
-    if ( nIDEvent == WEBSEND_TIMER_ID)
-    {
+    //if ( nIDEvent == WEBSEND_TIMER_ID)
+    //{
         this->KillTimer(WEBSEND_TIMER_ID);
 
         switch (nCurrentStep)
@@ -540,13 +567,12 @@ void CWebSendDlg::OnTimer(UINT nIDEvent)
             default:
                 break;
         }
-        nCurrentStep++;
-    }
-    else if (nIDEvent == WEBSEND_TIMEOUT_TIMER_ID)
-    {
-        this->KillTimer(WEBSEND_TIMEOUT_TIMER_ID);
-        NotifyMainWindow(0);
-    }
+    //}
+    //else if (nIDEvent == WEBSEND_TIMEOUT_TIMER_ID)
+    //{
+    //    this->KillTimer(WEBSEND_TIMEOUT_TIMER_ID);
+    //    NotifyMainWindow(0);
+    //}
 
     CDialog::OnTimer(nIDEvent);
 }

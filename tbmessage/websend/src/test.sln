@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BatchMessage", "BatchMessage.vcproj", "{FA556509-0EB3-4341-9AE2-9FB91625A740}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sender", "..\src2\BatchMessage2.vcproj", "{38903301-1497-402F-BB24-CD57C64F6BCB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sender", "..\src2\BatchMessage2.vcproj", "{89EA3287-9F72-4410-BCAC-AACF8170E280}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,10 +14,10 @@ Global
 		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Debug|Win32.Build.0 = Debug|Win32
 		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Release|Win32.ActiveCfg = Release|Win32
 		{FA556509-0EB3-4341-9AE2-9FB91625A740}.Release|Win32.Build.0 = Release|Win32
-		{38903301-1497-402F-BB24-CD57C64F6BCB}.Debug|Win32.ActiveCfg = Debug|Win32
-		{38903301-1497-402F-BB24-CD57C64F6BCB}.Debug|Win32.Build.0 = Debug|Win32
-		{38903301-1497-402F-BB24-CD57C64F6BCB}.Release|Win32.ActiveCfg = Release|Win32
-		{38903301-1497-402F-BB24-CD57C64F6BCB}.Release|Win32.Build.0 = Release|Win32
+		{89EA3287-9F72-4410-BCAC-AACF8170E280}.Debug|Win32.ActiveCfg = Debug|Win32
+		{89EA3287-9F72-4410-BCAC-AACF8170E280}.Debug|Win32.Build.0 = Debug|Win32
+		{89EA3287-9F72-4410-BCAC-AACF8170E280}.Release|Win32.ActiveCfg = Release|Win32
+		{89EA3287-9F72-4410-BCAC-AACF8170E280}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
