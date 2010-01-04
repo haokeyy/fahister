@@ -260,13 +260,14 @@ void SaveCheckCodeUrl(CString szCheckCodeUrl)
     {
         lastCheckCodeUrl = szCheckCodeUrl;
 
-        szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "c:\\chkcode\\");
+        szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
         
         if (!szCheckCodeUrl.IsEmpty())
         {
             CStdioFile file;
             if(file.Open(CHKCODE_FILE, CFile::modeCreate|CFile::modeReadWrite))
             {
+                file.WriteString(szCheckCodeUrl);
                 file.Close();
             }
         }
@@ -276,7 +277,7 @@ void SaveCheckCodeUrl(CString szCheckCodeUrl)
 CString GetCheckCode(CString szCheckCodeUrl)
 {
     CString chkCode;
-    szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "c:\\chkcode\\");
+    szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
 
     if (!szCheckCodeUrl.IsEmpty())
     {
@@ -369,6 +370,8 @@ BOOL CWebSendDlg::SendStep4()
         ::SysFreeString(bstrMessage);
         pmsg->Release();
         psend->Release();
+
+        NotifyMainWindow(1);
     }
 
     pColl->Release();
@@ -399,7 +402,6 @@ BOOL CWebSendDlg::SendStep4()
     //pDisp->Release();
 
     //::PostMessage(hWndFrom,WM_SENDMSGCOMPLETED, (WPARAM)1, (LPARAM)nUserFlag);
-    NotifyMainWindow(1);
 
     //this->OnCancel();
 
@@ -449,11 +451,6 @@ END_EVENTSINK_MAP()
 
 void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
 {
-    Sleep(5000);
-
-    NotifyMainWindow(0);
-    return;
-
     CString url = m_IESendMsg.get_LocationURL();
 
     // 登录
@@ -603,12 +600,12 @@ void CWebSendDlg::OnDestroy()
 // 给主窗口发送通知， nResult:0:登录失败,1:发送成功
 void CWebSendDlg::NotifyMainWindow(int nResult)
 {
-    HWND hPrompt = ::FindWindowEx(hWndFrom, NULL, "Static", "发送者和接收者");
-    HWND hSendFrom = ::GetWindow(hPrompt, GW_HWNDNEXT);
-    HWND hSendTo = ::GetWindow(hSendFrom, GW_HWNDNEXT);
+    //HWND hPrompt = ::FindWindowEx(hWndFrom, NULL, "Static", "发送者和接收者");
+    //HWND hSendFrom = ::GetWindow(hPrompt, GW_HWNDNEXT);
+    //HWND hSendTo = ::GetWindow(hSendFrom, GW_HWNDNEXT);
 
-    ::SendMessage(hSendFrom, WM_SETTEXT, 0, (LPARAM)m_szSendFrom.GetBuffer(0));
-    ::SendMessage(hSendTo, WM_SETTEXT, 0, (LPARAM)m_szSendTo.GetBuffer(0));
+    //::SendMessage(hSendFrom, WM_SETTEXT, 0, (LPARAM)m_szSendFrom.GetBuffer(0));
+    //::SendMessage(hSendTo, WM_SETTEXT, 0, (LPARAM)m_szSendTo.GetBuffer(0));
 
     ::SendMessage(hWndFrom, WM_SENDMSGCOMPLETED, (WPARAM)0, (LPARAM)nResult);
 

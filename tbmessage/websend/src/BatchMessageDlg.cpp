@@ -578,7 +578,7 @@ void CBatchMessageDlg::OnBnClickedBtnSendmsg()
         int smSecond = m_CmbSendSpeed.GetItemData(m);
 
         OnTimer(TIMER_ID);
-        //this->SetTimer(TIMER_ID, smSecond, NULL);
+        this->SetTimer(TIMER_ID, smSecond, NULL);
         OnStartSend();
     }
     else
@@ -759,6 +759,8 @@ void CBatchMessageDlg::OnTimer(UINT nIDEvent)
         SetMemberStatus(szTopMember, 1);
         m_MemberList.SetHotItem(i);
         m_MemberList.EnsureVisible(i, TRUE);
+        
+        this->KillTimer(TIMER_ID);
     }
     else
     {
