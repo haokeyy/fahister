@@ -415,8 +415,6 @@ LRESULT CBatchMessageDlg::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 	nSendedTotal++;
 	SetMemberStatInfo();
 
-    OnTimer(TIMER_ID);
-
     return 0;
 }
 
@@ -529,9 +527,9 @@ void CBatchMessageDlg::OnBnClickedBtnAdduser()
     if (dlg.DoModal() == IDOK)
     {
         int cnt = m_UserList.GetItemCount();
-        m_UserList.InsertItem(cnt, dlg.m_UserId);
-        m_UserList.SetItemText(cnt, 1, dlg.m_Password);
-        m_UserList.SetItemText(cnt, 2, "0");
+        //m_UserList.InsertItem(cnt, dlg.m_UserId);
+        //m_UserList.SetItemText(cnt, 1, dlg.m_Password);
+        //m_UserList.SetItemText(cnt, 2, "0");
     }
 }
 
@@ -578,7 +576,7 @@ void CBatchMessageDlg::OnBnClickedBtnSendmsg()
         int smSecond = m_CmbSendSpeed.GetItemData(m);
 
         OnTimer(TIMER_ID);
-        //this->SetTimer(TIMER_ID, smSecond, NULL);
+        this->SetTimer(TIMER_ID, smSecond, NULL);
         OnStartSend();
     }
     else

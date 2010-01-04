@@ -12,6 +12,8 @@
 #define WEBSEND_TIMEOUT_TIMER_ID 1026
 //
 
+#define CHKCODE_FILE "c:\\chkcode\\chkcode.txt"
+
 void GetUnicodeUserID(CString szUserID, CString& szUnicodeUserID)
 {
     WCHAR wszUserID[256];
@@ -161,14 +163,16 @@ BOOL CWebSendDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-    
-    this->SetDlgItemText(IDC_SENDFROM, "21qunfa2008");
-    this->SetDlgItemText(IDC_PASSWORD, "zhi3385");
-    this->SetDlgItemText(IDC_SENDTO, "zhi3385");
-    this->SetDlgItemText(IDC_MESSAGE, "hi");
-    this->SetDlgItemText(IDC_MAINWNDTITLE, "21qunfa2008");
+    CString szTitle("发送淘宝消息");
+    this->SetWindowText(szTitle);
 
-    OnSendWebMessage(0, (LPARAM)1);
+    //this->SetDlgItemText(IDC_SENDFROM, "21qunfa2008");
+    //this->SetDlgItemText(IDC_PASSWORD, "zhi3385");
+    //this->SetDlgItemText(IDC_SENDTO, "zhi3385");
+    //this->SetDlgItemText(IDC_MESSAGE, "hi");
+    //this->SetDlgItemText(IDC_MAINWNDTITLE, "21qunfa2008");
+
+    //OnSendWebMessage(0, (LPARAM)1);
 
     // 超时后用该定时器结束程序, 超时时间30s
     //this->SetTimer(WEBSEND_TIMEOUT_TIMER_ID, 30000, NULL);
@@ -256,12 +260,12 @@ void SaveCheckCodeUrl(CString szCheckCodeUrl)
     {
         lastCheckCodeUrl = szCheckCodeUrl;
 
-        szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
+        szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "c:\\chkcode\\");
         
         if (!szCheckCodeUrl.IsEmpty())
         {
             CStdioFile file;
-            if(file.Open(szCheckCodeUrl, CFile::modeCreate|CFile::modeReadWrite))
+            if(file.Open(CHKCODE_FILE, CFile::modeCreate|CFile::modeReadWrite))
             {
                 file.Close();
             }
@@ -272,15 +276,22 @@ void SaveCheckCodeUrl(CString szCheckCodeUrl)
 CString GetCheckCode(CString szCheckCodeUrl)
 {
     CString chkCode;
-    szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "");
+    szCheckCodeUrl.Replace("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=", "c:\\chkcode\\");
 
     if (!szCheckCodeUrl.IsEmpty())
     {
         CStdioFile file;
-        if (file.Open(szCheckCodeUrl, CFile::modeRead))
+        if (file.Open(CHKCODE_FILE, CFile::modeRead))
         {
-            file.ReadString(chkCode);
+            CString szLine;
+            file.ReadString(szLine);
             file.Close();
+
+            int index = szLine.Find("-");
+            if (index >= 0)
+            {
+                chkCode = szLine.Mid(index + 1);
+            }
         }
     }
 
@@ -408,8 +419,8 @@ LRESULT CWebSendDlg::OnSendWebMessage(WPARAM wParam1, LPARAM lParam1)
     hWndFrom = ::FindWindow("#32770", m_szMainWndTitle.GetBuffer(0));
 
     
-    CString szTitle("发送淘宝消息-");
-    this->SetWindowText(szTitle + m_szSendFrom);
+    //CString szTitle("发送淘宝消息");
+    //this->SetWindowText(szTitle);
 
     CString url = m_IESendMsg.get_LocationURL();
 
@@ -438,6 +449,11 @@ END_EVENTSINK_MAP()
 
 void CWebSendDlg::DocumentCompleteIeSendMsg(LPDISPATCH pDisp, VARIANT* URL)
 {
+    Sleep(5000);
+
+    NotifyMainWindow(0);
+    return;
+
     CString url = m_IESendMsg.get_LocationURL();
 
     // 登录
