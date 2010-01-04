@@ -62,9 +62,9 @@ void CTestDlg::OnBnClickedButton1()
 
 void CTestDlg::OnBnClickedButton2()
 {
-    double cur_price = CStockPrice::GetCurrentPrice("600000");
+    double cur_price = CStockPrice::GetCurrentPrice("600036");
 
     CString str;
-    str.Format("600000:%f", cur_price);
+    str.Format("600036:%.2f", cur_price);
     MessageBox(str);
 }
