@@ -51,7 +51,7 @@ BOOL CNnApp::InitInstance()
 
 	AfxEnableControlContainer();
 
-	CTestDlg dlg;
+	CNnDlg dlg;
 	m_pMainWnd = &dlg;
 	INT_PTR nResponse = dlg.DoModal();
 	if (nResponse == IDOK)
