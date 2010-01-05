@@ -31,83 +31,82 @@ UINT CMessageSender::ExecuteSendMsg()
 {
     Sleep(1800);
 
-    if (message.AddToFriend)
-    {
-        AddToFriend();
-    }
+    //if (message.AddToFriend)
+    //{
+    //    AddToFriend();
+    //}
 
-    // 用户是否已经登录
-    CString strWndTitle("-阿里旺旺 2009");
-    strWndTitle = message.SendUserId + strWndTitle;
-    HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "");
-    if (hMainHwnd == NULL && message.AutoLogin) // 没有登录
+    // 用户未登录则登录
+    if (!UserIsLogined(message.SendUserId) && message.AutoLogin)
     {
         ExecuteLogin();
     }
 
-    SendOneMsg();
+    // 添加为好友的提示框，有些用户要求必须添加为好友
+    HWND hMustAddFriend = ::FindWindow("#32770", "添加好友信息");
+    if (hMustAddFriend)
+    {
+        ::PostMessage(hMustAddFriend, WM_CLOSE, 0, 0);
+    }
+    else
+    {
+        SendOneMsg();
+    }
 
     CString szIndex;
     szIndex.Format("%d", message.nItemIndex);
     ::PostMessage(this->m_hMainWnd, WM_SENDMSG_COMPLETED, (WPARAM)0, (LPARAM)szIndex.GetBuffer());
 
-    // 关闭添加联系人成功提示窗口
-    HWND hAddSuccess = ::FindWindow("#32770", "被添加为联系人提示");
-    while (hAddSuccess)
+    HWND hValidCodeWnd = FindTopWindow("阿里旺旺 - 安全验证", "#32770");
+    if (hValidCodeWnd)
     {
-        ::PostMessage(hAddSuccess, WM_CLOSE, 0, 0);
-
-        hAddSuccess = ::FindWindow("#32770", "被添加为联系人提示");
+        ::PostMessage(hValidCodeWnd, WM_CLOSE, 0, 0);
     }
-
-    // 关闭添加联系人失败提示窗口
-    HWND hAddFail = ::FindWindow("#32770", "添加请求被拒绝");
-    ::PostMessage(hAddFail, WM_CLOSE, 0, 0);
 
     return 0;
 }
 
 
-typedef int (WINAPI *fn_loadcode)(void* code, long length, char* address, char* password);
-
-typedef char* (WINAPI *fn_Recognition)(int itemNo, int picIn, int length, char* address1, char* address2, int* lppicout, int* lplength, int* cLength);
-fn_loadcode _loadcode = NULL;
-fn_Recognition _Recognition = NULL;
+CString chkFilePath;
+CString szLastUrl;
 static BOOL hasInit = FALSE;
 
 CString Recognize(CString szUrl)
 {
-	if (hasInit == FALSE || _loadcode == NULL || _Recognition == NULL)
+    CString szResult("");
+    if (hasInit == FALSE || chkFilePath.IsEmpty())
 	{
 		CString szFileName;
 		DWORD nProcID = ::GetCurrentProcessId();
 		GetProcessNameByProcessID(nProcID, szFileName);
 
 		int index = szFileName.ReverseFind('\\');
-		CString chkFilePath = szFileName.Left(index) + "\\4383.fc";
-
-		HINSTANCE hInstance = ::LoadLibrary("ycode.dll");
-		
-		_loadcode = (fn_loadcode)::GetProcAddress(hInstance, "loadcode");
-		_Recognition = (fn_Recognition)::GetProcAddress(hInstance, "Recognition");   
-
-		char *path = chkFilePath.GetBuffer();
-		
-		CFile file(path, CFile::modeRead|CFile::typeBinary);
-		int len = file.GetLength();
-		BYTE *buf = (BYTE*)malloc(len);
-		file.Read(buf, len);
-
-		_loadcode(buf, len, "", "cv2222");
+		chkFilePath = szFileName.Left(index) + "\\chkcode.txt";
 
 		hasInit = TRUE;
 	}
 	
-	int n1 = 0, n2 = 0, n3 = 0;
-	char* address = szUrl.GetBuffer();
-	char* code =  _Recognition(1, 0, 0, address, "", &n1, &n2, &n3);
+    CStdioFile file;
+    if (szLastUrl != szUrl)
+    {
+        if (file.Open(chkFilePath, CFile::modeCreate | CFile::modeReadWrite))
+        {
+            file.WriteString(szUrl);
+            szLastUrl = szUrl;
+            file.Close();
+        }
+    }
 
-	CString szResult(code);
+	CString szLine("");
+    if (file.Open(chkFilePath, CFile::modeRead))
+    {
+        file.ReadString(szLine);
+        if (szLine.GetLength() > szUrl.GetLength())
+        {
+            szResult = szLine.Mid(szUrl.GetLength());
+        }
+        file.Close();
+    }
 	
 	return szResult;
 }
@@ -124,25 +123,6 @@ UINT CMessageSender::SendOneMsg()
         HWND hSplitterBar = ::FindWindowEx(hWndMsg, NULL, "SplitterBar", "");
         //HWND hHtmlEditor = FindChildWnd(hSplitterBar, "", "HtmlEditor");
         HWND hMsgEdit = FindChildWnd(hSplitterBar, "", "RichEditComponent");
-
-        // 根据窗口句柄得到IHTMLDocument2接口
-        //IHTMLDocument2 *pDoc; 
-        //DWORD lRes; 
-
-        //UINT MSG = RegisterWindowMessage("WM_HTML_GETOBJECT"); 
-        //SendMessageTimeout(hMsgEdit, MSG, 0, 0, SMTO_ABORTIFHUNG, 1000, &lRes); 
-        //ObjectFromLresult(lRes, IID_IHTMLDocument2, 0, (void**)&pDoc); 
-
-        //if (pDoc != NULL)
-        //{
-        //    // 设置消息内容
-        //    IHTMLElement *pBody;
-        //    pDoc->get_body(&pBody);
-        //    CString szMessage(message.MessageHtml);
-        //    BSTR bstrMessage = szMessage.AllocSysString();
-        //    pBody->put_innerHTML(bstrMessage);
-        //    ::SysFreeString(bstrMessage);
-        //}
 		
 		CString szMessage(message.MessageHtml);
 		::SendMessage(hMsgEdit, WM_SETTEXT , 0, (LPARAM)szMessage.GetBuffer());
@@ -177,7 +157,6 @@ UINT CMessageSender::SendOneMsg()
             {
                 IHTMLElement* pChkBody;
 				HRESULT re = pDoc->get_body(&pChkBody);
-                //GetDocumentBody(pChkDoc, &pChkBody);
 
 				if (pChkBody)
 				{
@@ -189,6 +168,12 @@ UINT CMessageSender::SendOneMsg()
 					// 识别
 					CString checkCode = Recognize(szUrl);
 	            
+                    while (checkCode.IsEmpty())
+                    {
+                        Sleep(1000);
+                        checkCode = Recognize(szUrl);
+                    }
+
 					HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
 					::SendMessage(hValidCodeEdit, WM_SETTEXT, 0, (LPARAM)checkCode.GetBuffer());
 

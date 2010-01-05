@@ -22,6 +22,7 @@ protected:
 
 	virtual BOOL OnInitDialog();
 	long lastMemberId;
+    BOOL m_IsStop;
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -43,7 +44,7 @@ public:
     BOOL OpenSendWindow(CString szSenderID, CString szReceiverID);
     LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam);
     CExplorerOcx m_ExprMsgHelp;
-    afx_msg void OnTimer(UINT_PTR nIDEvent);
+    void SendImMsg();
     afx_msg void OnClose();
 	CListCtrl m_MessageList;
 	CListCtrl m_MemberList;

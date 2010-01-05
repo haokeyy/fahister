@@ -19,7 +19,7 @@ IMPLEMENT_DYNAMIC(CSendPage, CDialog)
 CSendPage::CSendPage(CWnd* pParent /*=NULL*/)
 	: CDialog(CSendPage::IDD, pParent)
 {
-
+    m_IsStop = FALSE;
 }
 
 CSendPage::~CSendPage()
@@ -73,8 +73,7 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_SENDMSG, &CSendPage::OnBnClickedBtnSendmsg)
     ON_BN_CLICKED(IDC_BTN_ADD_ACCOUNT, &CSendPage::OnBnClickedBtnAddAccount)
     ON_BN_CLICKED(IDC_BTN_DEL_ACCOUNT, &CSendPage::OnBnClickedBtnDelAccount)
-    ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted) 
-    ON_WM_TIMER()
+    ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted)
     ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CSendPage::OnBnClickedBtnAddMsg)
 	ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CSendPage::OnBnClickedBtnEditMsg)
@@ -179,18 +178,17 @@ void CSendPage::OnBnClickedBtnSendmsg()
 
 void CSendPage::StartSendMsg()
 {
+    m_IsStop = TRUE;
     this->SetDlgItemText(IDC_BTN_SENDMSG, "停止");
 
     int m = m_CmbSpeed.GetCurSel();
     int smSecond = m_CmbSpeed.GetItemData(m); // 毫秒数
-    //this->SetTimer(TIMER_ID, smSecond, NULL);
-    OnTimer(TIMER_ID);
+    SendImMsg();
 }
 
 void CSendPage::StopSendMsg()
 {
-    this->KillTimer(TIMER_ID);
-
+    m_IsStop = FALSE;
     this->SetDlgItemText(IDC_BTN_SENDMSG, "开始发送");
 }
 
@@ -214,6 +212,11 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
     szMessage.Format("发送完成:%d", nItemId);
     this->SetDlgItemText(IDC_SEND_STATUS, szMessage);
 
+    if (m_IsStop)
+    {
+        SendImMsg();
+    }
+
     return 0;
 }
 
@@ -230,7 +233,7 @@ int CSendPage::GetNextMessage(CString& szNextMessage)
     return 1;
 }
 
-void CSendPage::OnTimer(UINT_PTR nIDEvent)
+void CSendPage::SendImMsg()
 {    
     CInstantMessage msg;
 
@@ -265,8 +268,6 @@ void CSendPage::OnTimer(UINT_PTR nIDEvent)
 
     CMessageSender *pSender = new CMessageSender(this->GetSafeHwnd());
     pSender->SendMsg(msg);
-
-    CDialog::OnTimer(nIDEvent);
 }
 
 void CSendPage::SaveProfile()
