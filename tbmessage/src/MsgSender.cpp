@@ -101,9 +101,9 @@ CString Recognize(CString szUrl)
     if (file.Open(chkFilePath, CFile::modeRead))
     {
         file.ReadString(szLine);
-        if (szLine.GetLength() > szUrl.GetLength())
+        if (szLine.GetLength() > szUrl.GetLength() + 1)
         {
-            szResult = szLine.Mid(szUrl.GetLength());
+            szResult = szLine.Mid(szUrl.GetLength() + 1);
         }
         file.Close();
     }
