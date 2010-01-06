@@ -7,5 +7,5 @@ void CStoredMessage::AddMessage(CString strMessage)
 
 CString CStoredMessage::GetNextMessage()
 {
-    return "";
+    return "hi\nhi";
 }

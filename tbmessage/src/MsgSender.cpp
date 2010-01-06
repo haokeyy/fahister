@@ -194,6 +194,10 @@ UINT CMessageSender::SendOneMsg()
 
 UINT CMessageSender::ExecuteLogin()
 {
+    while (!UserIsLogined(this->message.SendUserId))
+    {
+        Sleep(2000);
+    }
     return 0;
 }
 

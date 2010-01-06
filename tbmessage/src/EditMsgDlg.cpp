@@ -32,6 +32,16 @@ BEGIN_MESSAGE_MAP(CEditMsgDlg, CDialog)
 END_MESSAGE_MAP()
 
 
+BOOL CEditMsgDlg::OnInitDialog()
+{
+    CDialog::OnInitDialog();
+
+    this->SetDlgItemText(IDC_EDIT1, bodyInnerHtml);
+    this->GetDlgItem(IDC_EDIT1)->SetFocus();
+
+    return TRUE;
+}
+
 CString CEditMsgDlg::GetMsgHtml()
 {
     return bodyInnerHtml;
@@ -100,8 +110,10 @@ void CEditMsgDlg::InternalSetMsgHtml(CString szMsgHtml)
 
 void CEditMsgDlg::OnBnClickedOk()
 {
-    bodyInnerHtml = InternalGetMsgHtml();
-    bodyInnerText = InternalGetMsgText();
+    //bodyInnerHtml = InternalGetMsgHtml();
+    //bodyInnerText = InternalGetMsgText();
+    this->GetDlgItemText(IDC_EDIT1, bodyInnerHtml);
+    this->GetDlgItemText(IDC_EDIT1, bodyInnerText);
 
     if (bodyInnerText.IsEmpty())
     {
@@ -113,7 +125,7 @@ void CEditMsgDlg::OnBnClickedOk()
 }
 
 BEGIN_EVENTSINK_MAP(CEditMsgDlg, CDialog)
-ON_EVENT(CEditMsgDlg, IDC_DHTML_EDIT_MSG, 1, CEditMsgDlg::DocumentCompleteDhtmlEditMsg, VTS_NONE)
+//ON_EVENT(CEditMsgDlg, IDC_DHTML_EDIT_MSG, 1, CEditMsgDlg::DocumentCompleteDhtmlEditMsg, VTS_NONE)
 END_EVENTSINK_MAP()
 
 void CEditMsgDlg::DocumentCompleteDhtmlEditMsg()
