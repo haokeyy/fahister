@@ -47,8 +47,10 @@
 #define IDC_BTN_NEXT_PAGE               1030
 #define IDC_BUTTON4                     1031
 #define IDC_BTN_LAST_PAGE               1031
+#define IDC_EDIT1                       1033
 #define IDC_CMB_LOCATION                1034
 #define IDC_STATIC_MEMBER               1038
+#define IDC_SEND_LIMIT                  1042
 #define IDC_CHK_ADDTO_FRIEND            1045
 #define IDC_CHK_1                       1058
 #define IDC_CHK_6                       1059
@@ -109,7 +111,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        140
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1032
+#define _APS_NEXT_CONTROL_VALUE         1034
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

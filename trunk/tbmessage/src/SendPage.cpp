@@ -6,6 +6,7 @@
 #include "SendPage.h"
 #include "EditAccDlg.h"
 #include ".\Libraries\ListViewHelp.h"
+#include ".\Libraries\WindowHelp.h"
 #include "MsgSender.h"
 #include "StoredMember.h"
 #include "StoredAccount.h"
@@ -18,6 +19,7 @@ IMPLEMENT_DYNAMIC(CSendPage, CDialog)
 
 CSendPage::CSendPage(CWnd* pParent /*=NULL*/)
 	: CDialog(CSendPage::IDD, pParent)
+    , m_nSendLimit(0)
 {
     m_IsStop = FALSE;
 }
@@ -28,12 +30,13 @@ CSendPage::~CSendPage()
 
 void CSendPage::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_ACCOUNT_LIST, m_AccountList);
-	DDX_Control(pDX, IDC_CMB_SPEED, m_CmbSpeed);
-	DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
-	DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
-	DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
+    CDialog::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_ACCOUNT_LIST, m_AccountList);
+    DDX_Control(pDX, IDC_CMB_SPEED, m_CmbSpeed);
+    DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
+    DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
+    DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
+    DDX_Text(pDX, IDC_SEND_LIMIT, m_nSendLimit);
 }
 
 BOOL CSendPage::OnInitDialog()
@@ -46,8 +49,9 @@ BOOL CSendPage::OnInitDialog()
     
     m_AccountList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_AccountList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
-    m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 90);
+    m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 80);
     m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
+    m_AccountList.InsertColumn(3, "发送数量", LVCFMT_LEFT, 40);
 
 	// 设置列表框样式 && 添加列
     m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
@@ -132,6 +136,8 @@ void CSendPage::OnBnClickedBtnAddAccount()
     if (dlg.DoModal() == IDOK)
     {
         CListViewHelp::AddListItem(m_AccountList, dlg.GetUserId(), dlg.GetPassword());
+        int cnt = m_AccountList.GetItemCount();
+        m_AccountList.SetItemText(cnt-1, 3, "0");
     }
 }
 
@@ -152,11 +158,11 @@ void CSendPage::OnBnClickedBtnSendmsg()
             return;
         }
 
-        //if (m_MessageList.GetItemCount() == 0)
-        //{            
-        //    MessageBox("没有设置消息内容。", "错误", MB_ICONERROR);
-        //    return;
-        //}
+        if (m_MessageList.GetItemCount() == 0)
+        {            
+            MessageBox("没有设置消息内容。", "错误", MB_ICONERROR);
+            return;
+        }
 
         if (m_AccountList.GetItemCount() == 0)
         {
@@ -229,7 +235,12 @@ int CSendPage::GetNextMember(CString& szNextReceiver)
 
 int CSendPage::GetNextMessage(CString& szNextMessage)
 {
-    szNextMessage = " HiHi";
+    CListViewHelp::SelectedNextItem(m_MessageList);
+
+    szNextMessage = CListViewHelp::GetSelectedItemText(m_MessageList);
+
+    szNextMessage = " " + szNextMessage;
+
     return 1;
 }
 
@@ -237,19 +248,44 @@ void CSendPage::SendImMsg()
 {    
     CInstantMessage msg;
 
-    CButton *chkAutoLogin = (CButton*)this->GetDlgItem(IDC_CHK_AUTO_LOGIN);
-    CButton *chkAddToFriend = (CButton*)this->GetDlgItem(IDC_CHK_ADDTO_FRIEND);
-    msg.AutoLogin = chkAutoLogin->GetCheck();
-    msg.AddToFriend = chkAddToFriend->GetCheck();
+    //CButton *chkAutoLogin = (CButton*)this->GetDlgItem(IDC_CHK_AUTO_LOGIN);
+    //CButton *chkAddToFriend = (CButton*)this->GetDlgItem(IDC_CHK_ADDTO_FRIEND);
+    //msg.AutoLogin = chkAutoLogin->GetCheck();
+    //msg.AddToFriend = chkAddToFriend->GetCheck();
+    
+CHECK_LIMIT:
+    // 获取目前用户已发送数量和发送限制
+    msg.SendUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
+    int pos = CListViewHelp::GetSelectedItem(m_AccountList);
+    CString szSendedNumber = m_AccountList.GetItemText(pos, 3);
+    char* strSendedNumber = szSendedNumber.GetBuffer();
+    int nSendedNumber = atoi(strSendedNumber);
+    UINT nSendLimit = this->GetDlgItemInt(IDC_SEND_LIMIT);
 
-    CListViewHelp::SelectedNextItem(m_AccountList);
+    if (pos < 0 || nSendedNumber > nSendLimit) // 达到最大发送数才切换
+    {
+        // 关闭旧用户窗口
+        CString strWndTitle("-阿里旺旺 2009");
+        strWndTitle = msg.SendUserId + strWndTitle;
+        HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "StandardFrame");
+        ::PostMessage(hMainHwnd, WM_CLOSE, 0, 0);
+
+        // 切换到下一用户
+        CListViewHelp::SelectedNextItem(m_AccountList);
+        goto CHECK_LIMIT;
+    }
+
     msg.SendUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
     msg.SendUserPassword = CListViewHelp::GetSelectedItemValue(m_AccountList);
 
-    if (!CMessageSender::UserIsLogined(msg.SendUserId) && !msg.AutoLogin) // 用户没有登录并且设置为不自动登录，则忽略此次发送，即用下一个用户发送
-    {
-        return;
-    }
+    CString szSendedCount;
+    szSendedCount.Format("%d", nSendedNumber + 1);
+    m_AccountList.SetItemText(pos, 3, szSendedCount);
+
+    //if (!CMessageSender::UserIsLogined(msg.SendUserId) && !msg.AutoLogin) // 用户没有登录并且设置为不自动登录，则忽略此次发送，即用下一个用户发送
+    //{
+    //    return;
+    //}
 
     msg.nItemIndex = GetNextMember(msg.ReceiverId);
     if (msg.nItemIndex < 0)
@@ -285,6 +321,7 @@ void CSendPage::SaveProfile()
 
 void CSendPage::LoadProfile()
 {
+    this->SetDlgItemInt(IDC_SEND_LIMIT, 50);
 }
 
 void CSendPage::OnClose()
