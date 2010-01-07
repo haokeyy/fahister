@@ -194,10 +194,25 @@ UINT CMessageSender::SendOneMsg()
 
 UINT CMessageSender::ExecuteLogin()
 {
-    while (!UserIsLogined(this->message.SendUserId))
-    {
-        Sleep(2000);
-    }
+    CString strWndTitle("°¢ÀïÍúÍú");
+    HWND hWnd = FindTopWindow(strWndTitle.GetBuffer(0), "");
+    
+    HWND hTypeEdit = FindWndInChildren(hWnd, "EditComponent", 2);
+    HWND hTypeCmb = ::GetWindow(hTypeEdit, GW_HWNDNEXT);
+    HWND hUidEdit = ::GetWindow(hTypeCmb, GW_HWNDNEXT); //user name
+    //HWND hNext = ::GetWindow(hUidEdit, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_CHILD);
+    //HWND hPwdEdit = ::GetWindow(hNext, GW_CHILD);
+
+    HWND hLoginBtn = FindWndInChildren(hWnd, "µÇ Â¼", 1);
+
+    ::SendMessage(hUidEdit, WM_SETTEXT, NULL, (LPARAM)message.SendUserId.GetBuffer(0));
+    //::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)pwd.GetBuffer(0));
+    ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
+    ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
+
     return 0;
 }
 
