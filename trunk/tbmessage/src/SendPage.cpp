@@ -264,11 +264,11 @@ CHECK_LIMIT:
 
     if (pos < 0 || nSendedNumber > nSendLimit) // 达到最大发送数才切换
     {
-        // 关闭旧用户窗口
+        // 注销旧用户
         CString strWndTitle("-阿里旺旺 2009");
         strWndTitle = msg.SendUserId + strWndTitle;
         HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "StandardFrame");
-        ::PostMessage(hMainHwnd, WM_CLOSE, 0, 0);
+        ::SendMessage(hMainHwnd, WM_COMMAND, 1214, 0);
 
         // 切换到下一用户
         CListViewHelp::SelectedNextItem(m_AccountList);
