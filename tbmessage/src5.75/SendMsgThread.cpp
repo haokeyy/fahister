@@ -81,28 +81,27 @@ UINT CSendMsgThread::ExecuteSendMsg()
 
 UINT CSendMsgThread::ExecuteLogin(CString uid, CString pwd)
 {
-    CString szExePath;// = "C:\\Program Files\\Alisoft\\WangWang\\WangWang.exe";
+    //CString szExePath = "C:\\Software\\AliWangWang\\AliIM.exe";
 
-    CRegistry reg(HKEY_CLASSES_ROOT);
-	BOOL bReturn;
-	bReturn=reg.Open ("Alitalk\\Shell\\Open\\Command");
-    bReturn=reg.Read ("",szExePath);
-    reg.Close();
-
-    szExePath = szExePath.Left(szExePath.GetLength()-3);
-    WinExec(szExePath, SW_SHOWNORMAL);
-    Sleep(1000);
+    //WinExec(szExePath, SW_SHOWNORMAL);
+    //Sleep(1000);
 
     CString strWndTitle("°¢ÀïÍúÍú");
     HWND hWnd = FindTopWindow(strWndTitle.GetBuffer(0), "");
     
-    HWND hUserCmb = FindWndInChildren(hWnd, "ComboBox", 2);
-    HWND hPwdEdit = ::GetWindow(hUserCmb, GW_HWNDNEXT);
-    HWND hHideLogin = FindWndInChildren(hWnd, "ÒþÉíµÇÂ¼", 1);
-    HWND hLoginBtn = ::GetWindow(hHideLogin, GW_HWNDNEXT);
+    HWND hTypeEdit = FindWndInChildren(hWnd, "EditComponent", 2);
+    HWND hTypeCmb = ::GetWindow(hTypeEdit, GW_HWNDNEXT);
+    HWND hUidEdit = ::GetWindow(hTypeCmb, GW_HWNDNEXT); //user name
+    //HWND hNext = ::GetWindow(hUidEdit, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_HWNDNEXT);
+    //hNext = ::GetWindow(hNext, GW_CHILD);
+    //HWND hPwdEdit = ::GetWindow(hNext, GW_CHILD);
 
-    ::SendMessage(hUserCmb, WM_SETTEXT, NULL, (LPARAM)uid.GetBuffer(0));
-    ::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)pwd.GetBuffer(0));
+    HWND hLoginBtn = FindWndInChildren(hWnd, "µÇ Â¼", 1);
+
+    ::SendMessage(hUidEdit, WM_SETTEXT, NULL, (LPARAM)uid.GetBuffer(0));
+    //::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)pwd.GetBuffer(0));
     ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
     ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
 
