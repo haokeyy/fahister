@@ -31,17 +31,6 @@ UINT CMessageSender::ExecuteSendMsg()
 {
     Sleep(1800);
 
-    //if (message.AddToFriend)
-    //{
-    //    AddToFriend();
-    //}
-
-    // 用户未登录则登录
-    if (!UserIsLogined(message.SendUserId) && message.AutoLogin)
-    {
-        ExecuteLogin();
-    }
-
     // 添加为好友的提示框，有些用户要求必须添加为好友
     HWND hMustAddFriend = ::FindWindow("#32770", "添加好友信息");
     if (hMustAddFriend)
@@ -57,7 +46,8 @@ UINT CMessageSender::ExecuteSendMsg()
     szIndex.Format("%d", message.nItemIndex);
     ::PostMessage(this->m_hMainWnd, WM_SENDMSG_COMPLETED, (WPARAM)0, (LPARAM)szIndex.GetBuffer());
 
-    HWND hValidCodeWnd = FindTopWindow("阿里旺旺 - 安全验证", "#32770");
+    // 验证码不对，则直接关掉
+    HWND hValidCodeWnd = FindTopWindowExactly("阿里旺旺 - 安全验证", "#32770");
     if (hValidCodeWnd)
     {
         ::PostMessage(hValidCodeWnd, WM_CLOSE, 0, 0);
@@ -141,7 +131,7 @@ UINT CMessageSender::SendOneMsg()
         // 检查校验码
         Sleep(1000);
         // 校验码窗口
-        HWND hValidCodeWnd = FindTopWindow("阿里旺旺 - 安全验证", "#32770");
+        HWND hValidCodeWnd = FindTopWindowExactly("阿里旺旺 - 安全验证", "#32770");
         if (hValidCodeWnd)
         {
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
@@ -229,7 +219,7 @@ UINT CMessageSender::DeleteAllFriend()
 BOOL CMessageSender::UserIsLogined(CString senderId)
 {
     // 用户是否已经登录
-    CString strWndTitle("-阿里旺旺 2009");
+    CString strWndTitle("-阿里旺旺2009");
     strWndTitle = senderId + strWndTitle;
     HWND hMainHwnd = FindTopWindowExactly(strWndTitle.GetBuffer(), "StandardFrame");
 
