@@ -125,7 +125,7 @@ BOOL CALLBACK WindowsEnumProcExactly(HWND hwnd, LPARAM lParam)
     char strClass[1024];
     ::GetWindowText(hwnd, strTitle, 1023);
     ::GetClassName(hwnd, strClass, 1023);
-    if (strcmp(strTitle, p->title) == 0 || strcmp(strClass, p->className) == 0) //相等
+    if (strcmp(strTitle, p->title) == 0 && strcmp(strClass, p->className) == 0) //相等
     {
         p->hwnd = hwnd;
         return FALSE;

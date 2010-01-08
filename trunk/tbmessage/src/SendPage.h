@@ -27,6 +27,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
     CString szTaobaoSendUrl;
+    CString m_szLastSenderId;
     afx_msg void OnBnClickedBtnSendmsg();
     afx_msg void OnBnClickedBtnAddAccount();
     afx_msg void OnBnClickedBtnDelAccount();
