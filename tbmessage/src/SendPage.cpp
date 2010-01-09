@@ -92,6 +92,7 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
 	ON_BN_CLICKED(IDC_BTN_PREV_PAGE, &CSendPage::OnBnClickedBtnPrevPage)
 	ON_BN_CLICKED(IDC_BTN_NEXT_PAGE, &CSendPage::OnBnClickedBtnNextPage)
 	ON_BN_CLICKED(IDC_BTN_LAST_PAGE, &CSendPage::OnBnClickedBtnLastPage)
+    ON_BN_CLICKED(IDC_BTN_RESET, &CSendPage::OnBnClickedBtnReset)
 END_MESSAGE_MAP()
 
 void CSendPage::LoadMembers(long startId, long stepCount)
@@ -284,18 +285,23 @@ CHECK_LIMIT:
     }
     GetNextMessage(msg.MessageHtml);
 
-    if (!CMessageSender::UserIsLogined(msg.SendUserId))
+    while (!CMessageSender::UserIsLogined(msg.SendUserId))
     {    
-        // 注销旧用户
-        CString strWndTitle("-阿里旺旺2009");
-        //strWndTitle = m_szLastSenderId + strWndTitle;
-        HWND hMainHwnd = FindTopWindow(strWndTitle.GetBuffer(), "StandardFrame");
-        if (hMainHwnd)
+        // 关闭已打开的旺旺窗口
+        DWORD dwProcId = GetProcessIDByProcessName("AliIM.exe");
+        if (dwProcId > 0)
         {
-            ::SendMessage(hMainHwnd, WM_COMMAND, 1237, 0);
-        }
+            CString szProcName("");
+            GetProcessNameByProcessID(dwProcId, szProcName);
+            
+            KillProcess(dwProcId);
+            WinExec(szProcName, SW_SHOW);
 
-        Sleep(8000);
+            Sleep(2000);
+
+            // 刷新托盘区图标
+            RefreshTrayWnd();
+        }
 
         // 执行登录
         HWND hWnd = FindTopWindow("阿里旺旺2009", "StandardFrame");
@@ -311,6 +317,7 @@ CHECK_LIMIT:
         ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
         ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
 
+        Sleep(5000);
     }
 
     this->m_szLastSenderId = msg.SendUserId;
@@ -530,4 +537,9 @@ void CSendPage::OnBnClickedBtnLastPage()
 	LoadMembers(pageCount * PAGE_SIZE, PAGE_SIZE);
 	
 	SetPagging(pageCount * PAGE_SIZE, PAGE_SIZE);
+}
+
+void CSendPage::OnBnClickedBtnReset()
+{
+ 
 }
