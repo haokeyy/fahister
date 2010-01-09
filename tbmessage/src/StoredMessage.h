@@ -4,5 +4,6 @@ class CStoredMessage
 {
 public:
     static void AddMessage(CString strMessage);
-    static CString GetNextMessage();
+    static int CStoredMessage::GetNextMessage(int startId, CString& szMessage);
+    static void CStoredMessage::ClearMessage();
 };

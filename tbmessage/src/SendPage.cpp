@@ -10,6 +10,8 @@
 #include "MsgSender.h"
 #include "StoredMember.h"
 #include "StoredAccount.h"
+#include "StoredMessage.h"
+#include "StoredProfile.h"
 #include "EditMsgDlg.h"
 
 // CSendPage dialog
@@ -80,7 +82,6 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_ADD_ACCOUNT, &CSendPage::OnBnClickedBtnAddAccount)
     ON_BN_CLICKED(IDC_BTN_DEL_ACCOUNT, &CSendPage::OnBnClickedBtnDelAccount)
     ON_MESSAGE(WM_SENDMSG_COMPLETED, OnSendMsgCompleted)
-    ON_WM_CLOSE()
 	ON_BN_CLICKED(IDC_BTN_ADD_MSG, &CSendPage::OnBnClickedBtnAddMsg)
 	ON_BN_CLICKED(IDC_BTN_EDIT_MSG, &CSendPage::OnBnClickedBtnEditMsg)
 	ON_BN_CLICKED(IDC_BTN_DEL_MSG, &CSendPage::OnBnClickedBtnDelMsg)
@@ -93,6 +94,7 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
 	ON_BN_CLICKED(IDC_BTN_NEXT_PAGE, &CSendPage::OnBnClickedBtnNextPage)
 	ON_BN_CLICKED(IDC_BTN_LAST_PAGE, &CSendPage::OnBnClickedBtnLastPage)
     ON_BN_CLICKED(IDC_BTN_RESET, &CSendPage::OnBnClickedBtnReset)
+    ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 void CSendPage::LoadMembers(long startId, long stepCount)
@@ -338,27 +340,54 @@ CHECK_LIMIT:
 
 void CSendPage::SaveProfile()
 {
+    CStoredAccount::ClearAccount();
     int count = m_AccountList.GetItemCount();
-
     for (int i = 0; i < count; i++)
     {
         CString sendUserId = CListViewHelp::GetItemText(m_AccountList, i);
-        CString sendPassword = CListViewHelp::GetItemValue(m_AccountList, i);
+        CString sendedCnt = CListViewHelp::GetItemValue(m_AccountList, i);
 
-        CStoredAccount::AddAccount(sendUserId, sendPassword);
+        CStoredAccount::AddAccount(sendUserId, sendedCnt);
     }
+
+    CStoredMessage::ClearMessage();
+    int msgCount = m_MessageList.GetItemCount();
+    for (int i = 0; i < msgCount; i++)
+    {
+        CString msgText = CListViewHelp::GetItemValue(m_MessageList, i);
+
+        CStoredMessage::AddMessage(msgText);
+    }
+
+    
 }
 
 void CSendPage::LoadProfile()
 {
-    this->SetDlgItemInt(IDC_SEND_LIMIT, 50);
-}
+    int lastId = 0;
+    CString str1, str2;
 
-void CSendPage::OnClose()
-{
-    SaveProfile();
+    while (lastId != -1)
+    {
+        lastId = CStoredAccount::GetNextAccount(lastId, str1, str2);
+        if (lastId > 0)
+        {
+            CListViewHelp::AddListItem(m_AccountList, str1, str2);
+        }
+    }
 
-    CDialog::OnClose();
+    lastId = 0;
+    
+    while (lastId != -1)
+    {
+        lastId = CStoredMessage::GetNextMessage(lastId, str1);
+        if (lastId > 0)
+        {
+            CListViewHelp::AddListItem(m_MessageList, str1, str1);
+        }
+    }
+
+    this->SetDlgItemInt(IDC_SEND_LIMIT ,30);
 }
 
 void CSendPage::OnBnClickedBtnAddMsg()
@@ -542,4 +571,11 @@ void CSendPage::OnBnClickedBtnLastPage()
 void CSendPage::OnBnClickedBtnReset()
 {
  
+}
+
+void CSendPage::OnDestroy()
+{
+    CDialog::OnDestroy();
+
+    SaveProfile();
 }
