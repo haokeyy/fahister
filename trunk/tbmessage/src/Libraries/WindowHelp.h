@@ -21,6 +21,12 @@ CString GetPageDirect(CString rAddress);
 
 void GetProcessNameByProcessID( DWORD processID, CString& szProcessName);
 
+DWORD GetProcessIDByProcessName(CString szProcessName);
+
+void KillProcess(DWORD dwProcessID);
+
+void RefreshTrayWnd();
+
 CString GetFileMD5Checksum();
 
 BOOL Base64Encode(const BYTE *pbSrcData, int nSrcLen, LPSTR szDest,	int *pnDestLen);

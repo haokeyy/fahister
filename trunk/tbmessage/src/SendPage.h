@@ -61,4 +61,5 @@ public:
 	afx_msg void OnBnClickedBtnNextPage();
 	afx_msg void OnBnClickedBtnLastPage();
     UINT m_nSendLimit;
+    afx_msg void OnBnClickedBtnReset();
 };

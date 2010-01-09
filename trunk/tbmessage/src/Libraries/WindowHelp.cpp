@@ -5,6 +5,7 @@
 #include "Iphlpapi.h"
 #include "MD5Checksum.h"
 #include "MyDiskInfo.h"
+#include <TLHELP32.H>
 
 #pragma comment(lib, "Iphlpapi.lib")
 #pragma comment(lib, "WS2_32.lib")
@@ -335,6 +336,65 @@ void GetProcessNameByProcessID( DWORD processID, CString& szProcessName)
     CloseHandle( hProcess );
 
     //return szProcessName;
+}
+
+DWORD GetProcessIDByProcessName(CString szProcessName)
+{
+    DWORD dwPid = 0;
+    szProcessName.MakeLower();
+
+    PROCESSENTRY32 proc;
+    proc.dwSize = sizeof(proc);
+    HANDLE hSysSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+
+    if (hSysSnapshot && Process32First (hSysSnapshot, &proc))
+    {
+        do
+        {
+            CString strProcName(proc.szExeFile);
+            strProcName.MakeLower();
+            
+            if (strProcName.Find(szProcessName) >= 0)
+            {
+                dwPid = proc.th32ProcessID;
+                break;
+            }
+        }
+        while ( Process32Next (hSysSnapshot, &proc));
+    }
+        
+    CloseHandle(hSysSnapshot);
+
+    return dwPid;
+}
+
+void KillProcess(DWORD dwProcessID)
+{
+    if(dwProcessID)
+    { 
+        //HANDLE hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, dwProcessID);
+        //if(hProc)
+        //{ 
+        //    TerminateProcess(hProc, 99);
+        //    CloseHandle(hProc);
+        //}
+        CString szCmdLine;
+        szCmdLine.Format("ntsd -c q -p %d", dwProcessID);
+        WinExec(szCmdLine, SW_HIDE);
+    }
+}
+
+void RefreshTrayWnd()
+{
+    HWND hTaskBar = FindTopWindow("", "Shell_TrayWnd");
+    HWND hToolbarWindow32 = FindChildWnd(hTaskBar, "", "ToolbarWindow32");
+    CRect rc;
+    ::GetClientRect(hToolbarWindow32, &rc);
+    int y = (rc.top + rc.bottom) / 2;
+    for (int x = rc.left; x < rc.right; x+=5)
+    {
+        ::SendMessage(hToolbarWindow32, WM_MOUSEMOVE, 0, MAKELPARAM(x, y));         
+    }
 }
 
 CString GetFileMD5Checksum()
