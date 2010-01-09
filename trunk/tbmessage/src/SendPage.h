@@ -46,7 +46,6 @@ public:
     LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam);
     CExplorerOcx m_ExprMsgHelp;
     void SendImMsg();
-    afx_msg void OnClose();
 	CListCtrl m_MessageList;
 	CListCtrl m_MemberList;
 	afx_msg void OnBnClickedBtnAddMsg();
@@ -62,4 +61,5 @@ public:
 	afx_msg void OnBnClickedBtnLastPage();
     UINT m_nSendLimit;
     afx_msg void OnBnClickedBtnReset();
+    afx_msg void OnDestroy();
 };

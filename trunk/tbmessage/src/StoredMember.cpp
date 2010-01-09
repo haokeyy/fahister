@@ -85,23 +85,12 @@ long CStoredMember::GetNextMember(long start, int count, CList<TaobaoMember>* lp
 {
     long lastId = 0;
 	long status = 0;
-	long startId = 0;
 
     CAdoConnection conn;
     if (conn.ConnectAccess(GetFilePath()))
     {
         CString szCmdText;
-		if (start > 0)
-		{
-			szCmdText.Format("select max(id) from (SELECT top %d id FROM members order by id) t", start);
-			CAdoRecordSet rs1(&conn);
-			if (rs1.Open(szCmdText) && rs1.MoveFirst())
-			{
-				rs1.GetCollect(0L, startId);
-			}
-		}
-
-		szCmdText.Format("select top %d id, name, status from members where id > %d order by id", count, startId);
+		szCmdText.Format("select top %d id, name, status from members where id > %d order by id", count, start);
 		
         CAdoRecordSet rs(&conn);
         if (rs.Open(szCmdText) && rs.MoveFirst())
@@ -170,7 +159,20 @@ void CStoredMember::DeleteSendedMembers()
     conn.ConnectAccess(GetFilePath());
 
     CString szCmdText;
-    szCmdText.Format("delete from members where status = 1");
+    // 创建临时表，转存数据
+    szCmdText.Format("drop table members2");
+	conn.Execute(szCmdText);
+    szCmdText.Format("create table members2(id autoincrement, name varchar(50), status int, flag bit)");
     conn.Execute(szCmdText);
+    szCmdText.Format("insert into members2(name, status) select name, status from members where status = 0");
+    conn.Execute(szCmdText);
+    // 重新创建主表
+    szCmdText.Format("drop table members");
+	conn.Execute(szCmdText);
+    szCmdText.Format("create table members(id autoincrement, name varchar(50), status int, flag bit)");
+    conn.Execute(szCmdText);
+    szCmdText.Format("insert into members(name, status) select name, status from members2 where status = 0");
+    conn.Execute(szCmdText);
+
     conn.Close();
 }

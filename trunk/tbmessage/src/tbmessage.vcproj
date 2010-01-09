@@ -254,6 +254,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\StoredProfile.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\tbmessage.cpp"
 				>
 			</File>
@@ -317,6 +321,10 @@
 			</File>
 			<File
 				RelativePath=".\StoredMessage.h"
+				>
+			</File>
+			<File
+				RelativePath=".\StoredProfile.h"
 				>
 			</File>
 			<File
