@@ -10,6 +10,8 @@
 
 // CSearchPage dialog
 
+extern BOOL bHasMemberChanged;
+
 IMPLEMENT_DYNAMIC(CSearchPage, CDialog)
 
 CSearchPage::CSearchPage(CWnd* pParent /*=NULL*/)
@@ -109,6 +111,7 @@ void CSearchPage::OnBnClickedBtnSearch()
     {
         m_pMemberSearch->Stop();
     }
+    bHasMemberChanged = TRUE;
 }
 
 

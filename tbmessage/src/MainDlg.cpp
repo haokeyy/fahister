@@ -7,6 +7,7 @@
 
 
 // CMainDlg dialog
+BOOL bHasMemberChanged;
 
 IMPLEMENT_DYNAMIC(CMainDlg, CDialog)
 
@@ -80,9 +81,10 @@ BOOL CMainDlg::OnInitDialog()
 
 void CMainDlg::OnTcnSelchangeFuncTab(NMHDR *pNMHDR, LRESULT *pResult)
 {
-    //if (m_FuncTab.GetCurSel() == 1)
-    //{
-    //    m_MemberPage.LoadMembers();
-    //}
+    int curSel = m_FuncTab.GetCurSel();
+    if (curSel == 2 && bHasMemberChanged)
+    {
+        m_SendPage.OnBnClickedBtnFirstPage();
+    }
     *pResult = 0;
 }
