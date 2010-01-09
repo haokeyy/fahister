@@ -14,6 +14,7 @@
 
 // CSendPage dialog
 #define PAGE_SIZE 500
+extern BOOL bHasMemberChanged;
 
 IMPLEMENT_DYNAMIC(CSendPage, CDialog)
 
@@ -112,6 +113,7 @@ void CSendPage::LoadMembers(long startId, long stepCount)
 
 		CListViewHelp::AddListItem(m_MemberList, item.MemberName, item.Status ? STATUS_SENDED : STATUS_UNSEND);
     }
+    bHasMemberChanged = FALSE;
 }
 
 void CSendPage::InitSpeed()
@@ -168,8 +170,6 @@ void CSendPage::OnBnClickedBtnSendmsg()
             MessageBox("没有设置用来发送消息的淘宝用户。", "错误", MB_ICONERROR);
             return;
         }
-
-        //CListViewHelp::SetSelectedItem(m_MemberList, -1);
 
         StartSendMsg();
     }
