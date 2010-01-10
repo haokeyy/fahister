@@ -33,10 +33,19 @@ UINT CMemberSearch::ExecuteSearch()
     {
         GetTaobaoSellerMember();
     }
-    else
+    else if (condition.nType == 1)
     {
         GetTaobaoBuyerMember();
     }
+    else if (condition.nType == 2)
+    {
+        GetBuyerMemberByShopRatePage(condition.szKeyword, TRUE);
+    }
+    else
+    {
+        ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)FALSE, NULL);
+    }
+    
 
     return 0;
 }
@@ -52,41 +61,51 @@ void CMemberSearch::AddFoundCount()
 }
 
 /* 淘宝卖家开始 */
+CString GetNextPageUrl(CString szShopListHtml)
+{
+    int iStart = 0, iEnd = 0;
+        
+    iEnd = szShopListHtml.Find("\" class=\"page-next\"><span>下一页</span></a>", 0);
+    if (iEnd > 0)
+    {
+        iStart = szShopListHtml.Find("http://shopsearch.taobao.com/browse/shop_search/", iEnd - 260);
+        if (iEnd > iStart && iStart > 0)
+        {
+            return szShopListHtml.Mid(iStart, iEnd - iStart);
+        }
+    }
+    return "";
+}
+
 UINT CMemberSearch::GetTaobaoSellerMember()
 {
-	int startIndex = szTaobaoAddress.Find("browse_shop.htm");
-	CString szShopListURL = szTaobaoAddress.Left(startIndex); //"http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+	CString szShopListURL = szTaobaoAddress;
     // 类别
-    CString szCategory;
-    szCategory.Format("shop-%d.htm?emptyparam=1", condition.nCategoryId);
-    szShopListURL += szCategory;
+    szShopListURL.AppendFormat("&cat=%d", condition.nCategoryId);
     // 地区
     if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
     {        
-        CString szLocation = "&loc=" + URLEncode(condition.szLocation);
-        szShopListURL += szLocation;
+        szShopListURL.AppendFormat("&loc=%s", URLEncode(condition.szLocation));
     }
     // 关键字
     if (!condition.szKeyword.IsEmpty())
     {        
-        CString szKeyword = "&shopname=" + URLEncode(condition.szKeyword);
-        szShopListURL += szKeyword;
+        szShopListURL.AppendFormat("&q=%s", URLEncode(condition.szKeyword));
+    }
+    // 关键字
+    if (!condition.szRateSum.IsEmpty())
+    {        
+        szShopListURL.AppendFormat("&ratesum=%s", URLEncode(condition.szRateSum));
     }
 
-    // 将找到个数初始化位0
+    // 将找到个数初始化为0
     nFoundCount=0;
     BOOL bFound = TRUE;
 
     for (int pageIndex = 1;bFound && nFoundCount < condition.nLimit; pageIndex++)
     {
-        // 页码
-        CString szPageIndex;
-        szPageIndex.Format("&page=%d", pageIndex);
-        CString szTempURL = szShopListURL + szPageIndex;
-
-        CString szShopListHTML = GetPageDirect(szTempURL);
-        CString szCurPageFlag;
-        szCurPageFlag.Format("<strong>%d</strong>", pageIndex);
+        CString szShopListHTML = GetPageDirect(szShopListURL);
+        CString szCurPageFlag = "<span class=\"page-cur\">";
         if (szShopListHTML.Find(szCurPageFlag) < 0)
         {
             bFound = FALSE;
@@ -94,8 +113,13 @@ UINT CMemberSearch::GetTaobaoSellerMember()
         else
         {
             bFound = ParseShopListForSeller(szShopListHTML);
+            szShopListURL = GetNextPageUrl(szShopListHTML);
+            if (szShopListURL.IsEmpty())
+            {
+                break;
+            }
         }
-    }    
+    }
 
     ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)FALSE, NULL);
 
@@ -109,12 +133,12 @@ BOOL CMemberSearch::ParseShopListForSeller(CString szHtml)
 
     while(nFoundCount < condition.nLimit)
     {
-        nStart = szHtml.Find("<div class=\"Seller\"><i>掌柜:</i>", nEnd);
+        nStart = szHtml.Find("<p class=\"nick\"><a target=\"_blank\" href=\"http://my.taobao.com/mytaobao/rate/rate.jhtml?user_id=", nEnd);
         if (nStart < 0)
         {
             break;
         }
-        nEnd = szHtml.Find("<div class=\"Amount\">", nStart);
+        nEnd = szHtml.Find("<p><span class=\"J_WangWang\" data-nick=", nStart);
         if (nEnd < 0)
         {
             break;
@@ -132,7 +156,7 @@ BOOL CMemberSearch::ParseShopListForSeller(CString szHtml)
 
 CString CMemberSearch::ExtractShopMember(CString szShopHtml)
 {
-    CString szStartFlag = "_blank>", szEndFlag = "</a>";
+    CString szStartFlag = "&faction=show\">", szEndFlag = " </a></p>";
     int s = szShopHtml.Find(szStartFlag) + szStartFlag.GetLength();
     int e = szShopHtml.Find(szEndFlag, s);
     return szShopHtml.Mid(s, e-s);
@@ -144,23 +168,23 @@ CString CMemberSearch::ExtractShopMember(CString szShopHtml)
 /* 淘宝买家开始 */
 UINT CMemberSearch::GetTaobaoBuyerMember()
 {
-	int startIndex = szTaobaoAddress.Find("browse_shop.htm");
-	CString szShopListURL = szTaobaoAddress.Left(startIndex); //"http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+	CString szShopListURL = szTaobaoAddress;
     // 类别
-    CString szCategory;
-    szCategory.Format("shop-%d.htm?emptyparam=1", condition.nCategoryId);
-    szShopListURL += szCategory;
+    szShopListURL.AppendFormat("&cat=%d", condition.nCategoryId);
     // 地区
     if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
     {        
-        CString szLocation = "&loc=" + URLEncode(condition.szLocation);
-        szShopListURL += szLocation;
+        szShopListURL.AppendFormat("&loc=%s", URLEncode(condition.szLocation));
     }
     // 关键字
     if (!condition.szKeyword.IsEmpty())
     {        
-        CString szKeyword = "&shopname=" + URLEncode(condition.szKeyword);
-        szShopListURL += szKeyword;
+        szShopListURL.AppendFormat("&q=%s", URLEncode(condition.szKeyword));
+    }
+    // 关键字
+    if (!condition.szRateSum.IsEmpty())
+    {        
+        szShopListURL.AppendFormat("&ratesum=%s", URLEncode(condition.szRateSum));
     }
 
     // 将找到个数初始化位0
@@ -169,14 +193,8 @@ UINT CMemberSearch::GetTaobaoBuyerMember()
 
     for (int pageIndex=1; bFound && nFoundCount < condition.nLimit; pageIndex++)
     {
-        // 页码
-        CString szPageIndex;
-        szPageIndex.Format("&page=%d", pageIndex);
-        CString szTempURL = szShopListURL + szPageIndex;
-
-        CString szShopListHTML = GetPageDirect(szTempURL);
-        CString szCurPageFlag;
-        szCurPageFlag.Format("<strong>%d</strong>", pageIndex);
+        CString szShopListHTML = GetPageDirect(szShopListURL);
+        CString szCurPageFlag = "<span class=\"page-cur\">";
         if (szShopListHTML.Find(szCurPageFlag) < 0)
         {
             bFound = FALSE;
@@ -184,6 +202,11 @@ UINT CMemberSearch::GetTaobaoBuyerMember()
         else
         {
             bFound = ParseShopListForBuyer(szShopListHTML);
+            szShopListURL = GetNextPageUrl(szShopListHTML);
+            if (szShopListURL.IsEmpty())
+            {
+                break;
+            }
         }
     }    
 
@@ -199,21 +222,21 @@ BOOL CMemberSearch::ParseShopListForBuyer(CString szHtml)
 
     while(nFoundCount < condition.nLimit)
     {
-        nStart = szHtml.Find("<div class=\"Seller\"><i>掌柜:</i>", nEnd);
+        nStart = szHtml.Find("<p class=\"nick\"><a target=\"_blank\" href=\"http://my.taobao.com/mytaobao/rate/rate.jhtml?user_id=", nEnd);
         if (nStart < 0)
         {
             break;
         }
-        nEnd = szHtml.Find("<div class=\"Amount\">", nStart);
+        nEnd = szHtml.Find("<p><span class=\"J_WangWang\" data-nick=", nStart);
         if (nEnd < 0)
         {
             break;
         }
 
         CString szMemberHtml = szHtml.Mid(nStart, nEnd-nStart);
-        CString sellerUserID = ExtractShopUserID(szMemberHtml);
+        CString szShopRatePage = ExtractShopRatePage(szMemberHtml);
    
-        GetBuyerMemberByShopUserID(sellerUserID);
+        GetBuyerMemberByShopRatePage(szShopRatePage);
 
         bFount = TRUE;
     }
@@ -221,18 +244,18 @@ BOOL CMemberSearch::ParseShopListForBuyer(CString szHtml)
     return bFount;
 }
 
-CString CMemberSearch::ExtractShopUserID(CString szShopHtml)
+CString CMemberSearch::ExtractShopRatePage(CString szShopHtml)
 {
-    CString szStartFlag = "?user_id=", szEndFlag = "&faction=show";
-    int s = szShopHtml.Find(szStartFlag) + szStartFlag.GetLength();
+    CString szStartFlag = "http://my.taobao.com/mytaobao/rate/rate.jhtml?user_id=", szEndFlag = "&faction=show";
+    int s = szShopHtml.Find(szStartFlag);
     int e = szShopHtml.Find(szEndFlag, s);
     return szShopHtml.Mid(s, e-s);
 }
 
 
-BOOL CMemberSearch::GetBuyerMemberByShopUserID(CString sellerUserID, BOOL bSingleUser)
+BOOL CMemberSearch::GetBuyerMemberByShopRatePage(CString szShopRatePage, BOOL bSingleUser)
 {
-    CString szShopURL = "http://my.taobao.com/mytaobao/rate/rate.htm?received_or_posted=0&buyer_or_seller=0&user_id=" + sellerUserID; //current_page=3";
+    CString szShopURL = szShopRatePage;
 
     BOOL bFound = TRUE; // 在该店是否找到买家
 

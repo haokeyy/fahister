@@ -222,6 +222,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ShutdownDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -308,6 +312,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ShutdownDlg.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
@@ -351,6 +359,10 @@
 			</File>
 			<File
 				RelativePath=".\res\seller3.BMP"
+				>
+			</File>
+			<File
+				RelativePath=".\res\seller4.BMP"
 				>
 			</File>
 			<File

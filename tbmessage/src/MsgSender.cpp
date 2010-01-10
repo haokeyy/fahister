@@ -29,7 +29,7 @@ UINT SendMsgWorkerThread(LPVOID pvThread)
 
 UINT CMessageSender::ExecuteSendMsg()
 {
-    Sleep(1800);
+    Sleep(2400);
 
     // 添加为好友的提示框，有些用户要求必须添加为好友
     HWND hMustAddFriend = ::FindWindow("#32770", "添加好友信息");

@@ -10,6 +10,8 @@
 #define IDD_MEMBER_VIEW                 136
 #define IDD_FORMVIEW                    137
 #define IDD_SEND_VIEW                   137
+#define IDD_DLG_SHUTDOWN                140
+#define IDB_BITMAP1                     141
 #define IDB_BITMAP4                     147
 #define IDB_BITMAP5                     148
 #define IDB_BITMAP6                     149
@@ -37,6 +39,9 @@
 #define IDC_CMB_SPEED                   1016
 #define IDC_CHK_SHUTDOWN                1022
 #define IDC_FUNC_TAB                    1023
+#define IDC_CHK_ONLINE                  1023
+#define IDC_BTN_SHUTDOWN                1023
+#define IDC_PROMPT                      1024
 #define IDC_STATIC_LINK                 1025
 #define IDC_STATIC_STATUS               1025
 #define IDC_SEND_STATUS                 1026
@@ -49,8 +54,8 @@
 #define IDC_BTN_LAST_PAGE               1031
 #define IDC_EDIT1                       1033
 #define IDC_CMB_LOCATION                1034
-#define IDC_BUTTON1                     1034
 #define IDC_BTN_RESET                   1034
+#define IDC_STATIC_PANEL                1035
 #define IDC_STATIC_MEMBER               1038
 #define IDC_SEND_LIMIT                  1042
 #define IDC_CHK_ADDTO_FRIEND            1045
@@ -101,19 +106,40 @@
 #define IDC_CHK_7                       1112
 #define IDC_CHK_2                       1113
 #define IDC_CHK_11                      1114
+#define IDC_STATIC_BUYER316             1115
+#define IDC_CHK_16                      1116
 #define IDC_STATIC101                   1117
 #define IDC_STATIC102                   1118
+#define IDC_STATIC_KEYWORD              1118
 #define IDC_BTN_ADD_MSG                 1119
+#define IDC_STATIC_BUYER317             1119
 #define IDC_BTN_EDIT_MSG                1120
+#define IDC_CHK_17                      1120
 #define IDC_BTN_DEL_MSG                 1121
+#define IDC_STATIC_BUYER318             1121
+#define IDC_STATIC_BUYER319             1122
+#define IDC_CHK_18                      1123
+#define IDC_STATIC_BUYER320             1124
+#define IDC_STATIC_BUYER321             1125
+#define IDC_STATIC_BUYER322             1126
+#define IDC_STATIC_BUYER323             1127
+#define IDC_STATIC_BUYER324             1128
+#define IDC_STATIC_BUYER325             1130
+#define IDC_STATIC_BUYER326             1131
+#define IDC_STATIC_BUYER327             1132
+#define IDC_STATIC_BUYER328             1134
+#define IDC_CHK_20                      1135
+#define IDC_STATIC_BUYER329             1136
+#define IDC_STATIC_BUYER330             1137
+#define IDC_CHK_19                      1140
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        140
+#define _APS_NEXT_RESOURCE_VALUE        142
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1035
+#define _APS_NEXT_CONTROL_VALUE         1036
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

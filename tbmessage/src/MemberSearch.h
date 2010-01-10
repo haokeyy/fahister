@@ -5,8 +5,11 @@ class CSearchCondition
 public:
     int nType;
     int nCategoryId;
+    CString szCategoryName;
     CString szLocation;
     CString szKeyword;
+    CString szRateSum;
+    int nStartPage;
     int nLimit;
 };
 
@@ -31,8 +34,8 @@ private:
 
     UINT GetTaobaoBuyerMember();
     BOOL ParseShopListForBuyer(CString szHtml);
-    CString ExtractShopUserID(CString szShopHtml);
-    BOOL GetBuyerMemberByShopUserID(CString sellerUserID, BOOL bSingleUser = FALSE);
+    CString ExtractShopRatePage(CString szShopHtml);
+    BOOL GetBuyerMemberByShopRatePage(CString szShopRatePage, BOOL bSingleUser = FALSE);
     BOOL ParseShopForBuyer(CString szHtml);
     CString ExtractShopBuyer(CString szShopHtml);
 };
