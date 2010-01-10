@@ -34,6 +34,8 @@ public:
     void InitLocation();
     int m_nFoundCount;
     
+    CString m_szSearchUrl;
+    
     afx_msg LRESULT OnFoundMember(WPARAM wParam, LPARAM lParam); 
 
     afx_msg void OnBnClickedBtnSearch();

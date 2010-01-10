@@ -35,6 +35,8 @@ public:
     afx_msg void OnBnClickedBtnExport2();
     afx_msg void OnBnClickedBtnClear2();
 
+    BOOL m_bHasReged;
     void LoadMembers();
 	CExplorerOcx m_ExpWelcome;
+    afx_msg void OnBnClickedBtnCopyMcode();
 };

@@ -7,6 +7,7 @@
 #include "EditMsgDlg.h"
 #include ".\Libraries\ListViewHelp.h"
 #include "StoredMember.h"
+#include ".\Libraries\WindowHelp.h"
 
 
 // CMemberPage dialog
@@ -31,25 +32,29 @@ void CMemberPage::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_EXPR_WELCOME, m_ExpWelcome);
 }
 
+
+
 BOOL CMemberPage::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	m_ExpWelcome.Navigate("http://www.21cn2.com", 0, 0, 0, 0);
+	m_ExpWelcome.Navigate(URL_WELCOME, 0, 0, 0, 0);
 
-    // 设置列表框样式 && 添加列
-    //m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
-    //m_MemberList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
-    //m_MemberList.InsertColumn(1, "用户名", LVCFMT_LEFT, 150);
-    //m_MemberList.InsertColumn(2, "状态", LVCFMT_LEFT, 60);
+    CString szMachineCode;
+    GetMachineCode(szMachineCode);
+    this->SetDlgItemText(IDC_EDIT_MCODE, szMachineCode);
 
-    //m_MessageList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
-    //m_MessageList.InsertColumn(0, "序号", LVCFMT_LEFT, 36);
-    //m_MessageList.InsertColumn(1, "消息内容", LVCFMT_LEFT, 200);
-    //m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
+    szMachineCode = "机器码：" + szMachineCode;
+    if (this->m_bHasReged)
+    {
+        szMachineCode += "  (已注册)";
+    }
+    else
+    {
+        szMachineCode += "  (未注册)";
+    }
+    this->SetDlgItemText(IDC_STATIC_STATUS, szMachineCode);
 
-    //m_MemberList.DeleteAllItems();
-    //LoadMembers();
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -72,6 +77,7 @@ BEGIN_MESSAGE_MAP(CMemberPage, CDialog)
     //ON_BN_CLICKED(IDC_BTN_CLEAR, &CMemberPage::OnBnClickedBtnClear)
     //ON_BN_CLICKED(IDC_BTN_EXPORT2, &CMemberPage::OnBnClickedBtnExport2)
     //ON_BN_CLICKED(IDC_BTN_CLEAR2, &CMemberPage::OnBnClickedBtnClear2)
+    ON_BN_CLICKED(IDC_BTN_COPY_MCODE, &CMemberPage::OnBnClickedBtnCopyMcode)
 END_MESSAGE_MAP()
 
 
@@ -137,4 +143,13 @@ void CMemberPage::OnBnClickedBtnExport2()
 void CMemberPage::OnBnClickedBtnClear2()
 {
     CStoredMember::DeleteSendedMembers();
+}
+
+void CMemberPage::OnBnClickedBtnCopyMcode()
+{
+    CEdit *txtEdit = (CEdit *)this->GetDlgItem(IDC_EDIT_MCODE);
+    txtEdit->SetSel(32);
+    txtEdit->Copy();
+
+    MessageBox("机器码已经复制到剪贴板", "消息");
 }

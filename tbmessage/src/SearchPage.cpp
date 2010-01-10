@@ -45,7 +45,7 @@ BOOL CSearchPage::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-    szTaobaoSearchUrl = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
+    szTaobaoSearchUrl = m_szSearchUrl; //"http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
 
     m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd(), szTaobaoSearchUrl);
 
