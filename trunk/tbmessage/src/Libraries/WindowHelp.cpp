@@ -261,7 +261,7 @@ BOOL GetMachineCode(CString& szMachineCode)
     int nLen;
     Base64Encode(lpMd5Buf, 16, lpBuf, &nLen);
 
-    szMachineCode.Format("%s%X", lpBuf, PRODUCT_ID);
+    szMachineCode.Format("%X%s", PRODUCT_ID, lpBuf);
 
 	return TRUE;
 }

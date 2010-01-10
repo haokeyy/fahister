@@ -50,7 +50,7 @@ BOOL CSendPage::OnInitDialog()
 
     m_ExprMsgHelp.Navigate("about:blank", 0, 0, 0, 0);
 
-    szTaobaoSendUrl = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    szTaobaoSendUrl = m_szSendUrl; //"aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
     
     m_AccountList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_AccountList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
@@ -188,6 +188,7 @@ void CSendPage::OnBnClickedBtnSendmsg()
 void CSendPage::StartSendMsg()
 {
     m_IsStop = TRUE;
+    m_nSendedCount = 0;
     this->SetDlgItemText(IDC_BTN_SENDMSG, "停止");
 
     int m = m_CmbSpeed.GetCurSel();
@@ -283,11 +284,25 @@ int CSendPage::GetNextMessage(CString& szNextMessage)
 
     szNextMessage = " " + szNextMessage;
 
+    if (!this->m_bHasReged)
+    {
+        szNextMessage += this->m_szAdText;
+    }
+
     return 1;
 }
 
 void CSendPage::SendImMsg()
 {
+    m_nSendedCount++;
+
+    if (this->m_bHasReged && m_nSendedCount > 20)
+    {        
+        StopSendMsg();
+        MessageBox("未注册用户每次最多只能发送20条消息，请注册成为正式用户。", "提示");
+        return;
+    }
+
     if (CListViewHelp::GetSelectedItem(m_AccountList) < 0)
     {
         CListViewHelp::SelectedNextItem(m_AccountList);

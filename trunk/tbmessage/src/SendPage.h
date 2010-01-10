@@ -23,6 +23,7 @@ protected:
 	virtual BOOL OnInitDialog();
 	long lastMemberId;
     BOOL m_IsStop;
+    int m_nSendedCount;
 
 	DECLARE_MESSAGE_MAP()
 public:
@@ -61,6 +62,9 @@ public:
 	afx_msg void OnBnClickedBtnNextPage();
 	afx_msg void OnBnClickedBtnLastPage();
     UINT m_nSendLimit;
+    BOOL m_bHasReged;
+    CString m_szSendUrl;
+    CString m_szAdText;
     afx_msg void OnBnClickedBtnReset();
     afx_msg void OnDestroy();
 };

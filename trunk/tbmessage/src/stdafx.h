@@ -42,7 +42,7 @@
 
 #include ".\Libraries\ExplorerOcx.h"
 
-#define PRODUCT_ID      "D09"
+#define PRODUCT_ID      0xA1
 
 #define WM_SENDMSG_COMPLETED     (WM_USER + 101)
 #define WM_FOUND_MEMBER          (WM_USER + 102)
@@ -51,7 +51,8 @@
 #define STATUS_SENDED   "已发送"
 #define STATUS_OFFLINE   "不在线"
 #define TIMER_ID        100
-
+#define URL_WELCOME "http://www.21cn2.com/link.aspx?type=titlebar&id=5290319"
+#define URL_VALIDATE "http://www.21cn2.com/AuthPageA1.aspx"
 
 #ifdef _UNICODE
 #if defined _M_IX86

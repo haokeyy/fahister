@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "tbmessage.h"
 #include "MainDlg.h"
+#include ".\Libraries\WindowHelp.h"
 
 
 // CMainDlg dialog
@@ -64,12 +65,76 @@ HCURSOR CMainDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+// 验证用户是否注册
+void CMainDlg::ValidateReg()
+{
+    CString szMachineCode, szFileChecksum;
+    GetMachineCode(szMachineCode);
+    szFileChecksum = GetFileMD5Checksum();
+
+    CString szAuthURL;
+    szAuthURL.Format("%s?machinecode=%s&checksum=%s", URL_VALIDATE, szMachineCode, szFileChecksum);
+
+#ifdef DEBUG
+    CString szRet   = "1000000";
+    CString szData1 = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
+    CString szData2 = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    CString szData3 = "呵呵";
+#else
+    CString szResult = GetPageDirect(szAuthURL);
+
+    int p1, p2;
+    CString szFlag;
+
+    szFlag = "<Span id=\"result\">";
+    p1 = szResult.Find(szFlag) + szFlag.GetLength();
+    p2 = szResult.Find("</Span>", p1);
+    CString szRet = szResult.Mid(p1,p2-p1);
+        
+    // 淘宝地址
+    szFlag = "<Span id=\"data1\">";
+    p1 = szResult.Find(szFlag) + szFlag.GetLength();
+    p2 = szResult.Find("</Span>", p1);
+    CString szData1 = szResult.Mid(p1,p2-p1);
+    
+    // 阿里旺旺发送用的URL地址
+    szFlag = "<Span id=\"data2\">";
+    p1 = szResult.Find(szFlag) + szFlag.GetLength();
+    p2 = szResult.Find("</Span>", p1);
+    CString szData2 = szResult.Mid(p1,p2-p1);
+
+    // 没注册用户的信息尾巴
+    szFlag = "<Span id=\"data3\">";
+    p1 = szResult.Find(szFlag) + szFlag.GetLength();
+    p2 = szResult.Find("</Span>", p1);
+    CString szData3 = szResult.Mid(p1,p2-p1);
+
+#endif
+
+    int nRetValue = 0;
+    try
+    {
+        nRetValue = atoi(szRet.Trim().GetBuffer(0));
+    }
+    catch(CSimpleException* )
+    {
+
+    }
+    m_MemberPage.m_bHasReged = (nRetValue == 1000000);
+    m_SearchPage.m_szSearchUrl = szData1;
+    m_SendPage.m_bHasReged = (nRetValue == 1000000);
+    m_SendPage.m_szSendUrl = szData2;
+    m_SendPage.m_szAdText = szData3;
+}
+
 BOOL CMainDlg::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
+
+    ValidateReg();
 
     m_FuncTab.AddPage("欢迎", &m_MemberPage, IDD_MEMBER_VIEW);
     m_FuncTab.AddPage("查找买家/卖家", &m_SearchPage, IDD_SEARCH_VIEW);
