@@ -13,6 +13,7 @@
 #include "StoredMessage.h"
 #include "StoredProfile.h"
 #include "EditMsgDlg.h"
+#include "ShutdownDlg.h"
 
 // CSendPage dialog
 #define PAGE_SIZE 500
@@ -214,7 +215,7 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
     LPTSTR szItemId = (LPTSTR)lParam;
 
     int nItemId = atoi(szItemId);
-    CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
+    //CListViewHelp::ChangeListItemValue(m_MemberList, nItemId, STATUS_SENDED);
 
     CString szMessage;
     szMessage.Format("发送完成:%d", nItemId);
@@ -228,10 +229,49 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
+BOOL CSendPage::IsOnline(CString szUserId)
+{
+	ConvertGBKToUtf8(szUserId);
+
+	CString szURL = "http://amos1.taobao.com/online.ww?v=2&s=1&uid=" + URLEncode(szUserId);
+	CString szHTML = GetPageDirect(szURL);
+	return szHTML.GetLength() > 20;
+}
+
 int CSendPage::GetNextMember(CString& szNextReceiver)
 {
+
+NEXT_MEMBER:
     long i = CStoredMember::GetNextUnSendedMember(szNextReceiver);
-	CStoredMember::SetMemberStatus(i, 1);
+    if (i > 0)
+    {
+        CStoredMember::SetMemberStatus(i, 1);
+
+        // 当前页中的索引
+        while (i > lastMemberId)
+        {
+            OnBnClickedBtnNextPage();
+        }
+        while (i < lastMemberId - PAGE_SIZE)
+        {
+            OnBnClickedBtnPrevPage();
+        }
+        int pageIndex = (lastMemberId / PAGE_SIZE) - 1;
+        int itemIndex = i - pageIndex * PAGE_SIZE - 1;
+
+        CButton *btnChkOnline = (CButton *)this->GetDlgItem(IDC_CHK_ONLINE);
+
+        if (btnChkOnline->GetCheck() != BST_CHECKED || IsOnline(szNextReceiver))
+        {
+            CListViewHelp::ChangeListItemValue(m_MemberList, itemIndex, STATUS_SENDED);
+        }
+        else
+        {
+            CListViewHelp::ChangeListItemValue(m_MemberList, itemIndex, STATUS_OFFLINE);
+            goto NEXT_MEMBER;
+        }
+    }
+
 	return i;
 }
 
@@ -282,7 +322,17 @@ CHECK_LIMIT:
     if (msg.nItemIndex < 0)
     {
         StopSendMsg();
-        MessageBox("发送完成。", "提示", MB_ICONINFORMATION);
+
+        CButton *btnChkShutdown = (CButton *)this->GetDlgItem(IDC_CHK_SHUTDOWN);
+        if (btnChkShutdown->GetCheck() == BST_CHECKED)
+        {
+            CShutdownDlg dlg;
+            dlg.DoModal();
+        }
+        else
+        {
+            MessageBox("发送完成。", "提示", MB_ICONINFORMATION);
+        }
         return;
     }
     GetNextMessage(msg.MessageHtml);
@@ -570,7 +620,11 @@ void CSendPage::OnBnClickedBtnLastPage()
 
 void CSendPage::OnBnClickedBtnReset()
 {
- 
+    int cnt = m_AccountList.GetItemCount();
+    for (int i = 0; i < cnt; i++)
+    {
+        CListViewHelp::ChangeListItemValue(m_AccountList, i, "0");
+    } 
 }
 
 void CSendPage::OnDestroy()

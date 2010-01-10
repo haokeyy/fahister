@@ -49,6 +49,7 @@
 #define STATUS_UNSEND   "未发送"
 #define STATUS_SENDING  "发送中..."
 #define STATUS_SENDED   "已发送"
+#define STATUS_OFFLINE   "不在线"
 #define TIMER_ID        100
 
 

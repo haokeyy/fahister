@@ -41,6 +41,7 @@ public:
     void StartSendMsg();
     void StopSendMsg();
     int GetNextMessage(CString& szNextMessage);
+    BOOL IsOnline(CString szUserId);
     int GetNextMember(CString& szNextReceiver);
     BOOL OpenSendWindow(CString szSenderID, CString szReceiverID);
     LRESULT OnSendMsgCompleted(WPARAM wParam, LPARAM lParam);

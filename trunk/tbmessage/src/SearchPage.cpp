@@ -37,6 +37,7 @@ BEGIN_MESSAGE_MAP(CSearchPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_SEARCH, &CSearchPage::OnBnClickedBtnSearch)
 	//}}AFX_MSG_MAP    
     ON_MESSAGE(WM_FOUND_MEMBER, OnFoundMember) 
+    ON_CBN_SELCHANGE(IDC_CMB_TARGET, &CSearchPage::OnCbnSelchangeCmbTarget)
 END_MESSAGE_MAP()
 
 
@@ -44,7 +45,7 @@ BOOL CSearchPage::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-    szTaobaoSearchUrl = "http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+    szTaobaoSearchUrl = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
 
     m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd(), szTaobaoSearchUrl);
 
@@ -102,7 +103,33 @@ void CSearchPage::OnBnClickedBtnSearch()
         condition.nCategoryId = m_CmbCategory.GetItemData(i);
         m_CmbLocation.GetWindowText(condition.szLocation);
         this->GetDlgItemText(IDC_EDIT_KEYWORD, condition.szKeyword);
+        
+        condition.nStartPage = this->GetDlgItemInt(IDC_EDIT_START_PAGE);
         condition.nLimit = this->GetDlgItemInt(IDC_EDIT_LIMIT);
+
+        // 用户信誉            
+	    CString szRateSum = "";
+	    for (int i = 1; i <= 20; i++)
+	    {
+		    CString szWndText;
+		    szWndText.Format("RATE_%d", i);
+		    CButton *chkBtn = (CButton*)this->FindWindowEx(this->GetSafeHwnd(), NULL, "Button", szWndText);
+		    if (chkBtn && chkBtn->GetCheck() == BST_CHECKED)
+		    {
+			    CString rate;
+			    if (szRateSum.IsEmpty())
+			    {
+				    rate.Format("%d", i);
+				    szRateSum += rate;
+			    }
+			    else
+			    {				
+				    rate.Format(",%d", i);
+				    szRateSum += rate;
+			    }
+		    }
+	    }
+        condition.szRateSum = szRateSum;
 
         this->GetDlgItem(IDC_BTN_SEARCH)->SetWindowText("停止");
         m_pMemberSearch->SearchMember(condition);
@@ -138,4 +165,41 @@ LRESULT CSearchPage::OnFoundMember(WPARAM wParam, LPARAM lParam)
     }
 
     return 0;
+}
+
+void CSearchPage::SetConditionCtrlStatus(BOOL bEnabled)
+{
+    this->GetDlgItem(IDC_CMB_CATEGORY)->EnableWindow(bEnabled);
+    this->GetDlgItem(IDC_CMB_LOCATION)->EnableWindow(bEnabled);
+    for (int i = 1; i <= 20; i++)
+    {
+	    CString szWndText;
+	    szWndText.Format("RATE_%d", i);
+	    CWnd *chkBtn = this->FindWindowEx(this->GetSafeHwnd(), NULL, "Button", szWndText);
+	    if (chkBtn)
+	    {
+            chkBtn->EnableWindow(bEnabled);
+	    }
+    }
+}
+
+void CSearchPage::OnCbnSelchangeCmbTarget()
+{
+    int type = m_CmbTarget.GetCurSel();
+    switch (type)
+    {
+    case 0:
+    case 1:
+        this->SetDlgItemText(IDC_STATIC_KEYWORD, "关键字：");
+        SetConditionCtrlStatus(TRUE);
+        break;
+    case 2:
+    case 3:        
+        this->SetDlgItemText(IDC_STATIC_KEYWORD, "评价页面：");
+        SetConditionCtrlStatus(FALSE);
+        break;
+    default:
+        break;
+    }
+    
 }
