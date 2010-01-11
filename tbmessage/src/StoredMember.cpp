@@ -176,3 +176,27 @@ void CStoredMember::DeleteSendedMembers()
 
     conn.Close();
 }
+
+void CStoredMember::ApplyDistinct()
+{
+    CAdoConnection conn;
+    conn.ConnectAccess(GetFilePath());
+
+    CString szCmdText;
+    // 创建临时表，转存数据
+    szCmdText.Format("drop table members2");
+	conn.Execute(szCmdText);
+    szCmdText.Format("create table members2(id autoincrement, name varchar(50), status int, flag bit)");
+    conn.Execute(szCmdText);
+    szCmdText.Format("insert into members2(name, status) select distinct name, status from members");
+    conn.Execute(szCmdText);
+    // 重新创建主表
+    szCmdText.Format("drop table members");
+	conn.Execute(szCmdText);
+    szCmdText.Format("create table members(id autoincrement, name varchar(50), status int, flag bit)");
+    conn.Execute(szCmdText);
+    szCmdText.Format("insert into members(name, status) select name, status from members2");
+    conn.Execute(szCmdText);
+
+    conn.Close();
+}

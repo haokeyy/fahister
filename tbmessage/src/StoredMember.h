@@ -20,4 +20,5 @@ public:
     static CString GetFilePath();
     static void DeleteAllMembers();
     static void DeleteSendedMembers();
+    static void ApplyDistinct();
 };
