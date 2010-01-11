@@ -6,6 +6,7 @@
 #include "MD5Checksum.h"
 #include "MyDiskInfo.h"
 #include <TLHELP32.H>
+#include "./MachineCode/HwInfo.h"
 
 #pragma comment(lib, "Iphlpapi.lib")
 #pragma comment(lib, "WS2_32.lib")
@@ -198,59 +199,41 @@ CString URLEncode(CString sIn)
 
 // 根据网卡MAC计算得到一个唯一机器码
 BOOL GetMachineCode(CString& szMachineCode)
-{    
- //   /////////////////////////////////////////
- //   u_char	g_ucLocalMac[6];	// 本地MAC地址
- //   //DWORD	g_dwGatewayIP;		// 网关IP地址
- //   //DWORD	g_dwLocalIP;		// 本地IP地址
- //   //DWORD	g_dwMask;			// 子网掩码
-	//PIP_ADAPTER_INFO pAdapterInfo = NULL;
-	//ULONG ulLen = 0;
+{	
+    //char strSerial[512];
+    //memset(strSerial, 0, 512);
+    //for (int i = 0; i < 4; i++)
+    //{
+    //    CMyDiskInfo myDisk;
+    //    if (!myDisk.GetDiskInfo(i))
+    //    {
+    //        strcat(strSerial, myDisk.szModelNumber);
+    //        strcat(strSerial, myDisk.szSerialNumber);
+    //    }
+    //}
+    CString szTempCode("");
 
-	//// 为适配器结构申请内存
-	//::GetAdaptersInfo(pAdapterInfo,&ulLen);
-	//pAdapterInfo = (PIP_ADAPTER_INFO)::GlobalAlloc(GPTR, ulLen);
-
-	//// 取得本地适配器结构信息
-	//if(::GetAdaptersInfo(pAdapterInfo,&ulLen) ==  ERROR_SUCCESS)
-	//{
-	//	if(pAdapterInfo != NULL)
-	//	{
-	//		memcpy(g_ucLocalMac, pAdapterInfo->Address, 6);
-	//		//g_dwGatewayIP = ::inet_addr(pAdapterInfo->GatewayList.IpAddress.String);
-	//		//g_dwLocalIP = ::inet_addr(pAdapterInfo->IpAddressList.IpAddress.String);
-	//		//g_dwMask = ::inet_addr(pAdapterInfo->IpAddressList.IpMask.String);
-	//	}
-	//}
-
-	////printf(" \n -------------------- 本地主机信息 -----------------------\n\n");
-	////in_addr in;
-	////in.S_un.S_addr = g_dwLocalIP;
-	////printf("      IP Address : %s \n", ::inet_ntoa(in));
-
-	////in.S_un.S_addr = g_dwMask;
-	////printf("     Subnet Mask : %s \n", ::inet_ntoa(in));
-
-	////in.S_un.S_addr = g_dwGatewayIP;
-	////printf(" Default Gateway : %s \n", ::inet_ntoa(in));
-
-	//u_char *p = g_ucLocalMac;
- //   int nMasterVer = (int)PRODUCT_ID%100;
- //   int nMonirVer = (int)PRODUCT_ID/100;
- //   szMachineCode.Format("%02X%02X-%02X%d-%02X%02X-%02X%d", p[1]^0xFF, p[4]^0xFF, p[5]^0xFF, nMonirVer, p[0]^0xFF, p[2]^0xFF, p[3]^0xFF, nMasterVer);
- //   szMachineCode.MakeReverse();
-	
-    char strSerial[512];
-    memset(strSerial, 0, 512);
+    int size = 0;
+    CHwInfo::GetSMBiosData(NULL, &size);
+    BYTE *buf = (BYTE*)malloc(size);
+    CHwInfo::GetSMBiosData(buf, &size);
+    CHwInfo hwInfo(buf, size);
+    CString szUuid = hwInfo.GetMahineUuid();
+    szTempCode.Append(szUuid);
+    CString szSN = hwInfo.GetMachineSn();
+    szTempCode.Append(szSN);
+    
     for (int i = 0; i < 4; i++)
     {
         CMyDiskInfo myDisk;
         if (!myDisk.GetDiskInfo(i))
         {
-            strcat(strSerial, myDisk.szModelNumber);
-            strcat(strSerial, myDisk.szSerialNumber);
+            szTempCode.Append(myDisk.szModelNumber);
+            szTempCode.Append(myDisk.szSerialNumber);
         }
     }
+
+    char *strSerial = szTempCode.GetBuffer();
 
     BYTE lpMd5Buf[17];
     char lpBuf[25];

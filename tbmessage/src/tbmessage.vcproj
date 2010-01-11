@@ -485,6 +485,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="MachineCode"
+				>
+				<File
+					RelativePath=".\Libraries\MachineCode\HwInfo.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\Libraries\MachineCode\HwInfo.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\ReadMe.txt"
