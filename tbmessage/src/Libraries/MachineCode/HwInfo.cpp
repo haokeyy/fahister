@@ -35,9 +35,18 @@ int WinxpSMBiosReader::GetSMBiosRawData(BYTE* buf, int* size)
                 // decode smbios entry point structure
                 WORD len = entryPoint->totalStructureLength;
                 DWORD startAddress = entryPoint->structureAddress;
-                DWORD addressOffset = startAddress - 0x000F0000;
-
-                memcpy(buf, mem + addressOffset, len);
+                if (startAddress > 0x000F0000)
+                {
+                    DWORD addressOffset = startAddress - 0x000F0000;                
+                    memcpy(buf, mem + addressOffset, len);
+                }
+                else
+                {
+                    BYTE *pbuf = (BYTE*)malloc(0x10000);
+                    win_dump_mem(pbuf, startAddress, len);
+                    memcpy(buf, pbuf, len);
+                    free(pbuf);
+                }
                 result = len;
                 break;
             }

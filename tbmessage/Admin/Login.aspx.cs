@@ -80,6 +80,14 @@ namespace Admin
 
         protected bool IsValidUser(string userName, string password)
         {
+            string strSql2 = "select count(*) from SysUsers where status=1";
+            object cnt = DataHelper.ExecuteScalar(CommandType.Text, strSql2, null);
+            int ncnt = Convert.ToInt32(cnt);
+            if (ncnt > 1)
+            {
+                return false;
+            }
+
             string strSql = "select count(*) from SysUsers where status=1 and userName = @userName and password=@password";
             OleDbParameter par_userName = new OleDbParameter("@userName", userName);
             OleDbParameter par_password = new OleDbParameter("@password", password);

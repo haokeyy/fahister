@@ -33,7 +33,7 @@ namespace Admin
 
         private void LoadUser(string id)
         {
-            string strSql = "select * from RegUsers where id=@id";
+            string strSql = "select * from Reg_Users where id=@id";
             OleDbParameter par_id = new OleDbParameter("@id", id);
             OleDbParameter[] pars = { par_id };
 
@@ -75,7 +75,7 @@ namespace Admin
 
             if (Request.QueryString["id"] != null)
             {
-                string strSql1 = "delete from RegUsers where id=@id";
+                string strSql1 = "delete from Reg_Users where id=@id";
                 OleDbParameter par_id = new OleDbParameter("@id", Request.QueryString["id"]);
                 OleDbParameter[] pars1 = { par_id };
 
@@ -90,7 +90,7 @@ namespace Admin
                 return;
             }
 
-            string strSql = "insert into RegUsers(userName,productid,machinecode,status,regTime, remark,price, creator, valid) values(@userName, @productId, @machineCode, @status, @regTime, @remark, @price, @creator, 1)";
+            string strSql = "insert into Reg_Users(userName,productid,machinecode,status,regTime, remark,price, creator, valid) values(@userName, @productId, @machineCode, @status, @regTime, @remark, @price, @creator, 1)";
 
             OleDbParameter par_userName = new OleDbParameter("@userName", OleDbType.VarChar, 50);
             OleDbParameter par_productID = new OleDbParameter("@productId", OleDbType.VarChar, 50);
@@ -147,7 +147,7 @@ namespace Admin
 
         private int GetUserCount(string userName)
         {
-            string strSql = "select count(*) from regUsers where creator = ?";
+            string strSql = "select count(*) from reg_Users where creator = ?";
             OleDbParameter par_userName = new OleDbParameter("@userName", userName);
 
             object count = DataHelper.ExecuteScalar(CommandType.Text, strSql, par_userName);
