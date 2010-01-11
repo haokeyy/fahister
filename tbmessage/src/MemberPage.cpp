@@ -38,7 +38,7 @@ BOOL CMemberPage::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
-	m_ExpWelcome.Navigate(URL_WELCOME, 0, 0, 0, 0);
+    CString szWelcomeUrl(URL_LINK_PAGE);
 
     CString szMachineCode;
     GetMachineCode(szMachineCode);
@@ -48,13 +48,16 @@ BOOL CMemberPage::OnInitDialog()
     if (this->m_bHasReged)
     {
         szMachineCode += "  (已注册)";
+        szWelcomeUrl.AppendFormat("?type=1&id=%X", FILE_ID);
     }
     else
     {
-        szMachineCode += "  (未注册)";
+        szMachineCode += "  (未注册)";        
+        szWelcomeUrl.AppendFormat("?type=0&id=%X", FILE_ID);
     }
     this->SetDlgItemText(IDC_STATIC_STATUS, szMachineCode);
-
+	    
+    m_ExpWelcome.Navigate(szWelcomeUrl, 0, 0, 0, 0);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
