@@ -96,6 +96,7 @@ BEGIN_MESSAGE_MAP(CSendPage, CDialog)
 	ON_BN_CLICKED(IDC_BTN_LAST_PAGE, &CSendPage::OnBnClickedBtnLastPage)
     ON_BN_CLICKED(IDC_BTN_RESET, &CSendPage::OnBnClickedBtnReset)
     ON_WM_DESTROY()
+    ON_BN_CLICKED(IDC_BTN_IMPORT, &CSendPage::OnBnClickedBtnImport)
 END_MESSAGE_MAP()
 
 void CSendPage::LoadMembers(long startId, long stepCount)
@@ -647,4 +648,33 @@ void CSendPage::OnDestroy()
     CDialog::OnDestroy();
 
     SaveProfile();
+}
+
+void CSendPage::OnBnClickedBtnImport()
+{
+    CFileDialog fileOpen(TRUE,  ".txt", 0, 0, "*.txt|*.txt|*.*|*.*||");
+    if (fileOpen.DoModal() == IDOK)
+    {     
+		CString strLine;
+
+		CStdioFile file;
+		CFileException ex;
+
+		if (file.Open(fileOpen.GetPathName(), CFile::modeRead, &ex))
+		{
+			while (file.ReadString(strLine))
+			{
+				CString szUserName(strLine), szPwd("0");
+				int i = strLine.Find("/", 0);
+				if (i > 0)
+				{
+					szUserName = strLine.Left(i);
+                    szPwd = strLine.Mid(i+1);
+				}
+	            
+                CListViewHelp::AddListItem(m_AccountList, szUserName, "0");
+			}
+			file.Close();
+		}
+    }
 }

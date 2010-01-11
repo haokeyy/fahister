@@ -40,4 +40,5 @@ public:
 
     afx_msg void OnBnClickedBtnSearch();
     afx_msg void OnCbnSelchangeCmbTarget();
+    afx_msg void OnBnClickedBtnDistinct();
 };

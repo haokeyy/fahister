@@ -67,4 +67,5 @@ public:
     CString m_szAdText;
     afx_msg void OnBnClickedBtnReset();
     afx_msg void OnDestroy();
+    afx_msg void OnBnClickedBtnImport();
 };

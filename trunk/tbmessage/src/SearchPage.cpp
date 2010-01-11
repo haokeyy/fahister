@@ -38,6 +38,7 @@ BEGIN_MESSAGE_MAP(CSearchPage, CDialog)
 	//}}AFX_MSG_MAP    
     ON_MESSAGE(WM_FOUND_MEMBER, OnFoundMember) 
     ON_CBN_SELCHANGE(IDC_CMB_TARGET, &CSearchPage::OnCbnSelchangeCmbTarget)
+    ON_BN_CLICKED(IDC_BTN_DISTINCT, &CSearchPage::OnBnClickedBtnDistinct)
 END_MESSAGE_MAP()
 
 
@@ -202,4 +203,20 @@ void CSearchPage::OnCbnSelchangeCmbTarget()
         break;
     }
     
+}
+
+void CSearchPage::OnBnClickedBtnDistinct()
+{
+    long oldCnt = CStoredMember::GetCount();
+    CStoredMember::ApplyDistinct();
+    long newCnt = CStoredMember::GetCount();
+    
+    CString szGroupCaption;
+    szGroupCaption.Format("共删除%d个重复的买家/卖家, 删除之后共有%d买家/卖家", oldCnt - newCnt, newCnt);
+    this->SetDlgItemText(IDC_STATIC_STATUS, szGroupCaption);
+
+    if (oldCnt > newCnt)
+    {
+        bHasMemberChanged = TRUE;
+    }
 }
