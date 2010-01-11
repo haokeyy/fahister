@@ -299,13 +299,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "http://www.jxqunfa.com"
-            VALUE "FileDescription", "及讯淘宝群发软件"
+            VALUE "CompanyName", "http://www.singda.net/"
+            VALUE "FileDescription", "迅达淘宝群发软件"
             VALUE "FileVersion", "6.0.0.1"
             VALUE "InternalName", "tbmessage.exe"
-            VALUE "LegalCopyright", "及讯群发，保留所有权利。"
+            VALUE "LegalCopyright", "迅达群发，保留所有权利。"
             VALUE "OriginalFilename", "tbmessage.exe"
-            VALUE "ProductName", "及讯淘宝群发软件"
+            VALUE "ProductName", "迅达淘宝群发软件"
             VALUE "ProductVersion", "6.0.0.1"
         END
     END

@@ -5,16 +5,16 @@
 
 <script language="C#" runat="server">
 
-protected DataSet GetFileProperty(string machineCode)
+    protected DataSet GetFileProperty(string checksum)
 {
-    string commandText = "select fileid, productid, sendlimit, checksum, adtext, titlebarurl, helpurl,commandurl from Files where status=1 and checksum='" + machineCode + "'";
+    string commandText = "select fileid, productid, sendlimit, checksum, adtext, titlebarurl, helpurl,commandurl from Files where status=1 and checksum='" + checksum + "'";
     return DataHelper.ExecuteDataset(CommandType.Text, commandText, null);
 }
 
 protected bool CheckReg(string machineCode, string productid)
 {
     int num = 0;
-    string commandText = "select count(*) from RegUsers where status=1 and MachineCode=@machineCode and productid = @productid";
+    string commandText = "select count(*) from Reg_Users where status=1 and MachineCode=@machineCode and productid = @productid";
     OleDbParameter parameter = new OleDbParameter("@machineCode", OleDbType.VarChar, 50);
     OleDbParameter parameter2 = new OleDbParameter("@productid", OleDbType.VarChar, 50);
     parameter.Value = machineCode;
@@ -41,12 +41,12 @@ protected void Page_Load(object sender, EventArgs e)
 {
     string machineCode = base.Request.QueryString["machinecode"];
     string checksum = base.Request.QueryString["checksum"];
-    DataSet fileProperty = this.GetFileProperty(machineCode);
+    DataSet fileProperty = this.GetFileProperty(checksum);
     bool flag = false;
     if ((fileProperty != null) && (fileProperty.Tables[0].Rows.Count > 0))
     {
         this.ltAuthResult.Text = fileProperty.Tables[0].Rows[0]["sendlimit"].ToString();
-        this.ltData1.Text = "http://search1.taobao.com/browse/browse_shop.htm?title_type=name";
+        this.ltData1.Text = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
         this.ltData2.Text = fileProperty.Tables[0].Rows[0]["commandurl"].ToString();
         this.ltData3.Text = fileProperty.Tables[0].Rows[0]["adtext"].ToString();
         this.ltData4.Text = "http://search.china.alibaba.com/search/company_search.htm?categoryId=0"; //随机数，没用

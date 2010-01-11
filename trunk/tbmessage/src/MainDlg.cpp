@@ -121,10 +121,10 @@ void CMainDlg::ValidateReg()
 
     }
     m_MemberPage.m_bHasReged = (nRetValue == 1000000);
-    m_SearchPage.m_szSearchUrl = szData1;
-    m_SendPage.m_bHasReged = (nRetValue == 1000000);
-    m_SendPage.m_szSendUrl = szData2;
-    m_SendPage.m_szAdText = szData3;
+    m_SearchPage.m_szSearchUrl = szData1.Trim();
+    m_SendPage.m_nSendLimit = nRetValue;
+    m_SendPage.m_szSendUrl = szData2.Trim();
+    m_SendPage.m_szAdText = szData3.Trim();
 }
 
 BOOL CMainDlg::OnInitDialog()

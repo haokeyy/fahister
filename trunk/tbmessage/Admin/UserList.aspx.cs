@@ -95,7 +95,7 @@ namespace Admin
         {
             if (e.CommandName == "delete")
             {
-                string strSql = "delete from RegUsers where id=@id";
+                string strSql = "delete from Reg_Users where id=@id";
                 OleDbParameter par_id = new OleDbParameter("@id", e.CommandArgument);
                 OleDbParameter[] pars = { par_id };
 

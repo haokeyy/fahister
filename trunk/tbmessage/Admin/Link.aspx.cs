@@ -15,16 +15,8 @@ namespace Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string commandText;
-            string fileId = Request.QueryString["id"];
-            if (Request.QueryString["type"] == "help")
-            {
-                commandText = "select helpurl from Files where status=1 and fileId='" + fileId + "'";
-            }
-            else
-            {
-                commandText = "select titlebarurl from Files where status=1 and fileId='" + fileId + "'";
-            }
+            string commandText = "select url from Links where linkId='" + Request.QueryString["id"] + "' and type=" + Request.QueryString["type"];
+            
             string url = (string)DataHelper.ExecuteScalar(CommandType.Text, commandText, null);
 
             Response.Redirect(url);

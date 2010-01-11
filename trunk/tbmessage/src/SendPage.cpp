@@ -23,7 +23,6 @@ IMPLEMENT_DYNAMIC(CSendPage, CDialog)
 
 CSendPage::CSendPage(CWnd* pParent /*=NULL*/)
 	: CDialog(CSendPage::IDD, pParent)
-    , m_nSendLimit(0)
 {
     m_IsStop = FALSE;
     m_szLastSenderId = "";
@@ -41,7 +40,6 @@ void CSendPage::DoDataExchange(CDataExchange* pDX)
     DDX_Control(pDX, IDC_EXPR_MSG_HELP, m_ExprMsgHelp);
     DDX_Control(pDX, IDC_MESSAGE_LIST, m_MessageList);
     DDX_Control(pDX, IDC_MEMBER_LIST, m_MemberList);
-    DDX_Text(pDX, IDC_SEND_LIMIT, m_nSendLimit);
 }
 
 BOOL CSendPage::OnInitDialog()
@@ -285,7 +283,7 @@ int CSendPage::GetNextMessage(CString& szNextMessage)
 
     szNextMessage = " " + szNextMessage;
 
-    if (!this->m_bHasReged)
+    if (m_nSendLimit < 1000000)
     {
         szNextMessage += this->m_szAdText;
     }
@@ -297,10 +295,12 @@ void CSendPage::SendImMsg()
 {
     m_nSendedCount++;
 
-    if (this->m_bHasReged && m_nSendedCount > 20)
+    if (m_nSendedCount > m_nSendLimit)
     {        
         StopSendMsg();
-        MessageBox("未注册用户每次最多只能发送20条消息，请注册成为正式用户。", "提示");
+        CString ss;
+        ss.Format("未注册用户每次最多只能发送%d条消息，请注册成为正式用户。", m_nSendLimit);
+        MessageBox(ss, "提示");
         return;
     }
 
