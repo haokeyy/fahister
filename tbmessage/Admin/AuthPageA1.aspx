@@ -32,9 +32,9 @@ protected bool CheckReg(string machineCode, string productid)
 
 protected void WriteLog(string result, string requestUrl)
 {
-    //string format = "insert into logs(requesttime, result, requesturl) values('{0}', {1}, '{2}')";
-    //string commandText = string.Format(format, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss "), result, base.Request.UserHostAddress + requestUrl);
-    //DataHelper.ExecuteNonQuery(CommandType.Text, commandText, null);
+    string format = "insert into logs(requesttime, result, requesturl) values('{0}', {1}, '{2}')";
+    string commandText = string.Format(format, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss "), result, base.Request.UserHostAddress + requestUrl);
+    DataHelper.ExecuteNonQuery(CommandType.Text, commandText, null);
 }
 
 protected void Page_Load(object sender, EventArgs e)
