@@ -47,12 +47,12 @@ BOOL CMemberPage::OnInitDialog()
     szMachineCode = "»úÆ÷Âë£º" + szMachineCode;
     if (this->m_bHasReged)
     {
-        szMachineCode += "  (ÒÑ×¢²á)";
+        szMachineCode += "  (ÒÑ×¢²á)    http://www.singda.net";
         szWelcomeUrl.AppendFormat("?type=1&id=%X", FILE_ID);
     }
     else
     {
-        szMachineCode += "  (Î´×¢²á)";        
+        szMachineCode += "  (Î´×¢²á)    http://www.singda.net";        
         szWelcomeUrl.AppendFormat("?type=0&id=%X", FILE_ID);
     }
     this->SetDlgItemText(IDC_STATIC_STATUS, szMachineCode);
