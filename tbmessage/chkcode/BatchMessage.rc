@@ -261,8 +261,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,3,2,0
- PRODUCTVERSION 1,3,0,1
+ FILEVERSION 6,0,0,1
+ PRODUCTVERSION 6,0,0,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -277,14 +277,13 @@ BEGIN
     BEGIN
         BLOCK "080404b0"
         BEGIN
-            VALUE "Comments", "王牌阿里旺旺群发王"
-            VALUE "CompanyName", "21cn2.com"
-            VALUE "FileDescription", "王牌淘宝群发王(免登陆版)V1.3"
-            VALUE "FileVersion", "1, 3, 2, 0"
-            VALUE "LegalCopyright", "版权所有 (C) 2007"
-            VALUE "OriginalFilename", "BatchMessage.exe"
-            VALUE "ProductName", "王牌淘宝群发王"
-            VALUE "ProductVersion", "1, 3, 0, 1"
+            VALUE "CompanyName", "http://www.jxqunfa.com/"
+            VALUE "FileDescription", "及讯淘宝群发软件"
+            VALUE "FileVersion", "6, 0, 0, 1"
+            VALUE "LegalCopyright", "及讯群发 版权所有 (C) 2009"
+            VALUE "OriginalFilename", "checkcode.exe"
+            VALUE "ProductName", "及讯淘宝群发软件"
+            VALUE "ProductVersion", "6, 0, 0, 1"
         END
     END
     BLOCK "VarFileInfo"

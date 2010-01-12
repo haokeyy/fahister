@@ -68,6 +68,13 @@ HCURSOR CMainDlg::OnQueryDragIcon()
 // 验证用户是否注册
 void CMainDlg::ValidateReg()
 {
+
+#ifdef DEBUG
+    CString szRet   = "1000000";
+    CString szData1 = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
+    CString szData2 = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    CString szData3 = "呵呵";
+#else    
     CString szMachineCode, szFileChecksum;
     GetMachineCode(szMachineCode);
     szFileChecksum = GetFileMD5Checksum();
@@ -75,12 +82,6 @@ void CMainDlg::ValidateReg()
     CString szAuthURL;
     szAuthURL.Format("%s?machinecode=%s&checksum=%s", URL_VALIDATE, szMachineCode, szFileChecksum);
 
-#ifdef DEBUG
-    CString szRet   = "1000000";
-    CString szData1 = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
-    CString szData2 = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
-    CString szData3 = "呵呵";
-#else
     CString szResult = GetPageDirect(szAuthURL);
 
     int p1, p2;
@@ -121,10 +122,15 @@ void CMainDlg::ValidateReg()
 
     }
     m_MemberPage.m_bHasReged = (nRetValue == 1000000);
-    m_SearchPage.m_szSearchUrl = szData1.Trim();
-    m_SendPage.m_nSendLimit = nRetValue;
-    m_SendPage.m_szSendUrl = szData2.Trim();
-    m_SendPage.m_szAdText = szData3.Trim();
+    CTime t = CTime::GetTickCount();
+    CTime t_limit = CTime(2010, 3, 1, 0, 0, 0);
+    if (t < t_limit)
+    {
+        m_SearchPage.m_szSearchUrl = szData1.Trim();
+        m_SendPage.m_nSendLimit = nRetValue;
+        m_SendPage.m_szSendUrl = szData2.Trim();
+        m_SendPage.m_szAdText = szData3.Trim();
+    }
 }
 
 BOOL CMainDlg::OnInitDialog()

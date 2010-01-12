@@ -53,8 +53,8 @@ BOOL CSendPage::OnInitDialog()
     m_AccountList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_AccountList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
     m_AccountList.InsertColumn(1, "用户名", LVCFMT_LEFT, 80);
-    //m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
-    m_AccountList.InsertColumn(2, "发送数量", LVCFMT_LEFT, 40);
+    m_AccountList.InsertColumn(2, "密码", LVCFMT_LEFT, 0);
+    m_AccountList.InsertColumn(3, "发送数量", LVCFMT_LEFT, 40);
 
 	// 设置列表框样式 && 添加列
     m_MemberList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
@@ -68,8 +68,6 @@ BOOL CSendPage::OnInitDialog()
     m_MessageList.InsertColumn(2, "消息HTML", LVCFMT_LEFT, 0);
 
     OnBnClickedBtnFirstPage();
-
-    InitSpeed();
 
     LoadProfile();
 
@@ -119,20 +117,6 @@ void CSendPage::LoadMembers(long startId, long stepCount)
     bHasMemberChanged = FALSE;
 }
 
-void CSendPage::InitSpeed()
-{
-    m_CmbSpeed.ResetContent();
-    int i=0;
-    m_CmbSpeed.AddString("1秒每条"); m_CmbSpeed.SetItemData(i++,1000);
-    m_CmbSpeed.AddString("2秒每条"); m_CmbSpeed.SetItemData(i++, 2000);
-    m_CmbSpeed.AddString("3秒每条"); m_CmbSpeed.SetItemData(i++, 3000);
-    m_CmbSpeed.AddString("5秒每条"); m_CmbSpeed.SetItemData(i++, 5000);
-    m_CmbSpeed.AddString("8秒每条"); m_CmbSpeed.SetItemData(i++, 8000);
-    m_CmbSpeed.AddString("10秒每条"); m_CmbSpeed.SetItemData(i++, 10000);
-    m_CmbSpeed.AddString("15秒每条"); m_CmbSpeed.SetItemData(i++, 15000);
-
-    m_CmbSpeed.SetCurSel(3);
-}
 // CSendPage message handlers
 
 
@@ -141,7 +125,9 @@ void CSendPage::OnBnClickedBtnAddAccount()
     CEditAccountDlg dlg;
     if (dlg.DoModal() == IDOK)
     {
-        CListViewHelp::AddListItem(m_AccountList, dlg.GetUserId(), "0");
+        CListViewHelp::AddListItem(m_AccountList, dlg.GetUserId(), dlg.GetPassword());
+        int cnt = m_AccountList.GetItemCount();
+        m_AccountList.SetItemText(cnt - 1, 3, "0");
     }
 }
 
@@ -310,16 +296,23 @@ void CSendPage::SendImMsg()
     }
     
     int cnt = m_AccountList.GetItemCount();
+    int nRetryTime = 0;
 
 CHECK_LIMIT:
     // 获取目前用户已发送数量和发送限制
     CString szCurrentSendUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
-    CString szCurrentSendedNumber = CListViewHelp::GetSelectedItemValue(m_AccountList);
+    CString szCurrentSendUserPwd = CListViewHelp::GetSelectedItemValue(m_AccountList);
+    int selpos = CListViewHelp::GetSelectedItem(m_AccountList);
+    CString szCurrentSendedNumber = m_AccountList.GetItemText(selpos, 3);
+
     char* strSendedNumber = szCurrentSendedNumber.GetBuffer();
     int nSendedNumber = atoi(strSendedNumber);
     UINT nSendLimit = this->GetDlgItemInt(IDC_SEND_LIMIT);
 
-    if (nSendedNumber >= nSendLimit && cnt-- > 0) // 达到最大发送数才切换
+    nRetryTime = 0;
+
+CHANGE_SENDER:
+    if ((nSendedNumber >= nSendLimit && cnt-- > 0) || nRetryTime > 5) // 达到最大发送数才切换
     {
         // 切换到下一用户
         CListViewHelp::SelectedNextItem(m_AccountList);
@@ -333,7 +326,8 @@ CHECK_LIMIT:
     }
     
     CInstantMessage msg;
-    msg.SendUserId = CListViewHelp::GetSelectedItemText(m_AccountList);
+    msg.SendUserId = szCurrentSendUserId;
+    msg.SendUserPassword = szCurrentSendUserPwd;
     msg.nItemIndex = GetNextMember(msg.ReceiverId);
     if (msg.nItemIndex < 0)
     {
@@ -353,7 +347,7 @@ CHECK_LIMIT:
     }
     GetNextMessage(msg.MessageHtml);
 
-    while (!CMessageSender::UserIsLogined(msg.SendUserId))
+    while (!CMessageSender::UserIsLogined(msg.SendUserId) && ++nRetryTime < 5)
     {    
         // 关闭已打开的旺旺窗口
         DWORD dwProcId = GetProcessIDByProcessName("AliIM.exe");
@@ -377,15 +371,24 @@ CHECK_LIMIT:
         HWND hTypeEdit = FindWndInChildren(hWnd, "EditComponent", 2);
         HWND hTypeCmb = ::GetWindow(hTypeEdit, GW_HWNDNEXT);
         HWND hUidEdit = ::GetWindow(hTypeCmb, GW_HWNDNEXT); //user name
-
+        HWND hSelCmb = ::GetWindow(hUidEdit, GW_HWNDNEXT);
+        HWND hPwdEdit = ::GetWindow(hSelCmb, GW_HWNDNEXT); //password
+        HWND hAutoLogin = FindChildWnd(hWnd, "自动登录", "StandardButton");
         HWND hLoginBtn = FindWndInChildren(hWnd, "登 录", 1);
 
+        CButton *btnAutoLogin = (CButton *)CWnd::FromHandle(hAutoLogin);
+        btnAutoLogin->SetCheck(BST_UNCHECKED);
+
         ::SendMessage(hUidEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserId.GetBuffer(0));
-        //::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)pwd.GetBuffer(0));
+        ::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserPassword.GetBuffer(0));
         ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
         ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
 
-        Sleep(5000);
+        Sleep(15000);
+    }
+    if (nRetryTime >= 5) // 重试5次还没有登录进去，则切换用户
+    {
+        goto CHANGE_SENDER;
     }
 
     this->m_szLastSenderId = msg.SendUserId;
@@ -394,7 +397,7 @@ CHECK_LIMIT:
 
     CString szSendedCount;
     szSendedCount.Format("%d", nSendedNumber + 1);
-    CListViewHelp::ChangeListItemValue(m_AccountList, CListViewHelp::GetSelectedItem(m_AccountList), szSendedCount);
+    m_AccountList.SetItemText(CListViewHelp::GetSelectedItem(m_AccountList), 3, szSendedCount);
     
     CString szMessage;
     szMessage.Format("正在发送:%d", msg.nItemIndex);
@@ -411,9 +414,9 @@ void CSendPage::SaveProfile()
     for (int i = 0; i < count; i++)
     {
         CString sendUserId = CListViewHelp::GetItemText(m_AccountList, i);
-        CString sendedCnt = CListViewHelp::GetItemValue(m_AccountList, i);
+        CString sendUserPwd = CListViewHelp::GetItemValue(m_AccountList, i);
 
-        CStoredAccount::AddAccount(sendUserId, sendedCnt);
+        CStoredAccount::AddAccount(sendUserId, sendUserPwd);
     }
 
     CStoredMessage::ClearMessage();
@@ -439,6 +442,8 @@ void CSendPage::LoadProfile()
         if (lastId > 0)
         {
             CListViewHelp::AddListItem(m_AccountList, str1, str2);
+            int cnt = m_AccountList.GetItemCount();
+            m_AccountList.SetItemText(cnt - 1, 3, "0");
         }
     }
 
@@ -639,7 +644,7 @@ void CSendPage::OnBnClickedBtnReset()
     int cnt = m_AccountList.GetItemCount();
     for (int i = 0; i < cnt; i++)
     {
-        CListViewHelp::ChangeListItemValue(m_AccountList, i, "0");
+        //CListViewHelp::ChangeListItemValue(m_AccountList, i, "0");
     } 
 }
 
@@ -664,7 +669,7 @@ void CSendPage::OnBnClickedBtnImport()
 		{
 			while (file.ReadString(strLine))
 			{
-				CString szUserName(strLine), szPwd("0");
+				CString szUserName(strLine), szPwd("");
 				int i = strLine.Find("/", 0);
 				if (i > 0)
 				{
@@ -672,7 +677,9 @@ void CSendPage::OnBnClickedBtnImport()
                     szPwd = strLine.Mid(i+1);
 				}
 	            
-                CListViewHelp::AddListItem(m_AccountList, szUserName, "0");
+                CListViewHelp::AddListItem(m_AccountList, szUserName, szPwd);                
+                int cnt = m_AccountList.GetItemCount();
+                m_AccountList.SetItemText(cnt - 1, 3, "0");
 			}
 			file.Close();
 		}
