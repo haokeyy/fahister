@@ -48,11 +48,11 @@ CString CEditAccountDlg::GetPassword()
 void CEditAccountDlg::OnBnClickedOk()
 {
     this->GetDlgItemText(IDC_ACC_USER_ID, m_szUserId);    
-    //this->GetDlgItemText(IDC_ACC_PASSWORD, m_szPassword);
+    this->GetDlgItemText(IDC_ACC_PASSWORD, m_szPassword);
 
-    if (m_szUserId.IsEmpty())
+    if (m_szUserId.IsEmpty() && m_szPassword.IsEmpty())
     {
-        MessageBox("用户名不能为空。", "错误", MB_ICONERROR);
+        MessageBox("用户名和密码不能为空。", "错误", MB_ICONERROR);
         return;
     }
 
