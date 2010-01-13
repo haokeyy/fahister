@@ -213,15 +213,29 @@ BOOL GetMachineCode(CString& szMachineCode)
     //}
     CString szTempCode("");
 
-    //int size = 0;
-    //CHwInfo::GetSMBiosData(NULL, &size);
-    //BYTE *buf = (BYTE*)malloc(size);
-    //CHwInfo::GetSMBiosData(buf, &size);
-    //CHwInfo hwInfo(buf, size);
-    //CString szUuid = hwInfo.GetMahineUuid();
-    //szTempCode.Append(szUuid);
-    //CString szSN = hwInfo.GetMachineSn();
-    //szTempCode.Append(szSN);
+    try
+    {
+        int size = 0;
+        CHwInfo::GetSMBiosData(NULL, &size);
+        BYTE *buf = (BYTE*)malloc(size);
+        CHwInfo::GetSMBiosData(buf, &size);
+        CHwInfo hwInfo(buf, size);
+        CString szUuid = hwInfo.GetMahineUuid();
+        szTempCode.Append(szUuid);
+        CString szSN = hwInfo.GetMachineSn();
+        szTempCode.Append(szSN);
+        if (szTempCode.IsEmpty())
+        {
+            throw new CMemoryException();
+        }
+    }
+    catch(CException *ex)
+    {
+        char lpstrName[256];
+        DWORD size = 255;
+        ::GetComputerName(lpstrName, &size);
+        szTempCode.Append(lpstrName);
+    }
     
     for (int i = 0; i < 4; i++)
     {

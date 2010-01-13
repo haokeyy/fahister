@@ -47,14 +47,15 @@ BOOL CMemberPage::OnInitDialog()
     szMachineCode = "机器码：" + szMachineCode;
     if (this->m_bHasReged)
     {
-        szMachineCode += "  (已注册)    http://www.jxqunfa.com";
+        szMachineCode += "  (已注册)    ";
         szWelcomeUrl.AppendFormat("?type=1&id=%X", FILE_ID);
     }
     else
     {
-        szMachineCode += "  (未注册)    http://www.jxqunfa.com";        
+        szMachineCode += "  (未注册)    ";        
         szWelcomeUrl.AppendFormat("?type=0&id=%X", FILE_ID);
     }
+    szMachineCode += HOME_SITE;
     this->SetDlgItemText(IDC_STATIC_STATUS, szMachineCode);
 	    
     m_ExpWelcome.Navigate(szWelcomeUrl, 0, 0, 0, 0);
@@ -67,7 +68,7 @@ void CMemberPage::LoadMembers()
     long cnt = CStoredMember::GetCount();
     long ucnt = CStoredMember::GetUnSendCount();
     CString strCaption;
-    strCaption.Format("买家/卖家列表(已发送:%d,共:%d)", cnt - ucnt, cnt);
+    strCaption.Format("用户列表(已发送:%d,共:%d)", cnt - ucnt, cnt);
     this->SetDlgItemText(IDC_STATIC_MEMBER, strCaption);
     
 }

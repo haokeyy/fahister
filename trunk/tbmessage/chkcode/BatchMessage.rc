@@ -277,12 +277,12 @@ BEGIN
     BEGIN
         BLOCK "080404b0"
         BEGIN
-            VALUE "CompanyName", "http://www.jxqunfa.com/"
-            VALUE "FileDescription", "及讯淘宝群发软件"
+            VALUE "CompanyName", "http://www.singda.net/"
+            VALUE "FileDescription", "迅达淘宝群发软件"
             VALUE "FileVersion", "6, 0, 0, 1"
-            VALUE "LegalCopyright", "及讯群发 版权所有 (C) 2009"
+            VALUE "LegalCopyright", "迅达群发 版权所有 (C) 2009"
             VALUE "OriginalFilename", "checkcode.exe"
-            VALUE "ProductName", "及讯淘宝群发软件"
+            VALUE "ProductName", "迅达淘宝群发软件"
             VALUE "ProductVersion", "6, 0, 0, 1"
         END
     END
