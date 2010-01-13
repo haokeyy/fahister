@@ -337,15 +337,18 @@ CString CHwInfo::GetMahineUuid()
     CString szUuid("");
     SMBiosStructHeader* structEnclosure = GetFirstStructure(1);
     
-    BYTE arrUuid[16];
-    memcpy(arrUuid, structEnclosure->data + 4, 16);
-
-    for (int i = 0; i < 16; i++)
+    if (structEnclosure)
     {
-        szUuid.AppendFormat("%02X", arrUuid[i]);
-        if ((i+1)%4 == 0 && i < 15)
+        BYTE arrUuid[16];
+        memcpy(arrUuid, structEnclosure->data + 4, 16);
+
+        for (int i = 0; i < 16; i++)
         {
-            szUuid.Append("-");
+            szUuid.AppendFormat("%02X", arrUuid[i]);
+            if ((i+1)%4 == 0 && i < 15)
+            {
+                szUuid.Append("-");
+            }
         }
     }
 
@@ -356,8 +359,11 @@ CString CHwInfo::GetMachineSn()
 {
     CString szSN("");
     SMBiosStructHeader* structEnclosure = GetFirstStructure(1);
-    int snIndex = structEnclosure->data[3];
-    szSN = GetString(structEnclosure, snIndex);
+    if (structEnclosure)
+    {
+        int snIndex = structEnclosure->data[3];
+        szSN = GetString(structEnclosure, snIndex);
+    }
 
     return szSN;
 }

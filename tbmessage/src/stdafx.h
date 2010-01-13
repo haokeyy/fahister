@@ -52,8 +52,10 @@
 #define STATUS_SENDED   "已发送"
 #define STATUS_OFFLINE   "不在线"
 #define TIMER_ID        100
-#define URL_LINK_PAGE "http://www.jxqunfa.com/link.aspx"
-#define URL_VALIDATE "http://www.jxqunfa.com/AuthPageA1.aspx"
+
+#define HOME_SITE "http://www.singda.net/"
+#define URL_LINK_PAGE "http://www.singda.net/link.aspx"
+#define URL_VALIDATE "http://www.singda.net/AuthPageA1.aspx"
 
 #ifdef _UNICODE
 #if defined _M_IX86

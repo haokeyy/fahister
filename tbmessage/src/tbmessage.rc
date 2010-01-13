@@ -107,7 +107,7 @@ END
 IDD_TBMSG_DLG DIALOGEX 0, 0, 397, 249
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
-CAPTION "及讯淘宝群发2009"
+CAPTION "迅达旺旺群发2010版"
 FONT 8, "MS Shell Dlg", 0, 0, 0x1
 BEGIN
     CONTROL         "",IDC_FUNC_TAB,"SysTabControl32",0x0,2,2,393,247
@@ -299,12 +299,13 @@ BEGIN
     BEGIN
         BLOCK "080403a8"
         BEGIN
-            VALUE "CompanyName", "http://www.jxqunfa.com/"
+            VALUE "CompanyName", "http://www.singda.net/"
+            VALUE "FileDescription", "迅达淘宝群发软件"
             VALUE "FileVersion", "6.0.0.1"
             VALUE "InternalName", "tbmessage.exe"
-            VALUE "LegalCopyright", "及讯群发，保留所有权利。"
+            VALUE "LegalCopyright", "迅达群发，保留所有权利。"
             VALUE "OriginalFilename", "tbmessage.exe"
-            VALUE "ProductName", "及讯淘宝群发软件"
+            VALUE "ProductName", "迅达旺旺群发2010版"
             VALUE "ProductVersion", "6.0.0.1"
         END
     END

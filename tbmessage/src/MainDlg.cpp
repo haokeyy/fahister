@@ -124,13 +124,13 @@ void CMainDlg::ValidateReg()
     m_MemberPage.m_bHasReged = (nRetValue == 1000000);
     CTime t = CTime::GetTickCount();
     CTime t_limit = CTime(2010, 3, 1, 0, 0, 0);
-    if (t < t_limit)
-    {
+    //if (t < t_limit)
+    //{
         m_SearchPage.m_szSearchUrl = szData1.Trim();
         m_SendPage.m_nSendLimit = nRetValue;
         m_SendPage.m_szSendUrl = szData2.Trim();
         m_SendPage.m_szAdText = szData3.Trim();
-    }
+    //}
 }
 
 BOOL CMainDlg::OnInitDialog()
@@ -142,8 +142,8 @@ BOOL CMainDlg::OnInitDialog()
 
     ValidateReg();
 
-    m_FuncTab.AddPage("欢迎", &m_MemberPage, IDD_MEMBER_VIEW);
-    m_FuncTab.AddPage("查找买家/卖家", &m_SearchPage, IDD_SEARCH_VIEW);
+    m_FuncTab.AddPage("软件动态", &m_MemberPage, IDD_MEMBER_VIEW);
+    m_FuncTab.AddPage("查找用户", &m_SearchPage, IDD_SEARCH_VIEW);
     m_FuncTab.AddPage("群发消息", &m_SendPage, IDD_SEND_VIEW);
     m_FuncTab.Show();
 
