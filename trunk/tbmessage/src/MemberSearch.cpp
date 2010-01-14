@@ -270,6 +270,7 @@ BOOL CMemberSearch::GetBuyerMemberByShopRatePage(CString szShopRatePage, BOOL bS
             int q = szShopHTML.Find("http://rate.taobao.com/user-rate-", p - 250);
             szShopURL = szShopHTML.Mid(q, p - q);
             szShopURL.Replace("--ismore|0", "--ismore|1");
+            szShopURL.Replace("--auctionId|--lastModified|--snapId|0--pc|200.htm", ".htm");
         }
     }
     while (bFound && nFoundCount < condition.nLimit);

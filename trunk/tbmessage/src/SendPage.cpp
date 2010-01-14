@@ -69,6 +69,7 @@ BOOL CSendPage::OnInitDialog()
 
     OnBnClickedBtnFirstPage();
 
+    InitSpeed();
     LoadProfile();
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -117,6 +118,21 @@ void CSendPage::LoadMembers(long startId, long stepCount)
     bHasMemberChanged = FALSE;
 }
 
+
+void CSendPage::InitSpeed()
+{
+    m_CmbSpeed.ResetContent();
+    int i=0;
+    m_CmbSpeed.AddString("1秒每条"); m_CmbSpeed.SetItemData(i++,1000);
+    m_CmbSpeed.AddString("2秒每条"); m_CmbSpeed.SetItemData(i++, 2000);
+    m_CmbSpeed.AddString("3秒每条"); m_CmbSpeed.SetItemData(i++, 3000);
+    m_CmbSpeed.AddString("5秒每条"); m_CmbSpeed.SetItemData(i++, 5000);
+    m_CmbSpeed.AddString("8秒每条"); m_CmbSpeed.SetItemData(i++, 8000);
+    m_CmbSpeed.AddString("10秒每条"); m_CmbSpeed.SetItemData(i++, 10000);
+    m_CmbSpeed.AddString("15秒每条"); m_CmbSpeed.SetItemData(i++, 15000);
+
+    m_CmbSpeed.SetCurSel(2);
+}
 // CSendPage message handlers
 
 
@@ -209,6 +225,8 @@ LRESULT CSendPage::OnSendMsgCompleted(WPARAM wParam, LPARAM lParam)
 
     if (m_IsStop)
     {
+        int nSleepSeconds = m_CmbSpeed.GetItemData(m_CmbSpeed.GetCurSel());
+        Sleep(nSleepSeconds);
         SendImMsg();
     }
 
