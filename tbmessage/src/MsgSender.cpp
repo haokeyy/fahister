@@ -136,6 +136,7 @@ UINT CMessageSender::SendOneMsg()
         {
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
 
+            CoInitialize( NULL );
 			IHTMLDocument2 *pDoc; 
 			DWORD lRes; 
 
@@ -153,25 +154,43 @@ UINT CMessageSender::SendOneMsg()
 					BSTR bstrHtml;
 					pChkBody->get_innerHTML(&bstrHtml);
 					CString szHtml(bstrHtml);
-					CString szUrl = szHtml.Mid(29, 89);
-
-					// 识别
-					CString checkCode = Recognize(szUrl);
-	            
-                    while (checkCode.IsEmpty())
+                    if (!szHtml.IsEmpty())
                     {
-                        Sleep(1000);
-                        checkCode = Recognize(szUrl);
+                        CString szUrl("");
+                        int nStartUrl = 0, nEndUrl =0;
+                        nStartUrl = szHtml.Find("http://checkcode.alisoft.com/alisoft/checkcode?sessionID=");
+                        if (nStartUrl > 0)
+                        {
+                            nEndUrl = szHtml.Find("\"", nStartUrl);
+                        }
+                        if (nEndUrl > nStartUrl && nStartUrl >= 0)
+                        {
+                            szUrl = szHtml.Mid(nStartUrl, nEndUrl - nStartUrl);
+                        }
+
+
+                        if (!szUrl.IsEmpty())
+                        {
+					        // 识别
+					        CString checkCode = Recognize(szUrl);
+        	            
+                            while (checkCode.IsEmpty())
+                            {
+                                Sleep(1000);
+                                checkCode = Recognize(szUrl);
+                            }
+
+					        HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
+					        ::SendMessage(hValidCodeEdit, WM_SETTEXT, 0, (LPARAM)checkCode.GetBuffer());
+
+					        HWND hValidCodeOK = FindChildWnd(hValidCodeWnd, "确定", "StandardButton");
+					        ::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
+					        ::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
+                        }
                     }
-
-					HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
-					::SendMessage(hValidCodeEdit, WM_SETTEXT, 0, (LPARAM)checkCode.GetBuffer());
-
-					HWND hValidCodeOK = FindChildWnd(hValidCodeWnd, "确定", "StandardButton");
-					::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
-					::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
 				}
             }
+            CoUninitialize();
         }
 
         // 关闭窗口
