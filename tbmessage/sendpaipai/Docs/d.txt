@@ -1,0 +1,5 @@
+http://archive.paipai.com/cgi-bin/rate/credit_history_info?uin=278797410&type=0&level=0
+
+Content-Type: application/x-www-form-urlencoded
+
+uin=278797410&type=0&level=0&total=757&page=2

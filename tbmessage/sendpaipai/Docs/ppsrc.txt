@@ -1,0 +1,2595 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>拍拍网 -- 手机 的搜索结果</title>
+<meta name="description" content="" />
+<meta name="keywords" content="手机" />
+<META NAME="WT.cg_n" CONTENT="搜索/类目">
+<META NAME="WT.si_n" CONTENT="paipai_core">
+<META NAME="WT.si_x" CONTENT="1">
+<link rel="icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="http://pics.paipai.com/favicon.ico" type="image/x-icon" />
+<style type="text/css" media="screen">
+@import url("http://www.paipai.com/css/head.css?t=20080121.css");
+@import url("http://www.paipai.com/css/paginator.css?t=20070713.css");
+@import url("http://www.paipai.com/css/search/common.css?t=20080121.css");
+@import url("http://www.paipai.com/css/flow.css?t=20080103");
+@import url("http://www.paipai.com/css/auction/favo.css?t=20080103");
+@import url("http://www.paipai.com/css/common/ppalogin.css?t=20080103");
+.viewLine,.viewHeadLine,.timeLine,.timeHeadLine{display:none}
+.commodityLine div{margin-right:250px}
+</style>
+<script type="text/javascript" src="http://www.paipai.com/js/list_goods_common.js?t=20080121"></script>
+<script type="text/javascript" src="http://www.paipai.com/js/auction1_favorite.js"></script>
+<script type="text/javascript" src="http://www.paipai.com/js/flow.js"></script>
+<script type="text/javascript" src="http://www.paipai.com/js/shopcar_loginframe.js"></script>
+</head>
+<body>
+<script type="text/javascript" src="http://www.paipai.com/js/search.js?t=20070906.js"></script>
+<div id="headNote" class="fontOrange desc" style="display:none"></div>
+<div id="headV3">
+  <div class="m950 relative">
+    <div id="headLogoBg" class="absolute"></div>
+    <div id="headNavi" class="absolute">
+      <div id="headItem"> <span id="headUser"></span> <a href="http://member.paipai.com/cgi-bin/login_entry" target="_top" id="headInto" class="linkBlue">[登录]</a>&nbsp; <a href="https://www.tenpay.com/" target="_blank">财付通</a> <a href="http://auction.paipai.com/cgi-bin/shopcar?PTAG=10.3.2" target="_blank">购物车<span id="spcartnum"></span></a> <a href="http://my.paipai.com/cgi-bin/my_collect_list?isBuyLink=02&PTAG=20022.1.1" target="_blank">收藏夹</a> <span id="headBtn"> <a href="http://search.paipai.com/" target="_top"><img src="http://pics.paipai.com/head/headBuy.gif" alt="我要买" border="0" align="absmiddle" onmouseover="showHeadOver(this)" onmouseout="showHeadOut(this)" /></a> <a href="http://my.paipai.com/cgi-bin/sell" target="_top"><img src="http://pics.paipai.com/head/headSell.gif" alt="我要卖" border="0" align="absmiddle" onmouseover="showHeadOver(this)" onmouseout="showHeadOut(this)" /></a> <a href="http://my.paipai.com/cgi-bin/qshop_manage?urltype=0" target="_top"><img src="http://pics.paipai.com/head/headMy.gif" alt="我的拍拍" border="0" align="absmiddle" onmouseover="showHeadOver(this)" onmouseout="showHeadOut(this)" /></a> <a href="http://bbs.paipai.com/main.shtml" target="_top"><img src="http://pics.paipai.com/head/headBbs.gif" alt="社区" name="headBbs" border="0" align="absmiddle" id="headBbs" onmouseover="showHeadOver(this)" onmouseout="showHeadOut(this)" /></a> </span> <img src="http://pics.paipai.com/head/headHelp.gif" alt="帮助中心" align="absmiddle" hspace="5" /><a href="http://help.paipai.com/help_0.shtml" target="_top">帮助</a></div>
+      <div id="headMenu" class="absolute">
+        <ul id="menuList">
+          <li id="menuHome"><a href="http://www.paipai.com/" target="_top"><span>首页</span></a></li>
+          <li id="menuGame"><a href="http://www.paipai.com/game/" target="_top"><span>网游</span></a></li>
+          <li id="menuDigi"><a href="http://www.paipai.com/digital/" target="_top"><span>数码</span></a></li>
+          <li id="menuLady"><a href="http://www.paipai.com/lady/" target="_top"><span>女人</span></a></li>
+          <li id="menuMan"><a href="http://www.paipai.com/man/" target="_top"><span>男人</span></a></li>
+          <li id="menuSport"><a href="http://www.paipai.com/sport/" target="_top"><span>运动</span></a></li>
+          <li id="menuMen"><a href="http://www.paipai.com/student/" target="_top"><span>学生</span></a></li>
+          <li id="menuBook"><a href="http://www.paipai.com/book/" target="_top"><span>书籍</span></a></li>
+          <li id="menuLife"><a href="http://www.paipai.com/sale/" target="_top"><span>特惠</span></a></li>
+          <li id="menuTick"><a href="http://500wan.zone.tenpay.com/info/PaiPai500wan/main/gonggao/633361601549062500_91826.shtml" target="_blank"><span>彩票</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="headFind" class="absolute">
+      <div id="headPush" class="absolute">
+        <script type="text/javascript" src="http://www.paipai.com/update/headPush.js"></script>
+      </div>
+      <div id="headForm" class="absolute">
+        <form name="form_second_search" method="get" onsubmit="if(document.forms['form_second_search']['keywordtype'].value == 'goods') return doSecondSearchNew(0);else return doSecondSearchNew(1);">
+          <input name="sf" type="hidden" value="5" >
+          <input name="ADTAG" id="ADTAG" type="hidden" value="40.1.1" />
+          <input name="shoptype" type="hidden" id="shoptype" value="">
+          <input name="BeyondClass" type="hidden" id="BeyondClass" value="">
+          <input name="HidWord" id="HidWord" value="手机" type="hidden" />
+          <input name="sClassid" id="sClassid" type="hidden"/>
+          <div class="absolute overflow divSelect" style="left:0;width:120px">
+            <div class="absolute overflow divSelectHide" style="width:118px">
+              <select id="keywordtype" style="width:120px" name="keywordtype">
+                <option value="goods" selected="selected">搜索商品</option>
+                <option value="1">搜索店铺(按名称)</option>
+                <option value="2">搜索店主(按Q号)</option>
+                <option value="3">搜索店主(按昵称)</option>
+              </select>
+            </div>
+          </div>
+          <div class="absolute" style="top:10px;left:125px">
+            <input autocomplete="off" id="KeyWord" onblur="showSearch(this,1)" onfocus="showSearch(this)" name="KeyWord" value="手机" class="findInto" onkeyup="if(event.keyCode!=13&event.keyCode!=38&&event.keyCode!=40&&document.forms['form_second_search']['keywordtype'].value=='goods'&&this.value!='') showResult(event.keyCode,this.value);else if(this.value=='') hideResult()" onkeydown="showKeyDown(event.keyCode)" />
+          </div>
+          <div class="absolute overflow divSelect" style="left:374px;width:200px">
+            <div class="absolute overflow divSelectHide" style="width:198px">
+              <select name="Path" id="Path" style="width:200px">
+                <option value='0,28009'>数码配件/电子元件</option>
+                <option value="">所有分类</option>
+				<script type="text/javascript">showFirstSort(1)</script>
+              </select>
+            </div>
+          </div>
+          <div class="absolute" style="top:11px;left:579px">
+            <input type="submit" name="image" value=" " class="findGoto" />
+          </div>
+        </form>
+        <div id="headLink" class="absolute"><b style="color:#fff">热门搜索：</b> <span id="headLinkShow">
+          <script type="text/javascript" src="http://www.paipai.com/update/headLink.js"></script>
+          </span> </div>
+      </div>
+      <div id="headHelp" class="absolute"> <a style="color:#fff" href="http://search.paipai.com/search_goods.shtml" target="_blank">[高级搜索]</a><br />
+        <a style="color:#fff" href="http://search.paipai.com/search_shops.shtml" target="_blank">[店铺搜索]</a> </div>
+    </div>
+  </div>
+</div>
+<div class="m760" style="position:relative;z-index:30">
+  <div id="result" style="display:none"></div>
+</div>
+<script type="text/javascript" src="http://www.paipai.com/js/head.js?t=20070716.js"></script>
+<script type="text/javascript" id="PaipaiSearchJs"></script>
+
+<script type="text/javascript">showMenu("Home")</script>
+<script type="text/javascript" src="http://sale.paipai.com/update/list_head_topAd.js"></script>
+
+<form name="form2" method="get">
+  <input name="KeyWord" type="hidden" value="手机">
+  <input name="Price" type="hidden" value="">
+  <input name="Level" type="hidden" id="Level" value="">
+  <input name="SaleType" type="hidden" id="SaleType" value="3">
+  <input name="PayType1" type="hidden" id="PayType1" value="">
+  <input name="PayType2" type="hidden" id="PayType2" value="">
+  <input name="PayType3" type="hidden" id="PayType3" value="4">
+  <input name="Degree1" type="hidden" id="Degree1" value="1">
+  <input name="Degree2" type="hidden" id="Degree2" value="2">
+  <input name="Degree3" type="hidden" id="Degree3" value="4">
+  <input name="QQUin" type="hidden" id="QQUin" value="">
+  <input name="EndTime" type="hidden" id="EndTime" value="">
+  <input name="Address" type="hidden" id="Address" value="">
+  <input name="TradeMark" type="hidden" id="TradeMark" value="">
+  <input name="Path" type="hidden" id="Path" value="0,28009">
+  <input name="Sex" type="hidden" id="Sex" value="">
+  <input name="OnlineState" type="hidden" id="OnlineState" value="2">
+  <input name="FullIndex" type="hidden" id="FullIndex" value="">
+  <input name="ShowType" type="hidden" id="ShowType" value="">
+  <input name="OrderStyle" type="hidden" id="OrderStyle" value="13">
+  <input name="PageSize" type="hidden" id="PageSize" value="40">
+  <input name="PageNum" type="hidden" id="PageNum" value="2">
+  <input name="sClassid" type="hidden" id="sClassid" value="28009">
+  <input name="sClassid1" type="hidden" id="sClassid1" value="28009">
+  <input name="sClassid2" type="hidden" id="sClassid2" value="">
+  <input name="sClassid3" type="hidden" id="sClassid3" value="">
+  <input name="sClassid4" type="hidden" id="sClassid4" value="">
+  <input type="hidden" name="goodscmp_itemids" value="">
+  <input type="hidden" name="goodscmp_nums"  value="">
+  <input type="hidden" name="BeginPrice"  value="">
+  <input type="hidden" name="EndPrice"  value="">
+  <input type="hidden" name="PriceSearchType"  value="">
+  <input type="hidden" name="AuthType"  value="2" >
+  <input type="hidden" name="ac"  value="1" >
+  <input name="sf"   type="hidden" value="" >
+  <input name="ShowFlag" type="hidden" value="">
+  <input type="hidden" name="Property" value="128">
+  <input type="hidden" name="NewProp1" value="">
+  <input type="hidden" name="NewProp2" value="">
+  <input type="hidden" name="NewProp3" value="">
+  <input type="hidden" name="NewProp4" value="">
+  <input type="hidden" name="NewProp5" value="">
+  <input type="hidden" name="NewProp6" value="">
+  <input type="hidden" name="NewProp7" value="">
+  <input type="hidden" name="NewProp8" value="">
+  <input type="hidden" name="NewProp9" value="">
+  <input type="hidden" name="NewProp10" value="">
+  <input type="hidden" name="NewProp11" value="">
+  <input type="hidden" name="NewProp12" value="">
+</form>
+<div id="zoomImg" style="position:absolute;display:none;width:200px; height:200px;padding:5px;cursor:hand;border:1px solid #B4DCFF;z-index:20;background:#F4F9FF"></div>
+
+<script language="javascript">
+var objSortArray = new Array();
+var objSortArrayNum = 0;
+var moreOpen=0;
+var lessFour=-1;
+</script>
+<div align="left"  class="sortCtrlLinkDivStyle" style="margin:5px 10px 0 10px">
+<div id="newHand" style="float:right;padding-right:20px;top:11px"><img src="http://pics.paipai.com/auction/report.gif" hspace="5" border="0" align="absmiddle"><a href="http://help.paipai.com/learn/a1.shtml" target="_blank">新手购买演示</a></div>
+<div id="resultNote">对 “<b>手机</b>” 的搜索总共有 <b style="color:#FF4E00">96347</b> 条结果，您可以选择下面的详细分类：</div>
+</div>
+<div class="full" id="sort" >
+
+<div class="sortList full" id="sortList0">
+<div class="sortListNote2">按<b>商品分类</b>选择：<a id="sortCtrlLink0"></a></div>
+<ul class="sortShow" id="sortCtrlLess0" style="height:20px;width:85%;overflow:hidden"><div id="sortCtrlDotA0" style="position:relative;width:100%;display:none"><div style="position:absolute;float:right;right:-20px"><a href="javascript:hideSort('all')" id="sortCtrlLink0"></a></div></div>
+<li title="405"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C27216/p-1-40-drecommend-27216--3-4-7------2-2--128------------.html&ac=1">蓝牙耳机</a><span class='number'>(405)</span>
+</li>
+<li title="168"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28011/p-1-40-drecommend-28011--3-4-7------2-2--128------------.html&ac=1">电子器材/配件</a><span class='number'>(168)</span>
+</li>
+<li title="95"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28012/p-1-40-drecommend-28012--3-4-7------2-2--128------------.html&ac=1">电脑元件/零配件</a><span class='number'>(95)</span>
+</li>
+<li title="95679"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28010/p-1-40-drecommend-28010--3-4-7------2-2--128------------.html&ac=1">手机配件及其它</a><span class='number'>(95679)</span>
+</li>
+</ul>
+<ul class="sortShow" id="sortCtrl0" style="height:40px;width:85%;display:none"><span id="sortCtrlDotB0" style="position:absolute;right:20px;margin-top:-21px;display:none"><a href="javascript:hideSort('0')" id="sortCtrlLink0"></a></span>
+	<li title="405"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C27216/p-1-40-drecommend-27216--3-4-7------2-2--128------------.html&ac=1">蓝牙耳机</a><span class='number'>(405)</span>
+</li>
+	<li title="168"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28011/p-1-40-drecommend-28011--3-4-7------2-2--128------------.html&ac=1">电子器材/配件</a><span class='number'>(168)</span>
+</li>
+	<li title="95"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28012/p-1-40-drecommend-28012--3-4-7------2-2--128------------.html&ac=1">电脑元件/零配件</a><span class='number'>(95)</span>
+</li>
+	<li title="95679"><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009_2D0_2C28010/p-1-40-drecommend-28010--3-4-7------2-2--128------------.html&ac=1">手机配件及其它</a><span class='number'>(95679)</span>
+</li>
+</ul>
+<div class="clear"></div>
+</div>
+<script type="text/javascript">
+var objSortCtrlLess=document.getElementById("sortCtrlLess0").style;
+var objSortCtrl=document.getElementById("sortCtrlLess0").style;
+isSortCtrlLess[0] = 4;
+isSortCtrl[0] = 4;
+if(isSortCtrl[0]<=4){
+	objSortCtrl.height="20px";
+	if(lessFour!=0)
+	lessFour=1;
+}
+else{
+    lessFour=0;
+	document.getElementById("sortCtrlDotB0").style.display="";
+}
+if(isSortCtrlLess[0]<=4){
+	objSortCtrlLess.height="20px";	
+}
+else{
+    document.getElementById("sortCtrlDotA0").style.display="";
+    objSortArray[objSortArrayNum]=String(0);
+	objSortArrayNum++;
+}
+</script>
+
+<img id="showAllCenter" src="http://pics.paipai.com/search/showAllType.gif" border="0" style="margin-left:45%;padding:5px;cursor:pointer" onClick="javascript:hideSort('all');" />
+<script type="text/javascript">
+if(lessFour==1)
+document.getElementById("showAllCenter").style.display="none";
+//如果类目为空则不显示类目列表
+if(isSortCtrl.length==0)
+ document.getElementById("sort").style.display="none";
+</script>
+
+</div>
+<script type="text/javascript">
+var sortLastList=document.getElementById("sortList"+(isSortCtrlLess.length-1));
+if(sortLastList)
+	sortLastList.style.border="none";
+</script>
+
+<div class="full" id="sortPath" style="margin-top:8px">
+<a href="http://search.paipai.com/?ADTAG=80.1.21">所有分类</a>&nbsp;&gt;&gt;&nbsp;<strong>&nbsp;数码配件/电子元件</strong>&nbsp;&nbsp;
+<div id="faithProtectHelp" style="">带有 <a href="http://help.paipai.com/content/help_20803.shtml" target="_blank"><img src="http://pics.paipai.com/common/icon/safe7.gif" align="absmiddle" /></a> 或 <a href="http://help.paipai.com/content/help_20802.shtml" target="_blank"><img src="http://pics.paipai.com/common/icon/safe14.gif" align="absmiddle" /></a> 标识的商品支持<a href="http://help.paipai.com/content/help_208.shtml" target="_blank">诚信保证计划</a>，让您购物零风险！</div>
+</div>
+
+
+<script type="text/javascript" id="script_add_item" ></script> 
+<script type="text/javascript" id="script_rd" ></script>
+<script type="text/javascript" id="script_set_favorite" ></script>
+   <div id="loginInput" style="position:absolute;display:none;left:0;top:0"></div>
+        <div class="favo_common" id="addFavoSuc" style="position:absolute;display:none;left:0;top:0;z-index:9999; height:178">
+  <span class="favo_top"><img src="http://pics.paipai.com/member/login_bg_top.gif" /></span>
+  <span class="favo_body">
+    <span><img src="http://pics.paipai.com/member/login_ico_close.gif" align="top" border="0" style="margin:0 0 5px 380px;cursor:pointer" onclick="document.getElementById('addFavoSuc').style.display='none'" /></span>
+	<span class="favo_main">
+	<img src="http://pics.paipai.com/member/login_ico_right.gif" align="absmiddle" />
+	<font style="color:#007236"><span id="span_nickname">您</span></font>
+	<font style="font-size:14px;font-weight:bold;color:#007236"><span id="span_fav_notice">收藏商品成功！</span></font>
+	<br/>
+	<font style="line-height:250%;"><span id="span_auto_update" style="display:none">拍拍已为您自动更新收藏时间。</span></font>
+	<br/>
+	<a href="#" onclick="javascript:window.open('http://my.paipai.com/cgi-bin/my_collect_list?ADTAG=401.1.1');">点击管理我的收藏夹</a><br /><br />
+	<span id="span_show_expire_info" style="display:none"></span>
+	<span id="span_show_can_do"><font style="line-height:250%;">您还可以：</font></span><br />	
+<span id="span_set_without_login" style="display:none">
+<input onclick="showSafeTips()" id="checkbox_set_time"type="checkbox" name="checkbox" value="checkbox" />保存信息，下次收藏时无需登录。
+<input type="hidden" value="" id="add_fav_suc_item_id">
+<select id="select_time" name="select_time" > 
+	<option value="86400">一天</option>
+	<option value="604800">一周</option>
+	<option value="259200">一月</option>
+	<option value="15552000">半年</option>
+	<option value="31536000">一年</option>
+</select> <span id="safeTips" style="color:#ff4e00;font-weight:bold;display:none" title="选择保存信息，可以让您在一段时间内进行收藏操作时无需登录。网吧用户建议将勾选取消。">安全提示！</span>
+
+<br /></span>
+<span id="span_set_share" style="display:none"><input type="checkbox" name="checkbox" value="checkbox" id="input_show_favorite" />在QQ客户端、Qzone及拍拍网页上分享我的收藏。<a href="http://help.paipai.com/recommend/" target="_blank"><img src="http://pics.paipai.com/member/login_ico_more.gif" title="多一份分享，多一份快乐！^-^"  align="absmiddle" /></a><br /></span></span>
+    <span class="favo_btn"><input type="button" onmousemove="showBtnOver(this)" onmouseout="showBtnOut(this)" class="submitMiniGreen" value="确　　定" border="0" style="width:130px" onclick="ClickOkEx();" /> &nbsp;&nbsp;<a href="#here" onclick="ChangeUin();">更换收藏QQ号码</a></span>
+  </span>
+  <span class="favo_bot"><img src="http://pics.paipai.com/member/login_bg_bot.gif" /></span>
+</div>
+
+<div class="favo_common" id="addFavoFail" style="position:absolute;display:none;left:0;top:0;z-index:9999;height:178">
+  <span class="favo_top"><img src="http://pics.paipai.com/member/login_bg_top.gif" /></span>
+  <span class="favo_body">
+    <span><img src="http://pics.paipai.com/member/login_ico_close.gif" align="top" border="0" style="margin:0 0 5px 380px;cursor:pointer" onclick="document.getElementById('addFavoFail').style.display='none'" /></span>
+	<span class="favo_main" style="height:100px;"><img src="http://pics.paipai.com/member/login_ico_alert.gif" align="absmiddle" /><font style="font-size:14px;font-weight:bold;color:#ff7e06"><span id="span_nickname1"></span>本次收藏未成功。</font><br /><br /><span id='span_err_info'></span><br/><span id="span_err_extrainfo" style="display:none"><font class="fontGray" style="line-height:250%;">( 收藏商品总数不得超过200件。)</font><br />若你确定需要收藏此商品，需要登录<a href="#" onclick="javascript:window.open('http://my.paipai.com/cgi-bin/my_collect_list?iType=1&ADTAG=401.1.1&isBuyLink=02');">我的拍拍</a>，在收藏夹内减少以
+前收藏的商品后方可操作。<br /></span></span>
+    <span class="favo_btn"><input type="button"  onmousemove="showBtnOver(this)" onmouseout="showBtnOut(this)" class="submitMiniGreen" value="登录我的拍拍"  border="0" style="width:130px" onclick="document.getElementById('addFavoFail').style.display='none';window.open('http://my.paipai.com/cgi-bin/myqshop')" /><input type="button"  onmousemove="showBtnOver(this)" onmouseout="showBtnOut(this)" class="submitMiniGreen" value="确定"  border="0" style="width:130px" onclick="document.getElementById('addFavoFail').style.display='none'" />　<!----></span>
+  </span>
+  <span class="favo_bot"><img src="http://pics.paipai.com/member/login_bg_bot.gif" /></span>
+</div>
+<div class="full" id="newMainTitle" style="margin-bottom:-1px"><div id="newMainTitleIn"><ul><li><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1" title="由身份证认证的高级卖家发布的商品"><span class="liOn" onmouseover="this.className='liOn'" onmouseout="this.className='liOn'">所有商品</span></a></li><li><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-atime-28009--3-4-7------4-2--128------------.html&ac=1" title="热卖新品"><span class="liOff" onmouseover="this.className='liOn'" onmouseout="this.className='liOff'">热卖新品</span></a></li></ul></div></div>
+
+<div id="side" style="z-index:3">
+    	<div class="sideItem" style="border-top:0;padding-top:8px;background:#f6fcff;">	
+        <div style="width:3px;height:30px;background:#f6fcff;position:absolute;margin-left:185px;margin-top:-8px"></div>
+		<div class="sideItemMain">
+			
+			<form name = "form3" method="get" onsubmit="return doFilterSearch(0);">	
+			<div id="searchMain">
+            <div>&nbsp;关　键　字：<input name="KeyWord" type="text" id="KeyWord" size="16" value="手机" style="width:80px" /></div>
+            <div>&nbsp;价　　　格：<input name="BeginPrice" type="text" size="5" maxlength="10" value=""  style="width:31px" />至<input name="EndPrice" type="text" size="5" maxlength="10" value=""  style="width:31px" /></div>
+            <div class="listSideDiv">&nbsp;商品所在地：<input name="Address" type="text" id="Address" size="16" value="" style="width:80px" maxlength="16"/></div>
+            
+			<div id="sideSearchKind" >
+			    
+			</div>
+            
+			
+			
+			<div id="sideSearchKindCtrl" style="display:none;"><a href="javascript:hideKind()" id="kindLink">+ 查看全部属性</a></div>	<!--折叠冗长属性-->
+            <div id="listSideBar" class="listSideDiv"></div> 
+			<script type="text/javascript"> 
+				var objChooseSort=document.getElementById("sideSearchKind").style;
+				var isChooseControl = 0;
+				if (isChooseControl == 0)
+				{
+					document.getElementById("listSideBar").style.display="none";
+				}
+				if(isChooseControl>3){
+					document.getElementById("sideSearchKindCtrl").style.display="";
+					objChooseSort.height="120px";
+					objChooseSort.overflow="hidden";
+				}
+				</script>
+                
+			
+			<div><input name="SaleType1" type="checkbox" value="1" checked />一口价
+			　<input name="SaleType2" type="checkbox" value="2" checked />拍　卖</div>
+			<div><input name="Degree1" type="checkbox" value="1" checked />全　新
+			　<input name="Degree2" type="checkbox" id="Degree2" value="2" checked />二　手</div>
+			<div><input name="FaithProtect" type="checkbox" id="FaithProtect"  />支持诚信保证的商品</div>
+            <div><input name="PayType2" type="checkbox" id="PayType2" value="2" />支持货到付款的商品<img src="http://pics.paipai.com/common/icon/express.gif" align="absmiddle" /></div>
+			<div><input name="OnlineFront" type="checkbox" id="OnlineFront" value="4" checked />QQ在线排前 <input name="ExpressFree" type="checkbox"  />免运费</div>
+			<!--此功能暂时不使用-->
+            <div id="showDriftType" style="display:none;">
+			<input name="PriceSearchType" type="radio" value="0" checked="checked" />按当前价搜索<br />
+			<input name="PriceSearchType" type="radio" value="1" onclick="SaleType1.checked=false" />起始价搜索	
+            </div>
+			
+            <div class="lineCenter"><input name="submit4" type="image" src="http://pics.paipai.com/search/showResult.gif" value="显示搜索结果" style="margin-top:5px" /></div>
+			</div>
+			</form>
+		</div>		
+	</div>
+	<div id="hotSaleShow" class="sideItem" style="display:none">
+		<div class="sideItemHead">最新热卖排行榜</div>
+		<div id="hotSale"></div>
+	</div>
+	<div id="search_recommend_show" class="sideItem" style="display:none">
+		<div class="sideItemHead">卖家特价推荐</div>
+		<div id="search_recommend"></div>
+	</div>
+	<div id="ShowBbsPageMain" class="sideItem" style="display:none">
+		<div class="sideItemHead">推荐热贴</div>
+		<div id="ShowBbsPage"></div>
+	</div>
+	<div class="sideItem">
+		<div class="sideItemHead">您浏览过的商品</div>
+		<div class="sideItemMain"><iframe src="http://auction.paipai.com/commodity_viewed.html" frameborder="0" scrolling="no" width="166" height="200" allowtransparency="true"></iframe></div>
+	</div>
+  </div>
+
+</div>
+
+<div id="main">
+  <form name="form4" method="get" target="_top" onsubmit="return doSearchPage(this.Page.value,2409)">
+    <div id="mainOrder">
+      <div id="mainOrderTop">
+      &nbsp;&nbsp;&nbsp;<img src="http://pics.paipai.com/search/imggray.gif" align="absmiddle" /> <a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-41-40-drecommend-28009--3-4-7------2-2-128-128------------.html&ac=1">图片方式</a> <img src="http://pics.paipai.com/search/listred.gif" align="absmiddle" /> <b>列表方式</b>&nbsp;&nbsp;&nbsp;
+        商品排序方式：
+        <select name="OrderStyle" onchange="doOrderStyle(this.value);">
+          <option value="0">请选择合适的排序方式</option>
+          <option value="13">默认排序</option>
+          <optgroup label="价格">
+          <option value="6">　价格低的商品排前</option>
+          <option value="7">　价格高的商品排前</option>
+          </optgroup>
+          <optgroup label="信用">
+          <option value="9">　信用高的店铺排前</option>
+          </optgroup>
+          <optgroup label="时间">
+          <option value="4">　即将售完的商品排前</option>
+          <option value="5">　刚刚到货的商品排前</option>
+        </optgroup>
+        </select>
+        <script language="javascript">
+            if(13==13)
+                document.form4.OrderStyle.selectedIndex = 1;
+            else if(13 == 6)
+                document.form4.OrderStyle.selectedIndex = 2;
+            else if(13 == 7)
+                document.form4.OrderStyle.selectedIndex = 3;
+		    else if(13 == 9)
+		        document.form4.OrderStyle.selectedIndex = 4;
+		    else if(13 == 4)
+		        document.form4.OrderStyle.selectedIndex = 5;
+		    else if(13 == 5)
+		        document.form4.OrderStyle.selectedIndex = 6;
+		   </script>
+        <div id="pageHead">
+          <div class="paginator">
+            2/2409页<a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1" style='border:none;background:none'><img src='http://pics.paipai.com/common/icon/fore.gif' align='absmiddle' alt='上一页' style='cursor:hand' hspace='5' /></a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">1</a><span class='this-page'>2</span><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-81-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">3</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-121-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">4</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-161-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">5</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-201-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">6</a>...<a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-3961-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">100</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-81-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1" style='border:none;background:none'><img src='http://pics.paipai.com/common/icon/next.gif' align='absmiddle' alt='下一页' style='cursor:hand' hspace='5' /></a>
+          </div>
+       </div>
+      </div>
+      <div class="safeHeadLine"><a href="#here" onclick="javascript:doFaithFilter();">诚信</a></div>
+      <div class="prixHeadLine"><a href="#here" onclick="doOrderStyle(6);">价格</a></div>
+      <div class="mailHeadLine">运费</div>
+      <div class="cityHeadLine">
+        <select name="City" onchange="doSelectCity(this.value);">
+          <option value="">全部城市</option>
+          <option value="">所在地</option>
+          <option value="北京">北京</option>
+          <option value="上海">上海</option>
+          <option value="广州">广州</option>
+          <option value="深圳">深圳</option>
+          <option value="重庆">重庆</option>
+          <option value="天津">天津</option>
+          <option value="广东">广东</option>
+          <option value="浙江">浙江</option>
+          <option value="江苏">江苏</option>
+          <option value="湖北">湖北</option>
+          <option value="四川">四川</option>
+          <option value="福建">福建</option>
+          <option value="山东">山东</option>
+          <option value="广西">广西</option>
+          <option value="辽宁">辽宁</option>
+          <option value="陕西">陕西</option>
+          <option value="湖南">湖南</option>
+          <option value="河南">河南</option>
+          <option value="江西">江西</option>
+          <option value="安徽">安徽</option>
+          <option value="吉林">吉林</option>
+          <option value="河北">河北</option>
+          <option value="云南">云南</option>
+          <option value="山西">山西</option>
+          <option value="贵州">贵州</option>
+          <option value="甘肃">甘肃</option>
+          <option value="新疆">新疆</option>
+          <option value="海南">海南</option>
+          <option value="宁夏">宁夏</option>
+          <option value="青海">青海</option>
+          <option value="西藏">西藏</option>
+          <option value="黑龙江">黑龙江</option>
+          <option value="内蒙古">内蒙古</option>
+          <option value="台湾">台湾</option>
+          <option value="香港">香港</option>
+          <option value="澳门">澳门</option>
+        </select>
+        <script>doShowCity("")</script>
+      </div>
+      <div class="viewHeadLine">浏览量</div>
+      <div class="timeHeadLine">剩余时间</div>
+      <div id="mainOrderBottom"></div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId0" value="29401103000000000029359F011EBD08-DB48" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/29401103000000000029359F011EBD08-DB48.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=51462185&filename=03114029-46B1FE4929401103000000000029359F011EBD08.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=51462185&filename=03114029-46B1FE4929401103000000000029359F011EBD08.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/29401103000000000029359F011EBD08-DB48.html" target="_blank">
+          三星最新款 WEP200 最小的蓝牙耳机-适用所有蓝牙<font color=red>手机</font>-红包50
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://51462185.paipai.com" target="_blank" class="fontGray">
+          远新电脑科技-拍拍总店-总部
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五钻卖家(10001-30000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller15.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('51462185',''||'29401103000000000029359F011EBD08-DB48'||''||'','6e60178bd310a85fe97e91465155b58582bdc89858b369105d006610d5354145880528e2c723f3ae4b6c4f2f7a2441be8c8ee1eeb0d14609','0dc2b20253e7e84cf16c400bde3c9b3b3d5239b51834cc0a44f715251cf70281368f19ed49ce28d5491ed6e0c6216e3d26a7354bb8e63566')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:51462185:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('29401103000000000029359F011EBD08',this,[44,0]);" class="linkFavo">收藏</a>
+            &nbsp;<img src='http://pics.paipai.com/common/icon/rebate.gif' alt='可用红包抵扣商品价格' align='absmiddle'>
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine">&nbsp;<a href='http://help.paipai.com/content/help_20802.shtml' target='_blank'><img src='http://pics.paipai.com/common/icon/safe14.gif' align='absmiddle' alt='诚信保证计划-支持14天包赔'/></a></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          139.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        7806
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId1" value="29401103000000000029354C00CF8F6B-D9B7" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/29401103000000000029354C00CF8F6B-D9B7.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=51462185&filename=03114029-46443B9E29401103000000000029354C00CF8F6B.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=51462185&filename=03114029-46443B9E29401103000000000029354C00CF8F6B.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/29401103000000000029354C00CF8F6B-D9B7.html" target="_blank">
+          三星最新款 WEP200 最小的蓝牙耳机-适用所有蓝牙<font color=red>手机</font>-特价
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://51462185.paipai.com" target="_blank" class="fontGray">
+          远新电脑科技-拍拍总店-总部
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五钻卖家(10001-30000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller15.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('51462185',''||'29401103000000000029354C00CF8F6B-D9B7'||''||'','14e8a89090f44ca695a3abaac196029e29fa205048821639519edc3fb47c737c65d04bd8701ec547b1d58e029747164be3b0b93b39d2726f','a76bf59c010c6f6aaf7b3e1c0cd817ab1b40948c3e12b25254c0a6cd862621bdcbfbcee4eb5b476195e695747dde789830d4507bee6f8abe')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:51462185:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('29401103000000000029354C00CF8F6B',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine">&nbsp;<a href='http://help.paipai.com/content/help_20802.shtml' target='_blank'><img src='http://pics.paipai.com/common/icon/safe14.gif' align='absmiddle' alt='诚信保证计划-支持14天包赔'/></a></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          95.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        8158
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId2" value="EB86790100000000006B33C5001BEB34-5DCB" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/EB86790100000000006B33C5001BEB34-5DCB.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=24741611&filename=017986EB-466FE8E0EB86790100000000006B33C5001BEB34.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=24741611&filename=017986EB-466FE8E0EB86790100000000006B33C5001BEB34.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/EB86790100000000006B33C5001BEB34-5DCB.html" target="_blank">
+          【钻石信誉】<font color=red>手机</font>应急充电器,紧急充电器(套装版送八个头)
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://24741611.paipai.com" target="_blank" class="fontGray">
+          Sudy的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三钻卖家(1001-3000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller13.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('24741611',''||'EB86790100000000006B33C5001BEB34-5DCB'||''||'','d03c53e6e32cebe33c1bb7ff010a7629b96b87c469d58491e40a32957e40dd996e8e2343f189ff6d8be0850fdf61ffd68b09a245f6c75732','f683df3137aa7428e16cc253c58edac7e5012f9b93204ac9bb38ec80b6fd2f8f3d5288cc5aeb3165e1c2b76140d8c934c81d461f902070ba')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:24741611:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('EB86790100000000006B33C5001BEB34',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine">&nbsp;<a href='http://help.paipai.com/content/help_20802.shtml' target='_blank'><img src='http://pics.paipai.com/common/icon/safe14.gif' align='absmiddle' alt='诚信保证计划-支持14天包赔'/></a></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          23.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        5.00
+      </div>
+      <div class="cityLine">
+        上海
+      </div>
+      <div class="viewLine">
+        964
+      </div>
+      <div class="timeLine">
+        5天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId3" value="447BCC0C0000000000443624026403A9-8CC2" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/447BCC0C0000000000443624026403A9-8CC2.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=214727492&filename=0CCC7B44-476090E1447BCC0C0000000000443624026403A9.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=214727492&filename=0CCC7B44-476090E1447BCC0C0000000000443624026403A9.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/447BCC0C0000000000443624026403A9-8CC2.html" target="_blank">
+          诺基亚3220 5200 5300 6120 BL-5B 原装<font color=red>手机</font>电池Y101
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://214727492.paipai.com" target="_blank" class="fontGray">
+          214727492的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('214727492',''||'447BCC0C0000000000443624026403A9-8CC2'||''||'','29a9c47a34e983cb20f16b6b957d0907a2fdfb5cd6b9f137d4611e2009f1c83829426e16f4733d094cad2565aea9ff84697493842d110db9','afdd3f31770bbe804690f37202bcd9783f5401ea313da92a415d2bc264e9b9fb8e5e0cb2f4ffe0090136d43ebd8b9566dfdbd4a010dafe14')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:214727492:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('447BCC0C0000000000443624026403A9',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          52.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        浙江温州市
+      </div>
+      <div class="viewLine">
+        195
+      </div>
+      <div class="timeLine">
+        13天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId4" value="505C7B000000000000503638029DCC9C-5978" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/505C7B000000000000503638029DCC9C-5978.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=8084560&filename=007B5C50-477B64CE505C7B000000000000503638029DCC9C.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=8084560&filename=007B5C50-477B64CE505C7B000000000000503638029DCC9C.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/505C7B000000000000503638029DCC9C-5978.html" target="_blank">
+          蛋糕屏幕擦<font color=red>手机</font>链电脑擦
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://8084560.paipai.com" target="_blank" class="fontGray">
+          『拍式會社』『诚信联盟』网络超市
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二钻卖家(301-1000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller12.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('8084560',''||'505C7B000000000000503638029DCC9C-5978'||''||'','f95e761fdb5466ec83a68826b59d3d5ca1c35f722eff38cc5b6cb62e44fcbcee1e612ec6a968a60130456e9e8e5303632756148511508ff0','f2872615758a908154ae74701637b183004f9b2ebf7b25e4a11b930ac4124b506e47ef57d0c934879fcd0f9aab6ee4b9b80e1fd4e86d226a')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:8084560:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('505C7B000000000000503638029DCC9C',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          4.30
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        辽宁本溪市
+      </div>
+      <div class="viewLine">
+        97
+      </div>
+      <div class="timeLine">
+        8天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId5" value="2EB8C51300000000002E364202AC9593-96E3" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/2EB8C51300000000002E364202AC9593-96E3.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=331724846&filename=13C5B82E-47888F3E2EB8C51300000000002E364202AC9593.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=331724846&filename=13C5B82E-47888F3E2EB8C51300000000002E364202AC9593.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/2EB8C51300000000002E364202AC9593-96E3.html" target="_blank">
+          <font color=red>手机</font>插头14种140个送30条USB线套装
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://331724846.paipai.com" target="_blank" class="fontGray">
+          的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('331724846',''||'2EB8C51300000000002E364202AC9593-96E3'||''||'','174e080b7fd2a3634415251a03ecda32a4840f8f80f456b4903b8c42c072a686218809d5a07f7b277f72431a545fbb8c642dbbf40c4f28df','3985120b181100b2c3f0064c13c2845b192eeb4a0b430bd7bd39ddf35ba097eab99e480be218b30f229a21701c8d2ffd6527a5b6001a994c')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:331724846:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('2EB8C51300000000002E364202AC9593',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          200.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        55
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId6" value="3ACAB83700000000003A366202BBC0E5-A5D6" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/3ACAB83700000000003A366202BBC0E5-A5D6.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=934857274&filename=37B8CA3A-47B2AFFE3ACAB83700000000003A366202BBC0E5.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=934857274&filename=37B8CA3A-47B2AFFE3ACAB83700000000003A366202BBC0E5.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/3ACAB83700000000003A366202BBC0E5-A5D6.html" target="_blank">
+          生肖虎<font color=red>手机</font>链(手工琉璃)
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://934857274.paipai.com" target="_blank" class="fontGray">
+          玲 珑 阁
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('934857274',''||'3ACAB83700000000003A366202BBC0E5-A5D6'||''||'','e0c7c82bc17ebc26980b41338299db1d676a28b1eddc1eeaea65730860639ecb062dba708b61acca01640bb6f2e64e6aed01dfb69e652692','f74ddf890af53fc246d1dbaf3dd085107ea0e1ee9547add5f5b232d468fc9cf46e16bce9fb500daa373f359ebe49c4a8bb06042f47f3e7f9')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:934857274:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('3ACAB83700000000003A366202BBC0E5',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          10.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        6.00
+      </div>
+      <div class="cityLine">
+        山东临沂市
+      </div>
+      <div class="viewLine">
+        0
+      </div>
+      <div class="timeLine">
+        7天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId7" value="E9DD3F05000000000069365002A7E61A-49CA" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E61A-49CA.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B3009E9DD3F05000000000069365002A7E61A.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B3009E9DD3F05000000000069365002A7E61A.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E61A-49CA.html" target="_blank">
+          台湾原装<font color=red>手机</font>魔卡一卡多号simmax企鹅卡 单卡送全码软件
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://88071657.paipai.com" target="_blank" class="fontGray">
+          超迅科技
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二星卖家(5-10个信用积分)'><img src='http://pics.paipai.com/common/icon/seller02.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('88071657',''||'E9DD3F05000000000069365002A7E61A-49CA'||''||'','5de717aff7a0ddb06cf3c5c56f1938a029fd7caaa1f1aeba70da49341ee919ca17e8fcd5bcc48d765121cfbe2821a0315f26142733e7cb59','a5ad5debbe34931c3f098f7baf0afa0a55b35392d8d0097e55c69dfeb4a80491726ee46e4a4d9d53c880b077723feaf6a6350754b6d4214a')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:88071657:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('E9DD3F05000000000069365002A7E61A',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          33.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        山东临沂市
+      </div>
+      <div class="viewLine">
+        6
+      </div>
+      <div class="timeLine">
+        4天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId8" value="26853B16000000000026365502B84BF5-45D0" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/26853B16000000000026365502B84BF5-45D0.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=372999462&filename=163B8526-47A152D726853B16000000000026365502B84BF5.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=372999462&filename=163B8526-47A152D726853B16000000000026365502B84BF5.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/26853B16000000000026365502B84BF5-45D0.html" target="_blank">
+          超可爱毛绒多拉A梦<font color=red>手机</font>链
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://372999462.paipai.com" target="_blank" class="fontGray">
+          【雨水江南】总店
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('372999462',''||'26853B16000000000026365502B84BF5-45D0'||''||'','0756d35c8aae78374ac2721dd9b007d18d8899fc8f785bc386b17389a0db5f38bed9d18d8eb7fc3ca469384c6a5f4f870be16694481da817','990ba12da8504eb65b126bb3872a4af72d62db1f00ea50b67b631aca09c1e557110b35c5c82797939d91555ef117528313622a07bd4b6573')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:372999462:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('26853B16000000000026365502B84BF5',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          5.80
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        浙江金华市
+      </div>
+      <div class="viewLine">
+        8
+      </div>
+      <div class="timeLine">
+        8天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId9" value="EB86790100000000006B353300B81D30-2B15" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/EB86790100000000006B353300B81D30-2B15.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=24741611&filename=017986EB-46232C7DEB86790100000000006B353300B81D30.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=24741611&filename=017986EB-46232C7DEB86790100000000006B353300B81D30.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/EB86790100000000006B353300B81D30-2B15.html" target="_blank">
+          【钻石信誉】<font color=red>手机</font>应急充电器,<font color=red>手机</font>充电器,(送四头)铝合金壳
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://24741611.paipai.com" target="_blank" class="fontGray">
+          Sudy的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三钻卖家(1001-3000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller13.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('24741611',''||'EB86790100000000006B353300B81D30-2B15'||''||'','af3de038bc8c2f5590c8c75555d9de03a961e04465a277e55aaa0e92eaa7725eee260f1ca8c90070a12520e0613b8ceaf766c29db40e9cff','49ba9fc7d5685d3d884b1758263ddeab978c882e44eaef7229193ebf128b44573d3af46c906be0a077f909032e893fc68d6ba5679b9edc60')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:24741611:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('EB86790100000000006B353300B81D30',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine">&nbsp;<a href='http://help.paipai.com/content/help_20802.shtml' target='_blank'><img src='http://pics.paipai.com/common/icon/safe14.gif' align='absmiddle' alt='诚信保证计划-支持14天包赔'/></a></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          19.90
+          </b></div>
+      </div>
+      <div class="mailLine">
+        5.00
+      </div>
+      <div class="cityLine">
+        上海
+      </div>
+      <div class="viewLine">
+        10477
+      </div>
+      <div class="timeLine">
+        5天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId10" value="505C7B000000000000503638029DCCB9-7B92" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/505C7B000000000000503638029DCCB9-7B92.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=8084560&filename=007B5C50-477B64E4505C7B000000000000503638029DCCB9.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=8084560&filename=007B5C50-477B64E4505C7B000000000000503638029DCCB9.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/505C7B000000000000503638029DCCB9-7B92.html" target="_blank">
+          可爱的日本豆腐毛绒<font color=red>手机</font>座
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://8084560.paipai.com" target="_blank" class="fontGray">
+          『拍式會社』『诚信联盟』网络超市
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二钻卖家(301-1000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller12.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('8084560',''||'505C7B000000000000503638029DCCB9-7B92'||''||'','f1d7710e9fa73e3e11ce7f55a49e5d2370e3a789a6c628d65da3666182573e5367332fee9bde18825afc61491328821c93d53e9aa10ec3be','143e5c701ec952d8d327fefda1966643d70e84bc5e6dfa682b9d9bf044917dc14bdeb32997c58fa076c1a9cf61cf04902c1386b434103663')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:8084560:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('505C7B000000000000503638029DCCB9',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          5.50
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        辽宁本溪市
+      </div>
+      <div class="viewLine">
+        56
+      </div>
+      <div class="timeLine">
+        8天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId11" value="3963D100000000000039366602AF48DF-49F2" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/3963D100000000000039366602AF48DF-49F2.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=13722425&filename=00D16339-47B840AF3963D100000000000039366602AF48DF.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=13722425&filename=00D16339-47B840AF3963D100000000000039366602AF48DF.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/3963D100000000000039366602AF48DF-49F2.html" target="_blank">
+          ˇ布丁Dê杂货铺ˇ◆香港Luft◆豪猪<font color=red>手机</font>座 黑
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://13722425.paipai.com" target="_blank" class="fontGray">
+          迷糊娃娃|香港LUFT专卖~圣诞来临...节日低价疯狂购|4折起|
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三星卖家(11-20个信用积分)'><img src='http://pics.paipai.com/common/icon/seller03.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('13722425',''||'3963D100000000000039366602AF48DF-49F2'||''||'','117144975cc375d3e88f7b78e52f32757acb4808a8caead4c01c438a3ece53e9b2e128fff6fdab5ae911a1205875e86bc73046a3f7cd8024','c9de3c2c89a27645bb0c91318036a83b21e976fec90de2deb145d6d5c72788e1ec41c83404b8d2c62aebd021eb55e52fa69a17f79b411460')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:13722425:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('3963D100000000000039366602AF48DF',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          43.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        湖南长沙市
+      </div>
+      <div class="viewLine">
+        0
+      </div>
+      <div class="timeLine">
+        5天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId12" value="79C53900000000000079355F00DEBB64-9782" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/79C53900000000000079355F00DEBB64-9782.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=3786105&filename=0039C579-4750A67379C53900000000000079355F00DEBB64.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=3786105&filename=0039C579-4750A67379C53900000000000079355F00DEBB64.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/79C53900000000000079355F00DEBB64-9782.html" target="_blank">
+          浙江移动GPRS<font color=red>手机</font>上网资费自选卡含100元话费
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://3786105.paipai.com" target="_blank" class="fontGray">
+          中国卡通
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四星卖家(21-40个信用积分)'><img src='http://pics.paipai.com/common/icon/seller04.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('3786105',''||'79C53900000000000079355F00DEBB64-9782'||''||'','48d7f93ae450593e86fbc3de24bca06e6fb1b522b858f7d11d77c9b5848d96a518ac1447e76a887c1ea04796215c86096ae7b6440192bdc3','159c6d2b6be876ce8fedd3d12527e44a13c0f90972d5e9b776c1c776c158c34aae33535d0cebe4ed4e4e16efc322818af5afcaff46df40fd')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:3786105:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('79C53900000000000079355F00DEBB64',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          55.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        河北唐山市
+      </div>
+      <div class="viewLine">
+        57
+      </div>
+      <div class="timeLine">
+        12天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId13" value="5764F720000000000057360F020D45AB-C06A" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/5764F720000000000057360F020D45AB-C06A.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=553083991&filename=20F76457-4745501B5764F720000000000057360F020D45AB.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=553083991&filename=20F76457-4745501B5764F720000000000057360F020D45AB.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/5764F720000000000057360F020D45AB-C06A.html" target="_blank">
+          索爱 W550c W550i W550 W600 <font color=red>手机</font>壳 外壳 彩壳 磨砂壳
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://553083991.paipai.com" target="_blank" class="fontGray">
+          的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四星卖家(21-40个信用积分)'><img src='http://pics.paipai.com/common/icon/seller04.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('553083991',''||'5764F720000000000057360F020D45AB-C06A'||''||'','9e4327832bab70878e95cb48c117ce80b703df2273e73ddef4dfcc1e6ba5ac09c84133e705c0eb7d7ec82c1f36c720c29f04c032c1906f73','c9f72b7e44fd959a368a01c2da6172fcc68f037e6290df2b064d6e7d1523abf72766fa24b8dff4a5f49ce6148c378564164b49292dcb6aa2')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:553083991:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('5764F720000000000057360F020D45AB',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          8.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        上海
+      </div>
+      <div class="viewLine">
+        247
+      </div>
+      <div class="timeLine">
+        2天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId14" value="FEA3960200000000007E352D00BF052D-BA90" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/FEA3960200000000007E352D00BF052D-BA90.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=43426814&filename=0296A3FE-4677EABAFEA3960200000000007E352D00BF052D.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=43426814&filename=0296A3FE-4677EABAFEA3960200000000007E352D00BF052D.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/FEA3960200000000007E352D00BF052D-BA90.html" target="_blank">
+          【双模双卡双待<font color=red>手机</font>专卖店】台湾原装SIMMAX一卡12号企鹅套装
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://43426814.paipai.com" target="_blank" class="fontGray">
+          网上购物乐园
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二钻卖家(301-1000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller12.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('43426814',''||'FEA3960200000000007E352D00BF052D-BA90'||''||'','1b82d46319866d64e4e04c797c5674a2ca85a0ef3d6e971f9e12c1ef0bb0e52660aa7c70427725754b248d769c1a4c96ef7a9c01c9706fad','84495b1cac74f7a7356de4f519ac7385426c5a0916a630a4119c215ad31b2cdc5888a9b8dd066844124b2d89775c07a4f5d31334a80d4e4d')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:43426814:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('FEA3960200000000007E352D00BF052D',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          70.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        7.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        3222
+      </div>
+      <div class="timeLine">
+        1天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId15" value="8C654B1100000000000C365602B21437-9436" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/8C654B1100000000000C365602B21437-9436.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=290153868&filename=114B658C-47A31E908C654B1100000000000C365602B21437.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=290153868&filename=114B658C-47A31E908C654B1100000000000C365602B21437.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/8C654B1100000000000C365602B21437-9436.html" target="_blank">
+          【原装正版★飞毛腿】金品商务版---诺基亚<font color=red>手机</font>电池
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://290153868.paipai.com" target="_blank" class="fontGray">
+          点点数码港
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('290153868',''||'8C654B1100000000000C365602B21437-9436'||''||'','40619fd07ba21eb1537d145c0f58ef3a23d59aa4b35ba36b45a30d0c4fd30bc9f7c6d1e0bfca0728c3070526545a2ac6ac92a55950641162','fc9e38de18404ae38902f8e320883befeebc7d49b0db86c9b2aab0e32751f7725729775511e764676ca56297d2dc32b64152a5c4270d436a')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:290153868:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('8C654B1100000000000C365602B21437',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          40.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        6.00
+      </div>
+      <div class="cityLine">
+        山东济南市
+      </div>
+      <div class="viewLine">
+        30
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId16" value="286E660300000000002836240265818D-22A7" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/286E660300000000002836240265818D-22A7.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=57044520&filename=03666E28-47623468286E660300000000002836240265818D.JPG&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=57044520&filename=03666E28-47623468286E660300000000002836240265818D.JPG&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/286E660300000000002836240265818D-22A7.html" target="_blank">
+          韩国大眼猫猫布艺<font color=red>手机</font>挂链。(多款颜色)
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://57044520.paipai.com" target="_blank" class="fontGray">
+          『潮流商盟』可乐猫小铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('57044520',''||'286E660300000000002836240265818D-22A7'||''||'','30b65565d3dd0e3fb16b51ec0b5122240fb2e90576ef33738c256182e978d15def990f87dc25cd46f1c13d1ea31938fe58538965735b37f6','b895fe75f9a1991905d685c26943d282fd475b841099b40aea79784b6bdac477581be96d508edcdc5b39fd11df4a523fa6c23406a06c7540')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:57044520:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('286E660300000000002836240265818D',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          12.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        7.00
+      </div>
+      <div class="cityLine">
+        福建福州市
+      </div>
+      <div class="viewLine">
+        112
+      </div>
+      <div class="timeLine">
+        7天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId17" value="E9DD3F05000000000069365002A7E61E-0943" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E61E-0943.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B300EE9DD3F05000000000069365002A7E61E.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B300EE9DD3F05000000000069365002A7E61E.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E61E-0943.html" target="_blank">
+          Supersim一卡多号 16号<font color=red>手机</font>魔卡sim卡复制器16合1超级sim卡(套装)
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://88071657.paipai.com" target="_blank" class="fontGray">
+          超迅科技
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二星卖家(5-10个信用积分)'><img src='http://pics.paipai.com/common/icon/seller02.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('88071657',''||'E9DD3F05000000000069365002A7E61E-0943'||''||'','a8273de1ae4b0c0a515ea9f1d4376e8e167320a0deb287f49e95913f83aef65f0fb17c7b3776989741b03e2bde59982a5aa132491086d40b','39b6cc4e30543597ec8043f0053f48b22938c79656b61fb384497e20f09d2f3f5105f2aee6c4128d85e1b172aa6373f8e60a228f2aa0d5aa')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:88071657:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('E9DD3F05000000000069365002A7E61E',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          60.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        山东临沂市
+      </div>
+      <div class="viewLine">
+        12
+      </div>
+      <div class="timeLine">
+        7天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId18" value="2BD51E0900000000002B365202A740F8-699D" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/2BD51E0900000000002B365202A740F8-699D.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=153015595&filename=091ED52B-479DFD9D2BD51E0900000000002B365202A740F8.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=153015595&filename=091ED52B-479DFD9D2BD51E0900000000002B365202A740F8.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/2BD51E0900000000002B365202A740F8-699D.html" target="_blank">
+          辟邪木<font color=red>手机</font>挂件◆雷击枣木钱袋∈‖民族风情☆法物流通‖
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://153015595.paipai.com" target="_blank" class="fontGray">
+          ‖法物流通‖‖★民★族★风★情★‖‖民族特色☆百货专场‖
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三星卖家(11-20个信用积分)'><img src='http://pics.paipai.com/common/icon/seller03.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('153015595',''||'2BD51E0900000000002B365202A740F8-699D'||''||'','398febe72b268c649c8c3156e4d080aafdd984632445cd120f8367a6636b4f86e57935dae8c7c962649d0da871eef492b5db40d4fc6e3aea','0b4ebd7b32a5fe0eb80983763e2ba13b8a38e4dfaddaea3540f791a4df58becfc6167a5c7cdea3fa3a43afd17a2f8fe1198501153e936f63')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:153015595:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('2BD51E0900000000002B365202A740F8',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          25.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        北京
+      </div>
+      <div class="viewLine">
+        13
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId19" value="9D88D12500000000001D35AE0133F758-853A" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/9D88D12500000000001D35AE0133F758-853A.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=634488989&filename=25D1889D-46C59DA39D88D12500000000001D35AE0133F758.gif&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=634488989&filename=25D1889D-46C59DA39D88D12500000000001D35AE0133F758.gif&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/9D88D12500000000001D35AE0133F758-853A.html" target="_blank">
+          钻石信用*亏本甩卖全新诺基亚3230 3220BL-5B<font color=red>手机</font>电池820mA
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://634488989.paipai.com" target="_blank" class="fontGray">
+          创世纪电子--手机配件等电子产品
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二钻卖家(301-1000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller12.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('634488989',''||'9D88D12500000000001D35AE0133F758-853A'||''||'','94824c504b5741c4f55d4646d20877705860c9ce6c16aff5a4947cda2fa230fd62b6ef99d4364e717e238c69596e528b650b01f8e881fce3','36f6859b031ca64ccabeb4f3dce81a0c2ea1901c79e569664f789b75b367f897d03fa3bb123ba5145badf496ee97f94fd28b06d0000ff171')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:634488989:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('9D88D12500000000001D35AE0133F758',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          5.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        福建福州市
+      </div>
+      <div class="viewLine">
+        342
+      </div>
+      <div class="timeLine">
+        1天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId20" value="A9368D0F000000000029364C02A57F8C-420B" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/A9368D0F000000000029364C02A57F8C-420B.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=260912809&filename=0F8D36A9-4795B1ADA9368D0F000000000029364C02A57F8C.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=260912809&filename=0F8D36A9-4795B1ADA9368D0F000000000029364C02A57F8C.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/A9368D0F000000000029364C02A57F8C-420B.html" target="_blank">
+          08年属鼠开运吉祥物:太极转运鼠-纯天然太极转运鼠<font color=red>手机</font>链
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://260912809.paipai.com" target="_blank" class="fontGray">
+          开心的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('260912809',''||'A9368D0F000000000029364C02A57F8C-420B'||''||'','3fdc3cf755105c572a373e16fb95e885dbad96c19d0903105061ed33710a5fed1c05a6cd9c3e12f93e57fd2ce68f655fd4cc6414b7e8e52e','4491639d0863cbffb06dcca71924a97ae169702f06eff6289d1c043c212b6c1b2570a27a996f459252b12f65c9582c11ecb3446e74e153d1')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:260912809:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('A9368D0F000000000029364C02A57F8C',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          29.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        江苏连云港市
+      </div>
+      <div class="viewLine">
+        34
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId21" value="AFD4EE2100000000002F35C9015F886A-7BD1" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/AFD4EE2100000000002F35C9015F886A-7BD1.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=569300143&filename=21EED4AF-46E9A8C4AFD4EE2100000000002F35C9015F886A.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=569300143&filename=21EED4AF-46E9A8C4AFD4EE2100000000002F35C9015F886A.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/AFD4EE2100000000002F35C9015F886A-7BD1.html" target="_blank">
+          3A诺基亚E65机壳/E65<font color=red>手机</font>壳/E65外壳/E65壳+键盘+中板 黑
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://569300143.paipai.com" target="_blank" class="fontGray">
+          21世纪通讯数码专卖店
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='一钻卖家(101-300个信用积分)'><img src='http://pics.paipai.com/common/icon/seller11.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('569300143',''||'AFD4EE2100000000002F35C9015F886A-7BD1'||''||'','ef73ea6f01280a734ff781785d7a596db5e277c652419cf66288e631db3ab3df51ea9a31f6b03e75d2fa5659e1ae2ab8bf389ad310bb0e45','3cc9e470504531ff6f4c0a21a98e875584a2ef56815cfda4e53b03ebb91ba26e20f7515660510264475e88dd4e75166cca4a5302728a0e69')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:569300143:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('AFD4EE2100000000002F35C9015F886A',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          55.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        7.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        16
+      </div>
+      <div class="timeLine">
+        5小时
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId22" value="E9DD3F05000000000069365002A7E622-7577" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E622-7577.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B3012E9DD3F05000000000069365002A7E622.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=88071657&filename=053FDDE9-479B3012E9DD3F05000000000069365002A7E622.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/E9DD3F05000000000069365002A7E622-7577.html" target="_blank">
+          Supersim一卡多号 16号<font color=red>手机</font>魔卡sim卡复制器16合1超级sim卡(单卡)
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://88071657.paipai.com" target="_blank" class="fontGray">
+          超迅科技
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二星卖家(5-10个信用积分)'><img src='http://pics.paipai.com/common/icon/seller02.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('88071657',''||'E9DD3F05000000000069365002A7E622-7577'||''||'','871fd79c81e0e2e5e8a2a0ffd71760a950f058ad7f6c9fee9e5ef091bfe2840577dba9beea46970a003c200f24062f232cb54e9c02730fb0','a2f29c1308e877b58078d84cc7cd0acfc73fdd14aae3a588cb773dca6c411603aa5cc077cfd6bb14e2bfe36faa10a6aa5a4e4fe3cae0d539')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:88071657:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('E9DD3F05000000000069365002A7E622',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          30.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        山东临沂市
+      </div>
+      <div class="viewLine">
+        14
+      </div>
+      <div class="timeLine">
+        4天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId23" value="A0EEBB0000000000002035AE013D00A0-8052" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/A0EEBB0000000000002035AE013D00A0-8052.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=12316320&filename=00BBEEA0-46C5E84BA0EEBB0000000000002035AE013D00A0.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=12316320&filename=00BBEEA0-46C5E84BA0EEBB0000000000002035AE013D00A0.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/A0EEBB0000000000002035AE013D00A0-8052.html" target="_blank">
+          全新诺基亚<font color=red>手机</font>电池只卖15元!
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://12316320.paipai.com" target="_blank" class="fontGray">
+          天音数码大卖场
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四星卖家(21-40个信用积分)'><img src='http://pics.paipai.com/common/icon/seller04.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('12316320',''||'A0EEBB0000000000002035AE013D00A0-8052'||''||'','9fe4b2c532a69185b7f6fc9069e1c31be3ca6867478c0fa31c8c00e4c91c3e821f8edd71a5b1086bd43bdb17afc18f06bb2b338f76934120','1beb04b43a7bb52b0dc768dd70dae9c71514745be55e480fe60d23b3936a83e85a26cf63e68543b0dee53d3ef67b234844ea6f6791fae1c0')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:12316320:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('A0EEBB0000000000002035AE013D00A0',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          15.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        116
+      </div>
+      <div class="timeLine">
+        13天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId24" value="381B8D0100000000003835FF01E31F99-52B4" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/381B8D0100000000003835FF01E31F99-52B4.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=26024760&filename=018D1B38-472FFE34381B8D0100000000003835FF01E31F99.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=26024760&filename=018D1B38-472FFE34381B8D0100000000003835FF01E31F99.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/381B8D0100000000003835FF01E31F99-52B4.html" target="_blank">
+          情人节最好的礼物！<font color=red>手机</font>话筒！抢鲜啦！
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://26024760.paipai.com" target="_blank" class="fontGray">
+          洋娃娃の窩窩藏饰礼品铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四星卖家(21-40个信用积分)'><img src='http://pics.paipai.com/common/icon/seller04.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('26024760',''||'381B8D0100000000003835FF01E31F99-52B4'||''||'','57941b92ad1fe27e7f3c09377acc406de4803c9982f76539cc7d04fffe9dd2e419467fd8aa943954e2b5718c601d7d597511e74378ee49c4','2e0e27923e6fc07524166b0d523207894cd8e59daa9ff9f4db943f202e78dd84ba4f188c645d24503c32aa280bc1cefd1571908c281c2d4c')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:26024760:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('381B8D0100000000003835FF01E31F99',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          39.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        5.00
+      </div>
+      <div class="cityLine">
+        新疆克拉玛依市
+      </div>
+      <div class="viewLine">
+        157
+      </div>
+      <div class="timeLine">
+        5天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId25" value="D6205801000000000056365502B88706-C207" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/D6205801000000000056365502B88706-C207.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=22552790&filename=015820D6-47A21041D6205801000000000056365502B88706.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=22552790&filename=015820D6-47A21041D6205801000000000056365502B88706.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/D6205801000000000056365502B88706-C207.html" target="_blank">
+          08年本命年系列---A货翡翠玉牛<font color=red>手机</font>吊坠
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://22552790.paipai.com" target="_blank" class="fontGray">
+          天然水晶玉石助运饰品专卖
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('22552790',''||'D6205801000000000056365502B88706-C207'||''||'','54dcae0072d3669801469a848de45b74e437acf48460a0befb80a25ace65ed57869bfe0cbc258d283b6303a2bfdf9e870c7e43b89a240be1','765d302738369888c334cbf14e5d1a691771cea3f00b83089a73f412a27cc8f5cde33205671f09f2114e9db6aa62b452dfa4355155d9b9a2')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:22552790:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('D6205801000000000056365502B88706',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          18.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广西南宁市
+      </div>
+      <div class="viewLine">
+        7
+      </div>
+      <div class="timeLine">
+        2天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId26" value="3EA5520000000000003E354700D231CA-95DA" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/3EA5520000000000003E354700D231CA-95DA.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=5416254&filename=0052A53E-46A6F0103EA5520000000000003E354700D231CA.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=5416254&filename=0052A53E-46A6F0103EA5520000000000003E354700D231CA.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/3EA5520000000000003E354700D231CA-95DA.html" target="_blank">
+          【零售价】-小猪毛绒<font color=red>手机</font>座-【300元以上9.7折】
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://5416254.paipai.com" target="_blank" class="fontGray">
+          新奇特产品
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四钻卖家(3001-10000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller14.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('5416254',''||'3EA5520000000000003E354700D231CA-95DA'||''||'','3e026ef615f44ec6ba6a5c18ba49ea35c6442a5abd0004a38aae749abf1f5f091b2b6c77435d0c6b2490493217a04925d8d941ac3f8d2aae','d97371acddf48cd530619f2ad0ea005be7f856f23149f24db381520084795729b64baf801a9dbfeb1122a3a7b212dc300a13924e14c22ad8')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:5416254:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('3EA5520000000000003E354700D231CA',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          2.90
+          </b></div>
+      </div>
+      <div class="mailLine">
+        6.00
+      </div>
+      <div class="cityLine">
+        浙江金华市
+      </div>
+      <div class="viewLine">
+        1076
+      </div>
+      <div class="timeLine">
+        21小时
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId27" value="0EBEAA1B00000000000E35F101B1EE16-7039" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/0EBEAA1B00000000000E35F101B1EE16-7039.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=464174606&filename=1BAABE0E-477DF6E40EBEAA1B00000000000E35F101B1EE16.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=464174606&filename=1BAABE0E-477DF6E40EBEAA1B00000000000E35F101B1EE16.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/0EBEAA1B00000000000E35F101B1EE16-7039.html" target="_blank">
+          3A诺基亚6300机壳/6300<font color=red>手机</font>壳/6300外壳/6300壳 配键盘 多色供选
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://464174606.paipai.com" target="_blank" class="fontGray">
+          紫贝壳手机配件专卖店
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='四星卖家(21-40个信用积分)'><img src='http://pics.paipai.com/common/icon/seller04.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('464174606',''||'0EBEAA1B00000000000E35F101B1EE16-7039'||''||'','97ca17e6783597d3b561376fb5d21ee823e1f95ec626fa376c3f9e3c9fafef061e183a5b39e994d022857c6edd11d53842dec23c6c21e07e','280b6ccc88dab59f159f8b7389494713421e5d48e1172d5269088b00416fe205854a4501b75467a87cb29d8ed6dd636824e7ffa7bfaabc59')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:464174606:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('0EBEAA1B00000000000E35F101B1EE16',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          55.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        82
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId28" value="6D25C70000000000006D366502AE4282-7015" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/6D25C70000000000006D366502AE4282-7015.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=13051245&filename=00C7256D-47B644C06D25C70000000000006D366502AE4282.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=13051245&filename=00C7256D-47B644C06D25C70000000000006D366502AE4282.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/6D25C70000000000006D366502AE4282-7015.html" target="_blank">
+          ！美女养成堂！韩国流行~纽扣眼睛娃娃<font color=red>手机</font>挂坠~独家发售哦~
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://13051245.paipai.com" target="_blank" class="fontGray">
+          美女养成堂 ~打造精品美女
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='一星卖家(1-4个信用积分)'><img src='http://pics.paipai.com/common/icon/seller01.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('13051245',''||'6D25C70000000000006D366502AE4282-7015'||''||'','ee554d65292882274b5ff507e782b3f63ad9ca28f5cfcc9ec2ec78dea9a25329d03bb82b9cf88edb1ce2284428c23f43b8dd6a73c2c7fb31','a2168a28f9200f9999354a12c8a8a8fbb74049d0a5d0c94189114ac2be8dc548d0cea2fe67f492aec9087b76bc42d2ac0ecf81a7e85a924c')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:13051245:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('6D25C70000000000006D366502AE4282',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          19.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        12.00
+      </div>
+      <div class="cityLine">
+        福建宁德市
+      </div>
+      <div class="viewLine">
+        0
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId29" value="35142F0500000000003535F201AF3A46-E4A6" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/35142F0500000000003535F201AF3A46-E4A6.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=86971445&filename=052F1435-475AB47F35142F0500000000003535F201AF3A46.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=86971445&filename=052F1435-475AB47F35142F0500000000003535F201AF3A46.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/35142F0500000000003535F201AF3A46-E4A6.html" target="_blank">
+          『枫桦网店』√一卡多号，<font color=red>手机</font>魔卡，一卡6号（狗卡）高速读卡
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://86971445.paipai.com" target="_blank" class="fontGray">
+            枫桦网店
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二星卖家(5-10个信用积分)'><img src='http://pics.paipai.com/common/icon/seller02.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('86971445',''||'35142F0500000000003535F201AF3A46-E4A6'||''||'','858923fd3401290445ffeba9b3317a269affab9d729ac0e811ec7178446f5c980810b3d6620ad1e869dcabecd2812539f05cd8cf4e068683','3013597e36c9636912676b6d4c179e402aed0c0c99c423532837b3bcf3b2a0472351a75592a1ad750ed6bb3c66e5490ac0b9482e5fbc82c9')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:86971445:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('35142F0500000000003535F201AF3A46',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            &nbsp;<img src="http://pics.paipai.com/common/icon/express.gif" alt="本商品支持货到付款" hspace="3" vspace="3" align="absmiddle"></img>
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          60.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        河南郑州市
+      </div>
+      <div class="viewLine">
+        275
+      </div>
+      <div class="timeLine">
+        6天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId30" value="AFD4EE2100000000002F35EF01A54AA1-98BB" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/AFD4EE2100000000002F35EF01A54AA1-98BB.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=569300143&filename=21EED4AF-471AF8EDAFD4EE2100000000002F35EF01A54AA1.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=569300143&filename=21EED4AF-471AF8EDAFD4EE2100000000002F35EF01A54AA1.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/AFD4EE2100000000002F35EF01A54AA1-98BB.html" target="_blank">
+          诺基亚5300机壳/5300外壳/5300<font color=red>手机</font>壳/5300壳+键盘 全黑
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://569300143.paipai.com" target="_blank" class="fontGray">
+          21世纪通讯数码专卖店
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='一钻卖家(101-300个信用积分)'><img src='http://pics.paipai.com/common/icon/seller11.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('569300143',''||'AFD4EE2100000000002F35EF01A54AA1-98BB'||''||'','6bbec20432510a2343ba14604320d250dbf2cf7f8d80f01473bb36cf4fc006ccf03a015dee81910f2ef9353a548d7dcfca05505377f4a963','e33d12d02072d52947324e69b9165b9c52eb9cb97cb615c208da87db9b771bbbb5bf3a88a4d1bc888ad061277f1098926ebff09e7c791f85')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:569300143:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('AFD4EE2100000000002F35EF01A54AA1',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          30.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        7.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        1110
+      </div>
+      <div class="timeLine">
+        1天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId31" value="737BFF17000000000073364A02A1D639-26C5" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/737BFF17000000000073364A02A1D639-26C5.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=402619251&filename=17FF7B73-47948407737BFF17000000000073364A02A1D639.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=402619251&filename=17FF7B73-47948407737BFF17000000000073364A02A1D639.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/737BFF17000000000073364A02A1D639-26C5.html" target="_blank">
+          多功能<font color=red>手机</font>应急充电器。
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://402619251.paipai.com" target="_blank" class="fontGray">
+          趠樾Ζ﹌繎的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('402619251',''||'737BFF17000000000073364A02A1D639-26C5'||''||'','692940976477324398a943e5535c2f15f75cdf05d11f205d76a76df037ccdcb27f1cf83f00ef6e09c99dcf78defb0545ef96062574766fc2','282db214d210cd6ab304a7b85c2bf4c643d9cac8f7eed30977ced09a32841f399e448c83e5a567d1cb90a5246221bd62d7f4f954b5c44005')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:402619251:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('737BFF17000000000073364A02A1D639',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          10.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        5.00
+      </div>
+      <div class="cityLine">
+        安徽蚌埠市
+      </div>
+      <div class="viewLine">
+        63
+      </div>
+      <div class="timeLine">
+        2天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId32" value="5935A61F000000000059365702AA653B-2741" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/5935A61F000000000059365702AA653B-2741.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-47A425B85935A61F000000000059365702AA653B.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-47A425B85935A61F000000000059365702AA653B.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/5935A61F000000000059365702AA653B-2741.html" target="_blank">
+          诺基亚N72机壳/N72外壳/N72壳/N72<font color=red>手机</font>壳 黑色 送键盘
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://530986329.paipai.com" target="_blank" class="fontGray">
+          薇笑数码的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('530986329',''||'5935A61F000000000059365702AA653B-2741'||''||'','7937615a9d8a0ff51a2523ecc5c5002e270bef55658d87cad1a4fa0f85aef5449ba844cab12d2d4460efa3e883d771e76393853e80e5b7f4','5f9b125ec4107419a87e4951bd5ebf99fe65160608d35aab4c3caf5fd540b53f139d910d29d3a55d607973b8b6c0fa7b2d985f0a9c1c655b')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:530986329:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('5935A61F000000000059365702AA653B',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          25.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        2
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId33" value="5935A61F00000000005935CE01694E69-7EEE" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/5935A61F00000000005935CE01694E69-7EEE.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-477DCEDE5935A61F00000000005935CE01694E69.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-477DCEDE5935A61F00000000005935CE01694E69.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/5935A61F00000000005935CE01694E69-7EEE.html" target="_blank">
+          3A诺基亚6300机壳/6300外壳/6300<font color=red>手机</font>壳/6300壳 粉色+键盘
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://530986329.paipai.com" target="_blank" class="fontGray">
+          薇笑数码的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('530986329',''||'5935A61F00000000005935CE01694E69-7EEE'||''||'','048891cd22328ba22090f0ce3c41a98cfd8f16c5279d7fd187c376552e3cc94b5b6ddd674a014ce0fe47f2b197bfefa7ef9a428841610d0c','827b9a637c4bf070293e242e35a690b586a0430408d72cad38310ddbee7e1de9bd1b167273181d4a9f91ee8a3c04c44dfc92dd34fcc24a95')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:530986329:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('5935A61F00000000005935CE01694E69',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          65.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        23
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId34" value="2940110300000000002935960112EC30-74CD" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/2940110300000000002935960112EC30-74CD.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=51462185&filename=03114029-46A5C3AA2940110300000000002935960112EC30.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=51462185&filename=03114029-46A5C3AA2940110300000000002935960112EC30.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/2940110300000000002935960112EC30-74CD.html" target="_blank">
+          [5钻]三星<font color=red>手机</font>蓝牙耳机最新款/WEP200/最小的蓝牙耳机限量出售
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://51462185.paipai.com" target="_blank" class="fontGray">
+          远新电脑科技-拍拍总店-总部
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五钻卖家(10001-30000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller15.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('51462185',''||'2940110300000000002935960112EC30-74CD'||''||'','82e56951eb17cb8d031bcdfab6f2fc1b891a479f7fb4f55185f4fa1618d907498434a8f4995e6af5e15b0de8679b487a8e43efd001d8b1cc','be58e64237e97b22d5bb2d5023572f3559d4e46e075d716d859757b5f414d64a2d9eb1e77aad32757e573b30d99377e066944c68dff6187a')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:51462185:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('2940110300000000002935960112EC30',this,[44,0]);" class="linkFavo">收藏</a>
+            &nbsp;<img src='http://pics.paipai.com/common/icon/rebate.gif' alt='可用红包抵扣商品价格' align='absmiddle'>
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine">&nbsp;<a href='http://help.paipai.com/content/help_20802.shtml' target='_blank'><img src='http://pics.paipai.com/common/icon/safe14.gif' align='absmiddle' alt='诚信保证计划-支持14天包赔'/></a></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          100.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        2278
+      </div>
+      <div class="timeLine">
+        3天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId35" value="98BB6C0000000000001835B601485556-C0B8" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/98BB6C0000000000001835B601485556-C0B8.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=7125912&filename=006CBB98-46D071DA98BB6C0000000000001835B601485556.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=7125912&filename=006CBB98-46D071DA98BB6C0000000000001835B601485556.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/98BB6C0000000000001835B601485556-C0B8.html" target="_blank">
+          MP3＼Mp4＼<font color=red>手机</font>＼PDA数码产品应急电源 为商务精英定身打造
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://7125912.paipai.com" target="_blank" class="fontGray">
+          【数码女孩】拍拍网数码类核心实力店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三钻卖家(1001-3000个信用积分)'><img src='http://pics.paipai.com/common/icon/seller13.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('7125912',''||'98BB6C0000000000001835B601485556-C0B8'||''||'','66e850172a7b0627a4718bcaae9e28bb2f284df5470884c296d59a1caa032ca28c09083918bbfbd587372b7720cdb5e6c8af89515f4ab11e','4f24dc67441ff9f00fc64ca1fcc03e5e961da3d36eada789e30a6f8171f2d1ad38fb29a12c23d3f399a5a974431f60dcdedaeb107a5e93cb')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:7125912:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('98BB6C0000000000001835B601485556',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          19.90
+          </b></div>
+      </div>
+      <div class="mailLine">
+        15.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        6725
+      </div>
+      <div class="timeLine">
+        5天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId36" value="5935A61F00000000005936330290DEB3-5E2A" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/5935A61F00000000005936330290DEB3-5E2A.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-47746EA45935A61F00000000005936330290DEB3.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=530986329&filename=1FA63559-47746EA45935A61F00000000005936330290DEB3.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/5935A61F00000000005936330290DEB3-5E2A.html" target="_blank">
+          诺基亚6680<font color=red>手机</font>壳6680机壳6680外壳6680壳+键盘 大红
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://530986329.paipai.com" target="_blank" class="fontGray">
+          薇笑数码的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='五星卖家(41-100个信用积分)'><img src='http://pics.paipai.com/common/icon/seller05.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('530986329',''||'5935A61F00000000005936330290DEB3-5E2A'||''||'','425d82a941657cef5f3ba971c771e31eac31409a646f6f8b0eeea19f4c2aaefa1941903d7edbae1abd1687eee99f85c6607853fbf9e15a83','70e07e3c2cb9e061bd0313d0c75cf165c9921f92ce7205e7400f7bb5895f7a99b1b0a6c39da585aa765aff0509f22c9de272fa753ea5e49d')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:530986329:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('5935A61F00000000005936330290DEB3',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          20.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        8.00
+      </div>
+      <div class="cityLine">
+        广东东莞市
+      </div>
+      <div class="viewLine">
+        7
+      </div>
+      <div class="timeLine">
+        4天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId37" value="06B6121200000000000635EC01A5596D-CF5F" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/06B6121200000000000635EC01A5596D-CF5F.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=303216134&filename=1212B606-471748C106B6121200000000000635EC01A5596D.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=303216134&filename=1212B606-471748C106B6121200000000000635EC01A5596D.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/06B6121200000000000635EC01A5596D-CF5F.html" target="_blank">
+          <font color=red>手机</font>充电器-（<font color=red>手机</font>宝贝）
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://303216134.paipai.com" target="_blank" class="fontGray">
+          轻飏的店铺
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='一星卖家(1-4个信用积分)'><img src='http://pics.paipai.com/common/icon/seller01.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('303216134',''||'06B6121200000000000635EC01A5596D-CF5F'||''||'','a90c0eb10eed6aa677250185ee65372543a61d6bb208f103c9c1dce8605e512fdd584a77f7d7e2cf2a8340a8ce4f1aea3fcb98144e36add4','6b330f282c725164bfe4e8b713ccfeb03b9c859a6e132c31e6fbcf9072d0eea64ea8b336d5cf995fb5a64780a19b1b6e50a4b49df15eae6b')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:303216134:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('06B6121200000000000635EC01A5596D',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          10.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        25.00
+      </div>
+      <div class="cityLine">
+        福建厦门市
+      </div>
+      <div class="viewLine">
+        235
+      </div>
+      <div class="timeLine">
+        2天
+      </div>
+    </div>
+    
+    <div class="itemList " style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId38" value="E6E8C1130000000000663624026CC480-82AF" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/E6E8C1130000000000663624026CC480-82AF.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=331475174&filename=13C1E8E6-47612C63E6E8C1130000000000663624026CC480.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=331475174&filename=13C1E8E6-47612C63E6E8C1130000000000663624026CC480.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/E6E8C1130000000000663624026CC480-82AF.html" target="_blank">
+          摩托罗拉V3ie V3 V3X L2 L71 U6 E770 L6<font color=red>手机</font>原装双耳线控耳机
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://331475174.paipai.com" target="_blank" class="fontGray">
+          中兴数码通讯
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='三星卖家(11-20个信用积分)'><img src='http://pics.paipai.com/common/icon/seller03.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('331475174',''||'E6E8C1130000000000663624026CC480-82AF'||''||'','aef21e4ec251f4fb38614faff52b86c1470b2ee6d9c1a8dd47a5a6c2e65ea1f31f75e918581c75ef0c501004e3557651f331035483f62e5c','8ff32491f7d77ed23f7643a979ae9066677f527206187e72b4ae0326ddfc409ee026b11139c247bca6aaa2516b344565c03eb9916e8cf47a')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:331475174:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('E6E8C1130000000000663624026CC480',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          25.50
+          </b></div>
+      </div>
+      <div class="mailLine">
+        10.00
+      </div>
+      <div class="cityLine">
+        广东深圳市
+      </div>
+      <div class="viewLine">
+        97
+      </div>
+      <div class="timeLine">
+        4天
+      </div>
+    </div>
+    
+    <div class="itemList itemBG" style="margin-left:7px" >
+      <div class="checkLine">
+        <input type="checkbox" name="goodscmpId39" value="FFE22D2A00000000007F3645029DDA5F-62DA" onclick="updateItemid(this);" />
+      </div>
+      <div class="picsLine"><a href="http://auction1.paipai.com/search/0/FFE22D2A00000000007F3645029DDA5F-62DA.html" target="_blank"><img src="http://image.paipai.com/showimg?uin=707650303&filename=2A2DE2FF-478C4EE3FFE22D2A00000000007F3645029DDA5F.jpg&type=2" width="80" height="80" border="0" onmouseover="zoomImg(this,'http://image.paipai.com/showimg?uin=707650303&filename=2A2DE2FF-478C4EE3FFE22D2A00000000007F3645029DDA5F.jpg&type=3',0)" onmouseout="hideZoomImg()"/></a></div>
+      <div class="commodityLine">
+        <div class="title" style="pading-top:6px"><a href="http://auction1.paipai.com/search/0/FFE22D2A00000000007F3645029DDA5F-62DA.html" target="_blank">
+          新开张  特价索爱W550<font color=red>手机</font>外壳.W550外壳.台版磨沙外壳.草绿色
+          </a></div>
+        <div class="shop fontGray">店铺：<a href="http://707650303.paipai.com" target="_blank" class="fontGray">
+          ■索爱●配件专卖（索爱原装假一罚十）
+          </a>
+        </div>
+        <div class="star fontGray">信用：
+          <span title='二星卖家(5-10个信用积分)'><img src='http://pics.paipai.com/common/icon/seller02.gif' align='absmiddle'></span>
+        </div>
+        <div class="flag">
+        	<span align="left"><a href="#" target="_blank" onclick="return CheckInstallQQ3('707650303',''||'FFE22D2A00000000007F3645029DDA5F-62DA'||''||'','05e7ee66e0735c96dd7e1b9929a45f77bd4292f7300ae2f25f0a1af081451218decd8fc011ec406694dc968171ccf94438a9e97965c1edfd','4ebd91fecd266aa6b0432ac1fc7233db47a84a02a7326e61f16a24808848cef55a81165f6014906327f8c5a1c56a771f8e7fad581daac225')"><img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:707650303:16" border="0" align="absmiddle" width="77"></a></span>
+
+			<a href="#here" title="收藏此商品" onclick="javascript:AddFavoriteItemEx2('FFE22D2A00000000007F3645029DDA5F',this,[44,0]);" class="linkFavo">收藏</a>
+            
+            
+            
+            
+        </div>
+      </div>
+      <div class="safeLine"></div>
+      <div class="prixLine">
+        <div>
+          一口价
+        </div>
+        <div><b class="number">
+          17.00
+          </b></div>
+      </div>
+      <div class="mailLine">
+        7.00
+      </div>
+      <div class="cityLine">
+        上海
+      </div>
+      <div class="viewLine">
+        40
+      </div>
+      <div class="timeLine">
+        6天
+      </div>
+    </div>
+    
+    <div id="pageFoot" >
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" align="right">
+        <tr>
+          <td width="120"><a href="#" onclick="doCompare();"><img src="http://pics.paipai.com/newsys/browse/main_list_btn_02.gif" hspace="5" vspace="5" align="absmiddle"></a></td>
+          <td align="right"><div class="paginator">
+              2
+              /
+              2409
+              页
+              <a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1" style='border:none;background:none'><img src='http://pics.paipai.com/common/icon/fore.gif' align='absmiddle' alt='上一页' style='cursor:hand' hspace='5' /></a>
+              <a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-1-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">1</a><span class='this-page'>2</span><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-81-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">3</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-121-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">4</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-161-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">5</a><a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-201-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">6</a>...<a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-3961-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1">100</a>
+              <a href="http://search1.paipai.com/_CA_D6_BB_FA//0_2C28009/p-81-40-drecommend-28009--3-4-7------2-2--128------------.html&ac=1" style='border:none;background:none'><img src='http://pics.paipai.com/common/icon/next.gif' align='absmiddle' alt='下一页' style='cursor:hand' hspace='5' /></a>
+          </div></td>
+          <td width="150">到第 <input size='4' id='Page' > 页 <input type='image' align='absmiddle' src="http://pics.paipai.com/search/find.gif" value='查 看' /></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+</div>
+
+<div class="clear" style="display:block"></div>
+
+<div class="full" style="margin-bottom:10px">
+<div id="title724"><ul style="margin:0"><li class="onli" id="gameli">网游点卡</li>
+<li id="mobileli"><a href="javascript:showMobileFoot()" onmouseover="mobileDelay=setTimeout('showMobileFoot()',500)" onmouseout="clearTimeout(mobileDelay)">手机充值</a></li><li><a href="http://q.paipai.com/?ADTAG=388.36.2" target="_blank">腾讯专区</a></li><li><a href="http://promote.paipai.com/tenpay/?ADTAG=388.36.3" target="_blank">特价机票</a></li></ul></div>
+<div id="formgame" style="height:35px;background:#f3fbfe;border:1px solid #ccebfb; border-top:none;">
+      <div id="gameSelectOver" style="height:27px;padding:8px 0 0 20px;float:left" class="overflow lineCenter">
+游戏：
+          <select name="gameName" id="gameName" style="width:100px;" onchange="showPrize(this.selectedIndex)">
+          </select>　
+          面值：
+          <select name="gamePoint" id="gamePoint" style="width:100px;" disabled="disabled">
+          </select>
+
+      </div>
+      <div id="gameSelectOverover" style="line-height:35px;float:left;display:none;" class="overflow lineCenter">
+        <div style="float:left"><span id="gameNameShow"></span>&nbsp;<span class="fontOrange b" id="gamePrizeShow"></span>&nbsp;元 <a href="javascript:backgameSelectOver();" class="linkBlue">重选</a> </div>
+				<div style="float:left;padding-left:20px"  id="gamePrize">折扣价：<span class="fontOrange b" id="gameNewPrizeShow"></span>元 </div>
+				<div id="noneRebate" style="float:left;display:none;padding:1px 0 0 20px">本类卡暂只支持在线充值</div>
+    </div>
+
+        <div style="padding:5px 0 0 20px;float:left"><img align="absmiddle" src="http://pics.paipai.com/index/gamesee.gif" name="seeGamePrize" id="seeGamePrize" style="cursor:pointer" onclick="searchGamePrice();"/> <a href="#" target="_blank" style="cursor:pointer;display:none" id="gameBuy"><img src="http://pics.paipai.com/index/gameadd.gif" align="absmiddle" /></a> <a href="#" id="seeSearch" style="display:none"><img src="http://pics.paipai.com/index/seeSearch.gif" align="absmiddle" /></a></div>
+        <div id="gamePriceMore" style="padding-top:10px;display:none;float:left;padding-left:10px"></div>
+
+</div>
+<div id="formchg" style="height:35px;background:#f3fbfe;border:1px solid #ccebfb; border-top:none;display:none">
+      <form name="chgform" action = "###" method = "get" onSubmit="return submitChgForm(this);" style="margin:0;">
+        <div style="height:30px;padding:5px 0 0 15px" class="overflow">
+          充值金额：
+            <select name="amount" style="width:100px;">
+              <option value="50">50元</option>
+              <option value="100">100元</option>
+              <option value="300">300元</option>
+            </select>　
+            手机号码：
+            <input type="text" name="chgmobile" id = "chgmobile" size="18" maxlength="11" style="width:97px;" />
+       　确认号码：
+            <input type="text" id="chgmobile2" maxlength="11" size="18" style="width:97px;" />　
+          
+          
+            <input align="absmiddle" name="chgmobile" type="image" src="http://pics.paipai.com/index/mobileAdd.gif" />
+          
+　<a href="http://auction.paipai.com/cgi-bin/rd?pageId=388&amp;domainId=36&amp;linkId=4&amp;url=http%3A//pay.paipai.com/cgi-bin/pay_mobile_card_history" target="_blank" class="linkBlue">查询充值记录单</a> &nbsp; <a href="http://digital.paipai.com/sale/card/?ADTAG=388.36.6" target="_blank" class="linkBlue">查询更多折扣</a></div>
+      </form></div>
+<script type="text/javascript" src="http://www.paipai.com/js/index_mobile.js"></script>
+<script type="text/javascript" id="gameSearchJs"></script>
+<script type="text/javascript" id="countPTagScript"></script>
+<script type="text/javascript" src="http://www.paipai.com/js/gameData.js"></script>
+<script type="text/javascript" src="http://www.paipai.com/js/gameInfo.js"></script>
+</div>
+
+<div id="searchFootFind" class="full">
+  <div id="searchFootForm">
+    <form name="form_second_search_" method="get" onsubmit="return doSearch_();">
+      <input name="sf"   type="hidden" value="1" >
+      <input type="hidden" name="ADTAG"  value="" >
+      <input name="BeyondClass" type="hidden" id="BeyondClass" value="28009">
+      <input name="HidWord" id="HidWord" value="手机" type="hidden" />     
+    	<b>搜索商品：</b>
+			<input name="KeyWord" id="KeyWord" style="width: 270px" value="手机" />
+      <select name="sClassid" id="sClassid">
+        <option value="" selected="selected">所有分类</option>
+			<script type="text/javascript">showFirstSort()</script>
+      </select>
+      <input name="image" type="submit" value="搜 索" />
+      <a href="http://www.soso.com/q?w=手机&ch=w.pai" target="_blank" style="color:#333;text-decoration:underline">找 <b>手机</b> 更多资讯到soso</a>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+var obj=document.forms["form_second_search"];
+var objFoot=document.forms["form_second_search_"];
+var SelectValue= "28009";
+var length;
+length = obj.sClassid.length;
+//alert(length);
+for(var index=0;index<length;index++){
+	if(obj.sClassid.options[index].value == SelectValue){
+		obj.sClassid.selectedIndex = index;
+		objFoot.sClassid.selectedIndex = index;
+		break;
+	}
+} 
+</script>
+<div id="searchShow" class="full" style="display:none"></div>
+<script type="text/javascript">showSearchWord("手机","索爱,Nokia,Moto,夏新","http://bbs2.paipai.com/?groupid=161%3A40011&sc=_视听通讯,http://bbs2.paipai.com/?groupid=161%3A40012&sc=_摄影美图,http://bbs2.paipai.com/?groupid=161%3A40010&sc=_电脑网络,http://bbs2.paipai.com/?groupid=161%3A40015&sc=_影音无限")</script>
+<!--　类目推荐　-->
+<script type="text/javascript" src="http://www.paipai.com/tjw/tjw201/tjw09/tjw02800901.js?t=334282"></script>
+<!--　关键字推荐　-->
+<script type="text/javascript" src="http://www.paipai.com/tjw/tjw202/9A477A4C734E5EA9B979860A66E2B154.js?t=334282"></script>
+<!--　热卖排行　-->
+<script type="text/javascript" src="http://www.paipai.com/tjw/tjw603/tjw09/tjw02800901.js?t=334282"></script>
+<!--　社区推荐　-->
+<script type="text/javascript" src="http://www.paipai.com/js/bbs/54/9A477A4C734E5EA9B979860A66E2B154.js"></script>
+<script type="text/javascript" id="js_showip"></script>
+<script type="text/javascript">
+//显示热卖排行
+if(hotJs!="") showOutPutHot("hotSale");
+//如果没有搜索推荐位，则显示类目推荐位
+if(is_show_recommend_page == 2){
+	if(RecommendJs){
+		showOutPutRecommend2();
+		document.getElementById("search_recommend_show").style.display="";
+	}
+} else if(is_show_recommend_page == 1){
+	if(RecommendJs){
+		showOutPutRecommend();
+		document.getElementById("search_recommend_show").style.display="";
+	}
+}
+//显示社区推荐
+if(is_show_bbs_page){
+	showOutPut();
+	document.getElementById(show_bbs_page+"Main").style.display="";
+}
+
+</script>
+<div id="footV3" class="m950">
+  <ul id="footLink">
+    <li><a href="http://help.paipai.com/introduce.shtml" target="_blank">拍拍简介</a> </li>
+    <li><a href="http://help.paipai.com/news.shtml" target="_blank">拍拍动态</a></li>
+    <li><a href="http://help.paipai.com/commerce.shtml" target="_blank">商务合作</a></li>
+    <li><a href="http://help.paipai.com/help_0.shtml" target="_blank">客服中心</a></li>
+    <li><a href="http://help.paipai.com/hr/" target="_blank">拍拍招聘</a></li>
+    <li><a href="http://www.paipai.com/sitemap.shtml" target="_blank">网站地图</a></li>
+    <li><a href="http://member.paipai.com/user_agreement.shtml" target="_blank">用户协议</a></li>
+    <li><a href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm" target="_blank">版权说明</a></li>
+  </ul>
+  <div class="clear"></div>
+  <div  class="m950">
+  <div id="wangjing">
+      <a href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=84&url=http://www.paipai.com/include/netSupervision.html" target="_blank"><img src="http://pics.paipai.com/index/ploice1.gif" /></a>
+      <a href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=84&url=http://www.paipai.com/include/netSupervision.html" target="_blank"><img src="http://pics.paipai.com/index/ploice2.gif" /></a>
+  </div>
+  <div id="shengming">
+	  <a href="http://www.tencent.com/" target="_blank" class="linkBlue">腾讯公司旗下网站</a> | 拍拍版权所有 &copy; 2005-<script type="text/javascript">var copyY=new Date();document.write(copyY.getYear())</script>
+  <br /><a href="http://service.paipai.com/cgi-bin/go?pageId=10&domainId=1&linkId=79&url=http://www.paipai.com/include/gdca.html" target="_blank" class="linkBlue">广东省通管局</a> <a href="http://www.qq.com/icp.shtml" target="_blank" class="linkBlue">增值电信业务经营许可证B2-20040031</a>
+  </div>
+  </div>
+</div>
+<script type="text/javascript" src="http://www.paipai.com/js/paipai_pv.js"></script>
+<script type="text/javascript">ping_build(1);</script>
+<script type="text/javascript">
+var SDC_js=document.createElement("script");
+window.setTimeout('SDC_js.src="http://www.paipai.com/js/paipai_dcs.js"',0);
+var headElem=document.getElementsByTagName("head")[0];
+headElem.appendChild(SDC_js);
+</script>
+<script type="text/javascript" src="http://pingjs.qq.com/ping.js"></script>
+<script type="text/javascript">
+if(typeof(pgvMain) == 'function'){
+	pvCurDomain=pgvGetDomainByUrl();
+	var reg = new RegExp("^[1-9][0-9]{4,8}\.paipai\.com$", "gi");  
+    if(reg != null && reg.test(pvCurDomain))
+        pvCurDomain="shop.paipai.com";
+	if(pvCurDomain=="auction1.paipai.com"||pvCurDomain=="shop.paipai.com"||pvCurDomain=="search.paipai.com"||pvCurDomain=="search1.paipai.com"||pvCurDomain=="list.paipai.com")
+		pvCurUrl = "/";
+	pgvMain();
+}
+</script>
+</body>
+</html>

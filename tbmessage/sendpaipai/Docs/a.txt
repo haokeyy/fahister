@@ -1,0 +1,65 @@
+<span align="left">
+<a href="#" target="_blank" onclick="return CheckInstallQQ3('29958861',''||'CD22C90100000000004D362D0282CB3F-DAC2'||''||'','86f1de7d72deed03d9f4f8f7ee89fc6f5d122f090e8d3d183146d3fb06cd7430a48539b2a53128e4a0e9ac37f8ca2f452795688c5fba6289','dc6e783e3a9fc9f73c235bdbd0959ff9ebb96fdb12975849e1d36ff40ef7e9e1a01008304d42807689313f65e629746dfa2a5cf7d7448e52')">
+<img alt="点击可与对方沟通，咨询商品信息，交流购物心得。" src="http://wpa.paipai.com/pa?p=1:29958861:16" border="0" align="absmiddle" width="77">
+</a>
+</span>
+
+
+function CheckInstallQQ2(uin,item){
+	if(window.navigator.appVersion.indexOf("MSIE") == -1)
+	{
+		alert("拍拍网温馨提示：\r\n　　您使用的浏览器不支持QQ临时会话功能，建议您加对方为好友，或使用IE/TT浏览器访问。");
+		return false;
+	}
+	sitename="拍拍网";
+	if(!item) Link="tencent://message/?uin="+uin+"&fromuserid=no&touserid=no&unionid=72000106&WebSiteName=拍拍网";
+	else Link="tencent://message/?uin="+uin+"&fromuserid="+item.substring(0,32)+"&touserid="+item.substring(0,32)+"&unionid=72000106&WebSiteName=拍拍网";
+	try{//支持
+		var xmlhttp=new ActiveXObject("TimwpDll.TimwpCheck");
+		this.location.href=Link;
+		var  n = xmlhttp.GetVersion();
+		if (n >= 2.1)
+			this.location.href=Link;
+		else
+		{
+			alert("拍拍网温馨提示：\r\n　　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+			window.target="_top";
+			window.open("http://im.qq.com/");
+		}
+	}catch(e){//不支持
+		alert("拍拍网温馨提示：\r\n　　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+		window.target="_top";
+		window.open("http://im.qq.com/");
+	}
+	return false;	
+}
+
+function CheckInstallQQ3(uin,item,sigT,sigU)
+{
+	if(window.navigator.appVersion.indexOf("MSIE") == -1)
+	{
+		alert("拍拍网温馨提示：\r\n　　您使用的浏览器不支持QQ临时会话功能，建议您加对方为好友，或使用IE/TT浏览器访问。");
+		return false;
+	}    
+	sitename="拍拍网";
+	if(!item) Link="tencent://message/?uin="+uin+"&fromuserid=no&touserid=no&unionid=72000106&WebSiteName=拍拍网&Service=19&sigT="+sigT+"&sigU="+sigU;
+	else Link="tencent://message/?uin="+uin+"&fromuserid="+item.substring(0,32)+"&touserid="+item.substring(0,32)+"&unionid=72000106&WebSiteName=拍拍网&Service=19&sigT="+sigT+"&sigU="+sigU;
+	try{//支持
+		var xmlhttp=new ActiveXObject("TimwpDll.TimwpCheck");
+		this.location.href=Link;
+		var  n = xmlhttp.GetVersion();
+		if (n >= 2.1)
+			this.location.href=Link;
+		else
+		{
+			alert("拍拍网温馨提示：\r\n　　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+			window.target="_top";
+			window.open("http://im.qq.com/");
+		}
+	}catch(e){//不支持
+		alert("拍拍网温馨提示：\r\n　　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+		window.target="_top";
+		window.open("http://im.qq.com/");
+	}
+	return false;	
+}

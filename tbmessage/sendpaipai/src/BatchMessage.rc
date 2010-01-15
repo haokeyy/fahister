@@ -1,0 +1,382 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\BatchMessage.rc2""  // 非 Microsoft Visual C++ 编辑过的资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\BatchMessage.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_BATCHMESSAGE_DIALOG DIALOGEX 0, 0, 367, 287
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "迅达拍拍QQ群发V8.1"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_KEYWORD,179,41,109,13,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CMB_TARGET,120,41,56,234,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_CATEGORY,120,56,168,234,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_KEYWORD2,120,70,80,13,ES_AUTOHSCROLL
+    COMBOBOX        IDC_CMB_LOCATION,244,70,44,234,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_SALESLEVEL,120,85,81,140,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_GENDER,244,85,44,89,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "买家",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON,9,45,26,10
+    CONTROL         "卖家",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,38,45,26,10
+    DEFPUSHBUTTON   "搜  索",IDC_BTN_SEARCH,297,82,54,16
+    CONTROL         "",IDC_MEMBER_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,112,131,147
+    PUSHBUTTON      "导入",IDC_BTN_IMPORT,5,264,29,14
+    PUSHBUTTON      "导出",IDC_BTN_EXPORT,35,264,30,14
+    GROUPBOX        "信息内容",IDC_STATIC,149,103,212,125
+    PUSHBUTTON      "清空",IDC_BTN_CLEAR,66,264,28,14
+    PUSHBUTTON      "清除已发送",IDC_BTN_CLEAR2,95,264,41,14
+    EDITTEXT        IDC_EDIT_MSG,190,175,11,14,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | NOT WS_VISIBLE | WS_VSCROLL | WS_HSCROLL
+    PUSHBUTTON      "插入好友名",IDC_BTN_MEMBERNAME,186,131,50,13,NOT WS_VISIBLE
+    COMBOBOX        IDC_CMB_SPEED,168,241,58,78,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "完成后自动关机",IDC_CHK_SHUTDOWN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,168,257,61,10
+    PUSHBUTTON      "帮助",IDC_BTN_HELP,261,234,31,14
+    PUSHBUTTON      "注册",IDC_BTN_REG,262,255,30,14
+    PUSHBUTTON      "发送",IDC_BTN_SENDMSG,300,233,57,36
+    CONTROL         "在线",IDC_CHK_ONLYONLINE,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,221,150,28,10
+    EDITTEXT        IDC_EDIT_LIMIT,321,150,30,13,ES_AUTOHSCROLL | ES_NUMBER | NOT WS_VISIBLE
+    PUSHBUTTON      "添加",IDC_BTN_ADDUSER,113,232,23,14,BS_FLAT | NOT WS_VISIBLE
+    PUSHBUTTON      "删除",IDC_BTN_DELUSER,25,231,23,14,BS_FLAT | NOT WS_VISIBLE
+    CONTROL         "自动添加/删除好友",IDC_CHK_ADDFRIEND,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,44,219,71,10
+    LTEXT           "http://www.919168.com",IDC_STATIC_LINK,151,273,87,8
+    GROUPBOX        "查找QQ用户",IDC_STATIC,3,32,358,70
+    GROUPBOX        "QQ用户(0)",IDC_STATIC_MEMBER,3,103,141,178
+    GROUPBOX        "发送选项",IDC_STATIC,149,231,102,39
+    RTEXT           "店铺关键字：",IDC_STATIC,73,44,41,12
+    CONTROL         "",IDC_TAB1,"SysTabControl32",NOT WS_VISIBLE,264,119,65,25
+    CONTROL         "会员",IDC_CHKVIP,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,266,155,25,10
+    LTEXT           "店铺类别：",IDC_STATIC,80,58,35,8
+    LTEXT           "所在地：",IDC_STATIC,214,73,28,8
+    LTEXT           "卖家信用：",IDC_STATIC,80,87,35,8
+    LTEXT           "店主性别：",IDC_STATIC,208,86,35,8
+    LTEXT           "主营项目：",IDC_STATIC,80,73,35,8
+    CONTROL         "",IDC_EXPLORER1,"{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,361,277,6,6
+    CONTROL         "",IDC_LIST_MESSAGE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,155,114,200,95
+    PUSHBUTTON      "添加",IDC_BTN_ADDMSG,287,211,34,14
+    PUSHBUTTON      "删除",IDC_BTN_DELMSG,323,211,33,14
+    LTEXT           "点击“添加”按钮添加多条消息，轮流发送",IDC_STATIC,155,214,123,8
+    CONTROL         "",IDC_EXP_ADBAR,"{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,0,0,366,32
+END
+
+IDD_DLG_EDIT_USER DIALOGEX 0, 0, 233, 129
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加消息"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_USERID,22,26,196,74,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_EDIT_PASSWORD,136,7,69,14,ES_PASSWORD | ES_AUTOHSCROLL | NOT WS_VISIBLE
+    DEFPUSHBUTTON   "确定",IDOK,57,106,50,14
+    PUSHBUTTON      "取消",IDCANCEL,127,105,50,14
+    LTEXT           "请输入消息内容",IDC_STATIC,10,12,57,8
+END
+
+IDD_DLG_HELP DIALOGEX 0, 0, 383, 206
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_WINDOWEDGE
+CAPTION "帮助"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_EXPLORER_OCX,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,0,0,383,206
+END
+
+IDD_DLG_SHUTDOWN DIALOGEX 0, 0, 223, 94
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关闭计算机"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "取消",IDCANCEL,132,64,54,16
+    LTEXT           "您的计算机将在15秒内关闭。",IDC_PROMPT,29,24,180,8
+    PUSHBUTTON      "立即关机",IDC_BTN_SHUTDOWN,55,64,54,16
+END
+
+IDD_DLG_REG DIALOGEX 0, 0, 269, 134
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "软件注册"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT_USERID,75,13,111,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_MACHINECODE,75,31,111,14,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "保存用户名",IDC_BTN_SAVEUSERID,191,11,56,14
+    PUSHBUTTON      "复制机器码",IDC_BTN_COPY,192,31,55,14,NOT WS_VISIBLE
+    LTEXT           "机器码",IDC_STATIC,39,34,32,8
+    LTEXT           "注册说明：\n购买后请把用户名及机器码发给我们的客服人员，开通后台验证即可成为正式版。",IDC_STATIC,35,56,224,33
+    LTEXT           "http://www.iqunfa.com",IDC_STATIC1,73,92,76,8
+    LTEXT           "用户名",IDC_STATIC,40,17,28,8
+    LTEXT           "注册联系",IDC_STATIC,35,92,34,21
+END
+
+IDD_WEBSEND_DLG DIALOGEX 0, 0, 361, 263
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION
+CAPTION "发送"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_IE_SEND_MSG,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,0,0,361,248
+    PUSHBUTTON      "暂停",IDC_BTN_PAUSE,311,249,50,14
+    LTEXT           "状态",IDC_SEND_STATUS,0,252,197,10
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 8,1,0,1
+ PRODUCTVERSION 8,1,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "CompanyName", "http://www.singda.net"
+            VALUE "FileDescription", "迅达拍拍QQ群发V8.1"
+            VALUE "FileVersion", "8, 1, 0, 1"
+            VALUE "LegalCopyright", "版权所有 (C) 2008"
+            VALUE "OriginalFilename", "sendpp.exe"
+            VALUE "ProductName", "迅达拍拍QQ群发V8.1"
+            VALUE "ProductVersion", "8, 1, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_BATCHMESSAGE_DIALOG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 283
+    END
+
+    IDD_DLG_EDIT_USER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 226
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 122
+    END
+
+    IDD_DLG_SHUTDOWN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 87
+    END
+
+    IDD_DLG_REG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 262
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 127
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_HELPDLG        HTML                    "HelpDlg.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_CURSOR1             CURSOR                  "res\\HostingButton.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DLG_HELP DLGINIT
+BEGIN
+    IDC_EXPLORER_OCX, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x3b6e, 0x0000, 0x22a0, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+IDD_WEBSEND_DLG DLGINIT
+BEGIN
+    IDC_IE_SEND_MSG, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x3804, 0x0000, 0x29a7, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+IDD_BATCHMESSAGE_DIALOG DLGINIT
+BEGIN
+    IDC_CMB_GENDER, 0x403, 5, 0
+0xbbb2, 0xdecf, "\000" 
+    IDC_CMB_GENDER, 0x403, 3, 0
+0xd0c4, "\000" 
+    IDC_CMB_GENDER, 0x403, 3, 0
+0xaec5, "\000" 
+    IDC_EXPLORER1, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x0123, 0x0000, 0x0123, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    IDC_EXP_ADBAR, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x4240, 0x0000, 0x05ca, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_STASUS_READY        "你好"
+    IDS_STATUS_LINKURL      "http://www.21qunfa.com"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\BatchMessage.rc2"  // 非 Microsoft Visual C++ 编辑过的资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

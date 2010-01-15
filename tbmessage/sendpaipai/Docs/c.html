@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>send</title>
+<script language="javascript">
+function CheckInstall_TM_Hummer(uin,item,sigT,sigP)
+{
+	if(window.navigator.appVersion.indexOf("MSIE") == -1)
+	{
+		alert("拍拍网温馨提示：\r\n　　您使用的浏览器不支持QQ临时会话功能，建议您加对方为好友，或使用IE/TT浏览器访问。");
+		return false;
+	}
+	sitename="拍拍网";
+	if(!item) Link="tencent://message/?Menu=yes&uin="+uin+"&fromuserid=no&touserid=no&unionid=72000106&WebSiteName=拍拍网"+"&Site=www.paipai.com&Service=19&sigT="+sigT+"&sigU="+sigP;
+	else Link="tencent://message/?Menu=yes&uin="+uin+"&fromuserid="+item+"&touserid="+item+"&unionid=72000106&WebSiteName=拍拍网"+"&Site=www.paipai.com&Service=19&sigT="+sigT+"&sigU="+sigP;
+
+	
+	//Link="tencent://message/?Menu=yes&uin="+uin+"&Site=www.paipai.com&Service=19&sigT="+sigT+"&sigU="+sigP;
+	try{//支持
+		var xmlhttp=new ActiveXObject("TimwpDll.TimwpCheck");
+		this.location.href=Link;
+		var  n = xmlhttp.GetVersion();
+		if (n >= 2.1)
+			this.location.href=Link;
+		else
+		{
+			alert("拍拍网温馨提示：　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+			window.target="_top";
+			window.open("http://im.qq.com/");
+		}
+	}catch(e){//不支持
+	    alert('不支持');
+		alert("拍拍网温馨提示：　请您访问http://im.qq.com/下载新版的QQ/TM以支持与拍拍店主在线交流！");
+		window.target="_top";
+		window.open("http://im.qq.com/");
+	}
+	return false;	
+}
+</script>
+</head>
+<body>
+<span align="left">
+<a id="linkTalk" href="javascript:var x=CheckInstall_TM_Hummer('1360094','','e2ef116c96938b276f627b3ee11673e0168c65a24ad2af57a46713eaa520ce7e118bce1b10abddc5','81e5d08942eff6a81f262a184d30787885a28d96ea035e00')">
+click
+</a>
+</span>
+</body>
+</html>
