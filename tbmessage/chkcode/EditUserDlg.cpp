@@ -66,6 +66,7 @@ void CEditUserDlg::OnBnClickedOk()
         m_expChkCode.Navigate(szUrl, 0,0,0,0);
 
         this->SetTimer(ID_TIMER, 1000, 0);
+        this->SetDlgItemText(IDC_EDIT_PWD, "");
         this->GetDlgItem(IDC_EDIT_PWD)->SetFocus();
     }
 }
