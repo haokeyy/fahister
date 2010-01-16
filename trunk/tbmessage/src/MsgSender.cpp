@@ -129,11 +129,28 @@ UINT CMessageSender::SendOneMsg()
         ::PostMessage(hbtnSend, WM_LBUTTONUP , 0, 0); 
 
         // 检查校验码
-        Sleep(1000);
+        Sleep(2000);
         // 校验码窗口
         HWND hValidCodeWnd = FindTopWindowExactly("阿里旺旺 - 安全验证", "#32770");
         if (hValidCodeWnd)
         {
+            char lpstrChkCode[32];
+            memset(lpstrChkCode,0, 32);
+	        HWND hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
+            ::SendMessage(hValidCodeEdit, WM_GETTEXT, 32, (LPARAM)lpstrChkCode);
+            while (hValidCodeWnd && hValidCodeEdit && strlen(lpstrChkCode) < 5)
+            {
+                Sleep(1000);
+                hValidCodeWnd = FindTopWindowExactly("阿里旺旺 - 安全验证", "#32770");
+                hValidCodeEdit = FindChildWnd(hValidCodeWnd, "", "EditComponent");
+                ::SendMessage(hValidCodeEdit, WM_GETTEXT, 32, (LPARAM)lpstrChkCode);
+            }
+
+	        HWND hValidCodeOK = FindChildWnd(hValidCodeWnd, "确定", "StandardButton");
+	        ::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
+	        ::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
+
+            /*
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
 
             CoInitialize( NULL );
@@ -191,7 +208,9 @@ UINT CMessageSender::SendOneMsg()
 				}
             }
             CoUninitialize();
+            */
         }
+        
 
         // 关闭窗口
         Sleep(400);
