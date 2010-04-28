@@ -152,7 +152,14 @@ inline BYTE toHex(const BYTE &x)
 	return x > 9 ? x + 55: x + 48;
 }
 
-CString URLEncode(CString sIn)
+CString URLEncodeGBK(CString sIn)
+{
+    CString s = URLEncodeUTF8(sIn);
+    ConvertUtf8ToGBK(s);
+    return s;
+}
+
+CString URLEncodeUTF8(CString sIn)
 {
     CString sOut;
 	
@@ -212,31 +219,8 @@ BOOL GetMachineCode(CString& szMachineCode)
     //    }
     //}
     CString szTempCode("");
-
-    try
-    {
-        int size = 0;
-        CHwInfo::GetSMBiosData(NULL, &size);
-        BYTE *buf = (BYTE*)malloc(size);
-        CHwInfo::GetSMBiosData(buf, &size);
-        CHwInfo hwInfo(buf, size);
-        CString szUuid = hwInfo.GetMahineUuid();
-        szTempCode.Append(szUuid);
-        CString szSN = hwInfo.GetMachineSn();
-        szTempCode.Append(szSN);
-        if (szTempCode.IsEmpty())
-        {
-            throw new CMemoryException();
-        }
-    }
-    catch(CException *ex)
-    {
-        char lpstrName[256];
-        DWORD size = 255;
-        ::GetComputerName(lpstrName, &size);
-        szTempCode.Append(lpstrName);
-    }
     
+    // hard disk
     for (int i = 0; i < 4; i++)
     {
         CMyDiskInfo myDisk;
@@ -246,6 +230,29 @@ BOOL GetMachineCode(CString& szMachineCode)
             szTempCode.Append(myDisk.szSerialNumber);
         }
     }
+    
+    // mac address    
+    u_char	g_ucLocalMac[7];	// 本地MAC地址
+    PIP_ADAPTER_INFO pAdapterInfo = NULL;
+	ULONG ulLen = 0;
+    memset(g_ucLocalMac, 0, 7);
+
+	// 为适配器结构申请内存
+	::GetAdaptersInfo(pAdapterInfo,&ulLen);
+	pAdapterInfo = (PIP_ADAPTER_INFO)::GlobalAlloc(GPTR, ulLen);
+
+	// 取得本地适配器结构信息
+	if(::GetAdaptersInfo(pAdapterInfo,&ulLen) ==  ERROR_SUCCESS)
+	{
+		if(pAdapterInfo != NULL)
+		{
+			memcpy(g_ucLocalMac, pAdapterInfo->Address, 6);
+			//g_dwGatewayIP = ::inet_addr(pAdapterInfo->GatewayList.IpAddress.String);
+			//g_dwLocalIP = ::inet_addr(pAdapterInfo->IpAddressList.IpAddress.String);
+			//g_dwMask = ::inet_addr(pAdapterInfo->IpAddressList.IpMask.String);
+            szTempCode.AppendFormat("%02X%02X%02X%02X%02X%02X", g_ucLocalMac[0], g_ucLocalMac[1], g_ucLocalMac[2], g_ucLocalMac[3], g_ucLocalMac[4], g_ucLocalMac[5]);
+		}
+	}
 
     char *strSerial = szTempCode.GetBuffer();
 
@@ -412,7 +419,7 @@ BOOL Base64Encode(const BYTE *pbSrcData,int nSrcLen,LPSTR szDest,int *pnDestLen)
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
 		'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g',	'h',
 		'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
-        'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '-', '_' };
+        'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'U', 'u' };
 
 	if (!pbSrcData || !szDest || !pnDestLen)
 	{

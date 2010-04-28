@@ -42,8 +42,8 @@
 
 #include ".\Libraries\ExplorerOcx.h"
 
-#define PRODUCT_ID      0xA1
-#define FILE_ID         0xA10101
+#define PRODUCT_ID      0xB1
+#define FILE_ID         0xB10101
 
 #define WM_SENDMSG_COMPLETED     (WM_USER + 101)
 #define WM_FOUND_MEMBER          (WM_USER + 102)
@@ -55,7 +55,7 @@
 
 #define HOME_SITE "http://www.singda.net/"
 #define URL_LINK_PAGE "http://www.singda.net/link.aspx"
-#define URL_VALIDATE "http://www.singda.net/AuthPageA1.aspx"
+#define URL_VALIDATE "http://www.singda.net/AuthPageB1.aspx"
 
 #ifdef _UNICODE
 #if defined _M_IX86

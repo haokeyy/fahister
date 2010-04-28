@@ -11,7 +11,9 @@ BOOL CALLBACK WindowsEnumProcExactly(HWND hwnd, LPARAM lParam);
 
 HWND FindTopWindowExactly(char* strTitle, char* strClassName);
 
-CString URLEncode(CString sIn);
+CString URLEncodeUTF8(CString sIn);
+
+CString URLEncodeGBK(CString sIn);
 
 BOOL GetMachineCode(CString& szMachineCode);
 

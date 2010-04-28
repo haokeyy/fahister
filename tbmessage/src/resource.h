@@ -65,6 +65,7 @@
 #define IDC_CHK_ADDTO_FRIEND            1045
 #define IDC_CHK_1                       1058
 #define IDC_CHK_6                       1059
+#define IDC_CHK_ISONLINE                1060
 #define IDC_CHK_15                      1061
 #define IDC_CHK_AUTO_LOGIN              1063
 #define IDC_CHK_10                      1064
@@ -128,6 +129,7 @@
 #define IDC_STATIC_BUYER322             1126
 #define IDC_STATIC_BUYER323             1127
 #define IDC_STATIC_BUYER324             1128
+#define IDC_STATIC103                   1129
 #define IDC_STATIC_BUYER325             1130
 #define IDC_STATIC_BUYER326             1131
 #define IDC_STATIC_BUYER327             1132

@@ -128,6 +128,7 @@ UINT CMessageSender::SendOneMsg()
         ::PostMessage(hbtnSend, WM_LBUTTONDOWN , 0, 0);
         ::PostMessage(hbtnSend, WM_LBUTTONUP , 0, 0); 
 
+         /*
         // 检查校验码
         Sleep(2000);
         // 校验码窗口
@@ -150,7 +151,7 @@ UINT CMessageSender::SendOneMsg()
 	        ::PostMessage(hValidCodeOK, WM_LBUTTONDOWN , 0, 0);
 	        ::PostMessage(hValidCodeOK, WM_LBUTTONUP , 0, 0); 
 
-            /*
+           
             HWND hValidCodeExp = FindChildWnd(hValidCodeWnd, "", "Internet Explorer_Server");
 
             CoInitialize( NULL );
@@ -208,8 +209,8 @@ UINT CMessageSender::SendOneMsg()
 				}
             }
             CoUninitialize();
-            */
-        }
+            
+        }*/
         
 
         // 关闭窗口
