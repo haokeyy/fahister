@@ -27,7 +27,6 @@ CSearchPage::~CSearchPage()
 void CSearchPage::DoDataExchange(CDataExchange* pDX)
 {
     CDialog::DoDataExchange(pDX);
-    DDX_Control(pDX, IDC_CMB_TARGET, m_CmbTarget);
     DDX_Control(pDX, IDC_CMB_CATEGORY, m_CmbCategory);
     DDX_Control(pDX, IDC_CMB_LOCATION, m_CmbLocation);
 }
@@ -37,7 +36,6 @@ BEGIN_MESSAGE_MAP(CSearchPage, CDialog)
     ON_BN_CLICKED(IDC_BTN_SEARCH, &CSearchPage::OnBnClickedBtnSearch)
 	//}}AFX_MSG_MAP    
     ON_MESSAGE(WM_FOUND_MEMBER, OnFoundMember) 
-    ON_CBN_SELCHANGE(IDC_CMB_TARGET, &CSearchPage::OnCbnSelchangeCmbTarget)
     ON_BN_CLICKED(IDC_BTN_DISTINCT, &CSearchPage::OnBnClickedBtnDistinct)
 END_MESSAGE_MAP()
 
@@ -50,7 +48,6 @@ BOOL CSearchPage::OnInitDialog()
 
     m_pMemberSearch = new CMemberSearch(this->GetSafeHwnd(), szTaobaoSearchUrl);
 
-    m_CmbTarget.SetCurSel(0);
     InitCategory();
     InitLocation();
 
@@ -99,38 +96,20 @@ void CSearchPage::OnBnClickedBtnSearch()
         m_nFoundCount = 0;
 
         CSearchCondition condition;
-        condition.nType = m_CmbTarget.GetCurSel();
         int i = m_CmbCategory.GetCurSel();
         condition.nCategoryId = m_CmbCategory.GetItemData(i);
         m_CmbLocation.GetWindowText(condition.szLocation);
         this->GetDlgItemText(IDC_EDIT_KEYWORD, condition.szKeyword);
-        
-        condition.nStartPage = this->GetDlgItemInt(IDC_EDIT_START_PAGE);
-        condition.nLimit = this->GetDlgItemInt(IDC_EDIT_LIMIT);
+        CButton *btnIsOnline = (CButton *)this->GetDlgItem(IDC_CHK_ISONLINE);
+        condition.bIsOnline = btnIsOnline->GetCheck();       
 
-        // 用户信誉            
-	    CString szRateSum = "";
-	    for (int i = 1; i <= 20; i++)
-	    {
-		    CString szWndText;
-		    szWndText.Format("RATE_%d", i);
-		    CButton *chkBtn = (CButton*)this->FindWindowEx(this->GetSafeHwnd(), NULL, "Button", szWndText);
-		    if (chkBtn && chkBtn->GetCheck() == BST_CHECKED)
-		    {
-			    CString rate;
-			    if (szRateSum.IsEmpty())
-			    {
-				    rate.Format("%d", i);
-				    szRateSum += rate;
-			    }
-			    else
-			    {				
-				    rate.Format(",%d", i);
-				    szRateSum += rate;
-			    }
-		    }
-	    }
-        condition.szRateSum = szRateSum;
+        if ((condition.szLocation.IsEmpty() || condition.szLocation == "所有省份") && condition.szKeyword.IsEmpty())
+        {
+            MessageBox("请选择一个地区或输入一个关键字", "错误");
+            return;
+        }
+        
+        condition.nLimit = this->GetDlgItemInt(IDC_EDIT_LIMIT);
 
         this->GetDlgItem(IDC_BTN_SEARCH)->SetWindowText("停止");
         m_pMemberSearch->SearchMember(condition);
@@ -155,7 +134,7 @@ LRESULT CSearchPage::OnFoundMember(WPARAM wParam, LPARAM lParam)
         if (bAdded)
         {
             CString szGroupCaption;
-            szGroupCaption.Format("共找到%d个%s", ++m_nFoundCount, m_CmbTarget.GetCurSel() == 0 ? "卖家" : "买家");
+            szGroupCaption.Format("共找到%d个用户", ++m_nFoundCount);
             this->SetDlgItemText(IDC_STATIC_STATUS, szGroupCaption);
             m_pMemberSearch->AddFoundCount();
         }
@@ -168,43 +147,6 @@ LRESULT CSearchPage::OnFoundMember(WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-void CSearchPage::SetConditionCtrlStatus(BOOL bEnabled)
-{
-    this->GetDlgItem(IDC_CMB_CATEGORY)->EnableWindow(bEnabled);
-    this->GetDlgItem(IDC_CMB_LOCATION)->EnableWindow(bEnabled);
-    for (int i = 1; i <= 20; i++)
-    {
-	    CString szWndText;
-	    szWndText.Format("RATE_%d", i);
-	    CWnd *chkBtn = this->FindWindowEx(this->GetSafeHwnd(), NULL, "Button", szWndText);
-	    if (chkBtn)
-	    {
-            chkBtn->EnableWindow(bEnabled);
-	    }
-    }
-}
-
-void CSearchPage::OnCbnSelchangeCmbTarget()
-{
-    int type = m_CmbTarget.GetCurSel();
-    switch (type)
-    {
-    case 0:
-    case 1:
-        this->SetDlgItemText(IDC_STATIC_KEYWORD, "关键字：");
-        SetConditionCtrlStatus(TRUE);
-        break;
-    case 2:
-    case 3:        
-        this->SetDlgItemText(IDC_STATIC_KEYWORD, "评价页面：");
-        SetConditionCtrlStatus(FALSE);
-        break;
-    default:
-        break;
-    }
-    
-}
-
 void CSearchPage::OnBnClickedBtnDistinct()
 {
     long oldCnt = CStoredMember::GetCount();
@@ -212,7 +154,7 @@ void CSearchPage::OnBnClickedBtnDistinct()
     long newCnt = CStoredMember::GetCount();
     
     CString szGroupCaption;
-    szGroupCaption.Format("共删除%d个重复的买家/卖家, 删除之后共有%d买家/卖家", oldCnt - newCnt, newCnt);
+    szGroupCaption.Format("共删除%d个重复的用户, 删除之后共有%d用户", oldCnt - newCnt, newCnt);
     this->SetDlgItemText(IDC_STATIC_STATUS, szGroupCaption);
 
     if (oldCnt > newCnt)

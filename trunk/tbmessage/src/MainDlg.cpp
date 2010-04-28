@@ -71,8 +71,8 @@ void CMainDlg::ValidateReg()
 
 #ifdef DEBUG
     CString szRet   = "1000000";
-    CString szData1 = "http://shopsearch.taobao.com/browse/shop_search.htm?title=title&nick=nick";
-    CString szData2 = "aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    CString szData1 = "http://search.china.alibaba.com/company/";
+    CString szData2 = "aliim:sendmsg?uid=cnalichn%s&touid=cnalichn%s&siteid=cnalichn&status=&fenliu=1";
     CString szData3 = "บวบว";
 #else    
     CString szMachineCode, szFileChecksum;

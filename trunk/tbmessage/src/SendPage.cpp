@@ -7,6 +7,7 @@
 #include "EditAccDlg.h"
 #include ".\Libraries\ListViewHelp.h"
 #include ".\Libraries\WindowHelp.h"
+#include ".\Libraries\DHtmlHelper.h"
 #include "MsgSender.h"
 #include "StoredMember.h"
 #include "StoredAccount.h"
@@ -47,8 +48,9 @@ BOOL CSendPage::OnInitDialog()
 	CDialog::OnInitDialog();
 
     m_ExprMsgHelp.Navigate("about:blank", 0, 0, 0, 0);
+    //m_ExprMsgHelp.Navigate("http://www.singda.net/s.html", 0, 0, 0, 0);
 
-    szTaobaoSendUrl = m_szSendUrl; //"aliim:sendmsg?uid=cntaobao%s&touid=cntaobao%s:3&siteid=cntaobao&status=&fenliu=1";
+    szTaobaoSendUrl = m_szSendUrl; //"aliim:sendmsg?uid=cnalichn%s&touid=cnalichn%s:3&siteid=cnalichn&status=&fenliu=1";
     
     m_AccountList.SetExtendedStyle(LVS_EX_FULLROWSELECT);	
     m_AccountList.InsertColumn(0, "序号", LVCFMT_LEFT, 0);
@@ -237,7 +239,7 @@ BOOL CSendPage::IsOnline(CString szUserId)
 {
 	ConvertGBKToUtf8(szUserId);
 
-	CString szURL = "http://amos1.taobao.com/online.ww?v=2&s=1&uid=" + URLEncode(szUserId);
+	CString szURL = "http://amos1.taobao.com/online.ww?v=2&s=1&uid=" + URLEncodeUTF8(szUserId);
 	CString szHTML = GetPageDirect(szURL);
 	return szHTML.GetLength() > 20;
 }
@@ -375,13 +377,14 @@ CHANGE_SENDER:
             GetProcessNameByProcessID(dwProcId, szProcName);
             
             KillProcess(dwProcId);
+            Sleep(1000);
             WinExec(szProcName, SW_SHOW);
-
-            Sleep(2000);
 
             // 刷新托盘区图标
             RefreshTrayWnd();
         }
+
+        Sleep(2000);
 
         // 执行登录
         HWND hWnd = FindTopWindow("阿里旺旺2009", "StandardFrame");
@@ -394,15 +397,18 @@ CHANGE_SENDER:
         HWND hAutoLogin = FindChildWnd(hWnd, "自动登录", "StandardButton");
         HWND hLoginBtn = FindWndInChildren(hWnd, "登 录", 1);
 
-        CButton *btnAutoLogin = (CButton *)CWnd::FromHandle(hAutoLogin);
-        btnAutoLogin->SetCheck(BST_UNCHECKED);
+        if (hUidEdit != NULL && hPwdEdit != NULL && hAutoLogin != NULL)
+        {
+            CButton *btnAutoLogin = (CButton *)CWnd::FromHandle(hAutoLogin);
+            btnAutoLogin->SetCheck(BST_UNCHECKED);
 
-        ::SendMessage(hUidEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserId.GetBuffer(0));
-        ::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserPassword.GetBuffer(0));
-        ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
-        ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
+            ::SendMessage(hUidEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserId.GetBuffer(0));
+            //::SendMessage(hPwdEdit, WM_SETTEXT, NULL, (LPARAM)msg.SendUserPassword.GetBuffer(0));
+            ::SendMessage(hLoginBtn, WM_LBUTTONDOWN,0,0);
+            ::SendMessage(hLoginBtn, WM_LBUTTONUP,0,0); 
+        }
 
-        Sleep(15000);
+        Sleep(8000);
     }
     if (nRetryTime >= 5) // 重试5次还没有登录进去，则切换用户
     {

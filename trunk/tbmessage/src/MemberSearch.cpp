@@ -29,22 +29,22 @@ UINT SearchMemberThread(LPVOID pvThread)
 
 UINT CMemberSearch::ExecuteSearch()
 {
-    if (condition.nType == 0)
-    {
+    //if (condition.nType == 0)
+    //{
         GetTaobaoSellerMember();
-    }
-    else if (condition.nType == 1)
-    {
-        GetTaobaoBuyerMember();
-    }
-    else if (condition.nType == 2)
-    {
-        GetBuyerMemberByShopRatePage(condition.szKeyword, TRUE);
-    }
-    else
-    {
-        ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)FALSE, NULL);
-    }
+    //}
+    //else if (condition.nType == 1)
+    //{
+    //    GetTaobaoBuyerMember();
+    //}
+    //else if (condition.nType == 2)
+    //{
+    //    GetBuyerMemberByShopRatePage(condition.szKeyword, TRUE);
+    //}
+    //else
+    //{
+    //    ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)FALSE, NULL);
+    //}
     
 
     return 0;
@@ -65,10 +65,10 @@ CString GetNextPageUrl(CString szShopListHtml)
 {
     int iStart = 0, iEnd = 0;
         
-    iEnd = szShopListHtml.Find("\" class=\"page-next\"><span>下一页</span></a>", 0);
+    iEnd = szShopListHtml.Find("\" class=\"page-next\">下一页</a>", 0);
     if (iEnd > 0)
     {
-        iStart = szShopListHtml.Find("http://shopsearch.taobao.com/browse/shop_search/", iEnd - 260);
+        iStart = szShopListHtml.Find("http://search.china.alibaba.com/company/", iEnd - 220);
         if (iEnd > iStart && iStart > 0)
         {
             return szShopListHtml.Mid(iStart, iEnd - iStart);
@@ -80,23 +80,28 @@ CString GetNextPageUrl(CString szShopListHtml)
 UINT CMemberSearch::GetTaobaoSellerMember()
 {
 	CString szShopListURL = szTaobaoAddress;
-    // 类别
-    szShopListURL.AppendFormat("&cat=%d", condition.nCategoryId);
-    // 地区
-    if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
-    {        
-        szShopListURL.AppendFormat("&loc=%s", URLEncode(condition.szLocation));
-    }
     // 关键字
     if (!condition.szKeyword.IsEmpty())
     {        
-        szShopListURL.AppendFormat("&q=%s", URLEncode(condition.szKeyword));
+        szShopListURL.AppendFormat("k-%s_", URLEncodeGBK(condition.szKeyword));
     }
-    // 关键字
-    if (!condition.szRateSum.IsEmpty())
+    // 类别
+    if (condition.nCategoryId > 0)
+    {
+        szShopListURL.AppendFormat("biztype-%d_", condition.nCategoryId);
+    }
+    // 地区
+    if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有省份")
     {        
-        szShopListURL.AppendFormat("&ratesum=%s", URLEncode(condition.szRateSum));
+        szShopListURL.AppendFormat("province-%s_", URLEncodeGBK(condition.szLocation));
     }
+    // 是否在线
+    if (condition.bIsOnline == 1)
+    {        
+        szShopListURL.Append("onlineStatus-yes_");
+    }
+
+    szShopListURL.Append("pageSize-40_n-y.html");
 
     // 将找到个数初始化为0
     nFoundCount=0;
@@ -130,23 +135,35 @@ BOOL CMemberSearch::ParseShopListForSeller(CString szHtml)
 {
     int tempCount = nFoundCount;
     int nStart = 0, nEnd = 0;
+    nStart = szHtml.Find("'object_ids':'", nEnd);
+    if (nStart < 0)
+    {
+        return FALSE;
+    }
+    nStart += 14;
+    nEnd = szHtml.Find("',", nStart);
+    if (nEnd < 0)
+    {
+        return FALSE;
+    }
 
+    CString szMemberHtml = szHtml.Mid(nStart, nEnd-nStart);
+
+    nStart = 0;
+    nEnd = 0;
     while(nFoundCount < condition.nLimit)
     {
-        nStart = szHtml.Find("<p class=\"nick\"><a target=\"_blank\" href=\"http://my.taobao.com/mytaobao/rate/rate.jhtml?user_id=", nEnd);
-        if (nStart < 0)
+        nEnd = szMemberHtml.Find(",1;", nStart);
+        if (nEnd < 0 || nStart >= nEnd)
         {
             break;
         }
-        nEnd = szHtml.Find("<p><span class=\"J_WangWang\" data-nick=", nStart);
-        if (nEnd < 0)
-        {
-            break;
-        }
+        
+        CString szMember = szMemberHtml.Mid(nStart, nEnd-nStart);
 
-        CString szMemberHtml = szHtml.Mid(nStart, nEnd-nStart);
-        CString seller = ExtractShopMember(szMemberHtml);
-        LPTSTR szSeller = seller.GetBuffer(0);
+        nStart = nEnd + 3;
+        //CString seller = ExtractShopMember(szMemberHtml);
+        LPTSTR szSeller = szMember.GetBuffer(0);
 
         ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)TRUE, (LPARAM)szSeller);
     }
@@ -174,17 +191,12 @@ UINT CMemberSearch::GetTaobaoBuyerMember()
     // 地区
     if (!condition.szLocation.IsEmpty() && condition.szLocation != "所有地区")
     {        
-        szShopListURL.AppendFormat("&loc=%s", URLEncode(condition.szLocation));
+        szShopListURL.AppendFormat("&loc=%s", URLEncodeUTF8(condition.szLocation));
     }
     // 关键字
     if (!condition.szKeyword.IsEmpty())
     {        
-        szShopListURL.AppendFormat("&q=%s", URLEncode(condition.szKeyword));
-    }
-    // 关键字
-    if (!condition.szRateSum.IsEmpty())
-    {        
-        szShopListURL.AppendFormat("&ratesum=%s", URLEncode(condition.szRateSum));
+        szShopListURL.AppendFormat("&q=%s", URLEncodeUTF8(condition.szKeyword));
     }
 
     // 将找到个数初始化位0

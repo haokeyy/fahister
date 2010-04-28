@@ -3,12 +3,13 @@
 class CSearchCondition
 {
 public:
-    int nType;
+    //int nType;
     int nCategoryId;
     CString szCategoryName;
     CString szLocation;
     CString szKeyword;
-    CString szRateSum;
+    BOOL bIsOnline;
+    //CString szRateSum;
     int nStartPage;
     int nLimit;
 };
