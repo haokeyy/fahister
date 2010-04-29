@@ -96,12 +96,12 @@ UINT CMemberSearch::GetTaobaoSellerMember()
         szShopListURL.AppendFormat("province-%s_", URLEncodeGBK(condition.szLocation));
     }
     // 是否在线
-    if (condition.bIsOnline == 1)
+    if (condition.bIsOnline)
     {        
         szShopListURL.Append("onlineStatus-yes_");
     }
 
-    szShopListURL.Append("pageSize-40_n-y.html");
+    szShopListURL.Append("n-y.html");
 
     // 将找到个数初始化为0
     nFoundCount=0;
