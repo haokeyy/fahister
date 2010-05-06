@@ -111,19 +111,19 @@ UINT CMemberSearch::GetTaobaoSellerMember()
     {
         CString szShopListHTML = GetPageDirect(szShopListURL);
         CString szCurPageFlag = "<span class=\"page-cur\">";
-        if (szShopListHTML.Find(szCurPageFlag) < 0)
-        {
-            bFound = FALSE;
-        }
-        else
-        {
+        //if (szShopListHTML.Find(szCurPageFlag) < 0)
+        //{
+        //    bFound = FALSE;
+        //}
+        //else
+        //{
             bFound = ParseShopListForSeller(szShopListHTML);
             szShopListURL = GetNextPageUrl(szShopListHTML);
             if (szShopListURL.IsEmpty())
             {
                 break;
             }
-        }
+        //}
     }
 
     ::SendMessage(this->m_hMainWnd, WM_FOUND_MEMBER, (WPARAM)FALSE, NULL);
