@@ -1,0 +1,468 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\tbmessage.rc2""  // 非 Microsoft Visual C++ 编辑的资源\r\n"
+    "#include ""l.CHS\\afxres.rc""      // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\tbmessage.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_EDIT_MSG_DLG DIALOGEX 0, 0, 316, 180
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "编辑消息"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,10,15,295,135,ES_MULTILINE | ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "确定",IDOK,205,160,50,14
+    PUSHBUTTON      "取消",IDCANCEL,263,160,50,14
+    CONTROL         "",IDC_DHTML_EDIT_MSG,
+                    "{2D360200-FFF5-11D1-8D03-00A0C959BC0A}",NOT WS_VISIBLE | WS_TABSTOP,295,151,13,6
+    GROUPBOX        "消息内容",IDC_STATIC,4,3,308,152
+END
+
+IDD_EDIT_ACC_DLG DIALOGEX 0, 0, 229, 100
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "添加账号"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_ACC_USER_ID,67,26,108,14,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ACC_PASSWORD,67,48,108,14,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",IDOK,108,80,50,14
+    PUSHBUTTON      "取消",IDCANCEL,162,80,50,14
+    LTEXT           "用户名",IDC_STATIC,25,30,25,8
+    LTEXT           "密码",IDC_STATIC,33,51,17,8
+    GROUPBOX        "请输入用来发送消息的淘宝用户名和密码",IDC_STATIC,6,6,206,67
+END
+
+IDD_TBMSG_DLG DIALOGEX 0, 0, 397, 249
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "迅达旺旺群发2010版"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_FUNC_TAB,"SysTabControl32",0x0,2,2,393,247
+END
+
+IDD_SEARCH_VIEW DIALOGEX 0, 0, 368, 219
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_CMB_TARGET,58,13,120,79,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_CATEGORY,58,34,120,267,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CMB_LOCATION,222,34,59,268,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT_KEYWORD,58,120,199,14,ES_AUTOHSCROLL
+    CONTROL         "RATE_1",IDC_CHK_1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,55,11,11
+    CONTROL         "RATE_2",IDC_CHK_2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,91,55,11,11
+    CONTROL         "RATE_3",IDC_CHK_3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,138,55,11,11
+    CONTROL         "RATE_4",IDC_CHK_4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,196,55,11,11
+    CONTROL         "RATE_5",IDC_CHK_5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,264,55,11,11
+    CONTROL         "RATE_6",IDC_CHK_6,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,70,11,11
+    CONTROL         "RATE_7",IDC_CHK_7,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,91,70,11,11
+    CONTROL         "RATE_8",IDC_CHK_8,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,138,70,11,11
+    CONTROL         "RATE_9",IDC_CHK_9,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,196,70,11,11
+    CONTROL         "RATE_10",IDC_CHK_10,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,264,70,11,11
+    CONTROL         "RATE_11",IDC_CHK_11,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,85,11,11
+    CONTROL         "RATE_12",IDC_CHK_12,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,91,85,11,11
+    CONTROL         "RATE_13",IDC_CHK_13,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,138,85,11,11
+    CONTROL         "RATE_14",IDC_CHK_14,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,196,85,11,11
+    CONTROL         "RATE_15",IDC_CHK_15,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,264,85,11,11
+    EDITTEXT        IDC_EDIT_START_PAGE,59,141,64,14,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_EDIT_LIMIT,194,141,63,14,ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "开始查找",IDC_BTN_SEARCH,271,119,67,38
+    GROUPBOX        "查找买家/卖家",IDC_STATIC,7,2,351,173
+    RTEXT           "查找数量：",IDC_STATIC,151,144,40,13
+    RTEXT           "关键字：",IDC_STATIC_KEYWORD,16,123,40,13
+    LTEXT           "所在地：",IDC_STATIC,186,36,33,9
+    RTEXT           "类别：",IDC_STATIC101,16,36,40,13
+    RTEXT           "起始页：",IDC_STATIC,16,144,40,13
+    RTEXT           "用户类型：",IDC_STATIC,16,16,40,13
+    RTEXT           "信誉级别：",IDC_STATIC,16,56,40,13
+    CONTROL         148,IDC_STATIC_BUYER21,"Static",SS_BITMAP,71,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER24,"Static",SS_BITMAP,148,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER25,"Static",SS_BITMAP,160,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER26,"Static",SS_BITMAP,172,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER27,"Static",SS_BITMAP,327,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER28,"Static",SS_BITMAP,207,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER29,"Static",SS_BITMAP,220,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER30,"Static",SS_BITMAP,233,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER31,"Static",SS_BITMAP,246,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER32,"Static",SS_BITMAP,276,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER33,"Static",SS_BITMAP,289,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER34,"Static",SS_BITMAP,302,70,11,10
+    CONTROL         148,IDC_STATIC_BUYER35,"Static",SS_BITMAP,314,70,11,10
+    CONTROL         149,IDC_STATIC_BUYER0301,"Static",SS_BITMAP,71,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER304,"Static",SS_BITMAP,148,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER305,"Static",SS_BITMAP,161,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER306,"Static",SS_BITMAP,173,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER307,"Static",SS_BITMAP,327,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER308,"Static",SS_BITMAP,206,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER309,"Static",SS_BITMAP,219,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER310,"Static",SS_BITMAP,232,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER311,"Static",SS_BITMAP,246,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER312,"Static",SS_BITMAP,275,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER313,"Static",SS_BITMAP,288,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER314,"Static",SS_BITMAP,301,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER315,"Static",SS_BITMAP,314,85,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,70,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,326,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,172,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,148,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,160,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,275,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,287,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,206,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,219,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,300,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,313,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,232,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,245,55,11,10
+    CONTROL         148,IDC_STATIC_BUYER23,"Static",SS_BITMAP,116,70,11,10
+    CONTROL         149,IDC_STATIC_BUYER302,"Static",SS_BITMAP,103,85,11,10
+    CONTROL         149,IDC_STATIC_BUYER303,"Static",SS_BITMAP,116,85,11,10
+    CONTROL         148,IDC_STATIC_BUYER22,"Static",SS_BITMAP,103,70,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,115,55,11,10
+    CONTROL         147,IDC_STATIC,"Static",SS_BITMAP,102,55,11,10
+    LTEXT           "状态",IDC_STATIC_STATUS,9,187,285,8
+    CONTROL         141,IDC_STATIC_BUYER316,"Static",SS_BITMAP,71,99,11,10
+    CONTROL         "RATE_16",IDC_CHK_16,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,59,99,11,11
+    CONTROL         141,IDC_STATIC_BUYER317,"Static",SS_BITMAP,103,99,11,10
+    CONTROL         "RATE_17",IDC_CHK_17,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,92,99,11,11
+    CONTROL         141,IDC_STATIC_BUYER318,"Static",SS_BITMAP,116,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER319,"Static",SS_BITMAP,276,99,11,10
+    CONTROL         "RATE_18",IDC_CHK_18,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,138,99,11,11
+    CONTROL         141,IDC_STATIC_BUYER320,"Static",SS_BITMAP,289,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER321,"Static",SS_BITMAP,302,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER322,"Static",SS_BITMAP,314,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER323,"Static",SS_BITMAP,327,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER324,"Static",SS_BITMAP,207,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER325,"Static",SS_BITMAP,221,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER326,"Static",SS_BITMAP,233,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER327,"Static",SS_BITMAP,246,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER328,"Static",SS_BITMAP,149,99,11,10
+    CONTROL         "RATE_20",IDC_CHK_20,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,264,99,11,11
+    CONTROL         141,IDC_STATIC_BUYER329,"Static",SS_BITMAP,162,99,11,10
+    CONTROL         141,IDC_STATIC_BUYER330,"Static",SS_BITMAP,175,99,11,10
+    CONTROL         "RATE_19",IDC_CHK_19,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,196,99,11,11
+    PUSHBUTTON      "删除重复项",IDC_BTN_DISTINCT,300,187,60,14
+END
+
+IDD_MEMBER_VIEW DIALOGEX 0, 0, 406, 240
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    CONTROL         "",IDC_EXPR_WELCOME,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,3,5,383,211
+    LTEXT           "",IDC_STATIC_STATUS,1,219,326,13,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "复制机器码",IDC_BTN_COPY_MCODE,325,219,64,13
+    EDITTEXT        IDC_EDIT_MCODE,391,219,12,12,ES_AUTOHSCROLL | WS_DISABLED
+END
+
+IDD_SEND_VIEW DIALOGEX 0, 0, 390, 235
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x0
+BEGIN
+    COMBOBOX        IDC_CMB_SPEED,250,144,68,99,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "自动添加/删除好友",IDC_CHK_ADDTO_FRIEND,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,242,217,83,11
+    CONTROL         "掉线自动登录",IDC_CHK_AUTO_LOGIN,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,242,217,73,11
+    CONTROL         "完成后自动关机",IDC_CHK_SHUTDOWN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,250,163,69,11
+    GROUPBOX        "发送选项",IDC_STATIC,244,132,86,94
+    CONTROL         "",IDC_EXPR_MSG_HELP,
+                    "{8856F961-340A-11D0-A96B-00C04FD705A2}",WS_TABSTOP,314,212,13,12
+    CONTROL         "",IDC_ACCOUNT_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,148,142,85,64
+    PUSHBUTTON      "添加",IDC_BTN_ADD_ACCOUNT,144,208,23,14
+    PUSHBUTTON      "删除",IDC_BTN_DEL_ACCOUNT,167,208,23,14
+    PUSHBUTTON      "开始发送",IDC_BTN_SENDMSG,338,135,48,40
+    GROUPBOX        "发送帐号",IDC_STATIC,143,132,95,94
+    LTEXT           "状态",IDC_SEND_STATUS,338,194,46,8
+    CONTROL         "",IDC_MESSAGE_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,150,15,229,96
+    GROUPBOX        "消息内容(添加多条消息，轮流发送)",IDC_STATIC,143,4,242,126
+    PUSHBUTTON      "添加",IDC_BTN_ADD_MSG,149,113,37,15
+    PUSHBUTTON      "编辑",IDC_BTN_EDIT_MSG,190,113,35,15
+    PUSHBUTTON      "删除",IDC_BTN_DEL_MSG,230,113,40,15
+    CONTROL         "",IDC_MEMBER_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,10,15,123,178
+    GROUPBOX        "买家/卖家列表(0/0)",IDC_STATIC_MEMBER,5,4,134,222
+    PUSHBUTTON      "导入",IDC_BTN_IMPORT2,9,207,25,15
+    PUSHBUTTON      "导出",IDC_BTN_EXPORT2,36,207,25,15
+    PUSHBUTTON      "清空",IDC_BTN_CLEAR,62,207,25,15
+    PUSHBUTTON      "清除已发送",IDC_BTN_CLEAR2,88,207,45,15
+    PUSHBUTTON      "首页",IDC_BTN_FIRST_PAGE,9,194,29,12
+    PUSHBUTTON      "上页",IDC_BTN_PREV_PAGE,40,194,29,12
+    PUSHBUTTON      "下页",IDC_BTN_NEXT_PAGE,72,194,29,12
+    PUSHBUTTON      "末页",IDC_BTN_LAST_PAGE,104,194,29,12
+    EDITTEXT        IDC_SEND_LIMIT,278,203,35,13,ES_AUTOHSCROLL
+    LTEXT           "每个帐户发送数量",IDC_STATIC,250,194,65,9
+    PUSHBUTTON      "重置",IDC_BTN_RESET,190,208,23,14
+    CONTROL         "仅发送在线",IDC_CHK_ONLINE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,250,178,69,11
+    PUSHBUTTON      "导入",IDC_BTN_IMPORT,213,208,23,14
+END
+
+IDD_DLG_SHUTDOWN DIALOGEX 0, 0, 226, 98
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关闭计算机"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "取消",IDCANCEL,132,64,54,16
+    LTEXT           "您的计算机将在15秒内关闭。",IDC_PROMPT,29,24,180,8
+    PUSHBUTTON      "立即关机",IDC_BTN_SHUTDOWN,55,64,54,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 6,0,0,1
+ PRODUCTVERSION 6,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "http://www.singda.net/"
+            VALUE "FileDescription", "迅达淘宝群发软件"
+            VALUE "FileVersion", "6.0.0.1"
+            VALUE "InternalName", "tbmessage.exe"
+            VALUE "LegalCopyright", "迅达群发，保留所有权利。"
+            VALUE "OriginalFilename", "tbmessage.exe"
+            VALUE "ProductName", "迅达旺旺群发2010版"
+            VALUE "ProductVersion", "6.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_EDIT_MSG_DLG, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 179
+    END
+
+    IDD_EDIT_ACC_DLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 228
+        BOTTOMMARGIN, 99
+    END
+
+    IDD_TBMSG_DLG, DIALOG
+    BEGIN
+        RIGHTMARGIN, 390
+        TOPMARGIN, 1
+        BOTTOMMARGIN, 248
+    END
+
+    IDD_SEARCH_VIEW, DIALOG
+    BEGIN
+        RIGHTMARGIN, 361
+        TOPMARGIN, 3
+        BOTTOMMARGIN, 218
+    END
+
+    IDD_MEMBER_VIEW, DIALOG
+    BEGIN
+        RIGHTMARGIN, 405
+        BOTTOMMARGIN, 232
+    END
+
+    IDD_SEND_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 383
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 228
+    END
+
+    IDD_DLG_SHUTDOWN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 219
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 91
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_EDIT_MSG_DLG DLGINIT
+BEGIN
+    IDC_DHTML_EDIT_MSG, 0x376, 84, 0
+0x0000, 0x0000, 0x0202, 0x0000, 0x0211, 0x0000, 0x0109, 0x0000, 0x000b, 
+0x0000, 0x000b, 0x0000, 0x000b, 0xffff, 0x000b, 0x0000, 0x000b, 0x0000, 
+0x0003, 0x0001, 0x0000, 0x000b, 0xffff, 0x0003, 0x0001, 0x0000, 0x000b, 
+0xffff, 0x000b, 0x0000, 0x000b, 0x0000, 0x0003, 0x0032, 0x0000, 0x0003, 
+0x0032, 0x0000, 0x000b, 0x0000, 0x000b, 0x0000, 
+    0
+END
+
+IDD_SEARCH_VIEW DLGINIT
+BEGIN
+    IDC_CMB_TARGET, 0x403, 9, 0
+0xd4cc, 0xa6b1, 0xf4c2, 0xd2bc, "\000" 
+    IDC_CMB_TARGET, 0x403, 9, 0
+0xd4cc, 0xa6b1, 0xf2c2, 0xd2bc, "\000" 
+    IDC_CMB_TARGET, 0x403, 13, 0
+0xb8d6, 0xa8b6, 0xeab5, 0xccc6, 0xf2c2, 0xd2bc, "\000" 
+    0
+END
+
+IDD_SEND_VIEW DLGINIT
+BEGIN
+    IDC_EXPR_MSG_HELP, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x0211, 0x0000, 0x0211, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+IDD_MEMBER_VIEW DLGINIT
+BEGIN
+    IDC_EXPR_WELCOME, 0x376, 160, 0
+0x0000, 0x0000, 0x004c, 0x0000, 0x3b6e, 0x0000, 0x2373, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x004c, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 
+0x0000, 0xd0e0, 0x0057, 0x3573, 0x11cf, 0x69ae, 0x0008, 0x2e2b, 0x6212, 
+0x0008, 0x0000, 0x0000, 0x0000, 0x004c, 0x0000, 0x1401, 0x0002, 0x0000, 
+0x0000, 0x00c0, 0x0000, 0x0000, 0x4600, 0x0080, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0001, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP6             BITMAP                  "res\\seller3.BMP"
+IDB_BITMAP5             BITMAP                  "res\\seller2.BMP"
+IDB_BITMAP4             BITMAP                  "res\\seller1.BMP"
+IDB_BITMAP1             BITMAP                  "res\\seller4.BMP"
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\tbmessage.rc2"  // 非 Microsoft Visual C++ 编辑的资源
+#include "l.CHS\afxres.rc"      // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

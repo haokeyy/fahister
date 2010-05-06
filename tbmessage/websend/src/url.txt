@@ -1,4 +1,0 @@
-alibaba:
-http://search.china.alibaba.com/search/offer_search.htm?tracelog=search_sale&keywords=%CE%A2%B2%A8%C2%AF&&beginPage=6
-
-http://search.china.alibaba.com/search/search.htm?tracelog=search_buy&keywords=%CE%A2%B2%A8%C2%AF&subType=
